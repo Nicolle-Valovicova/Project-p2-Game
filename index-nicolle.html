@@ -27,97 +27,233 @@
     <title>Murder's gambit</title>
   </head>
   <body>
-    <div class="start-screen" hidden ><!-- remove HIDDEN -->
+    <div id="start-screen" class="start-screen">
+      <!-- remove HIDDEN -->
       <div class="startinfo">
-        <img src="" alt=""><!-- add a logo img -->
-        <div class="startLoadingBar"></div><!-- create a loading bar -->
+        <img src="" alt="" /><!-- add a logo img -->
+        <div class="startLoadingBar"></div>
+        <!-- create a loading bar -->
         <div class="crowfacts">
           <p id="crowfactOutput"></p>
         </div>
       </div>
     </div>
-    <div class="menu-screen" ><!-- remove HIDDEN -->
+    <div id="menu-screen" class="menu-screen">
+      <!-- remove HIDDEN -->
       <h1>The Gambit Hall</h1>
-      <hr id="firstHr">
+      <hr id="firstHr" />
       <div class="menu-items">
         <div class="menu-it1">
-          <h3 id="menuPlayBtn">Play</h3>
-          <hr>
+          <h3 id="menuPlayBtn">Soar</h3>
+          <hr />
         </div>
         <div class="menu-it1">
-          <h3>Options</h3>
-          <hr>
+          <h3 id="options">Attunement</h3>
+          <hr />
+        </div>
+
+        <div class="menu-it1">
+          <h3 id="credits">Legacy</h3>
+          <hr />
         </div>
         <div class="menu-it1">
-          <h3>Credits</h3>
-          <hr>
-        </div>
-        <div class="menu-it1">
-          <h3>Exit</h3>
-          <hr>
+          <h3 class="exit">Vanish</h3>
+          <hr />
         </div>
       </div>
+      <div class="attunement">
+        <h2>Attunement</h2>
+        <div class="attunement-contain">
+          <div class="contain-nav">
+            <ul>
+              <li class="atuItem" id="atuGm">Game mode</li>
+              <li class="atuItem" id="atuAu">Audio</li>
+              <li class="atuItem" id="atuGx">Graphics</li>
+              <li class="atuItem" id="atuGp">Gameplay</li>
+            </ul>
+          </div>
+          <div class="attunement-settings">
+            <div class="setting">
+              <p class="settingTitle">Choose your battle:</p>
+              <div class="settingSlider">
+                <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
+                <p class="settingOpt1" hidden>Player vs Player</p>
+                <!-- !remove HIDDEN -->
+                <p class="settingOpt2">Player vs Computer</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
+              </div>
+            </div>
+            <div class="setting">
+              <p class="settingTitle">Select your flock:</p>
+              <div class="settingSlider">
+                <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
+                <p class="settingOpt1"hidden>Black murders</p>
+                <!-- !remove HIDDEN -->
+                <p class="settingOpt2">White murders</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
+              </div>
+            </div>
+          </div>
+          <div class="attunement-settings ">
+            <div class="setting">
+              <p class="settingTitle">Music:</p>
+              <div class="settingSlider">
+                <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
+                <p class="settingOpt1" hidden>On</p>
+                <!-- !remove HIDDEN -->
+                <p class="settingOpt2">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
+              </div>
+            </div>
+            <div class="setting">
+              <p class="settingTitle">SFX:</p>
+              <div class="settingSlider">
+                <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
+                <p class="settingOpt1"hidden>On</p>
+                <!-- !remove HIDDEN -->
+                <p class="settingOpt2">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
+              </div>
+            </div>
+          </div>
+          <div class="attunement-settings ">
+            <div class="setting">
+              <p class="settingTitle">Graphics:</p>
+              <div class="settingSlider">
+                <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
+                <p class="settingOpt1" hidden>On</p>
+                <!-- !remove HIDDEN -->
+                <p class="settingOpt2">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
+              </div>
+            </div>
+            <div class="setting">
+              <p class="settingTitle">Cutscenes:</p>
+              <div class="settingSlider">
+                <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
+                <p class="settingOpt1"hidden>On</p>
+                <!-- !remove HIDDEN -->
+                <p class="settingOpt2">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
+              </div>
+            </div>
+          </div>
+          <div class="attunement-settings ">
+            <div class="setting">
+              <p class="settingTitle">Highlight legal moves:</p>
+              <div class="settingSlider">
+                <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
+                <p class="settingOpt1" hidden>On</p>
+                <!-- !remove HIDDEN -->
+                <p class="settingOpt2">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
+              </div>
+            </div>
+            <div class="setting">
+              <p class="settingTitle">Show dangerous tiles:</p>
+              <div class="settingSlider">
+                <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
+                <p class="settingOpt1"hidden>On</p>
+                <!-- !remove HIDDEN -->
+                <p class="settingOpt2">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="legacy-contain">
+        <h2>The Ancestor Scrolls</h2>
+        <p class="legacyTitle">“Written in the ashes of fallen kings, these names endure…”</p>
+        <div class="legacy-info">
+          <h3>Creator</h3>
+          <p>Nicolle Valovicova</p>
+        </div>
+        <div class="legacy-info">
+          <h3>Tools</h3>
+          <p>HTML & CSS, JavaScript</p>
+        </div>
+        <div class="legacy-info">
+          <h3>Inspiration</h3>
+          <p>Hendrik the Jackdaw, Legends of the guardians, mythical forest stylings</p>
+        </div>
+        <p>“May your feathers leave a mark on the forest.”</p>
+      </div>
     </div>
-    <div class="game-index" hidden>
+    <div id="game-index" class="game-index">
       <div class="inGameBG"></div>
       <!-- Here comes the bg img ^ -->
       <div class="gameSidebar">
         <div class="sidebarNav">
-          <button class="quit">Quit</button>
-         <img id="arrowBack" src="imgs/arrow_back_ios.svg" alt="">
-         <img id="arrowForward" src="imgs/arrow_forward_ios.svg" alt="" >
+          <button id="quit" class="quit">Depart</button>
+          <img id="arrowBack" src="imgs/arrow_back_ios.svg" alt="" />
+          <img id="arrowForward" src="imgs/arrow_forward_ios.svg" alt="" />
         </div>
         <div class="sideInformation">
           <p id="currentPlayerTurn">
             Current player: <img src="" alt="bird" />
           </p>
           <h3>Gold counters</h3>
-          <p id="whiteGold">White gold: <span id="whiteKills"></span><img class="valueCoins" src="imgs/coin.png" alt=""></p>
-          <p id="blackGold">Black gold: <span id="blackKills"></span><img class="valueCoins" src="imgs/coin.png" alt=""></p>
+          <p id="whiteGold">
+            White gold: <span id="whiteKills"></span
+            ><img class="valueCoins" src="imgs/coin.png" alt="" />
+          </p>
+          <p id="blackGold">
+            Black gold: <span id="blackKills"></span
+            ><img class="valueCoins" src="imgs/coin.png" alt="" />
+          </p>
           <div class="killValues">
             <h3>Piece kill values</h3>
             <div class="killValuesIndex">
               <div class="killValue">
                 <p>Jackdaw pawns:</p>
               </div>
-                <div class="killValueTxt">
-                  <span>1 <img class="valueCoins" src="imgs/coin.png" alt=""></span></span>
-                </div>
+              <div class="killValueTxt">
+                <span
+                  >1 <img class="valueCoins" src="imgs/coin.png" alt=""
+                /></span>
+              </div>
             </div>
             <div class="killValuesIndex">
               <div class="killValue">
                 <p>Jay knights:</p>
               </div>
-                <div class="killValueTxt">
-                  <span>3 <img class="valueCoins" src="imgs/coin.png" alt=""></span></span>
-                </div>
+              <div class="killValueTxt">
+                <span
+                  >3 <img class="valueCoins" src="imgs/coin.png" alt=""
+                /></span>
+              </div>
             </div>
             <div class="killValuesIndex">
               <div class="killValue">
                 <p>Crow bishops:</p>
               </div>
-                <div class="killValueTxt">
-                  <span>3 <img class="valueCoins" src="imgs/coin.png" alt=""></span></span>
-                </div>
+              <div class="killValueTxt">
+                <span
+                  >3 <img class="valueCoins" src="imgs/coin.png" alt=""
+                /></span>
+              </div>
             </div>
             <div class="killValuesIndex">
               <div class="killValue">
                 <p>Magpie rooks:</p>
               </div>
-                <div class="killValueTxt">
-                  <span>5 <img class="valueCoins" src="imgs/coin.png" alt=""></span></span>
-                </div>
+              <div class="killValueTxt">
+                <span
+                  >5 <img class="valueCoins" src="imgs/coin.png" alt=""
+                /></span>
+              </div>
             </div>
             <div class="killValuesIndex">
               <div class="killValue">
                 <p>Rook queen:</p>
               </div>
-                <div class="killValueTxt">
-                  <span>9 <img class="valueCoins" src="imgs/coin.png" alt=""></span></span>
-                </div>
+              <div class="killValueTxt">
+                <span
+                  >9 <img class="valueCoins" src="imgs/coin.png" alt=""
+                /></span>
+              </div>
             </div>
-         
-      
           </div>
         </div>
       </div>

@@ -1,0 +1,74 @@
+<div class="gamePlaySettings settingIndex">
+            <div class="game-mode">
+              <div class="gmTitle">
+                <p>Choose your battle:</p>
+              </div>
+              <div class="choosePlayermode">
+                <img src="imgs/arrow_back_ios.svg" alt="" />
+                <p id="pvp" hidden>Player vs Player</p>
+                <!-- !remove HIDDEN ^ -->
+                <p id="pvc">Player vs Computer</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="" />
+              </div>
+            </div>
+            <div class="game-side">
+              <div class="gsTitle">
+                <p>Select your flock:</p>
+              </div>
+              <div class="chooseFlock">
+                <img src="imgs/arrow_back_ios.svg" alt="" />
+                <p id="BLside" hidden>Black murders</p>
+                <!--! remove HIDDEN ^ -->
+                <p id="WTside">White murders</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="audioSettings settingIndex">
+            <div class="music-select">
+              <div class="musicTitle">
+                <p>Music:</p>
+              </div>
+              <div class="musicIndex">
+                <img src="imgs/arrow_back_ios.svg" alt="" />
+                <p id="MCon" hidden>On</p>
+                <!--! remove HIDDEN ^ -->
+                <p id="MCoff">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="" />
+              </div>
+            </div>
+            <div class="sfx-select">
+              <div class="sfxTitle">
+                <p>SFX:</p>
+              </div>
+              <div class="sfxIndex">
+                <img src="imgs/arrow_back_ios.svg" alt="" />
+                <p id="sfxOn" hidden>On</p>
+                <!--! remove HIDDEN ^ -->
+                <p id="sfxOff">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="graphicSettings">
+            <div class="graphic-select">
+              <p>Graphics:</p>
+              <div class="sfxIndex">
+                <img src="imgs/arrow_back_ios.svg" alt="" />
+                <p id="grxOn" hidden>On</p>
+                <!--! remove HIDDEN ^ -->
+                <p id="grxOff">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="" />
+              </div>
+            </div>
+            <div class="scene-select">
+              <p>Cutscenes:</p>
+              <div class="sfxIndex">
+                <img src="imgs/arrow_back_ios.svg" alt="" />
+                <p id="grxOn" hidden>On</p>
+                <!--! remove HIDDEN ^ -->
+                <p id="grxOff">Off</p>
+                <img src="imgs/arrow_forward_ios.svg" alt="" />
+              </div>
+            </div>
+          </div>

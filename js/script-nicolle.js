@@ -1,3 +1,20 @@
+const startScreen = document.querySelector("#start-screen");
+const menuScreen = document.querySelector("#menu-screen");
+const gameIndex = document.querySelector("#game-index");
+let menuPlayBtn = document.querySelector("#menuPlayBtn");
+function hidePages(){
+    startScreen.classList.add("notVisible");
+    menuScreen.classList.add("notVisible");
+    gameIndex.classList.add("notVisible");
+}
+hidePages();
+// first call the hide all pages then display the start page and after the game load bar has loaded (some sort of interval) call the settimeout and hide all pages again and after that show the menu screen
+menuScreen.classList.remove("notVisible");
+menuPlayBtn.addEventListener("click", () => {
+    hidePages();
+    gameIndex.classList.remove("notVisible");
+})
+
 // script for start page 
 let crowfactOutput = document.querySelector("#crowfactOutput");
 let crowFacts = [
@@ -14,15 +31,38 @@ setInterval(() => {
   i = (i + 1) % crowFacts.length; 
   crowfactOutput.textContent = crowFacts[i]; 
 }, 2000);
+// script for menu page
+let attunementMenu = document.querySelector("#options");
+let attunement = document.querySelector(".attunement");
+let atuItems = document.querySelectorAll(".atuItem");
+let settingIndexes = document.querySelectorAll(".attunement-settings");
 
-// crowfactOutput.textContent = crowFacts;
+attunement.classList.add("notVisible");
+attunementMenu.addEventListener("click", () =>{
+    attunement.classList.toggle("notVisible");
+
+})
+
+atuItems.forEach((item, index) =>{
+    item.addEventListener("click", () => {
+ settingIndexes.forEach(i => i.classList.remove("visible"));
+    settingIndexes[index].classList.add("visible")
+    })
+});
+settingIndexes[0].classList.add("visible");
+
 // script for side bar in game
 const arrowBack = document.querySelector("#arrowBack");
 const arrowForward = document.querySelector("#arrowForward");
+const quitbtn = document.querySelector("#quit");
 let gameSidebar = document.querySelector(".gameSidebar");
 
 arrowBack.addEventListener("click", closeNav);
 arrowForward.addEventListener("click", openNav);
+quitbtn.addEventListener("click", () =>{
+    hidePages();
+    menuScreen.classList.remove("notVisible");
+})
 function openNav() {
   gameSidebar.style.width = "300px";
   arrowBack.style.display = "block";

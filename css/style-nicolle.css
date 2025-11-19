@@ -16,8 +16,8 @@
 
 :root {
   --temporary-color: #3b354d;
-  --bg-interfaces:#0000005c;
-  --font-color:aliceblue;
+  --bg-interfaces: #0000005c;
+  --font-color: aliceblue;
 }
 
 /* importnant styling */
@@ -29,48 +29,105 @@
   display: none !important;
 }
 body {
-    overflow: hidden;
+  overflow: hidden;
   background-color: var(--temporary-color);
   font-family: "Aref Ruqaa", serif;
 }
 /* css fot the start screen */
 /* css for the menu screen */
-.menu-screen{
+.menu-screen {
   color: var(--font-color);
   padding: 30px;
 }
-.menu-screen h1{
+.menu-screen h1 {
   font-size: 5rem;
 }
-#firstHr{
+#firstHr {
   width: 650px;
 }
-.menu-items{
+.menu-items {
   margin-left: 30px;
   width: 400px;
   margin-top: 300px;
 }
-.menu-it1{
+.menu-it1 {
   padding: 20px;
-
-  
 }
-.menu-it1 h3{
+.menu-it1 h3 {
   position: absolute;
   font-size: 23px;
   font-weight: 400;
-  transition: ease-out 0.1s;
   cursor: pointer;
 }
-.menu-it1 hr{
-margin-top: 20px;
-transform: translateY(25px);
+.menu-it1 hr {
+  margin-top: 20px;
+  transform: translateY(25px);
 }
-#menuPlayBtn{
+#menuPlayBtn {
   font-weight: 800;
 }
-.menu-it1 h3:hover{
+.menu-it1 h3:hover {
   scale: 1.15;
+}
+.attunement, .legacy-contain  {
+  position: absolute;
+  top: 0;
+  width: 800px;
+  height: 300px;
+  border: 1px solid;
+  transform: translate(700px, 400px);
+
+}
+.attunement h2, .legacy-contain h2{
+  
+  position: absolute;
+      backdrop-filter: blur(10px);
+      padding: 5px;
+justify-self: center;
+transform: translateY(-30px);
+}
+
+.attunement-contain{
+        backdrop-filter: blur(10px);
+}
+.attunement img{
+  cursor: pointer;
+}
+.contain-nav ul {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  gap: 20px;
+  justify-content: space-evenly;
+}
+.contain-nav ul li {
+  list-style: none;
+  cursor: pointer;
+}
+.contain-nav ul li:hover{
+  scale: 1.15;
+
+}
+.attunement-settings{
+  display: none !important;
+}
+.attunement-settings.visible{
+  display: block !important;
+}
+.attunement-settings{
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+}
+.setting{
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  margin-top: 30px;
+}
+.settingSlider{
+    gap: 5px;
+  display: flex;
 }
 /* css for the game itself */
 .board-align {
@@ -100,62 +157,62 @@ transform: translateY(25px);
   height: 100px;
   width: 100px;
 }
-.gameSidebar{
-    width: 300px;
-    height: 100vh;
-    position: absolute;
-    color: var(--font-color);
-        transition: 0.5s;
-    background-color: var(--bg-interfaces);
+.gameSidebar {
+  width: 300px;
+  height: 100vh;
+  position: absolute;
+  color: var(--font-color);
+  transition: 0.5s;
+  background-color: var(--bg-interfaces);
 }
-.menu-bnts{
-    position: absolute;
-    right: 0;
-    color: var(--font-color);
-    padding: 20px;
+.menu-bnts {
+  position: absolute;
+  right: 0;
+  color: var(--font-color);
+  padding: 20px;
 }
-.sidebarNav{
-    display: flex;
-    justify-content: space-between;
+.sidebarNav {
+  display: flex;
+  justify-content: space-between;
 }
-.quit{
-    margin: 10px;
-    padding: 5px 10px 10px 10px;
-    border-radius: 25px;
-    font-size: 20px;
-      font-family: "Aref Ruqaa", serif;
-
+.quit {
+  margin: 10px;
+  padding: 5px 10px 10px 10px;
+  border-radius: 25px;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: "Aref Ruqaa", serif;
 }
-.sidebarNav > img{
-    margin: 20px;   
+.sidebarNav > img {
+  margin: 20px;
 }
-#arrowForward{
+#arrowForward {
   display: none;
 }
-.sideInformation{
+.sideInformation {
   margin-top: 30px;
-    margin-left: 20px;
+  margin-left: 20px;
 }
-.sideInformation h3{
+.sideInformation h3 {
   margin-top: 20px;
   font-size: 23px;
 }
-.sideInformation p, .sideInformation li{
+.sideInformation p,
+.sideInformation li {
   font-size: 20px;
 }
 /* .killValues ul{
 } */
-.killValuesIndex{
+.killValuesIndex {
   display: flex;
   width: 230px;
   flex-direction: row;
   justify-content: space-between;
 }
-.killValueTxt{
+.killValueTxt {
   transform: translateY(6px);
-  
 }
-.valueCoins{
+.valueCoins {
   width: 20px;
   transform: translateY(3px);
 }
