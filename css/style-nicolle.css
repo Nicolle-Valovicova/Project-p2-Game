@@ -1,3 +1,14 @@
+/* #.aref-ruqaa-regular {
+  font-family: "Aref Ruqaa", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.aref-ruqaa-bold {
+  font-family: "Aref Ruqaa", serif;
+  font-weight: 700;
+  font-style: normal;
+} */
 * {
   padding: 0;
   margin: 0;
@@ -6,6 +17,7 @@
 :root {
   --temporary-color: #3b354d;
   --bg-interfaces:#0000005c;
+  --font-color:aliceblue;
 }
 
 /* importnant styling */
@@ -13,11 +25,54 @@
 [hidden] {
   display: none !important;
 }
-
-body {
-  background-color: var(--temporary-color);
+.notVisible {
+  display: none !important;
 }
+body {
+    overflow: hidden;
+  background-color: var(--temporary-color);
+  font-family: "Aref Ruqaa", serif;
+}
+/* css fot the start screen */
+/* css for the menu screen */
+.menu-screen{
+  color: var(--font-color);
+  padding: 30px;
+}
+.menu-screen h1{
+  font-size: 5rem;
+}
+#firstHr{
+  width: 650px;
+}
+.menu-items{
+  margin-left: 30px;
+  width: 400px;
+  margin-top: 300px;
+}
+.menu-it1{
+  padding: 20px;
 
+  
+}
+.menu-it1 h3{
+  position: absolute;
+  font-size: 23px;
+  font-weight: 400;
+  transition: ease-out 0.1s;
+  cursor: pointer;
+}
+.menu-it1 hr{
+margin-top: 20px;
+transform: translateY(25px);
+}
+#menuPlayBtn{
+  font-weight: 800;
+}
+.menu-it1 h3:hover{
+  scale: 1.15;
+}
+/* css for the game itself */
 .board-align {
   height: 100vh;
   text-align: center;
@@ -49,5 +104,58 @@ body {
     width: 300px;
     height: 100vh;
     position: absolute;
+    color: var(--font-color);
+        transition: 0.5s;
     background-color: var(--bg-interfaces);
+}
+.menu-bnts{
+    position: absolute;
+    right: 0;
+    color: var(--font-color);
+    padding: 20px;
+}
+.sidebarNav{
+    display: flex;
+    justify-content: space-between;
+}
+.quit{
+    margin: 10px;
+    padding: 5px 10px 10px 10px;
+    border-radius: 25px;
+    font-size: 20px;
+      font-family: "Aref Ruqaa", serif;
+
+}
+.sidebarNav > img{
+    margin: 20px;   
+}
+#arrowForward{
+  display: none;
+}
+.sideInformation{
+  margin-top: 30px;
+    margin-left: 20px;
+}
+.sideInformation h3{
+  margin-top: 20px;
+  font-size: 23px;
+}
+.sideInformation p, .sideInformation li{
+  font-size: 20px;
+}
+/* .killValues ul{
+} */
+.killValuesIndex{
+  display: flex;
+  width: 230px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.killValueTxt{
+  transform: translateY(6px);
+  
+}
+.valueCoins{
+  width: 20px;
+  transform: translateY(3px);
 }
