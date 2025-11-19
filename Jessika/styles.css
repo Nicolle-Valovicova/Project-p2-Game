@@ -8,13 +8,16 @@
     --text-primary: #00ff00;
     --text-secondary: #009900;
 }
-*{
+
+* {
     padding: 0;
     margin: 0;
 }
-body{
-     font-family: "Pixelify Sans", sans-serif;
+
+body {
+    font-family: "Pixelify Sans", sans-serif;
 }
+
 
 .screen {
     display: none;
