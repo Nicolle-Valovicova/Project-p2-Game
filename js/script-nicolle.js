@@ -2,6 +2,7 @@ const startScreen = document.querySelector("#start-screen");
 const menuScreen = document.querySelector("#menu-screen");
 const gameIndex = document.querySelector("#game-index");
 let menuPlayBtn = document.querySelector("#menuPlayBtn");
+let exitBtn = document.querySelector(".exit");
 function hidePages(){
     startScreen.classList.add("notVisible");
     menuScreen.classList.add("notVisible");
@@ -13,6 +14,10 @@ menuScreen.classList.remove("notVisible");
 menuPlayBtn.addEventListener("click", () => {
     hidePages();
     gameIndex.classList.remove("notVisible");
+})
+exitBtn.addEventListener("click", () => {
+    hidePages();
+    startScreen.classList.remove("notVisible");
 })
 
 // script for start page 
@@ -36,11 +41,13 @@ let attunementMenu = document.querySelector("#options");
 let attunement = document.querySelector(".attunement");
 let atuItems = document.querySelectorAll(".atuItem");
 let settingIndexes = document.querySelectorAll(".attunement-settings");
+let creditsMenu = document.querySelector("#credits");
+let legacyContain = document.querySelector(".legacy-contain");
 
 attunement.classList.add("notVisible");
 attunementMenu.addEventListener("click", () =>{
     attunement.classList.toggle("notVisible");
-
+    legacyContain.classList.add("notVisible");
 })
 
 atuItems.forEach((item, index) =>{
@@ -51,6 +58,10 @@ atuItems.forEach((item, index) =>{
 });
 settingIndexes[0].classList.add("visible");
 
+creditsMenu.addEventListener("click", () =>{
+    attunement.classList.add("notVisible");
+    legacyContain.classList.toggle("notVisible");
+})
 // script for side bar in game
 const arrowBack = document.querySelector("#arrowBack");
 const arrowForward = document.querySelector("#arrowForward");

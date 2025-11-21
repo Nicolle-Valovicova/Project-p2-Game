@@ -34,6 +34,24 @@ body {
   font-family: "Aref Ruqaa", serif;
 }
 /* css fot the start screen */
+.startinfo{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 30px;
+}
+#mgLogo{
+  width: 700px;
+}
+.crowfacts{
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 40px;
+color: var(--font-color);
+}
 /* css for the menu screen */
 .menu-screen {
   color: var(--font-color);
@@ -128,6 +146,18 @@ transform: translateY(-30px);
 .settingSlider{
     gap: 5px;
   display: flex;
+}
+.legacyTitle{
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.legacy-info{
+  margin-left: 30px;
+  margin-top: 10px;
+}
+.legacyQuote{
+  margin-left: 30px;
+  margin-top: 10px;
 }
 /* css for the game itself */
 .board-align {

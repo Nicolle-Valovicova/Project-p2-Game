@@ -24,15 +24,21 @@
       href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lexend:wght@100..900&family=Outfit:wght@100..900&family=Pixelify+Sans:wght@400..700&family=VT323&display=swap"
       rel="stylesheet"
     />
+    <!-- loading bar -->
+     <link rel="stylesheet" type="text/css" href="dist/loading-bar.css"/>
+
     <title>Murder's gambit</title>
   </head>
   <body>
     <div id="start-screen" class="start-screen">
       <!-- remove HIDDEN -->
       <div class="startinfo">
-        <img src="" alt="" /><!-- add a logo img -->
-        <div class="startLoadingBar"></div>
-        <!-- create a loading bar -->
+        <img id="mgLogo" src="imgs/Mglogo.png" alt="Murders Gambit logo" />
+<div
+  data-preset="rainbow"
+  class="ldBar label-center"
+  data-value="35"
+></div>        <!-- create a loading bar -->
         <div class="crowfacts">
           <p id="crowfactOutput"></p>
         </div>
@@ -177,7 +183,7 @@
           <h3>Inspiration</h3>
           <p>Hendrik the Jackdaw, Legends of the guardians, mythical forest stylings</p>
         </div>
-        <p>“May your feathers leave a mark on the forest.”</p>
+        <p class="legacyQuote">“May your feathers leave a mark on the forest.”</p>
       </div>
     </div>
     <div id="game-index" class="game-index">
@@ -332,5 +338,7 @@
       </div>
     </div>
     <script src="js/script-nicolle.js"></script>
+    <script type="text/javascript" src="dist/loading-bar.js"></script>
+
   </body>
 </html>
