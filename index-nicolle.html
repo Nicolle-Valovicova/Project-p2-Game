@@ -44,12 +44,12 @@
           <p id="crowfactOutput"></p>
         </div>
       </div>
-  <ul id="scene">
-    <li class="layer" data-depth="0.2"><img src="imgs/start1.PNG"></li>
-    <li class="layer" data-depth="0.3"><img src="imgs/start2.PNG"></li>
-    <li class="layer" data-depth="0.2"><img src="imgs/start3.PNG"></li>
-    <li class="layer" data-depth="0.45"><img src="imgs/start4.PNG"></li>
-  </ul>
+      <ul id="scene">
+        <li class="layer" data-depth="0.2"><img src="imgs/start1.PNG" /></li>
+        <li class="layer" data-depth="0.3"><img src="imgs/start2.PNG" /></li>
+        <li class="layer" data-depth="0.2"><img src="imgs/start3.PNG" /></li>
+        <li class="layer" data-depth="0.45"><img src="imgs/start4.PNG" /></li>
+      </ul>
     </div>
     <div id="menu-screen" class="menu-screen">
       <!-- remove HIDDEN -->
@@ -284,81 +284,20 @@
         <!-- this is sachovnica -->
       </menu>
       <div class="board-align">
-        <div class="board">
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-        </div>
+        <div class="boardNumbers"></div>
+        <div class="board"></div>
+        <div class="lowerLetters"></div>
       </div>
     </div>
     <script src="js/script-nicolle.js"></script>
     <script type="text/javascript" src="dist/loading-bar.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
-<script src="https://storage.googleapis.com/rsg-chess-api/cdn/index.min.js"></script>
-  <script>
-    var scene = document.getElementById('scene');
-    var parallaxInstance = new Parallax(scene);
-  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.12.0/chess.min.js"></script>
+    <script src="js/boardLogic.js"></script>
+
+    <script>
+      var scene = document.getElementById("scene");
+      var parallaxInstance = new Parallax(scene);
+    </script>
   </body>
 </html>

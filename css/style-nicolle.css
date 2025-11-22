@@ -198,17 +198,35 @@ transform: translateY(-30px);
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
-
-.black {
-  background-color: white;
+.square{
   height: 100px;
   width: 100px;
 }
 
+.black {
+  background-color: white;
+
+}
+
 .white {
-  background-color: black;
-  height: 100px;
-  width: 100px;
+  background-color: rgb(41, 41, 41);
+}
+.letterStyling{
+  display: flex;
+  width: 800px;
+    justify-content: space-around;
+}
+.bNumberStyling{
+  display: flex;
+  position: absolute;
+  left: 0;
+  transform: translate(435px, -15px);
+  flex-direction: column;
+  height: 800px;
+    justify-content: space-around;
+}
+.test{
+  padding: 70px;
 }
 .gameSidebar {
   width: 300px;

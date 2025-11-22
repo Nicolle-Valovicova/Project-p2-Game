@@ -11,7 +11,7 @@ function hidePages(){
 }
 hidePages();
 // first call the hide all pages then display the start page and after the game load bar has loaded (some sort of interval) call the settimeout and hide all pages again and after that show the menu screen
-menuScreen.classList.remove("notVisible");
+gameIndex.classList.remove("notVisible");
 menuPlayBtn.addEventListener("click", () => {
     hidePages();
     gameIndex.classList.remove("notVisible");
