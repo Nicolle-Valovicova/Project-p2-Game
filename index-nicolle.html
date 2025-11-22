@@ -25,7 +25,7 @@
       rel="stylesheet"
     />
     <!-- loading bar -->
-     <link rel="stylesheet" type="text/css" href="dist/loading-bar.css"/>
+    <link rel="stylesheet" type="text/css" href="dist/loading-bar.css" />
 
     <title>Murder's gambit</title>
   </head>
@@ -34,15 +34,22 @@
       <!-- remove HIDDEN -->
       <div class="startinfo">
         <img id="mgLogo" src="imgs/Mglogo.png" alt="Murders Gambit logo" />
-<div
-  data-preset="rainbow"
-  class="ldBar label-center"
-  data-value="35"
-></div>        <!-- create a loading bar -->
+        <div
+          data-preset="rainbow"
+          class="ldBar label-center"
+          data-value="35"
+        ></div>
+        <!-- create a loading bar -->
         <div class="crowfacts">
           <p id="crowfactOutput"></p>
         </div>
       </div>
+  <ul id="scene">
+    <li class="layer" data-depth="0.2"><img src="imgs/start1.PNG"></li>
+    <li class="layer" data-depth="0.3"><img src="imgs/start2.PNG"></li>
+    <li class="layer" data-depth="0.2"><img src="imgs/start3.PNG"></li>
+    <li class="layer" data-depth="0.45"><img src="imgs/start4.PNG"></li>
+  </ul>
     </div>
     <div id="menu-screen" class="menu-screen">
       <!-- remove HIDDEN -->
@@ -93,14 +100,14 @@
               <p class="settingTitle">Select your flock:</p>
               <div class="settingSlider">
                 <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
-                <p class="settingOpt1"hidden>Black murders</p>
+                <p class="settingOpt1" hidden>Black murders</p>
                 <!-- !remove HIDDEN -->
                 <p class="settingOpt2">White murders</p>
                 <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
               </div>
             </div>
           </div>
-          <div class="attunement-settings ">
+          <div class="attunement-settings">
             <div class="setting">
               <p class="settingTitle">Music:</p>
               <div class="settingSlider">
@@ -115,14 +122,14 @@
               <p class="settingTitle">SFX:</p>
               <div class="settingSlider">
                 <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
-                <p class="settingOpt1"hidden>On</p>
+                <p class="settingOpt1" hidden>On</p>
                 <!-- !remove HIDDEN -->
                 <p class="settingOpt2">Off</p>
                 <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
               </div>
             </div>
           </div>
-          <div class="attunement-settings ">
+          <div class="attunement-settings">
             <div class="setting">
               <p class="settingTitle">Graphics:</p>
               <div class="settingSlider">
@@ -137,14 +144,14 @@
               <p class="settingTitle">Cutscenes:</p>
               <div class="settingSlider">
                 <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
-                <p class="settingOpt1"hidden>On</p>
+                <p class="settingOpt1" hidden>On</p>
                 <!-- !remove HIDDEN -->
                 <p class="settingOpt2">Off</p>
                 <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
               </div>
             </div>
           </div>
-          <div class="attunement-settings ">
+          <div class="attunement-settings">
             <div class="setting">
               <p class="settingTitle">Highlight legal moves:</p>
               <div class="settingSlider">
@@ -159,7 +166,7 @@
               <p class="settingTitle">Show dangerous tiles:</p>
               <div class="settingSlider">
                 <img src="imgs/arrow_back_ios.svg" alt="arrow back" />
-                <p class="settingOpt1"hidden>On</p>
+                <p class="settingOpt1" hidden>On</p>
                 <!-- !remove HIDDEN -->
                 <p class="settingOpt2">Off</p>
                 <img src="imgs/arrow_forward_ios.svg" alt="arrow forward" />
@@ -170,7 +177,9 @@
       </div>
       <div class="legacy-contain">
         <h2>The Ancestor Scrolls</h2>
-        <p class="legacyTitle">“Written in the ashes of fallen kings, these names endure…”</p>
+        <p class="legacyTitle">
+          “Written in the ashes of fallen kings, these names endure…”
+        </p>
         <div class="legacy-info">
           <h3>Creator</h3>
           <p>Nicolle Valovicova</p>
@@ -181,9 +190,14 @@
         </div>
         <div class="legacy-info">
           <h3>Inspiration</h3>
-          <p>Hendrik the Jackdaw, Legends of the guardians, mythical forest stylings</p>
+          <p>
+            Hendrik the Jackdaw, Legends of the guardians, mythical forest
+            stylings
+          </p>
         </div>
-        <p class="legacyQuote">“May your feathers leave a mark on the forest.”</p>
+        <p class="legacyQuote">
+          “May your feathers leave a mark on the forest.”
+        </p>
       </div>
     </div>
     <div id="game-index" class="game-index">
@@ -267,6 +281,7 @@
         <span id="inGameMenu" class="material-symbols-outlined menu-bnts">
           menu
         </span>
+        <!-- this is sachovnica -->
       </menu>
       <div class="board-align">
         <div class="board">
@@ -339,6 +354,11 @@
     </div>
     <script src="js/script-nicolle.js"></script>
     <script type="text/javascript" src="dist/loading-bar.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+<script src="https://storage.googleapis.com/rsg-chess-api/cdn/index.min.js"></script>
+  <script>
+    var scene = document.getElementById('scene');
+    var parallaxInstance = new Parallax(scene);
+  </script>
   </body>
 </html>

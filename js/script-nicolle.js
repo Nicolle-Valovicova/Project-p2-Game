@@ -1,3 +1,4 @@
+
 const startScreen = document.querySelector("#start-screen");
 const menuScreen = document.querySelector("#menu-screen");
 const gameIndex = document.querySelector("#game-index");
@@ -32,10 +33,12 @@ let crowFacts = [
 "Crows hold grudges: if one bird wrongs them, they remember it for generations—and the entire murder may retaliate."
 ]
 let i = 0; 
+  crowfactOutput.textContent = crowFacts[i]; 
 setInterval(() => { 
   i = (i + 1) % crowFacts.length; 
   crowfactOutput.textContent = crowFacts[i]; 
-}, 2000);
+}, 5000);
+
 // script for menu page
 let attunementMenu = document.querySelector("#options");
 let attunement = document.querySelector(".attunement");

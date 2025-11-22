@@ -45,13 +45,36 @@ body {
 }
 #mgLogo{
   width: 700px;
+  filter: drop-shadow(7px 7px 4px #080808);
 }
 .crowfacts{
-  position: absolute;
+  backdrop-filter:blur(5px);
+position: absolute;
   bottom: 0;
+    text-shadow: 2px 2px 2px #000000;
+
   padding-bottom: 40px;
 color: var(--font-color);
 }
+#scene {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: -9999;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+}
+
+.layer img {
+margin-left: -100px;
+margin-top: -140px;
+  width: 120%;
+  height: auto;
+  pointer-events: none;
+}
+
 /* css for the menu screen */
 .menu-screen {
   color: var(--font-color);
