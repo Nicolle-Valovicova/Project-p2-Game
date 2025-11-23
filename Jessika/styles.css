@@ -21,8 +21,6 @@ body {
 
 .screen {
     display: none;
-    margin: 0 auto;
-    padding: 20px;
     background-color: #0a0a0a;
 }
 
