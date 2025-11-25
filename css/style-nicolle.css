@@ -201,16 +201,21 @@ transform: translateY(-30px);
 .square{
   height: 100px;
   width: 100px;
+  position: relative;
 }
 
 .black {
-  background-color: white;
-
+  background-image: url(../imgs/tiles/Wtile.JPG);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
 }
 
 .white {
-  background-color: rgb(41, 41, 41);
-}
+  background-image: url(../imgs/tiles/Btile.JPG);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;}
 .letterStyling{
   display: flex;
   width: 800px;
@@ -225,12 +230,21 @@ transform: translateY(-30px);
   height: 800px;
     justify-content: space-around;
 }
-.test{
-  padding: 70px;
+.piece img{
+  width: 95px;
+  position: relative;
+  z-index: -12;
+    pointer-events: none;
+
+}
+.piece {
+  position: relative;
+  z-index: 20;
 }
 .gameSidebar {
   width: 300px;
   height: 100vh;
+  z-index: 10;
   position: absolute;
   color: var(--font-color);
   transition: 0.5s;

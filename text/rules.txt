@@ -2,17 +2,17 @@
 ----------------------
 //* WHITE SIDE
 
-King: albino raven
+King: albino raven *
 
-Queen: albino rook (bird)
+Queen: albino rook (bird) *
 
-Rooks: albino Magpie
+Rooks: albino Magpie *
 
-Bishops: albino crow
+Bishops: albino crow *
 
 Knights: Eurasian Jay
 
-Pawns: albino Jackdaw
+Pawns: albino Jackdaw *
 
 //* BLACK SIDE
 

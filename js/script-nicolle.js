@@ -46,8 +46,11 @@ let atuItems = document.querySelectorAll(".atuItem");
 let settingIndexes = document.querySelectorAll(".attunement-settings");
 let creditsMenu = document.querySelector("#credits");
 let legacyContain = document.querySelector(".legacy-contain");
+let trueSettingOptions = document.querySelectorAll(".settingOpt1");
+let falseSettingOptions = document.querySelectorAll(".settingOpt2");
 
 attunement.classList.add("notVisible");
+legacyContain.classList.add("notVisible");
 attunementMenu.addEventListener("click", () =>{
     attunement.classList.toggle("notVisible");
     legacyContain.classList.add("notVisible");
@@ -64,7 +67,8 @@ settingIndexes[0].classList.add("visible");
 creditsMenu.addEventListener("click", () =>{
     attunement.classList.add("notVisible");
     legacyContain.classList.toggle("notVisible");
-})
+});
+
 // script for side bar in game
 const arrowBack = document.querySelector("#arrowBack");
 const arrowForward = document.querySelector("#arrowForward");
