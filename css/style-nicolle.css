@@ -34,7 +34,7 @@ body {
   font-family: "Aref Ruqaa", serif;
 }
 /* css fot the start screen */
-.startinfo{
+.startinfo {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -43,18 +43,18 @@ body {
   height: 100vh;
   gap: 30px;
 }
-#mgLogo{
+#mgLogo {
   width: 700px;
   filter: drop-shadow(7px 7px 4px #080808);
 }
-.crowfacts{
-  backdrop-filter:blur(5px);
-position: absolute;
+.crowfacts {
+  backdrop-filter: blur(5px);
+  position: absolute;
   bottom: 0;
-    text-shadow: 2px 2px 2px #000000;
+  text-shadow: 2px 2px 2px #000000;
 
   padding-bottom: 40px;
-color: var(--font-color);
+  color: var(--font-color);
 }
 #scene {
   position: absolute;
@@ -68,8 +68,8 @@ color: var(--font-color);
 }
 
 .layer img {
-margin-left: -100px;
-margin-top: -140px;
+  margin-left: -100px;
+  margin-top: -140px;
   width: 120%;
   height: auto;
   pointer-events: none;
@@ -110,28 +110,28 @@ margin-top: -140px;
 .menu-it1 h3:hover {
   scale: 1.15;
 }
-.attunement, .legacy-contain  {
+.attunement,
+.legacy-contain {
   position: absolute;
   top: 0;
   width: 800px;
   height: 300px;
   border: 1px solid;
   transform: translate(700px, 400px);
-
 }
-.attunement h2, .legacy-contain h2{
-  
+.attunement h2,
+.legacy-contain h2 {
   position: absolute;
-      backdrop-filter: blur(10px);
-      padding: 5px;
-justify-self: center;
-transform: translateY(-30px);
+  backdrop-filter: blur(10px);
+  padding: 5px;
+  justify-self: center;
+  transform: translateY(-30px);
 }
 
-.attunement-contain{
-        backdrop-filter: blur(10px);
+.attunement-contain {
+  backdrop-filter: blur(10px);
 }
-.attunement img{
+.attunement img {
   cursor: pointer;
 }
 .contain-nav ul {
@@ -145,40 +145,39 @@ transform: translateY(-30px);
   list-style: none;
   cursor: pointer;
 }
-.contain-nav ul li:hover{
+.contain-nav ul li:hover {
   scale: 1.15;
-
 }
-.attunement-settings{
+.attunement-settings {
   display: none !important;
 }
-.attunement-settings.visible{
+.attunement-settings.visible {
   display: block !important;
 }
-.attunement-settings{
+.attunement-settings {
   justify-self: center;
   display: flex;
   flex-direction: column;
 }
-.setting{
+.setting {
   display: flex;
   justify-content: space-between;
   width: 400px;
   margin-top: 30px;
 }
-.settingSlider{
-    gap: 5px;
+.settingSlider {
+  gap: 5px;
   display: flex;
 }
-.legacyTitle{
+.legacyTitle {
   margin-top: 20px;
   margin-left: 30px;
 }
-.legacy-info{
+.legacy-info {
   margin-left: 30px;
   margin-top: 10px;
 }
-.legacyQuote{
+.legacyQuote {
   margin-left: 30px;
   margin-top: 10px;
 }
@@ -198,7 +197,7 @@ transform: translateY(-30px);
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
-.square{
+.square {
   height: 100px;
   width: 100px;
   position: relative;
@@ -206,36 +205,36 @@ transform: translateY(-30px);
 
 .black {
   background-image: url(../imgs/tiles/Wtile.JPG);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .white {
   background-image: url(../imgs/tiles/Btile.JPG);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;}
-.letterStyling{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.letterStyling {
   display: flex;
   width: 800px;
-    justify-content: space-around;
+  justify-content: space-around;
 }
-.bNumberStyling{
+.bNumberStyling {
   display: flex;
   position: absolute;
   left: 0;
   transform: translate(435px, -15px);
   flex-direction: column;
   height: 800px;
-    justify-content: space-around;
+  justify-content: space-around;
 }
-.piece img{
+.piece img {
   width: 95px;
   position: relative;
   z-index: -12;
-    pointer-events: none;
-
+  pointer-events: none;
 }
 .piece {
   position: relative;
