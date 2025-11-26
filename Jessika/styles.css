@@ -9,15 +9,6 @@
     --text-secondary: #009900;
 }
 
-#game-container {
-    width: 100vw;  
-    height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    padding: 0; 
-    margin: 0;  
-}
-
 * {
     padding: 0;
     margin: 0;
@@ -26,7 +17,7 @@
 
 body {
     font-family: "Pixelify Sans", sans-serif;
-       width: 100%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     background-color: #0a0a0a;
@@ -49,6 +40,8 @@ body {
     padding: 30px;
     margin: 20px 0;
     text-align: center;
+    width: 100%;
+    height: 100%;
 }
 
 .input-group {
@@ -84,12 +77,20 @@ body {
 }
 
 @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
 }
 
 .pixel-btn {
-background-color: var(--neon-green-dim);
+    background-color: var(--neon-green-dim);
 
 }
 
@@ -99,6 +100,7 @@ background-color: var(--neon-green-dim);
     gap: 20px;
     margin: 20px 0;
 }
+
 .class-selection {
     background-color: var(--neon-green-dim);
     padding: 20px;
@@ -135,6 +137,7 @@ background-color: var(--neon-green-dim);
     background-color: var(--neon-green-dim);
     box-shadow: 0 0 15px var(--neon-green-glow);
 }
+
 .class-details {
     background-color: var(--neon-green-dim);
     padding: 20px;
@@ -165,8 +168,8 @@ background-color: var(--neon-green-dim);
     font-size: 14px;
     line-height: 1.4;
 }
-.confirm-character
-.class-stats {
+
+.confirm-character .class-stats {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
@@ -196,7 +199,8 @@ background-color: var(--neon-green-dim);
     margin-bottom: 20px;
 }
 
-.player-tag, .class-tag {
+.player-tag,
+.class-tag {
     background-color: var(--neon-green-dim);
     padding: 5px 10px;
     border: 1px solid var(--neon-green);
@@ -250,7 +254,8 @@ background-color: var(--neon-green-dim);
     background-color: var(--background-primary);
 }
 
-.pixel-border:before, .pixel-border:after {
+.pixel-border:before,
+.pixel-border:after {
     content: '';
     position: absolute;
     width: 8px;
@@ -278,15 +283,15 @@ background-color: var(--neon-green-dim);
     .creation-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .stats-container {
         grid-template-columns: 1fr;
     }
-    
+
     .choices-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .pixel-input {
         width: 100%;
     }
