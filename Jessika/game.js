@@ -24,15 +24,9 @@ const displayPlayerClass = document.getElementById('display-player-class');
 // Name Input Validation
 playerNameInput.addEventListener('input', function() {
     const name = this.value.trim();
-    startGameBtn.disabled = name.length < 2;
+    startGameBtn.disabled = name.length < 2;}
     
-    // Add glitch effect if name is too long
-    if (name.length > 15) {
-        this.classList.add('glitch-text');
-    } else {
-        this.classList.remove('glitch-text');
-    }
-});
+);
 
 // Start Game with Name
 startGameBtn.addEventListener('click', function() {

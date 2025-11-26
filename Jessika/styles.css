@@ -9,13 +9,28 @@
     --text-secondary: #009900;
 }
 
+#game-container {
+    width: 100vw;  
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    padding: 0; 
+    margin: 0;  
+}
+
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: "Pixelify Sans", sans-serif;
+       width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #0a0a0a;
+    color: #00ff00;
 }
 
 
@@ -73,6 +88,10 @@ body {
     51%, 100% { opacity: 0; }
 }
 
+.pixel-btn {
+background-color: var(--neon-green-dim);
+
+}
 
 .creation-grid {
     display: grid;
@@ -141,7 +160,7 @@ body {
 }
 
 #class-description p {
-    color: var(--text-secondary);
+    color: var(--background-secondary);
     margin: 8px 0;
     font-size: 14px;
     line-height: 1.4;
