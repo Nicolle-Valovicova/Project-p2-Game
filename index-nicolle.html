@@ -25,8 +25,7 @@
       rel="stylesheet"
     />
     <!-- loading bar -->
-    <link rel="stylesheet" type="text/css" href="dist/loading-bar.css" />
-
+<link rel="stylesheet" href="dist/loading-bar.css">
     <title>Murder's gambit</title>
   </head>
   <body>
@@ -38,12 +37,15 @@
           src="imgs/gameItems/Mglogo.png"
           alt="Murders Gambit logo"
         />
-        <div
+        <div class="barDisplay">
+        <div id="bar"
           data-preset="rainbow"
           class="ldBar label-center"
-          data-value="35"
+          data-value="0"
         ></div>
-        <!-- create a loading bar -->
+        <button id="startBtn">Start</button>
+        </div>
+        <!-- loading bar ^-->
         <div class="crowfacts">
           <p id="crowfactOutput"></p>
         </div>
@@ -101,10 +103,15 @@
             <div class="setting">
               <p class="settingTitle">Choose your battle:</p>
               <div class="settingSlider">
-                <img src="imgs/icons/arrow_back_ios.svg" alt="arrow back" />
+                <img
+                  class="back"
+                  src="imgs/icons/arrow_back_ios.svg"
+                  alt="arrow back"
+                />
                 <p class="settingOpt1">Player vs Player</p>
                 <p class="settingOpt2">Player vs Computer</p>
                 <img
+                  class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
                   alt="arrow forward"
                 />
@@ -113,10 +120,15 @@
             <div class="setting">
               <p class="settingTitle">Select your flock:</p>
               <div class="settingSlider">
-                <img src="imgs/icons/arrow_back_ios.svg" alt="arrow back" />
+                <img
+                  class="back"
+                  src="imgs/icons/arrow_back_ios.svg"
+                  alt="arrow back"
+                />
                 <p class="settingOpt1">Black murders</p>
                 <p class="settingOpt2">White murders</p>
                 <img
+                  class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
                   alt="arrow forward"
                 />
@@ -127,10 +139,15 @@
             <div class="setting">
               <p class="settingTitle">Music:</p>
               <div class="settingSlider">
-                <img src="imgs/icons/arrow_back_ios.svg" alt="arrow back" />
+                <img
+                  class="back"
+                  src="imgs/icons/arrow_back_ios.svg"
+                  alt="arrow back"
+                />
                 <p class="settingOpt1">On</p>
                 <p class="settingOpt2">Off</p>
                 <img
+                  class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
                   alt="arrow forward"
                 />
@@ -139,10 +156,15 @@
             <div class="setting">
               <p class="settingTitle">SFX:</p>
               <div class="settingSlider">
-                <img src="imgs/icons/arrow_back_ios.svg" alt="arrow back" />
+                <img
+                  class="back"
+                  src="imgs/icons/arrow_back_ios.svg"
+                  alt="arrow back"
+                />
                 <p class="settingOpt1">On</p>
                 <p class="settingOpt2">Off</p>
                 <img
+                  class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
                   alt="arrow forward"
                 />
@@ -153,10 +175,15 @@
             <div class="setting">
               <p class="settingTitle">Graphics:</p>
               <div class="settingSlider">
-                <img src="imgs/icons/arrow_back_ios.svg" alt="arrow back" />
+                <img
+                  class="back"
+                  src="imgs/icons/arrow_back_ios.svg"
+                  alt="arrow back"
+                />
                 <p class="settingOpt1">On</p>
                 <p class="settingOpt2">Off</p>
                 <img
+                  class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
                   alt="arrow forward"
                 />
@@ -165,10 +192,15 @@
             <div class="setting">
               <p class="settingTitle">Cutscenes:</p>
               <div class="settingSlider">
-                <img src="imgs/icons/arrow_back_ios.svg" alt="arrow back" />
+                <img
+                  class="back"
+                  src="imgs/icons/arrow_back_ios.svg"
+                  alt="arrow back"
+                />
                 <p class="settingOpt1">On</p>
                 <p class="settingOpt2">Off</p>
                 <img
+                  class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
                   alt="arrow forward"
                 />
@@ -179,10 +211,15 @@
             <div class="setting">
               <p class="settingTitle">Highlight legal moves:</p>
               <div class="settingSlider">
-                <img src="imgs/icons/arrow_back_ios.svg" alt="arrow back" />
+                <img
+                  class="back"
+                  src="imgs/icons/arrow_back_ios.svg"
+                  alt="arrow back"
+                />
                 <p class="settingOpt1">On</p>
                 <p class="settingOpt2">Off</p>
                 <img
+                  class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
                   alt="arrow forward"
                 />
@@ -191,10 +228,15 @@
             <div class="setting">
               <p class="settingTitle">Show dangerous tiles:</p>
               <div class="settingSlider">
-                <img src="imgs/icons/arrow_back_ios.svg" alt="arrow back" />
+                <img
+                  class="back"
+                  src="imgs/icons/arrow_back_ios.svg"
+                  alt="arrow back"
+                />
                 <p class="settingOpt1">On</p>
                 <p class="settingOpt2">Off</p>
                 <img
+                  class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
                   alt="arrow forward"
                 />
@@ -321,9 +363,34 @@
         <div class="lowerLetters"></div>
       </div>
     </div>
+    <div class="win-screen" hidden>
+      <div class="winBg"></div>
+      <div class="win-container">
+      <h2 class="winText"></h2>
+      <h3 class="winQuite"></h3>
+      <div class="escButtons">
+        <button class="retry">Reengage</button>
+        <button class="Menu">Hub</button>
+        <button class="Home">Home</button>
+      </div>
+      </div>
+    </div>
+    <div class="lose-screen" hidden>
+      <div class="loseBg"></div>
+      <div class="lose-container">
+      <h2 class="loseText"></h2>
+      <h3 class="loseQuote"></h3>
+      <div class="escButtons">
+        <button class="retry">Reengage</button>
+        <button class="Menu">Hub</button>
+        <button class="Home">Home</button>
+      </div>
+      </div>
+    </div>
     <script src="js/pieces.js"></script>
+    <script src="dist/loading-bar.js"></script>
+    <script src="dist/loading-bar.min.js"></script>
     <script src="js/script-nicolle.js"></script>
-    <script type="text/javascript" src="dist/loading-bar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
     <script src="js/boardLogic.js"></script>
     <script>
