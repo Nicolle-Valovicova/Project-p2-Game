@@ -4,70 +4,14 @@ let startingPlayer = "black";
 playerTurn.textContent = "black";
 //! later add if select you r flock === black startingPlayer black
 const startPieces = [
-  blackRook,
-  blackKnight,
-  blackBishop,
-  blackQueen,
-  blackKing,
-  blackBishop,
-  blackKnight,
-  blackRook,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whiteRook,
-  whiteKnight,
-  whiteBishop,
-  whiteQueen,
-  whiteKing,
-  whiteBishop,
-  whiteKnight,
-  whiteRook,
+  blackRook,blackKnight,  blackBishop,  blackQueen,  blackKing,  blackBishop,  blackKnight,  blackRook,
+   blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,
+   "",  "",  "",  "",  "",  "",  "",  "",
+ "",  "",  "",  "",  "",  "",  "",  "",
+ "",  "",  "",  "",  "",  "",  "",  "",
+ "",  "",  "",  "",  "",  "",  "",  "",
+   whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,
+  whiteRook,  whiteKnight,  whiteBishop,  whiteQueen,  whiteKing,  whiteBishop,  whiteKnight,  whiteRook,
 ];
 let config = {
   position: "start",
@@ -128,10 +72,17 @@ drawLetters();
 // code for efficiently working drag and drop + remove if 2+ players on 1 square
 const allSquares = document.querySelectorAll(".square");
 const allPieces = document.querySelectorAll(".piece");
+let whiteKillPoints = document.querySelector("#whiteGold");
+let blackKillPoints = document.querySelector("#blackKills");
+
 console.log(allSquares);
 
-allPieces.forEach((piece) => {
+allPieces.forEach(piece => {
   piece.addEventListener("dragstart", dragStart);
+});
+
+document.querySelectorAll(".piece img").forEach(img => {
+  img.addEventListener("dragstart", e => e.preventDefault());
 });
 
 allSquares.forEach((square) => {
@@ -149,45 +100,44 @@ function dragStart(e) {
 function dragOver(e) {
   e.preventDefault();
 }
-
+// code for piece placement when dropped
 function dragDrop(e) {
   e.preventDefault();
-  console.log(e.target);
-  const correctGo =
-    draggedElement.firstChild.classList.contains(startingPlayer);
-    const dropSquare = e.target.closest(".square");
+
+  const dropSquare = e.currentTarget;
+  if (!dropSquare) return;
+
+  const valid = checkIfValid(dropSquare);
+
+  const pieceColor = draggedElement.dataset.color; // black or white
+  const correctGo = pieceColor === startingPlayer;
+  if (!correctGo) return;
+
   const taken = dropSquare.querySelector(".piece");
-  if (!dropSquare) {
+  const opponentGo = startingPlayer === "white" ? "black" : "white";
+  const takenByOpponent = taken && taken.dataset.color === opponentGo;
+
+  // capture move
+  
+  if (takenByOpponent && valid) {
+    taken.remove();
+    
+    dropSquare.appendChild(draggedElement);
+    changePlayer();
     return;
   }
-  const valid = checkIfValid(dropSquare);
-  const opponentGo = startingPlayer === "white" ? "black " : "white";
-  const takenByOpponent = e.target.firstChild?.classList.contains(opponentGo);
-if (!correctGo) {
-  return;
-}
-  if (correctGo) {
-    // must check first this move
-    if (takenByOpponent && valid) {
-      if (!dropSquare) return;
-      const existingPiece = dropSquare.querySelector(".piece");
-      if (existingPiece) existingPiece.remove();
-      changePlayer();
-      return;
-    }
-    // then check this move
-    if (taken && !takenByOpponent) {
-      return;
-    }
-    if (valid) {
-      // e.target.append(draggedElement);
-      changePlayer();
-      dropSquare.appendChild(draggedElement);
-      return;
-    }
-  }
 
+  // cant capture own piece
+  if (taken && !takenByOpponent) return;
+
+  // normal valid move
+  if (valid) {
+    dropSquare.appendChild(draggedElement);
+    changePlayer();
+    return;
+  }
 }
+
 
 function checkIfValid(target) {
   const targetId =
@@ -202,9 +152,12 @@ function checkIfValid(target) {
   switch (piece) {
     case "pawn":
       const starterRow = [8, 9, 10, 11, 12, 13, 14, 15];
+      // const starterRowW = [48, 49, 50, 51, 52, 53, 54, 55];
       if (
         (starterRow.includes(startId) && startId + width * 2 === targetId) ||
-        (startId + width === targetId)
+        (startId + width === targetId) ||
+        (startId + width - 1 === targetId && document.querySelector(`[square-id="${startId + width - 1}"]`).firstChild) ||
+        (startId + width + 1 === targetId && document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild) 
       ) {
         console.log("valid");
 
@@ -216,7 +169,7 @@ function checkIfValid(target) {
   }
   return false;
 }
-
+// ! coe above   ^ #############################
 function changePlayer() {
   if (startingPlayer === "black") {
     reverseIds();

@@ -74,7 +74,7 @@ body {
   margin-top: -140px;
   width: 120%;
   height: auto;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 .barDisplay{
   display: flex;
@@ -248,7 +248,7 @@ border-radius: var(--standard-radius);
 .piece img {
   width: 95px;
   position: relative;
-  z-index: -12;
+
   pointer-events: none;
 }
 .piece {

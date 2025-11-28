@@ -91,27 +91,7 @@ function setDefaultOptions() {
     o.classList.add("notVisible");
   });
 }
-setDefaultOptions();
-buttonForward.forEach((button) => {
-  button.addEventListener("click", () => {
-    trueSettingOptions.forEach((opt) => opt.classList.add("notVisible"));
-    falseSettingOptions.forEach((set) => set.classList.remove("notVisible"));
-    button.classList.add("notVisible");
-    buttonBackward.forEach((o) => {
-      o.classList.remove("notVisible");
-    });
-  });
-});
-buttonBackward.forEach((button) => {
-  button.addEventListener("click", () => {
-    trueSettingOptions.forEach((opt) => opt.classList.remove("notVisible"));
-    falseSettingOptions.forEach((set) => set.classList.add("notVisible"));
-    button.classList.add("notVisible");
-    buttonForward.forEach((o) => {
-      o.classList.remove("notVisible");
-    });
-  });
-});
+
 settingIndexes[0].classList.add("visible");
 
 creditsMenu.addEventListener("click", () => {
