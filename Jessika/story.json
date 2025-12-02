@@ -1,3 +1,4 @@
+
 {
     "scenes": {
         "wake_up": {
@@ -38,6 +39,13 @@
                 }
             ]
         },
+         "look_around": {
+        "text": "You see glitches in the trees. The game code is unstable here.",
+        "choices": [
+            { "text": "Investigate", "next": "investigate", "healthChange": -10 },
+            { "text": "Run away", "next": "run_away" }
+        ]
+    },
         "debug_console": {
             "id": "debug_console",
             "text": "Your Code Mage instincts kick in. You focus and a console window flickers into existence. It shows: [SYSTEM] Reality Matrix: 98% stable",
