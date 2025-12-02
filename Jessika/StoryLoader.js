@@ -2,15 +2,16 @@ class StoryLoader {
     constructor() {
         this.storyData = null;
     }
-}
-async loadStory(){
-    try{
-        const response = await fetch('story.json');
-        this.storyData = await response.json();
-    } catch (error){
-        console.error('Failed to load story:'error)
+
+    async loadStory() {
+        try {
+            const response = await fetch('story.json');
+            this.storyData = await response.json();
+        } catch (error) {
+            console.error('Failed to load story:', error);
+        }
     }
-}
+
     getScene(sceneId) {
         return this.storyData ? this.storyData[sceneId] : null;
     }
@@ -20,5 +21,5 @@ async loadStory(){
         return scene && scene.choices ? scene.choices[choiceIndex] : null;
     }
 }
-
+console.log(StoryLoader)
 

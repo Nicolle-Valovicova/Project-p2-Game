@@ -1,3 +1,74 @@
+class GameController {
+    constructor() {
+        this.storyLoader = new StoryLoader();
+        this.gameWorld = new GameWorld();
+        this.uiManager = new UIManager(this.gameWorld);
+        this.combatSystem = new CombatSystem(this.gameWorld);
+    }
+
+    async init() {
+        // Laad story data
+        await this.storyLoader.loadStory();
+        
+        // Laad eerste scene
+        this.loadScene(this.gameWorld.currentScene);
+    }
+
+    loadScene(sceneId) {
+        const scene = this.storyLoader.getScene(sceneId);
+        if (!scene) return;
+        
+        this.gameWorld.currentScene = sceneId;
+        this.gameWorld.visitedScenes.add(sceneId);
+        
+        // Update UI
+        this.uiManager.updateStoryText(scene.text);
+        this.uiManager.updateChoices(scene.choices || []);
+        this.uiManager.updateStats();
+        
+        // Check voor combat
+        if (scene.combat) {
+            this.combatSystem.startCombat(scene.combat.enemy);
+        }
+    }
+
+    handleChoice(choiceIndex) {
+        const scene = this.storyLoader.getScene(this.gameWorld.currentScene);
+        if (!scene || !scene.choices) return;
+        
+        const choice = scene.choices[choiceIndex];
+        if (!choice) return;
+        
+        // Update stats gebaseerd op keuze
+        this.gameWorld.updateStats(choice);
+        
+        // Laad volgende scene
+        if (choice.next) {
+            this.loadScene(choice.next);
+        }
+    }
+
+    saveGame() {
+        const saveData = this.gameWorld.save();
+        localStorage.setItem('gameSave', JSON.stringify(saveData));
+    }
+
+    loadGame() {
+        const saveData = localStorage.getItem('gameSave');
+        if (saveData) {
+            this.gameWorld.load(JSON.parse(saveData));
+            this.loadScene(this.gameWorld.currentScene);
+        }
+    }
+}
+
+// Maak globale controller aan
+window.gameController = new GameController();
+
+// Initialiseer bij laden
+document.addEventListener('DOMContentLoaded', () => {
+    window.gameController.init();
+});
 const gameState = {
     currentScreen: "start",
     player: {
