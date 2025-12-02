@@ -12,8 +12,9 @@
 </head>
 
 <body>
-    <div id="game-container">
+ <div id="game-container">
 
+        <!-- START SCREEN -->
         <div id="start-screen" class="screen active">
             <div class="pixel-border title-container">
                 <h1 class="pixel-text glitch-text">THE GAME MAKER'S REALM</h1>
@@ -32,7 +33,6 @@
                 </button>
             </div>
 
-
             <div class="pixel-border debug-info">
                 <h3>SYSTEM STATUS</h3>
                 <div class="status-line">> Game Engine: ONLINE</div>
@@ -41,7 +41,7 @@
             </div>
         </div>
 
-
+        <!-- CHARACTER CREATION SCREEN -->
         <div id="character-screen" class="screen">
             <div class="pixel-border title-container">
                 <h1 class="pixel-text">CHARACTER CREATION</h1>
@@ -103,9 +103,8 @@
             </div>
         </div>
 
-
+        <!-- MAIN GAME SCREEN -->
         <div id="game-screen" class="screen">
-
             <div class="pixel-border game-header">
                 <h1>THE GAME MAKER'S REALM</h1>
                 <div class="player-info">
@@ -114,15 +113,11 @@
                 </div>
             </div>
 
-
             <div id="story-section" class="pixel-border story-container">
                 <div id="story-text" class="story-text">
-                    Localization:
-                    <span id="display-player-localization" class="player-localization"></span>
+                    Loading game world...
                 </div>
-
             </div>
-
 
             <div class="stats-container">
                 <div class="pixel-border player-stats">
@@ -147,7 +142,6 @@
                     </div>
                 </div>
 
-
                 <div class="pixel-border debug-panel">
                     <h3>DEBUG COMMANDS</h3>
                     <div class="debug-commands">
@@ -158,14 +152,12 @@
                 </div>
             </div>
 
-
             <div id="choices-section" class="pixel-border choices-container">
                 <h3>AVAILABLE ACTIONS</h3>
                 <div id="choices-buttons" class="choices-grid">
-
+                    <!-- Choices by JavaScript -->
                 </div>
             </div>
-
 
             <div id="combat-log" class="pixel-border combat-container hidden">
                 <h3>COMBAT LOG</h3>
@@ -174,12 +166,7 @@
         </div>
     </div>
 
-<script src="Storyloader.js"></script>
-<script src="Modules/GameWorld.js"></script>
-<script src="Modules/UIManager.js"></script>
-<script src="Modules/CombatSystem.js"></script>
-<script src="Modules/EnemyAI.js"></script>
-<script src="Jessika-game.js"></script> <!-- Dit moet als LAATSTE! -->
+<script src="Jessika-game.js"></script> 
     
 </body>
 
