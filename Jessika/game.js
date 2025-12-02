@@ -22,14 +22,15 @@ const displayPlayerName = document.getElementById('display-player-name');
 const displayPlayerClass = document.getElementById('display-player-class');
 
 // Name Input Validation
-playerNameInput.addEventListener('input', function() {
+playerNameInput.addEventListener('input', function () {
     const name = this.value.trim();
-    startGameBtn.disabled = name.length < 2;}
-    
+    startGameBtn.disabled = name.length < 2;
+}
+
 );
 
 // Start Game with Name
-startGameBtn.addEventListener('click', function() {
+startGameBtn.addEventListener('click', function () {
     if (playerNameInput.value.trim().length >= 2) {
         gameState.player.name = playerNameInput.value.trim().toUpperCase();
         showScreen('character');
@@ -39,15 +40,15 @@ startGameBtn.addEventListener('click', function() {
 
 // Character Class Selection
 document.querySelectorAll('.class-option').forEach(option => {
-    option.addEventListener('click', function() {
+    option.addEventListener('click', function () {
         // Remove active class from all options
         document.querySelectorAll('.class-option').forEach(opt => {
             opt.classList.remove('active');
         });
-        
+
         // Add active class to clicked option
         this.classList.add('active');
-        
+
         // Update class description
         updateClassDescription(this.dataset.class);
     });
@@ -84,10 +85,10 @@ function updateClassDescription(className) {
             ]
         }
     };
-    
+
     const desc = descriptions[className];
     const descriptionElement = document.getElementById('class-description');
-    
+
     descriptionElement.innerHTML = `
         <h3>${desc.title}</h3>
         ${desc.details.map(detail => `<p>${detail}</p>`).join('')}
@@ -95,7 +96,7 @@ function updateClassDescription(className) {
 }
 
 // Confirm Character
-document.getElementById('confirm-character').addEventListener('click', function() {
+document.getElementById('confirm-character').addEventListener('click', function () {
     const selectedClass = document.querySelector('.class-option.active');
     if (selectedClass) {
         gameState.player.class = selectedClass.dataset.class;
@@ -105,18 +106,18 @@ document.getElementById('confirm-character').addEventListener('click', function(
 });
 
 // Back to Name
-document.getElementById('back-to-name').addEventListener('click', function() {
+document.getElementById('back-to-name').addEventListener('click', function () {
     showScreen('start');
 });
 
 // Screen Management
 function showScreen(screenName) {
-    // Hide all screens
+
     document.querySelectorAll('.screen').forEach(screen => {
         screen.classList.remove('active');
     });
-    
-    // Show target screen
+
+
     document.getElementById(screenName + '-screen').classList.add('active');
     gameState.currentScreen = screenName;
 }
@@ -131,20 +132,20 @@ function updateNameDisplay() {
 function initializeGame() {
     displayPlayerName.textContent = gameState.player.name;
     displayPlayerClass.textContent = gameState.player.class.replace('-', ' ').toUpperCase();
-    
-    
+
+
     loadScene('start');
 }
 
 
-playerNameInput.addEventListener('keypress', function(e) {
+playerNameInput.addEventListener('keypress', function (e) {
     if (e.key === 'Enter' && !startGameBtn.disabled) {
         startGameBtn.click();
     }
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     showScreen('start');
     playerNameInput.focus();
 });

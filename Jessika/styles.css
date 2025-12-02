@@ -247,6 +247,10 @@ body {
     margin-top: 15px;
 }
 
+.story-container {
+    font-size: larger;
+    font-weight: bold;
+}
 
 .pixel-border {
     border: 4px solid var(--neon-green);

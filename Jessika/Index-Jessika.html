@@ -19,19 +19,19 @@
                 <h1 class="pixel-text glitch-text">THE GAME MAKER'S REALM</h1>
                 <p class="subtitle">A Text-Based RPG Adventure</p>
             </div>
-            
-                <div class="pixel-border name-input-container">
-                    <h2>ENTER DEVELOPER NAME</h2>
-                    <div class="input-group">
-                        <input type="text" id="player-name-input" maxlength="20" placeholder="TYPE YOUR NAME..."
-                            class="pixel-input">
-                        <div class="input-cursor">_</div>
-                    </div>
-                    <button id="start-game-btn" class="pixel-btn" disabled>
-                        INITIALIZE GAME
-                    </button>
+
+            <div class="pixel-border name-input-container">
+                <h2>ENTER DEVELOPER NAME</h2>
+                <div class="input-group">
+                    <input type="text" id="player-name-input" maxlength="20" placeholder="TYPE YOUR NAME..."
+                        class="pixel-input">
+                    <div class="input-cursor">_</div>
                 </div>
-            
+                <button id="start-game-btn" class="pixel-btn" disabled>
+                    INITIALIZE GAME
+                </button>
+            </div>
+
 
             <div class="pixel-border debug-info">
                 <h3>SYSTEM STATUS</h3>
@@ -117,9 +117,10 @@
 
             <div id="story-section" class="pixel-border story-container">
                 <div id="story-text" class="story-text">
-                    Initializing game world...
+                    Localization:
+                    <span id="display-player-localization" class="player-localization"></span>
                 </div>
-                <div class="text-progress">▓▓▓▓░░░░░░ 40%</div>
+
             </div>
 
 
