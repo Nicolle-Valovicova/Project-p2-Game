@@ -1,0 +1,56 @@
+{
+    "scenes": {
+        "wake_up": {
+            "id": "wake_up",
+            "text": "You slowly open your eyes. The world is blurry, pixelated... familiar. This is Glitchwood Forest - the first level of your game. But you're not at your computer anymore. You're inside it.",
+            "choices": [
+                {
+                    "text": "Pinch yourself",
+                    "nextScene": "pinch",
+                    "condition": null,
+                    "effect": null
+                },
+                {
+                    "text": "Try to stand up",
+                    "nextScene": "stand_up",
+                    "condition": null,
+                    "effect": null
+                },
+                {
+                    "text": "Access debug console",
+                    "nextScene": "debug_console",
+                    "condition": "class=='code-mage'",
+                    "effect": "metaKnowledge+=5"
+                }
+            ]
+        },
+        "pinch": {
+            "id": "pinch",
+            "text": "You pinch your arm. It hurts. This isn't a dream. The pain feels too real, too detailed. As your vision clears, you notice something strange - a small UI element in the corner of your vision.",
+            "choices": [
+                {
+                    "text": "Examine the UI",
+                    "nextScene": "examine_ui"
+                },
+                {
+                    "text": "Look around",
+                    "nextScene": "look_around"
+                }
+            ]
+        },
+        "debug_console": {
+            "id": "debug_console",
+            "text": "Your Code Mage instincts kick in. You focus and a console window flickers into existence. It shows: [SYSTEM] Reality Matrix: 98% stable",
+            "choices": [
+                {
+                    "text": "Run diagnostic",
+                    "nextScene": "diagnostic"
+                },
+                {
+                    "text": "Close console",
+                    "nextScene": "wake_up"
+                }
+            ]
+        }
+    }
+}

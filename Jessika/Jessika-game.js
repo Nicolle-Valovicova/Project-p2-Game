@@ -1,3 +1,58 @@
+let storyLoader;
+let gameWorld;
+let inventorySystem;
+let uiManager;
+
+function initializeGame() {
+    displayPlayerName.textContent = gameState.player.name;
+    displayPlayerClass.textContent = gameState.player.class.replace('-', ' ').toUpperCase();
+    
+    storyLoader = new StoryLoader();
+    gameWorld = new GameWorld();
+    inventorySystem = new InventorySystem();
+    uiManager = new UIManager();
+    
+    storyLoader.loadStory().then(() => {
+        loadScene('wake_up');
+    });
+}
+
+function loadScene(sceneId) {
+    const scene = storyLoader.getScene(sceneId);
+    if (!scene) return;
+    
+    let storyText = scene.text.replace(/{{playerName}}/g, gameState.player.name);
+    
+    document.getElementById('story-text').innerHTML = storyText;
+    
+    updateChoices(scene.choices);
+}
+
+function updateChoices(choices) {
+    const choicesContainer = document.getElementById('choices-buttons');
+    choicesContainer.innerHTML = '';
+    
+    choices.forEach((choice, index) => {
+        if (choice.condition && !checkCondition(choice.condition)) {
+            return; 
+        }
+        
+        const button = document.createElement('button');
+        button.textContent = `${index + 1}. ${choice.text}`;
+        button.className = 'choice-btn pixel-btn';
+        button.style.margin = '5px';
+        
+        button.addEventListener('click', () => {
+            // Pas effecten toe
+            if (choice.effect) {
+                applyEffect(choice.effect);
+            }
+            loadScene(choice.nextScene);
+        });
+        
+        choicesContainer.appendChild(button);
+    });
+}
 const gameState = {
     currentScreen: "start",
     player: {
