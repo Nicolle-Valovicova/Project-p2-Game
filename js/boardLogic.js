@@ -2,25 +2,75 @@ let playerTurn = document.querySelector("#currentPlayerTurn");
 const width = 8;
 let startingPlayer = "black";
 playerTurn.textContent = "black";
+
 //! later add if select you r flock === black startingPlayer black
+// array of the board
 const startPieces = [
-  blackRook,blackKnight,  blackBishop,  blackQueen,  blackKing,  blackBishop,  blackKnight,  blackRook,
-   blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,
-   "",  "",  "",  "",  "",  "",  "",  "",
- "",  "",  "",  "",  "",  "",  "",  "",
- "",  "",  "",  "",  "",  "",  "",  "",
- "",  "",  "",  "",  "",  "",  "",  "",
-   whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,
-  whiteRook,  whiteKnight,  whiteBishop,  whiteQueen,  whiteKing,  whiteBishop,  whiteKnight,  whiteRook,
+  blackRook,
+  blackKnight,
+  blackBishop,
+  blackQueen,
+  blackKing,
+  blackBishop,
+  blackKnight,
+  blackRook,
+  blackPawn,
+  blackPawn,
+  blackPawn,
+  blackPawn,
+  blackPawn,
+  blackPawn,
+  blackPawn,
+  blackPawn,
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  whitePawn,
+  whitePawn,
+  whitePawn,
+  whitePawn,
+  whitePawn,
+  whitePawn,
+  whitePawn,
+  whitePawn,
+  whiteRook,
+  whiteKnight,
+  whiteBishop,
+  whiteQueen,
+  whiteKing,
+  whiteBishop,
+  whiteKnight,
+  whiteRook,
 ];
-let config = {
-  position: "start",
-  showNotation: true,
-  draggable: true,
-  dropOffBoard: "snapback",
-  snapbackSpeed: 200,
-  snapSpeed: 50,
-};
 
 // draw the board using js
 // draw pieces on board
@@ -31,6 +81,7 @@ function drawBoard() {
     const square = document.createElement("div");
     square.classList.add("square");
     square.innerHTML = startPiece;
+    // if the square has a firstchild(an img) make that square draggable
     square.firstChild && square.firstChild.setAttribute("draggable", true);
     square.setAttribute("square-id", i);
     // reverses the index so board aligns
@@ -40,49 +91,31 @@ function drawBoard() {
     } else {
       square.classList.add(i % 2 === 0 ? "white" : "black");
     }
+    // draws the black / white murders on chessboard
     boardDiv.appendChild(square);
   });
 }
 drawBoard();
 
-// load the numbers and letters at the boards sides
-let lettersDiv = document.querySelector(".lowerLetters");
-lettersDiv.classList.add("letterStyling");
-let boardNumbers = document.querySelector(".boardNumbers");
-boardNumbers.classList.add("bNumberStyling");
-let arrayOfLetters = ["A", "B", "C", "D", "E", "F", "G", "H"];
-function drawLetters() {
-  lettersDiv.innerHTML = "";
-  boardNumbers.innerHTML = "";
-  for (let i = 0; i < arrayOfLetters.length; i++) {
-    let contain = document.createElement("p");
-    const letter = arrayOfLetters[i];
-    contain.innerHTML = letter;
-    lettersDiv.appendChild(contain);
-  }
-
-  for (let y = 8; y > 0; y--) {
-    let containZ = document.createElement("p");
-    const number = y;
-    containZ.innerHTML = number;
-    boardNumbers.appendChild(containZ);
-  }
-}
-drawLetters();
 // code for efficiently working drag and drop + remove if 2+ players on 1 square
 const allSquares = document.querySelectorAll(".square");
 const allPieces = document.querySelectorAll(".piece");
 let whiteKillPoints = document.querySelector("#whiteGold");
-let blackKillPoints = document.querySelector("#blackKills");
+let blackKillPoints = document.querySelector("#blackGold");
+const coin = document.createElement("img");
+coin.src = "../imgs/gameItems/coin.png";
+// values for the coins
+let killValue = 0;
+let killValueBlack = 0;
 
 console.log(allSquares);
 
-allPieces.forEach(piece => {
+allPieces.forEach((piece) => {
   piece.addEventListener("dragstart", dragStart);
 });
 
-document.querySelectorAll(".piece img").forEach(img => {
-  img.addEventListener("dragstart", e => e.preventDefault());
+document.querySelectorAll(".piece img").forEach((img) => {
+  img.addEventListener("dragstart", (e) => e.preventDefault());
 });
 
 allSquares.forEach((square) => {
@@ -96,7 +129,7 @@ function dragStart(e) {
   draggedElement = e.currentTarget;
   startPosId = draggedElement.parentElement.getAttribute("square-id");
 }
-
+//  the default action that belongs to the event will not occur
 function dragOver(e) {
   e.preventDefault();
 }
@@ -118,12 +151,20 @@ function dragDrop(e) {
   const takenByOpponent = taken && taken.dataset.color === opponentGo;
 
   // capture move
-  
+
   if (takenByOpponent && valid) {
+    // removes the current piece that you want to drop your piece on
     taken.remove();
-    
+    if (startingPlayer === "white") {
+      killValue++;
+      whiteKillPoints.innerHTML = `White gold: ${killValue} <img class="valueCoins" src="${coin.src}" alt="coin">`;
+    } else {
+      killValueBlack++;
+      blackKillPoints.innerHTML = `Black gold: ${killValueBlack} <img class="valueCoins" src="${coin.src}" alt="coin">`;
+    }
     dropSquare.appendChild(draggedElement);
     changePlayer();
+    checkForWin();
     return;
   }
 
@@ -134,42 +175,39 @@ function dragDrop(e) {
   if (valid) {
     dropSquare.appendChild(draggedElement);
     changePlayer();
+    checkForWin();
     return;
   }
 }
 
-
-function checkIfValid(target) {
-  const targetId =
-    Number(target.getAttribute("square-id")) ||
-    Number(target.parentNode.getAttribute("square-id"));
-  const startId = Number(startPosId);
-  const piece = draggedElement.dataset.type;
-  console.log("start id is:" + startId);
-  console.log("target id is:" + targetId);
-  console.log("piece id is:", piece);
-  // checks if move is valid
-  switch (piece) {
-    case "pawn":
-      const starterRow = [8, 9, 10, 11, 12, 13, 14, 15];
-      // const starterRowW = [48, 49, 50, 51, 52, 53, 54, 55];
-      if (
-        (starterRow.includes(startId) && startId + width * 2 === targetId) ||
-        (startId + width === targetId) ||
-        (startId + width - 1 === targetId && document.querySelector(`[square-id="${startId + width - 1}"]`).firstChild) ||
-        (startId + width + 1 === targetId && document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild) 
-      ) {
-        console.log("valid");
-
-        return true;
-      }
-      console.log("invalid");
-      
-      return false;
+// code to check for a win
+function checkForWin() {
+  const kings = Array.from(document.querySelectorAll('[data-type="king"]'));
+  console.log(kings);
+  // check if the array comtains a white king
+  if (!Array.from(kings).some((king) => king.dataset.color === "white")) {
+    playerTurn.textContent = "Black flock wins!";
+    const allSquares = document.querySelectorAll(".square");
+    allSquares.forEach((square) =>
+      square.firstChild?.setAttribute("draggable", false)
+    );
+    console.log(kings);
+    // show the win/ lose screen
+    hidePages();
+    winScreen.classList.remove("notVisible");
+    console.log("playerTurn is:", playerTurn);
   }
-  return false;
+  if (!Array.from(kings).some((king) => king.dataset.color === "black")) {
+    playerTurn.textContent = "White flock wins!";
+    const allSquares = document.querySelectorAll(".square");
+    allSquares.forEach((square) =>
+      square.firstChild?.setAttribute("draggable", false)
+    );
+    console.log(kings);
+    console.log("playerTurn is:", playerTurn);
+  }
 }
-// ! coe above   ^ #############################
+// change the player
 function changePlayer() {
   if (startingPlayer === "black") {
     reverseIds();
@@ -181,7 +219,7 @@ function changePlayer() {
     playerTurn.textContent = "black";
   }
 }
-
+// reverse and revert board numbers bc of white position
 function reverseIds() {
   const allSquares = document.querySelectorAll(".square");
   allSquares.forEach((square, i) => {

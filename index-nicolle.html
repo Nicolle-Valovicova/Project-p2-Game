@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style-nicolle.css" />
     <!-- icons -->
-     <link rel="icon" type="image/png" href="imgs/gameItems/webLogoc.png">
+    <link rel="icon" type="image/png" href="imgs/gameItems/webLogoc.png" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios"
@@ -26,12 +26,12 @@
       rel="stylesheet"
     />
     <!-- loading bar -->
-<link rel="stylesheet" href="dist/loading-bar.css">
+    <link rel="stylesheet" href="dist/loading-bar.css" />
     <title>Murder's gambit</title>
   </head>
   <body>
+    <!-- html for startscreen -->
     <div id="start-screen" class="start-screen">
-      <!-- remove HIDDEN -->
       <div class="startinfo">
         <img
           id="mgLogo"
@@ -39,18 +39,20 @@
           alt="Murders Gambit logo"
         />
         <div class="barDisplay">
-        <div id="bar"
-          data-preset="rainbow"
-          class="ldBar label-center"
-          data-value="0"
-        ></div>
-        <button id="startBtn">Start</button>
+          <div
+            id="bar"
+            data-preset="rainbow"
+            class="ldBar label-center"
+            data-value="0"
+          ></div>
+          <button id="startBtn">Start</button>
         </div>
         <!-- loading bar ^-->
         <div class="crowfacts">
           <p id="crowfactOutput"></p>
         </div>
       </div>
+      <!-- startscreen parallax -->
       <ul id="scene">
         <li class="layer" data-depth="0.2">
           <img src="imgs/startParallax/start1.PNG" />
@@ -66,8 +68,8 @@
         </li>
       </ul>
     </div>
+    <!-- code for menuscreen -->
     <div id="menu-screen" class="menu-screen">
-      <!-- remove HIDDEN -->
       <h1>The Gambit Hall</h1>
       <hr id="firstHr" />
       <div class="menu-items">
@@ -89,6 +91,7 @@
           <hr />
         </div>
       </div>
+      <!-- attunament container (settings menu) -->
       <div class="attunement">
         <h2>Attunement</h2>
         <div class="attunement-contain">
@@ -101,9 +104,9 @@
             </ul>
           </div>
           <div class="attunement-settings">
-            <div class="setting">
+            <div class="setting" >
               <p class="settingTitle">Choose your battle:</p>
-              <div class="settingSlider">
+              <div class="settingSlider" data-setting="battle">
                 <img
                   class="back"
                   src="imgs/icons/arrow_back_ios.svg"
@@ -118,9 +121,9 @@
                 />
               </div>
             </div>
-            <div class="setting">
+            <div class="setting" >
               <p class="settingTitle">Select your flock:</p>
-              <div class="settingSlider">
+              <div class="settingSlider" data-setting="flock">
                 <img
                   class="back"
                   src="imgs/icons/arrow_back_ios.svg"
@@ -137,9 +140,9 @@
             </div>
           </div>
           <div class="attunement-settings">
-            <div class="setting">
+            <div class="setting" >
               <p class="settingTitle">Music:</p>
-              <div class="settingSlider">
+              <div class="settingSlider"data-setting="music">
                 <img
                   class="back"
                   src="imgs/icons/arrow_back_ios.svg"
@@ -154,16 +157,18 @@
                 />
               </div>
             </div>
-            <div class="setting">
+            <div class="setting" >
               <p class="settingTitle">SFX:</p>
-              <div class="settingSlider">
+              <div class="settingSlider" data-setting="sfx">
                 <img
                   class="back"
                   src="imgs/icons/arrow_back_ios.svg"
                   alt="arrow back"
                 />
-                <p class="settingOpt1">On</p>
-                <p class="settingOpt2">Off</p>
+                <div class="setting-options">
+                  <p class="settingOpt1">On</p>
+                  <p class="settingOpt2">Off</p>
+                </div>
                 <img
                   class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
@@ -173,9 +178,9 @@
             </div>
           </div>
           <div class="attunement-settings">
-            <div class="setting">
+            <div class="setting" >
               <p class="settingTitle">Graphics:</p>
-              <div class="settingSlider">
+              <div class="settingSlider" data-setting="graphics">
                 <img
                   class="back"
                   src="imgs/icons/arrow_back_ios.svg"
@@ -190,9 +195,9 @@
                 />
               </div>
             </div>
-            <div class="setting">
+            <div class="setting" >
               <p class="settingTitle">Cutscenes:</p>
-              <div class="settingSlider">
+              <div class="settingSlider" data-setting="cutscenes">
                 <img
                   class="back"
                   src="imgs/icons/arrow_back_ios.svg"
@@ -209,9 +214,9 @@
             </div>
           </div>
           <div class="attunement-settings">
-            <div class="setting">
+            <div class="setting" >
               <p class="settingTitle">Highlight legal moves:</p>
-              <div class="settingSlider">
+              <div class="settingSlider" data-setting="legalMoves">
                 <img
                   class="back"
                   src="imgs/icons/arrow_back_ios.svg"
@@ -226,9 +231,9 @@
                 />
               </div>
             </div>
-            <div class="setting">
+            <div class="setting" >
               <p class="settingTitle">Show dangerous tiles:</p>
-              <div class="settingSlider">
+              <div class="settingSlider" data-setting="dangerTiles">
                 <img
                   class="back"
                   src="imgs/icons/arrow_back_ios.svg"
@@ -246,7 +251,8 @@
           </div>
         </div>
       </div>
-      <div class="legacy-contain" >
+      <!-- menuscreen legacy (credits menu) -->
+      <div class="legacy-contain">
         <h2>The Ancestor Scrolls</h2>
         <p class="legacyTitle">
           “Written in the ashes of fallen kings, these names endure…”
@@ -269,11 +275,39 @@
         <p class="legacyQuote">
           “May your feathers leave a mark on the forest.”
         </p>
+        <audio
+          src="audio/JackdawSfx.mp3"
+          id="click-jackdaw"
+          preload="auto"
+        ></audio>
+        <div id="hendrik"></div>
       </div>
+      <!-- menuscreen parallax -->
+      <ul id="menuScene">
+        <li class="layer" data-depth="0.1">
+          <img src="imgs/menuParallax/1.PNG" />
+        </li>
+        <li class="layer" data-depth="-0.2">
+          <img src="imgs/menuParallax/2.PNG" />
+        </li>
+        <li class="layer" data-depth="0.25">
+          <img src="imgs/menuParallax/3.3.PNG" />
+        </li>
+        <li class="layer" data-depth="-0.4">
+          <img src="imgs/menuParallax/3.4.PNG" />
+        </li>
+        <li class="layer" data-depth="0.2">
+          <img src="imgs/menuParallax/4.PNG" />
+        </li>
+      </ul>
     </div>
+    <!-- html for game screen / index -->
     <div id="game-index" class="game-index">
-      <div class="inGameBG"></div>
-      <!-- Here comes the bg img ^ -->
+      <div id="particles-js"></div>
+      <div class="inGameBG">
+        <img src="imgs/animation/forestbg.jpeg" alt="" />
+      </div>
+      <!-- sidebar for game -->
       <div class="gameSidebar">
         <div class="sidebarNav">
           <button id="quit" class="quit">Depart</button>
@@ -290,12 +324,12 @@
           </p>
           <h3>Gold counters</h3>
           <p id="whiteGold">
-            
-            White gold: <img class="valueCoins" src="imgs/gameItems/coin.png" alt="" />
+            White gold:
+            <img class="valueCoins" src="imgs/gameItems/coin.png" alt="" />
           </p>
           <p id="blackGold">
-            Black gold: <span id="blackKills"></span
-            ><img class="valueCoins" src="imgs/gameItems/coin.png" alt="" />
+            Black gold:
+            <img class="valueCoins" src="imgs/gameItems/coin.png" alt="" />
           </p>
           <div class="killValues">
             <h3>Piece kill values</h3>
@@ -357,46 +391,52 @@
           </div>
         </div>
       </div>
-
+<!-- html for the board -->
       <div class="board-align">
-        <div class="boardNumbers"></div>
         <div class="board"></div>
-        <div class="lowerLetters"></div>
       </div>
     </div>
-    <div class="win-screen" hidden>
+    <!-- html for win/ lose screem -->
+    <div class="win-screen">
       <div class="winBg"></div>
       <div class="win-container">
-      <h2 class="winText"></h2>
-      <h3 class="winQuite"></h3>
-      <div class="escButtons">
-        <button class="retry">Reengage</button>
-        <button class="Menu">Hub</button>
-        <button class="Home">Home</button>
-      </div>
+        <h2 class="winText"></h2>
+        <h3 class="winQuite"></h3>
+        <div class="escButtons">
+          <button class="retry">Reengage</button>
+          <button class="Menu">Hub</button>
+          <button class="Home">Home</button>
+        </div>
       </div>
     </div>
-    <div class="lose-screen" hidden>
+    <div class="lose-screen">
       <div class="loseBg"></div>
       <div class="lose-container">
-      <h2 class="loseText"></h2>
-      <h3 class="loseQuote"></h3>
-      <div class="escButtons">
-        <button class="retry">Reengage</button>
-        <button class="Menu">Hub</button>
-        <button class="Home">Home</button>
-      </div>
+        <h2 class="loseText"></h2>
+        <h3 class="loseQuote"></h3>
+        <div class="escButtons">
+          <button class="retry">Reengage</button>
+          <button class="Menu">Hub</button>
+          <button class="Home">Home</button>
+        </div>
       </div>
     </div>
+    <!-- script defined for game -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/particlesjs-config.json"></script>
     <script src="js/pieces.js"></script>
     <script src="dist/loading-bar.js"></script>
     <script src="dist/loading-bar.min.js"></script>
+    <script src="js/chessRules.js"></script>
+    <script src="js/boardLogic.js"></script>
     <script src="js/script-nicolle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
-    <script src="js/boardLogic.js"></script>
+    <!-- script rules for parallax other way wont work -->
     <script>
       var scene = document.getElementById("scene");
       var parallaxInstance = new Parallax(scene);
+      var menuScene = document.getElementById("menuScene");
+      var parallaxInstance = new Parallax(menuScene);
     </script>
   </body>
 </html>
