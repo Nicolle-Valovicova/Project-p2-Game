@@ -12,12 +12,11 @@
 * {
   padding: 0;
   margin: 0;
-    font-family: "Aref Ruqaa", serif;
-
+  font-family: "Aref Ruqaa", serif;
 }
 
 :root {
-  --temporary-color: #3b354d;
+  --temporary-color: #212121;
   --bg-interfaces: #0000005c;
   --font-color: aliceblue;
   --standard-radius: 15px;
@@ -31,9 +30,24 @@
 .notVisible {
   display: none !important;
 }
+.seeable {
+  display: block;
+}
 body {
   overflow: hidden;
   background-color: var(--temporary-color);
+}
+.glass {
+  background: rgba(17, 17, 17, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(127, 127, 127, 0.3);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(202, 221, 226, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 4px 2px rgba(59, 59, 59, 0.2);
+  position: relative;
 }
 /* css fot the start screen */
 .startinfo {
@@ -50,15 +64,18 @@ body {
   filter: drop-shadow(7px 7px 4px #080808);
 }
 .crowfacts {
-  backdrop-filter: blur(5px);
   position: absolute;
   bottom: 0;
   text-shadow: 2px 2px 2px #000000;
-
   padding-bottom: 40px;
   color: var(--font-color);
 }
-#scene {
+#crowfactOutput {
+  padding: 10px;
+  backdrop-filter: blur(5px);
+}
+#scene,
+#menuScene {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -68,25 +85,27 @@ body {
   list-style: none;
   padding: 0;
 }
-
+#menuScene {
+  margin-left: -30px;
+}
 .layer img {
   margin-left: -100px;
   margin-top: -140px;
   width: 120%;
   height: auto;
-  /* pointer-events: none; */
+  pointer-events: none;
 }
-.barDisplay{
+.barDisplay {
   display: flex;
 }
-#startBtn{
-position: absolute;
-transform: translate(250px, -27px);
-cursor: pointer;
-font-size: 25px;
-padding: 1px 10px 10px;
-
-border-radius: var(--standard-radius);
+#startBtn {
+  position: absolute;
+  transform: translate(250px, -27px);
+  cursor: pointer;
+  font-size: 25px;
+  padding: 1px 10px 10px;
+  color: var(--font-color);
+  border-radius: var(--standard-radius);
 }
 
 /* css for the menu screen */
@@ -130,7 +149,7 @@ border-radius: var(--standard-radius);
   top: 0;
   width: 800px;
   height: 300px;
-  border: 1px solid;
+  border-radius: var(--standard-radius);
   transform: translate(700px, 400px);
 }
 .attunement h2,
@@ -138,13 +157,11 @@ border-radius: var(--standard-radius);
   position: absolute;
   backdrop-filter: blur(10px);
   padding: 5px;
+  z-index: 20;
   justify-self: center;
-  transform: translateY(-30px);
+  transform: translateY(-50px);
 }
 
-.attunement-contain {
-  backdrop-filter: blur(10px);
-}
 .attunement img {
   cursor: pointer;
 }
@@ -175,15 +192,16 @@ border-radius: var(--standard-radius);
 }
 .setting {
   display: flex;
+  width: 500px;
+  margin-top: 50px;
   justify-content: space-between;
-  width: 400px;
-  margin-top: 30px;
 }
 .settingSlider {
-  gap: 5px;
   display: flex;
+  justify-content: space-between;
+  width: 250px;
+  flex-direction: row;
 }
-
 .legacyTitle {
   margin-top: 20px;
   margin-left: 30px;
@@ -196,7 +214,37 @@ border-radius: var(--standard-radius);
   margin-left: 30px;
   margin-top: 10px;
 }
+#hendrik {
+  position: absolute;
+  right: 0;
+  transform: translate(-100px);
+}
+#hendrik img {
+  width: 100px;
+  right: 0;
+  transform: translate(-20px, -80px);
+  filter: drop-shadow(3px 3px 4px #4f7d81);
+}
 /* css for the game itself */
+.inGameBG {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -9;
+  pointer-events: none;
+}
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .board-align {
   height: 100vh;
   text-align: center;
@@ -209,6 +257,8 @@ border-radius: var(--standard-radius);
 .board {
   display: grid;
   width: 800px;
+  box-shadow: 5px 5px 30px rgba(2, 232, 248, 0.135),
+    -5px -5px 30px rgba(195, 2, 243, 0.258);
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
@@ -279,6 +329,7 @@ border-radius: var(--standard-radius);
   padding: 5px 10px 10px 10px;
   border-radius: 25px;
   font-size: 20px;
+  color: var(--font-color);
   cursor: pointer;
 }
 .sidebarNav > img {
@@ -299,8 +350,6 @@ border-radius: var(--standard-radius);
 .sideInformation li {
   font-size: 20px;
 }
-/* .killValues ul{
-} */
 .killValuesIndex {
   display: flex;
   width: 230px;
@@ -315,7 +364,7 @@ border-radius: var(--standard-radius);
   transform: translateY(3px);
 }
 /* css for the win/ lose screens */
- /* background-image: url(../imgs/feedackArt/bird-breed_2cd7d88f-2438-4acf-9bd8-64c561ae55ae.webp);
+/* background-image: url(../imgs/feedackArt/bird-breed_2cd7d88f-2438-4acf-9bd8-64c561ae55ae.webp);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -323,47 +372,48 @@ border-radius: var(--standard-radius);
   z-index: -99;
   width: 100%;
   height: 100%; */
-  .win-screen{
-display: flex;
-position: relative;
-width: 100%;
-height: 100vh;
-justify-content: center;
-align-items: center;
-  }
- .win-container {
+.win-screen {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.win-container {
   height: 100vh;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.winText{
-font-size: 30px;  
-margin-top: 20px;
+.winText {
+  font-size: 30px;
+  margin-top: 20px;
 }
-.winQuite{
+.winQuite {
   position: absolute;
   margin-bottom: 170px;
   font-size: 23px;
   bottom: 0;
 }
-.escButtons{
+.escButtons {
   position: absolute;
   bottom: 0;
   display: flex;
-gap: 40px;
-flex-direction: row;
-margin-bottom: 50px;
+  gap: 40px;
+  flex-direction: row;
+  margin-bottom: 50px;
 }
-.escButtons button{
+.escButtons button {
   font-size: 35px;
   cursor: pointer;
   padding: 3px 15px 10px;
   border-radius: var(--standard-radius);
 }
+/* Media query for responive design */
