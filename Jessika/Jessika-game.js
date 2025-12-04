@@ -492,7 +492,7 @@ const gameState = {
                     showMessage(
                         `PLAYER STATS:\n` +
                         `Name: ${gameState.player.name}\n` +
-                        `Class: ${gameState.player.class}\n` +
+                        `Class: ${gameState.player.class}/${gameState.player.descriptions}\n` +
                         `Health: ${gameState.player.health}/${gameState.player.maxHealth}\n` +
                         `Meta: ${gameState.player.metaKnowledge}/100\n` +
                         `Level: ${gameState.player.level}\n` +
