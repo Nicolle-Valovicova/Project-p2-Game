@@ -18,11 +18,12 @@ function hidePages() {
 hidePages();
 // TODO first call the hide all pages then display the start page and after the game load bar has loaded (some sort of interval) call the settimeout and hide all pages again and after that show the menu screen
 menuScreen.classList.remove("notVisible");
+
 menuPlayBtn.addEventListener("click", () => {
   hidePages();
   gameIndex.classList.remove("notVisible");
-  applyFlockSetting()
-  showParticles()
+  applyFlockSetting();
+  showParticles();
 });
 exitBtn.addEventListener("click", () => {
   hidePages();
@@ -96,9 +97,9 @@ atuItems.forEach((item, index) => {
     settingIndexes[index].classList.add("visible");
   });
 });
-  falseSettingOptions.forEach((o) => {
-    o.classList.add("notVisible");
-  })
+falseSettingOptions.forEach((o) => {
+  o.classList.add("notVisible");
+});
 
 settingIndexes[0].classList.add("visible");
 
@@ -106,28 +107,28 @@ settingIndexes[0].classList.add("visible");
 const settingSliders = document.querySelectorAll(".settingSlider");
 // settings object
 let settings = {
-  battle: "playervscomputer",            
-  flock: "blackmurders",             
+  battle: "playervscomputer",
+  flock: "blackmurders",
   music: "on",
   sfx: "on",
   graphics: "on",
   cutscenes: "on",
   legalMoves: "on",
-  dangerTiles: "on"
+  dangerTiles: "on",
 };
 
-settingSliders.forEach(slider => {
+settingSliders.forEach((slider) => {
   const opt1 = slider.querySelector(".settingOpt1");
   const opt2 = slider.querySelector(".settingOpt2");
   const back = slider.querySelector(".back");
   const forward = slider.querySelector(".forward");
 
-  const settingName = slider.dataset.setting; 
+  const settingName = slider.dataset.setting;
 
   opt1.classList.remove("notVisible");
   opt2.classList.add("notVisible");
 
-  // Left arrow 
+  // Left arrow
   back.addEventListener("click", () => {
     opt1.classList.remove("notVisible");
     opt2.classList.add("notVisible");
@@ -135,8 +136,8 @@ settingSliders.forEach(slider => {
     settings[settingName] = opt1.textContent
       .toLowerCase()
       .trim()
-      .replace(/\s+/g, ""); 
-    
+      .replace(/\s+/g, "");
+playBgMusic()
     console.log(settingName, settings[settingName]);
   });
 
@@ -144,28 +145,39 @@ settingSliders.forEach(slider => {
   forward.addEventListener("click", () => {
     opt1.classList.add("notVisible");
     opt2.classList.remove("notVisible");
-// remove whitespace, and make lowercase
+    // remove whitespace, and make lowercase
     settings[settingName] = opt2.textContent
       .toLowerCase()
       .trim()
       .replace(/\s+/g, "");
-
+playBgMusic()
     console.log(settingName, settings[settingName]);
   });
 });
-
+// function for choosign flock
 function applyFlockSetting() {
-    if (settings.flock === "blackmurders") {
-        startingPlayer = "black";
-        playerTurn.textContent = "black";
-    } else {
-        startingPlayer = "white";
-        playerTurn.textContent = "white";
-            reverseIds();
-
-    }
+  if (settings.flock === "blackmurders") {
+    startingPlayer = "black";
+    playerTurn.textContent = "black";
+  } else {
+    startingPlayer = "white";
+    playerTurn.textContent = "white";
+    reverseIds();
+  }
 }
+// function fo rplaying music
+function playBgMusic() {
+  const bgAudio = document.querySelector("#bgMusic");
 
+  if (settings.music === "on") {
+    bgAudio.muted = false;
+    bgAudio.play();
+  } else {
+    bgAudio.pause();
+    bgAudio.muted = true;
+  }
+}
+playBgMusic()
 // script for side bar in game
 const arrowBack = document.querySelector("#arrowBack");
 const arrowForward = document.querySelector("#arrowForward");
@@ -243,7 +255,7 @@ showPositiveFeedback();
 setInterval(() => {
   i = (i + 1) % winTitles.length;
   winText.textContent = winTitles[i];
-}, 1000); 
+}, 1000);
 
 // redirect to pages on feedbackscreen
 const retryBtn = document.querySelectorAll(".retry");
@@ -282,11 +294,11 @@ function showParticles() {
 
 //  code for the easter eggs
 // 1. The Legacy Crow
-let hendrikContainer = document.querySelector("#hendrik")
+let hendrikContainer = document.querySelector("#hendrik");
 let hendrik = document.createElement("img");
 hendrik.src = "imgs/gameItems/hendrik1.PNG";
 
-function playCaw(){
+function playCaw() {
   const jackdawSFX = document.querySelector("#click-jackdaw");
   jackdawSFX.play();
 }
@@ -294,11 +306,8 @@ hendrikContainer.addEventListener("click", () => {
   hendrik.src = "imgs/gameItems/hendrik2.PNG";
   playCaw();
   setTimeout(() => {
-  
     hendrik.src = "imgs/gameItems/hendrik1.PNG";
-}, 500);  
+  }, 500);
 });
 
-hendrikContainer.appendChild(hendrik)
-
-
+hendrikContainer.appendChild(hendrik);
