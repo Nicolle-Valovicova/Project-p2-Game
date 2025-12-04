@@ -120,14 +120,6 @@
             box-shadow: 0 0 20px var(--neon-green-glow);
         }
 
-        .input-cursor {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--neon-green);
-            animation: blink 1s infinite;
-        }
 
         @keyframes blink {
             0%, 50% { opacity: 1; }
