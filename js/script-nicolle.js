@@ -17,7 +17,7 @@ function hidePages() {
 
 hidePages();
 // TODO first call the hide all pages then display the start page and after the game load bar has loaded (some sort of interval) call the settimeout and hide all pages again and after that show the menu screen
-menuScreen.classList.remove("notVisible");
+gameIndex.classList.remove("notVisible");
 
 menuPlayBtn.addEventListener("click", () => {
   hidePages();
@@ -137,7 +137,7 @@ settingSliders.forEach((slider) => {
       .toLowerCase()
       .trim()
       .replace(/\s+/g, "");
-playBgMusic()
+    playBgMusic();
     console.log(settingName, settings[settingName]);
   });
 
@@ -150,7 +150,7 @@ playBgMusic()
       .toLowerCase()
       .trim()
       .replace(/\s+/g, "");
-playBgMusic()
+    playBgMusic();
     console.log(settingName, settings[settingName]);
   });
 });
@@ -174,10 +174,9 @@ function playBgMusic() {
     bgAudio.play();
   } else {
     bgAudio.pause();
-    bgAudio.muted = true;
   }
 }
-playBgMusic()
+playBgMusic();
 // script for side bar in game
 const arrowBack = document.querySelector("#arrowBack");
 const arrowForward = document.querySelector("#arrowForward");
@@ -205,6 +204,11 @@ function closeNav() {
 }
 
 // win/lose screen script
+let clickValue = 0;
+let clickValueW = 0;
+let clickValue3 = 0;
+let clickValueW4 = 0;
+
 let winTitles = [
   "The Murder Claims the Throne",
   "Your Flock Reigns Supreme",
@@ -238,24 +242,30 @@ let winQuite = document.querySelector(".winQuite");
 let loseText = document.querySelector(".loseText");
 let loseQuote = document.querySelector(".loseQuote");
 
-let a = 0;
-function showPositiveFeedback() {
-  winText.textContent = winTitles[i];
-  winQuite.textContent = winQuotes[i];
+let feedbackIndex = 0;
+// * replaced with let a = 0;
+// function for showing win screen
+function showWinScreen() {
+  winScreen.classList.remove("notVisible");
+  winText.textContent = winTitles[feedbackIndex];
+  winQuite.textContent = winQuotes[feedbackIndex];
+
+  feedbackIndex = (feedbackIndex + 1) % winTitles.length;
 }
-function showNegativeFeedback() {
-  loseText.textContent = loseTitles[i];
-  loseQuote.textContent = loseQuotes[i];
+// function for showing lose screen
+function showLoseScreen() {
+  loseScreen.classList.remove("notVisible");
+
+  loseText.textContent = loseTitles[feedbackIndex];
+  loseQuote.textContent = loseQuotes[feedbackIndex];
+
+  feedbackIndex = (feedbackIndex + 1) % loseTitles.length;
 }
-showPositiveFeedback();
+
 // TODO continue to show the positive vs negative feedback trough
 // TODO if opposide tam has won show negative feedbacl else show positive feedback
 
 // TODO make interfall only whenever the winscreen shows and each time it shows a different quote
-setInterval(() => {
-  i = (i + 1) % winTitles.length;
-  winText.textContent = winTitles[i];
-}, 1000);
 
 // redirect to pages on feedbackscreen
 const retryBtn = document.querySelectorAll(".retry");
@@ -265,6 +275,10 @@ const homeBtn = document.querySelectorAll(".Home");
 retryBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     gameIndex.classList.remove("notVisible");
+    clickValue = 0;
+    clickValueW = 0;
+    clickValue3 = 0;
+    clickValueW4 = 0;
   });
 });
 hubBtn.forEach((btn) => {
@@ -283,7 +297,9 @@ attunement.classList.add("glass");
 legacyContain.classList.add("glass");
 gameSidebar.classList.add("glass");
 quitbtn.classList.add("glass");
-
+document.querySelectorAll(".escButtons button").forEach(btn =>{
+  btn.classList.add("glass");
+})
 // function for background particles
 document.addEventListener("DOMContentLoaded", showParticles);
 function showParticles() {
@@ -311,3 +327,42 @@ hendrikContainer.addEventListener("click", () => {
 });
 
 hendrikContainer.appendChild(hendrik);
+
+// 2. pieces eventlisteners for developers
+
+// show black win-screen
+document.querySelector("#blackking").addEventListener("click", () => {
+  clickValue++;
+  if (clickValue == 7) {
+    hidePages();
+    showWinScreen();
+  }
+  console.log(clickValue);
+});
+// show white win-screen
+document.querySelector("#whiteKing").addEventListener("click", () => {
+  clickValueW++;
+  if (clickValueW == 7) {
+    hidePages();
+    showWinScreen();
+  }
+  console.log(clickValueW);
+});
+// show white lose-screen
+document.querySelector("#whiteQueen").addEventListener("click", () => {
+  clickValue3++;
+  if (clickValue3 == 4) {
+    hidePages();
+showLoseScreen();
+ }
+  console.log(clickValue3);
+});
+// show black lose-screen
+document.querySelector("#blackQueen").addEventListener("click", () => {
+  clickValueW4++;
+  if (clickValueW4 == 4) {
+    hidePages();
+showLoseScreen();
+}
+  console.log(clickValueW4);
+});

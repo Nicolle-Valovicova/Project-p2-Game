@@ -372,15 +372,16 @@ body {
   z-index: -99;
   width: 100%;
   height: 100%; */
-.win-screen {
+.win-screen, .lose-screen {
   display: flex;
+  color: var(--font-color);
   position: relative;
   width: 100%;
   height: 100vh;
   justify-content: center;
   align-items: center;
 }
-.win-container {
+.win-container, .lose-container {
   height: 100vh;
   position: absolute;
   top: 50%;
@@ -392,13 +393,16 @@ body {
   align-items: center;
   text-align: center;
 }
-.winText {
+.winText, .loseText {
   font-size: 30px;
   margin-top: 20px;
 }
-.winQuite {
+.winQuite, .loseQuote {
   position: absolute;
   margin-bottom: 170px;
+  width: 100%;
+    text-wrap: nowrap;
+
   font-size: 23px;
   bottom: 0;
 }
@@ -411,6 +415,7 @@ body {
   margin-bottom: 50px;
 }
 .escButtons button {
+  color: var(--font-color);
   font-size: 35px;
   cursor: pointer;
   padding: 3px 15px 10px;

@@ -28,7 +28,7 @@ function checkIfValid(target) {
       }
       console.log("invalid");
       break;
-      // moves for knight ###############################
+    // moves for knight ###############################
     case "knight":
       if (
         startId + width * 2 - 1 === targetId ||
@@ -44,26 +44,26 @@ function checkIfValid(target) {
         return true;
       }
       break;
-      // moves for bishop ###############################
+    // moves for bishop ###############################
     case "bishop":
       if (
         startId + width + 1 === targetId ||
-        (startId + width * 2 + 2 === targetId&&
+        (startId + width * 2 + 2 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild) ||
-        (startId + width * 3 + 3 === targetId&&
+        (startId + width * 3 + 3 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
             .firstChild) ||
-        (startId + width * 4 + 4 === targetId&&
+        (startId + width * 4 + 4 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 3 + 3}"]`)
             .firstChild) ||
-        (startId + width * 5 + 5 === targetId&&
+        (startId + width * 5 + 5 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
@@ -72,7 +72,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 4 + 4}"]`)
             .firstChild) ||
-        (startId + width * 6 + 6 === targetId&&
+        (startId + width * 6 + 6 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
@@ -83,7 +83,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 5 + 5}"]`)
             .firstChild) ||
-        (startId + width * 7 + 7 === targetId&&
+        (startId + width * 7 + 7 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
@@ -98,22 +98,22 @@ function checkIfValid(target) {
             .firstChild) ||
         // other direction
         startId - width + 1 === targetId ||
-        (startId - width * 2 - 2 === targetId&&
+        (startId - width * 2 - 2 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild) ||
-        (startId - width * 3 - 3 === targetId&&
+        (startId - width * 3 - 3 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
             .firstChild) ||
-        (startId - width * 4 - 4 === targetId&&
+        (startId - width * 4 - 4 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 3 - 3}"]`)
             .firstChild) ||
-        (startId - width * 5 - 5 === targetId&&
+        (startId - width * 5 - 5 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
@@ -122,7 +122,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 4 - 4}"]`)
             .firstChild) ||
-        (startId - width * 6 - 6 === targetId&&
+        (startId - width * 6 - 6 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
@@ -133,7 +133,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 5 - 5}"]`)
             .firstChild) ||
-        (startId - width * 7 - 7 === targetId&&
+        (startId - width * 7 - 7 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
@@ -148,22 +148,22 @@ function checkIfValid(target) {
             .firstChild) ||
         // --
         startId - width + 1 === targetId ||
-        (startId - width * 2 + 2 === targetId&&
+        (startId - width * 2 + 2 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild) ||
-        (startId - width * 3 + 3 === targetId&&
+        (startId - width * 3 + 3 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
             .firstChild) ||
-        (startId - width * 4 + 4 === targetId&&
+        (startId - width * 4 + 4 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 3 + 3}"]`)
             .firstChild) ||
-        (startId - width * 5 + 5 === targetId&&
+        (startId - width * 5 + 5 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
@@ -172,7 +172,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 4 + 4}"]`)
             .firstChild) ||
-        (startId - width * 6 + 6 === targetId&&
+        (startId - width * 6 + 6 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
@@ -183,7 +183,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 5 + 5}"]`)
             .firstChild) ||
-        (startId - width * 7 + 7 === targetId&&
+        (startId - width * 7 + 7 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
@@ -198,22 +198,22 @@ function checkIfValid(target) {
             .firstChild) ||
         // --
         startId + width - 1 === targetId ||
-        (startId + width * 2 - 2 === targetId&&
+        (startId + width * 2 - 2 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild) ||
-        (startId + width * 3 - 3 === targetId&&
+        (startId + width * 3 - 3 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
             .firstChild) ||
-        (startId + width * 4 - 4 === targetId&&
+        (startId + width * 4 - 4 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 3 - 3}"]`)
             .firstChild) ||
-        (startId + width * 5 - 5 === targetId&&
+        (startId + width * 5 - 5 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
@@ -222,7 +222,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 4 - 4}"]`)
             .firstChild) ||
-        (startId + width * 6 - 6 === targetId&&
+        (startId + width * 6 - 6 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
@@ -233,7 +233,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 5 - 5}"]`)
             .firstChild) ||
-        (startId + width * 7 - 7 === targetId&&
+        (startId + width * 7 - 7 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
@@ -250,7 +250,7 @@ function checkIfValid(target) {
         return true;
       }
       break;
-      // moves for rook ###############################
+    // moves for rook ###############################
     case "rook":
       if (
         startId + width === targetId ||
@@ -414,26 +414,26 @@ function checkIfValid(target) {
         return true;
       }
       break;
-      // moves for queen ###############################
+    // moves for queen ###############################
     case "queen":
       if (
         startId + width + 1 === targetId ||
-        (startId + width * 2 + 2 === targetId&&
+        (startId + width * 2 + 2 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild) ||
-        (startId + width * 3 + 3 === targetId&&
+        (startId + width * 3 + 3 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
             .firstChild) ||
-        (startId + width * 4 + 4 === targetId&&
+        (startId + width * 4 + 4 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 3 + 3}"]`)
             .firstChild) ||
-        (startId + width * 5 + 5 === targetId&&
+        (startId + width * 5 + 5 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
@@ -442,7 +442,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 4 + 4}"]`)
             .firstChild) ||
-        (startId + width * 6 + 6 === targetId&&
+        (startId + width * 6 + 6 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
@@ -453,7 +453,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 5 + 5}"]`)
             .firstChild) ||
-        (startId + width * 7 + 7 === targetId&&
+        (startId + width * 7 + 7 === targetId &&
           !document.querySelector(`[square-id="${startId + width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 + 2}"]`)
@@ -468,22 +468,22 @@ function checkIfValid(target) {
             .firstChild) ||
         // other direction
         startId - width + 1 === targetId ||
-        (startId - width * 2 - 2 === targetId&&
+        (startId - width * 2 - 2 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild) ||
-        (startId - width * 3 - 3 === targetId&&
+        (startId - width * 3 - 3 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
             .firstChild) ||
-        (startId - width * 4 - 4 === targetId&&
+        (startId - width * 4 - 4 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 3 - 3}"]`)
             .firstChild) ||
-        (startId - width * 5 - 5 === targetId&&
+        (startId - width * 5 - 5 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
@@ -492,7 +492,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 4 - 4}"]`)
             .firstChild) ||
-        (startId - width * 6 - 6 === targetId&&
+        (startId - width * 6 - 6 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
@@ -503,7 +503,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 5 - 5}"]`)
             .firstChild) ||
-        (startId - width * 7 - 7 === targetId&&
+        (startId - width * 7 - 7 === targetId &&
           !document.querySelector(`[square-id="${startId - width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 - 2}"]`)
@@ -518,22 +518,22 @@ function checkIfValid(target) {
             .firstChild) ||
         // --
         startId - width + 1 === targetId ||
-        (startId - width * 2 + 2 === targetId&&
+        (startId - width * 2 + 2 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild) ||
-        (startId - width * 3 + 3 === targetId&&
+        (startId - width * 3 + 3 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
             .firstChild) ||
-        (startId - width * 4 + 4 === targetId&&
+        (startId - width * 4 + 4 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 3 + 3}"]`)
             .firstChild) ||
-        (startId - width * 5 + 5 === targetId&&
+        (startId - width * 5 + 5 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
@@ -542,7 +542,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 4 + 4}"]`)
             .firstChild) ||
-        (startId - width * 6 + 6 === targetId&&
+        (startId - width * 6 + 6 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
@@ -553,7 +553,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 5 + 5}"]`)
             .firstChild) ||
-        (startId - width * 7 + 7 === targetId&&
+        (startId - width * 7 + 7 === targetId &&
           !document.querySelector(`[square-id="${startId - width + 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId - width * 2 + 2}"]`)
@@ -568,22 +568,22 @@ function checkIfValid(target) {
             .firstChild) ||
         // --
         startId + width - 1 === targetId ||
-        (startId + width * 2 - 2 === targetId&&
+        (startId + width * 2 - 2 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild) ||
-        (startId + width * 3 - 3 === targetId&&
+        (startId + width * 3 - 3 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
             .firstChild) ||
-        (startId + width * 4 - 4 === targetId&&
+        (startId + width * 4 - 4 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 3 - 3}"]`)
             .firstChild) ||
-        (startId + width * 5 - 5 === targetId&&
+        (startId + width * 5 - 5 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
@@ -592,7 +592,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 4 - 4}"]`)
             .firstChild) ||
-        (startId + width * 6 - 6 === targetId&&
+        (startId + width * 6 - 6 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
@@ -603,7 +603,7 @@ function checkIfValid(target) {
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 5 - 5}"]`)
             .firstChild) ||
-        (startId + width * 7 - 7 === targetId&&
+        (startId + width * 7 - 7 === targetId &&
           !document.querySelector(`[square-id="${startId + width - 1}"]`)
             .firstChild &&
           !document.querySelector(`[square-id="${startId + width * 2 - 2}"]`)
@@ -777,7 +777,7 @@ function checkIfValid(target) {
         return true;
       }
       break;
-      // moves for king ###############################
+    // moves for king ###############################
     case "king":
       if (
         startId + 1 === targetId ||
