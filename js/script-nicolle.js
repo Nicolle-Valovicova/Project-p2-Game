@@ -89,7 +89,7 @@ creditsMenu.addEventListener("click", () => {
   attunement.classList.add("notVisible");
   legacyContain.classList.toggle("notVisible");
 });
-
+// TODO make the arrow options in css not wlickable in opposide direction
 // in the menu container toggling the different settings
 atuItems.forEach((item, index) => {
   item.addEventListener("click", () => {
@@ -107,7 +107,7 @@ settingIndexes[0].classList.add("visible");
 const settingSliders = document.querySelectorAll(".settingSlider");
 // settings object
 let settings = {
-  battle: "playervscomputer",
+  battle: "playervsplayer",
   flock: "blackmurders",
   music: "on",
   sfx: "on",
@@ -168,7 +168,7 @@ function applyFlockSetting() {
 // function fo rplaying music
 function playBgMusic() {
   const bgAudio = document.querySelector("#bgMusic");
-
+bgAudio.volume = 0.5;
   if (settings.music === "on") {
     bgAudio.muted = false;
     bgAudio.play();
@@ -176,7 +176,11 @@ function playBgMusic() {
     bgAudio.pause();
   }
 }
-playBgMusic();
+playBgMusic()
+function playAgainstComputer() {
+  if (settings.battle !== "playervsplayer") {
+  }
+}
 // script for side bar in game
 const arrowBack = document.querySelector("#arrowBack");
 const arrowForward = document.querySelector("#arrowForward");
@@ -265,8 +269,6 @@ function showLoseScreen() {
 // TODO continue to show the positive vs negative feedback trough
 // TODO if opposide tam has won show negative feedbacl else show positive feedback
 
-// TODO make interfall only whenever the winscreen shows and each time it shows a different quote
-
 // redirect to pages on feedbackscreen
 const retryBtn = document.querySelectorAll(".retry");
 const hubBtn = document.querySelectorAll(".Menu");
@@ -297,9 +299,9 @@ attunement.classList.add("glass");
 legacyContain.classList.add("glass");
 gameSidebar.classList.add("glass");
 quitbtn.classList.add("glass");
-document.querySelectorAll(".escButtons button").forEach(btn =>{
+document.querySelectorAll(".escButtons button").forEach((btn) => {
   btn.classList.add("glass");
-})
+});
 // function for background particles
 document.addEventListener("DOMContentLoaded", showParticles);
 function showParticles() {
@@ -307,7 +309,27 @@ function showParticles() {
     console.log("particles.js loaded!");
   });
 }
-
+// function for hover ui items and a sfx plays
+// ui buttons
+let uiBtns = document.querySelectorAll('[data-btn-sound="uiBtn"]');
+function playHoverSfx() {
+  const hoverSfx = document.querySelector("#hover-ui-btn");
+    hoverSfx.currentTime = 0; 
+  hoverSfx.play();
+}
+function playClickSfx() {
+  const clickSfx = document.querySelector("#click-ui-btn");
+    clickSfx.currentTime = 0; 
+  clickSfx.play();
+}
+uiBtns.forEach((btn) => {
+  btn.addEventListener("mouseover",playHoverSfx);
+  });
+uiBtns.forEach((btn) => {
+  btn.addEventListener("click",playClickSfx);
+  });
+  // ui menu 
+  
 //  code for the easter eggs
 // 1. The Legacy Crow
 let hendrikContainer = document.querySelector("#hendrik");
@@ -353,8 +375,8 @@ document.querySelector("#whiteQueen").addEventListener("click", () => {
   clickValue3++;
   if (clickValue3 == 4) {
     hidePages();
-showLoseScreen();
- }
+    showLoseScreen();
+  }
   console.log(clickValue3);
 });
 // show black lose-screen
@@ -362,7 +384,10 @@ document.querySelector("#blackQueen").addEventListener("click", () => {
   clickValueW4++;
   if (clickValueW4 == 4) {
     hidePages();
-showLoseScreen();
-}
+    showLoseScreen();
+  }
   console.log(clickValueW4);
 });
+// TODO Code for cool transition for betwheen pages zoom in fade cool stuff
+// TODO the ui buttons have click sfx on hover and on click
+// ! menu screen click on button for my game playmusic

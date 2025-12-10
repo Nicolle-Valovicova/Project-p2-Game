@@ -3,7 +3,6 @@ const width = 8;
 let startingPlayer = "black";
 playerTurn.textContent = "black";
 
-//! later add if select you r flock === black startingPlayer black
 // array of the board
 const startPieces = [
   blackRook,
@@ -129,7 +128,7 @@ function dragStart(e) {
   draggedElement = e.currentTarget;
   startPosId = draggedElement.parentElement.getAttribute("square-id");
 }
-//  the default action that belongs to the event will not occur
+//  the default action that belongs to the event will not happen
 function dragOver(e) {
   e.preventDefault();
 }
@@ -151,7 +150,7 @@ function dragDrop(e) {
   const takenByOpponent = taken && taken.dataset.color === opponentGo;
 
   // capture move
-
+// TODO store score in array/ varisbles for each piece value
   if (takenByOpponent && valid) {
     // removes the current piece that you want to drop your piece on
     taken.remove();
@@ -218,6 +217,7 @@ function changePlayer() {
     startingPlayer = "black";
     playerTurn.textContent = "black";
   }
+
 }
 // reverse and revert board numbers bc of white position
 function reverseIds() {
