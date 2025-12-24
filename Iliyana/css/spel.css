@@ -1,0 +1,123 @@
+
+body {
+  background-size: cover;
+  background-position: center;
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20230407/pngtree-kitchen-cartoon-illustration-background-image_2159895.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+.game {
+background: #f3c99a;
+  width: 85%;
+  max-width: 600px;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* .game {
+  background: #f3c99a; 
+  width: 400px;
+  height: 600px;
+  border-radius: 40px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 10px 10px 50px 30px;
+}
+*/
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score {
+ background-color: #FFFF99;
+  color: black;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.lives {
+ background-color: #FF9933;
+ font-weight: bold;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 70px;
+ height: 70px;
+ border-radius: 50%;
+}
+
+.Maaltijd {
+  background: white;
+  height: 150px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.buttons button {
+  background: #BC5D00;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  color: black;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  opacity: 0.8;
+}
+
+.mealTitel {
+  background: white;
+  height: 50px;
+  border-radius: 20px;
+  display: flex;
+  margin-bottom: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#meal-img {
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+}
+
+
+#meal-name {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: larger;
+}
