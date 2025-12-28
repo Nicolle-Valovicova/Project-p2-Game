@@ -111,14 +111,17 @@ console.log(allSquares);
 
 allPieces.forEach((piece) => {
   piece.addEventListener("dragstart", dragStart);
+
 });
 
 document.querySelectorAll(".piece img").forEach((img) => {
   img.addEventListener("dragstart", (e) => e.preventDefault());
+  
 });
 
 allSquares.forEach((square) => {
   square.addEventListener("dragover", dragOver);
+
   square.addEventListener("drop", dragDrop);
 });
 
@@ -130,6 +133,7 @@ function dragStart(e) {
 }
 //  the default action that belongs to the event will not happen
 function dragOver(e) {
+  
   e.preventDefault();
 }
 // code for piece placement when dropped
@@ -216,6 +220,9 @@ function changePlayer() {
     revertIds();
     startingPlayer = "black";
     playerTurn.textContent = "black";
+  }
+ if (settings.battle === "playervscomputer" && startingPlayer === aiColor) {
+    setTimeout(makeAiMove, 300);
   }
 
 }

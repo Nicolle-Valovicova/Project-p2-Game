@@ -16,8 +16,7 @@ function hidePages() {
 }
 
 hidePages();
-// TODO first call the hide all pages then display the start page and after the game load bar has loaded (some sort of interval) call the settimeout and hide all pages again and after that show the menu screen
-gameIndex.classList.remove("notVisible");
+menuScreen.classList.remove("notVisible");
 
 menuPlayBtn.addEventListener("click", () => {
   hidePages();
@@ -74,8 +73,6 @@ let creditsMenu = document.querySelector("#credits");
 let legacyContain = document.querySelector(".legacy-contain");
 let trueSettingOptions = document.querySelectorAll(".settingOpt1");
 let falseSettingOptions = document.querySelectorAll(".settingOpt2");
-const buttonForward = document.querySelectorAll(".forward");
-const buttonBackward = document.querySelectorAll(".back");
 
 // toggling betehwwn the legacy/ menu
 attunement.classList.add("notVisible");
@@ -89,7 +86,6 @@ creditsMenu.addEventListener("click", () => {
   attunement.classList.add("notVisible");
   legacyContain.classList.toggle("notVisible");
 });
-// TODO make the arrow options in css not wlickable in opposide direction
 // in the menu container toggling the different settings
 atuItems.forEach((item, index) => {
   item.addEventListener("click", () => {
@@ -107,7 +103,6 @@ settingIndexes[0].classList.add("visible");
 const settingSliders = document.querySelectorAll(".settingSlider");
 // settings object
 let settings = {
-  battle: "playervsplayer",
   flock: "blackmurders",
   music: "on",
   sfx: "on",
@@ -116,6 +111,11 @@ let settings = {
   legalMoves: "on",
   dangerTiles: "on",
 };
+// TODO houdt rekening met game settings n
+// todo graphics (no parallax and particles)
+// todo cutscenes(make coin animations and also the birds attacking sometimes)
+// todo highlightes tiles
+// todo instead of dangerous tiles make a btn to explain the rules
 
 settingSliders.forEach((slider) => {
   const opt1 = slider.querySelector(".settingOpt1");
@@ -127,17 +127,22 @@ settingSliders.forEach((slider) => {
 
   opt1.classList.remove("notVisible");
   opt2.classList.add("notVisible");
-
+  forward.classList.remove("notClickable");
+  back.classList.add("notClickable");
   // Left arrow
   back.addEventListener("click", () => {
     opt1.classList.remove("notVisible");
     opt2.classList.add("notVisible");
+    forward.classList.remove("notClickable");
+    back.classList.add("notClickable");
 
     settings[settingName] = opt1.textContent
       .toLowerCase()
       .trim()
       .replace(/\s+/g, "");
     playBgMusic();
+    updateParallaxSetting();
+
     console.log(settingName, settings[settingName]);
   });
 
@@ -145,12 +150,17 @@ settingSliders.forEach((slider) => {
   forward.addEventListener("click", () => {
     opt1.classList.add("notVisible");
     opt2.classList.remove("notVisible");
+    back.classList.remove("notClickable");
+    forward.classList.add("notClickable");
+
     // remove whitespace, and make lowercase
     settings[settingName] = opt2.textContent
       .toLowerCase()
       .trim()
       .replace(/\s+/g, "");
     playBgMusic();
+    updateParallaxSetting();
+
     console.log(settingName, settings[settingName]);
   });
 });
@@ -168,7 +178,7 @@ function applyFlockSetting() {
 // function fo rplaying music
 function playBgMusic() {
   const bgAudio = document.querySelector("#bgMusic");
-bgAudio.volume = 0.5;
+  bgAudio.volume = 0.5;
   if (settings.music === "on") {
     bgAudio.muted = false;
     bgAudio.play();
@@ -176,11 +186,19 @@ bgAudio.volume = 0.5;
     bgAudio.pause();
   }
 }
-playBgMusic()
-function playAgainstComputer() {
-  if (settings.battle !== "playervsplayer") {
+playBgMusic();
+// function for toggling on and off the parallax
+function updateParallaxSetting() {
+  if (settings.graphics === "on") {
+    sceneParallax.enable();
+    menuParallax.enable();
+  } else {
+    sceneParallax.disable();
+    menuParallax.disable();
   }
 }
+// function for toggling on and off the particles in the game
+
 // script for side bar in game
 const arrowBack = document.querySelector("#arrowBack");
 const arrowForward = document.querySelector("#arrowForward");
@@ -314,22 +332,28 @@ function showParticles() {
 let uiBtns = document.querySelectorAll('[data-btn-sound="uiBtn"]');
 function playHoverSfx() {
   const hoverSfx = document.querySelector("#hover-ui-btn");
-    hoverSfx.currentTime = 0; 
+  hoverSfx.currentTime = 0;
   hoverSfx.play();
+  if (settings.sfx === "off") {
+    hoverSfx.pause();
+  }
 }
 function playClickSfx() {
   const clickSfx = document.querySelector("#click-ui-btn");
-    clickSfx.currentTime = 0; 
+  clickSfx.currentTime = 0;
   clickSfx.play();
+  if (settings.sfx === "off") {
+    clickSfx.pause();
+  }
 }
 uiBtns.forEach((btn) => {
-  btn.addEventListener("mouseover",playHoverSfx);
-  });
+  btn.addEventListener("mouseover", playHoverSfx);
+});
 uiBtns.forEach((btn) => {
-  btn.addEventListener("click",playClickSfx);
-  });
-  // ui menu 
-  
+  btn.addEventListener("click", playClickSfx);
+});
+// ui menu
+
 //  code for the easter eggs
 // 1. The Legacy Crow
 let hendrikContainer = document.querySelector("#hendrik");

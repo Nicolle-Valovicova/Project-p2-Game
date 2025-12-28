@@ -49,6 +49,11 @@ body {
     inset 0 0 4px 2px rgba(59, 59, 59, 0.2);
   position: relative;
 }
+.notClickable{
+  opacity: 0.5;
+  -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
 /* css fot the start screen */
 .startinfo {
   text-align: center;
@@ -190,6 +195,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+#showRules{
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+}
 .setting {
   display: flex;
   width: 500px;
@@ -267,7 +278,9 @@ body {
   width: 100px;
   position: relative;
 }
-
+.highlight{
+    background-color: red;
+}
 .black {
   background-image: url(../imgs/tiles/Wtile.JPG);
   background-size: cover;

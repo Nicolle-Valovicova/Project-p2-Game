@@ -118,12 +118,12 @@
               <p class="settingTitle">Choose your battle:</p>
               <div class="settingSlider" data-setting="battle">
                 <img
-                  class="back"
+                  class="back "
                   src="imgs/icons/arrow_back_ios.svg"
                   alt="arrow back"
                 />
-                <p class="settingOpt1">Player vs Player</p>
-                <p class="settingOpt2">Player vs Computer</p>
+                <p class="settingOpt1">Comming soon!</p>
+                <p class="settingOpt2">Comming soon!</p>
                 <img
                   class="forward"
                   src="imgs/icons/arrow_forward_ios.svg"
@@ -242,21 +242,9 @@
               </div>
             </div>
             <div class="setting">
-              <p class="settingTitle">Show dangerous tiles:</p>
-              <div class="settingSlider" data-setting="dangerTiles">
-                <img
-                  class="back"
-                  src="imgs/icons/arrow_back_ios.svg"
-                  alt="arrow back"
-                />
-                <p class="settingOpt1">On</p>
-                <p class="settingOpt2">Off</p>
-                <img
-                  class="forward"
-                  src="imgs/icons/arrow_forward_ios.svg"
-                  alt="arrow forward"
-                />
-              </div>
+              <p class="settingTitle">Game:</p>
+                             <button id="showRules">Show rules</button>
+
             </div>
           </div>
         </div>
@@ -439,14 +427,18 @@
     <script src="dist/loading-bar.min.js"></script>
     <script src="js/chessRules.js"></script>
     <script src="js/boardLogic.js"></script>
-    <script src="js/script-nicolle.js"></script>
+    <script src="js/chessAiAlgorithm.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script src="js/script-nicolle.js"></script>
     <!-- script rules for parallax other way wont work -->
     <script>
-      var scene = document.getElementById("scene");
-      var parallaxInstance = new Parallax(scene);
-      var menuScene = document.getElementById("menuScene");
-      var parallaxInstance = new Parallax(menuScene);
+
+      const scene = document.getElementById("scene");
+const menuScene = document.getElementById("menuScene");
+
+const sceneParallax = new Parallax(scene);
+const menuParallax = new Parallax(menuScene);
+
     </script>
   </body>
 </html>
