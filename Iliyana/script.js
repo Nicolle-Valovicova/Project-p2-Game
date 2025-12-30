@@ -84,10 +84,7 @@ function Play() {
     selectGerecht();         
     showGerechtInHtml();     
     showStappen();             
-    waitForPlayerToChooseVolgorde(); 
-    checkGekozenVolgorde();
-    updateScoreOrLives();         
-    checkLevelComplete(); 
+    waitForPlayerToChooseVolgorde();  
 }
 
 function selectGerecht() {
@@ -109,18 +106,61 @@ imgElement.src = currentGerecht.image;
 function showStappen () {
     const stappenContainer = document.querySelector("#buttons");
     stappenContainer.innerHTML = "";
-    const stappen = [...currentGerecht.stappen]; 
+    const stappen = currentGerecht.stappen; 
     stappen.sort(() => Math.random() - 0.5);
+    // De variabele stap is de parameter van deze callback-functie. Dit betekent dat in elke ronde van de loop,
+    //stap de waarde krijgt van het huidige element uit de stappen array.
     stappen.forEach(stap => {
         const stapElement = document.createElement("button");
         stapElement.innerHTML = stap;
         stapElement.classList.add("stap");
         stapElement.addEventListener("click", () => {
         console.log("Geklikt:", stap);
+        gekozenVolgorde.push(stap);
     })
-      stappenContainer.appendChild(stapElement);
+      stappenContainer.append(stapElement);
     });
+}
 
+const klaarBtn = document.querySelector("#checkVolgorde");
+
+klaarBtn.addEventListener("click", () => {
+    if (gekozenVolgorde.length === currentGerecht.stappen.length) {
+        checkGekozenVolgorde();
+    } else {
+        alert("Maak eerst de volgorde af!");
+    }
+});
+
+function waitForPlayerToChooseVolgorde() {
+    gekozenVolgorde = [];
+}
+
+function checkGekozenVolgorde() {
+    let isCorrect = true;
+
+    for (let index = 0; index < gekozenVolgorde.length; index++) {
+        if (gekozenVolgorde[index] !== currentGerecht.goedeVolgorde[index]) {
+            isCorrect = false;
+            break;
+        }
+    }
+
+    if (isCorrect) {
+        alert("Nice! Je hebt de volgorde goed!");
+        score++;
+    } else {
+        alert("Jammer! Je hebt de volgorde fout.");
+        lives--;
+    }
+
+    UpdateScoreOrLives();
+    CheckLevelComplete();
+}
+
+function UpdateScoreOrLives() {
+    document.querySelector("#score").innerText = score;
+    document.querySelector("#lives").innerText = lives;
 }
 
 Play();
