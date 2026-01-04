@@ -111,12 +111,20 @@ let settings = {
   legalMoves: "on",
   dangerTiles: "on",
 };
-// TODO houdt rekening met game settings n
-// todo graphics (no parallax and particles)
 // todo cutscenes(make coin animations and also the birds attacking sometimes)
 // todo highlightes tiles
 // todo instead of dangerous tiles make a btn to explain the rules
-
+let showRules = document.querySelector("#showRules");
+const rulesContainer = document.querySelector(".rules-container");
+const closeRules = document.querySelector("#closeRules");
+showRules.addEventListener("click", () => {
+  menuScreen.classList.add("blurrGame");
+  rulesContainer.style.display = "block";
+});
+closeRules.addEventListener("click", () => {
+  menuScreen.classList.remove("blurrGame");
+  rulesContainer.style.display = "none";
+});
 settingSliders.forEach((slider) => {
   const opt1 = slider.querySelector(".settingOpt1");
   const opt2 = slider.querySelector(".settingOpt2");
@@ -142,7 +150,6 @@ settingSliders.forEach((slider) => {
       .replace(/\s+/g, "");
     playBgMusic();
     updateParallaxSetting();
-
     console.log(settingName, settings[settingName]);
   });
 
@@ -160,7 +167,6 @@ settingSliders.forEach((slider) => {
       .replace(/\s+/g, "");
     playBgMusic();
     updateParallaxSetting();
-
     console.log(settingName, settings[settingName]);
   });
 });
@@ -187,6 +193,8 @@ function playBgMusic() {
   }
 }
 playBgMusic();
+// function for toggling on and off the particles in the game
+
 // function for toggling on and off the parallax
 function updateParallaxSetting() {
   if (settings.graphics === "on") {
@@ -197,8 +205,6 @@ function updateParallaxSetting() {
     menuParallax.disable();
   }
 }
-// function for toggling on and off the particles in the game
-
 // script for side bar in game
 const arrowBack = document.querySelector("#arrowBack");
 const arrowForward = document.querySelector("#arrowForward");
@@ -317,6 +323,8 @@ attunement.classList.add("glass");
 legacyContain.classList.add("glass");
 gameSidebar.classList.add("glass");
 quitbtn.classList.add("glass");
+showRules.classList.add("glass");
+closeRules.classList.add("glass");
 document.querySelectorAll(".escButtons button").forEach((btn) => {
   btn.classList.add("glass");
 });
@@ -413,5 +421,4 @@ document.querySelector("#blackQueen").addEventListener("click", () => {
   console.log(clickValueW4);
 });
 // TODO Code for cool transition for betwheen pages zoom in fade cool stuff
-// TODO the ui buttons have click sfx on hover and on click
 // ! menu screen click on button for my game playmusic

@@ -73,6 +73,11 @@
       </ul>
     </div>
     <!-- code for menuscreen -->
+         <div class="rules-container">
+          <img src="imgs/icons/close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" data-btn-sound="uiBtn" alt="close icon" id="closeRules">
+          <div class="rules"></div>
+         </div>
+
     <div id="menu-screen" class="menu-screen">
       <h1>The Gambit Hall</h1>
       <hr id="firstHr" />
@@ -118,7 +123,7 @@
               <p class="settingTitle">Choose your battle:</p>
               <div class="settingSlider" data-setting="battle">
                 <img
-                  class="back "
+                  class="back"
                   src="imgs/icons/arrow_back_ios.svg"
                   alt="arrow back"
                 />
@@ -243,8 +248,13 @@
             </div>
             <div class="setting">
               <p class="settingTitle">Game:</p>
-                             <button id="showRules">Show rules</button>
-
+              <button
+                id="showRules"
+                data-btn-sound="uiBtn"
+                style="color: aliceblue; cursor: pointer"
+              >
+                Show rules
+              </button>
             </div>
           </div>
         </div>
@@ -432,13 +442,11 @@
     <script src="js/script-nicolle.js"></script>
     <!-- script rules for parallax other way wont work -->
     <script>
-
       const scene = document.getElementById("scene");
-const menuScene = document.getElementById("menuScene");
+      const menuScene = document.getElementById("menuScene");
 
-const sceneParallax = new Parallax(scene);
-const menuParallax = new Parallax(menuScene);
-
+      const sceneParallax = new Parallax(scene);
+      const menuParallax = new Parallax(menuScene);
     </script>
   </body>
 </html>
