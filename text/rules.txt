@@ -30,10 +30,10 @@ Pawns: Dark jackdaw
 
 //? CHESS GAME RULES
 ---------------------
+
 //* RAVEN KING (K)
-- Moves 1 square in any direction
-- Can perform Raven’s Flight (castling) with a Magpie (rook)
-- If the Raven King dies → instant loss
+- Moves 1 square in any direction.
+- If the Raven King is captured → instant loss.
 
 //* ROOK BIRD QUEEN (Q)
 - Any number of squares.
@@ -44,7 +44,6 @@ Pawns: Dark jackdaw
 - Any number of squares.
 - Vertically or horizontally only.
 - Cannot jump over pieces.
-- Used in castling with the king.
 
 //* CROW BISHOPS (B)
 - Any number of squares.
@@ -54,40 +53,43 @@ Pawns: Dark jackdaw
 
 //* JAY KNIGHTS (N)
 - Moves in an L-shape:
-    - 2 squares in one direction + 1 square sideways
+    - 2 squares in one direction + 1 square sideways.
 - ONLY piece that can jump over other pieces.
 - Can land on any color square.
 
 //* JACKDAW PAWNS (P)
 - Moves 1 square forward.
-- On its very first move: may go 2 squares forward (if not blocked).
+- On its very first move: may go 2 squares forward.
 - Pawns capture diagonally (one square forward-left or forward-right).
 - Cannot move backward.
-- Special rules:
-    - En passant capture (when an enemy pawn moves 2 squares next to it).
-    - Promotion when reaching the opposite side (turns into Queen, Rook, Bishop, or Knight).
 
-//? 5. SPECIAL RULES (THE DARK VARIANTS)
----------------------------------------
-//* 1. No Stalemate
-if a player has no legal move, they lose instantly, because their flock is trapped and overwhelmed.
+//? SPECIAL RULES
+-----------------
 
-//* 2. No Draws
-There is no peace in this world.
-A match never ends in a tie.
+//* Capturing
+- A piece is captured by moving onto its square.
+- You cannot capture your own flock.
 
-//* 3. Check
-If the Raven King is threatened, the player must defend:
-- Move the king
-- Block the attack
-- Kill the attacker
-If none are possible → checkmate → instant defeat.
+//* Turns
+- Players alternate turns between Black and White.
+- A player may only move their own pieces.
 
-//* 6. WIN CONDITION
+//* Check & Checkmate
+- There are no check or checkmate rules.
+- The Raven King may be captured directly.
+
+//* Draws & Stalemate
+- There are no draws.
+- There is no stalemate condition.
+
+//? WIN CONDITION
+-----------------
 
 There is only one way to win:
-Kill the enemy Raven King.
-Their flock scatters, their treasure becomes yours.
+Capture the enemy Raven King.
+
+When the Raven King falls,
+their flock scatters and the battle ends.
 The player who lands the final blow becomes
 Master of the Murder.
 
@@ -118,3 +120,38 @@ Every sacrifice shapes your fate.
 In Murder’s Gambit, the clever, the bold, and the ruthless rise above the canopy.
 Only one king will survive.
 Only one murder will claim the forest.
+
+copy and paste to html?
+👑 Raven King (K)
+• 1 tile in any direction
+• If the Raven King is captured → instant defeat
+
+♛ Rook-Bird Queen (Q)
+• Any distance: horizontal / vertical / diagonal
+• Cannot jump over pieces
+
+🪺 Magpie Rook (R)
+• Any distance: horizontal / vertical
+• Cannot jump over pieces
+
+🪶 Crow Bishop (B)
+• Any distance: diagonal
+• Cannot jump over pieces
+• Stays on its color
+
+🐦 Jay Knight (N)
+• L-move (2 + 1)
+• Only piece that can jump
+
+🐣 Jackdaw Pawn (P)
+• Moves forward 1 tile
+• From its starting rank: may move 2 tiles
+• Captures diagonally (forward-left / forward-right)
+
+⚔ Capturing & Turns
+• Capture by moving onto an enemy piece
+• You can’t capture your own flock
+• Players alternate turns (White / Black)
+
+🏆 Victory
+• Win by capturing the enemy Raven King

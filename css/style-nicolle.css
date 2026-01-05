@@ -49,14 +49,14 @@ body {
     inset 0 0 4px 2px rgba(59, 59, 59, 0.2);
   position: relative;
 }
-.notClickable{
+.notClickable {
   opacity: 0.5;
   -webkit-filter: invert(100%);
-    filter: invert(100%);
-  }
-  .blurrGame{
-    filter: blur(7px);
-  }
+  filter: invert(100%);
+}
+.blurrGame {
+  filter: blur(7px);
+}
 /* css fot the start screen */
 .startinfo {
   text-align: center;
@@ -198,31 +198,47 @@ body {
   display: flex;
   flex-direction: column;
 }
-#showRules{
+#showRules {
   padding: 5px;
   font-size: 18px;
   border-radius: 10px;
   border: none;
 }
-.rules-container{
-  background-image: url(../imgs/gameItems/old-scroll-with-scroll-frame-free-png.webp);
+.rules-container {
+  background-image: url(../imgs/gameItems/Old_Open_Book_PNG_Clipart-1059.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 670px;
-  height: 800px;
+  width: 1200px;
+  height: 700px;
   z-index: 40000;
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(500px, 50px);
-display: none;
+  transform: translate(250px, 100px);
+  display: none;
 }
-#closeRules{
+#closeRules {
   background-color: rgba(218, 44, 0, 0.584);
   padding: 5px;
   cursor: pointer;
   border-radius: 30px;
+  margin: 0;
+}
+.rules{
+  margin-left: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+#birdInfoImg {
+  width: 400px;
+  margin-top: 60px;
+  margin-left: 50px;
+  
+}
+#info2{
+  margin-right: 100px;
+  margin-top: -100px;
 }
 .setting {
   display: flex;
@@ -301,8 +317,8 @@ display: none;
   width: 100px;
   position: relative;
 }
-.highlight{
-    background-color: red;
+.highlight {
+  background-color: red;
 }
 .black {
   background-image: url(../imgs/tiles/Wtile.JPG);
@@ -408,7 +424,8 @@ display: none;
   z-index: -99;
   width: 100%;
   height: 100%; */
-.win-screen, .lose-screen {
+.win-screen,
+.lose-screen {
   display: flex;
   color: var(--font-color);
   position: relative;
@@ -417,7 +434,8 @@ display: none;
   justify-content: center;
   align-items: center;
 }
-.win-container, .lose-container {
+.win-container,
+.lose-container {
   height: 100vh;
   position: absolute;
   top: 50%;
@@ -429,15 +447,17 @@ display: none;
   align-items: center;
   text-align: center;
 }
-.winText, .loseText {
+.winText,
+.loseText {
   font-size: 30px;
   margin-top: 20px;
 }
-.winQuite, .loseQuote {
+.winQuite,
+.loseQuote {
   position: absolute;
   margin-bottom: 170px;
   width: 100%;
-    text-wrap: nowrap;
+  text-wrap: nowrap;
 
   font-size: 23px;
   bottom: 0;

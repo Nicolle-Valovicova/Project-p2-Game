@@ -221,9 +221,7 @@ function changePlayer() {
     startingPlayer = "black";
     playerTurn.textContent = "black";
   }
- if (settings.battle === "playervscomputer" && startingPlayer === aiColor) {
-    setTimeout(makeAiMove, 300);
-  }
+
 
 }
 // reverse and revert board numbers bc of white position
