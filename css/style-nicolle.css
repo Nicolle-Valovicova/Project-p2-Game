@@ -317,9 +317,11 @@ body {
   width: 100px;
   position: relative;
 }
-.highlight {
-  background-color: red;
+.square.highlight {
+  outline: 3px solid gold;
+  box-shadow: inset 0 0 0 2px rgba(255, 215, 0, 0.6);
 }
+
 .black {
   background-image: url(../imgs/tiles/Wtile.JPG);
   background-size: cover;
@@ -478,3 +480,4 @@ body {
   border-radius: var(--standard-radius);
 }
 /* Media query for responive design */
+/* TODO make the game responsive so make it rotate 90 deg on phone screen */

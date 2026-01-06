@@ -111,12 +111,10 @@ console.log(allSquares);
 
 allPieces.forEach((piece) => {
   piece.addEventListener("dragstart", dragStart);
-
 });
 
 document.querySelectorAll(".piece img").forEach((img) => {
   img.addEventListener("dragstart", (e) => e.preventDefault());
-  
 });
 
 allSquares.forEach((square) => {
@@ -128,17 +126,22 @@ allSquares.forEach((square) => {
 let startPosId;
 let draggedElement;
 function dragStart(e) {
-  draggedElement = e.currentTarget;
-  startPosId = draggedElement.parentElement.getAttribute("square-id");
-}
+  const piece = e.currentTarget;
+
+  if (piece.dataset.color !== startingPlayer) return;
+
+  draggedElement = piece;
+  startPosId = piece.parentElement.getAttribute("square-id");
+
+showLegalMoves()}
 //  the default action that belongs to the event will not happen
 function dragOver(e) {
-  
   e.preventDefault();
 }
 // code for piece placement when dropped
 function dragDrop(e) {
   e.preventDefault();
+  clearHighlights();
 
   const dropSquare = e.currentTarget;
   if (!dropSquare) return;
@@ -154,15 +157,15 @@ function dragDrop(e) {
   const takenByOpponent = taken && taken.dataset.color === opponentGo;
 
   // capture move
-// TODO store score in array/ varisbles for each piece value
   if (takenByOpponent && valid) {
+    const pieceValue = Number(taken.dataset.value) || 0;
     // removes the current piece that you want to drop your piece on
     taken.remove();
     if (startingPlayer === "white") {
-      killValue++;
+      killValue += pieceValue;
       whiteKillPoints.innerHTML = `White gold: ${killValue} <img class="valueCoins" src="${coin.src}" alt="coin">`;
     } else {
-      killValueBlack++;
+      killValueBlack += pieceValue;
       blackKillPoints.innerHTML = `Black gold: ${killValueBlack} <img class="valueCoins" src="${coin.src}" alt="coin">`;
     }
     dropSquare.appendChild(draggedElement);
@@ -182,6 +185,23 @@ function dragDrop(e) {
     return;
   }
 }
+// add the highlights to the game
+function clearHighlights() {
+  document
+    .querySelectorAll(".square.highlight")
+    .forEach((sq) => sq.classList.remove("highlight"));
+}
+function highlightValidMoves() {
+  clearHighlights();
+
+  const allSquares = document.querySelectorAll(".square");
+
+  allSquares.forEach((square) => {
+    if (checkIfValid(square)) {
+      square.classList.add("highlight");
+    }
+  });
+}
 
 // code to check for a win
 function checkForWin() {
@@ -197,7 +217,8 @@ function checkForWin() {
     console.log(kings);
     // show the win/ lose screen
     hidePages();
-    winScreen.classList.remove("notVisible");
+
+    showWinScreen();
     console.log("playerTurn is:", playerTurn);
   }
   if (!Array.from(kings).some((king) => king.dataset.color === "black")) {
@@ -221,8 +242,6 @@ function changePlayer() {
     startingPlayer = "black";
     playerTurn.textContent = "black";
   }
-
-
 }
 // reverse and revert board numbers bc of white position
 function reverseIds() {

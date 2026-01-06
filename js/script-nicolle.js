@@ -113,7 +113,9 @@ let settings = {
 };
 // todo cutscenes(make coin animations and also the birds attacking sometimes)
 // todo highlightes tiles
-// todo instead of dangerous tiles make a btn to explain the rules
+// TODO make the weither white or black win screen art appear
+// TODO finish the easter eggs
+// TODO look at the comments where you have an ! (so all the red comments)
 let showRules = document.querySelector("#showRules");
 const rulesContainer = document.querySelector(".rules-container");
 const closeRules = document.querySelector("#closeRules");
@@ -193,7 +195,14 @@ function playBgMusic() {
   }
 }
 playBgMusic();
-// function for toggling on and off the particles in the game
+// function for highlighting legal moves 
+function showLegalMoves(){
+  if (settings.legalMoves === "on"){
+    highlightValidMoves();
+  } else{
+    clearHighlights();
+  }
+}
 
 // function for toggling on and off the parallax
 function updateParallaxSetting() {
@@ -251,24 +260,24 @@ let winQuotes = [
   "Victory tastes like dusk and thunder.",
   "The board bends to your will.",
 ];
-let loseTitles = [
-  "Your Flock Has Fallen",
-  "The Murder Scatters Into Shadow",
-  "Your King Lies Silent",
-  "Feathers Fall Where Strategy Fails",
-  "Defeat Echoes Through the Canopy",
-];
-let loseQuotes = [
-  "Even kings must bow to fate.",
-  "Silence follows those who miscalculate.",
-  "Tonight, the sky belongs to another.",
-  "Every fall is the start of a new flight.",
-  "Victory escaped your grasp this time.",
-];
+// let loseTitles = [
+//   "Your Flock Has Fallen",
+//   "The Murder Scatters Into Shadow",
+//   "Your King Lies Silent",
+//   "Feathers Fall Where Strategy Fails",
+//   "Defeat Echoes Through the Canopy",
+// ];
+// let loseQuotes = [
+//   "Even kings must bow to fate.",
+//   "Silence follows those who miscalculate.",
+//   "Tonight, the sky belongs to another.",
+//   "Every fall is the start of a new flight.",
+//   "Victory escaped your grasp this time.",
+// ];
 let winText = document.querySelector(".winText");
 let winQuite = document.querySelector(".winQuite");
-let loseText = document.querySelector(".loseText");
-let loseQuote = document.querySelector(".loseQuote");
+// let loseText = document.querySelector(".loseText");
+// let loseQuote = document.querySelector(".loseQuote");
 
 let feedbackIndex = 0;
 // * replaced with let a = 0;
@@ -281,32 +290,60 @@ function showWinScreen() {
   feedbackIndex = (feedbackIndex + 1) % winTitles.length;
 }
 // function for showing lose screen
-function showLoseScreen() {
-  loseScreen.classList.remove("notVisible");
+// function showLoseScreen() {
+//   loseScreen.classList.remove("notVisible");
 
-  loseText.textContent = loseTitles[feedbackIndex];
-  loseQuote.textContent = loseQuotes[feedbackIndex];
+//   loseText.textContent = loseTitles[feedbackIndex];
+//   loseQuote.textContent = loseQuotes[feedbackIndex];
 
-  feedbackIndex = (feedbackIndex + 1) % loseTitles.length;
-}
+//   feedbackIndex = (feedbackIndex + 1) % loseTitles.length;
+// }
 
-// TODO continue to show the positive vs negative feedback trough
 // TODO if opposide tam has won show negative feedbacl else show positive feedback
-
 // redirect to pages on feedbackscreen
 const retryBtn = document.querySelectorAll(".retry");
 const hubBtn = document.querySelectorAll(".Menu");
 const homeBtn = document.querySelectorAll(".Home");
-
 retryBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
+    // reset UI/pages
+    hidePages();
     gameIndex.classList.remove("notVisible");
+
+    // reset turn
+    startingPlayer = "black";
+    playerTurn.textContent = "black";
+
+    // reset click counters (your vars)
     clickValue = 0;
     clickValueW = 0;
-    clickValue3 = 0;
-    clickValueW4 = 0;
+
+    // reset gold scores
+    killValue = 0;
+    killValueBlack = 0;
+    whiteKillPoints.innerHTML = `White gold: 0 <img class="valueCoins" src="${coin.src}" alt="coin">`;
+    blackKillPoints.innerHTML = `Black gold: 0 <img class="valueCoins" src="${coin.src}" alt="coin">`;
+
+    // rebuild board
+    boardDiv.innerHTML = "";
+    drawBoard();
+
+    // rebind drag drop on the NEW elements
+    const allSquaresNew = document.querySelectorAll(".square");
+    const allPiecesNew = document.querySelectorAll(".piece");
+
+    allPiecesNew.forEach((piece) => {
+      piece.setAttribute("draggable", true);
+      piece.addEventListener("dragstart", dragStart);
+    });
+
+    allSquaresNew.forEach((square) => {
+      square.addEventListener("dragover", dragOver);
+      square.addEventListener("drop", dragDrop);
+    });
   });
 });
+
 hubBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     menuScreen.classList.remove("notVisible");
@@ -402,23 +439,23 @@ document.querySelector("#whiteKing").addEventListener("click", () => {
   }
   console.log(clickValueW);
 });
-// show white lose-screen
-document.querySelector("#whiteQueen").addEventListener("click", () => {
-  clickValue3++;
-  if (clickValue3 == 4) {
-    hidePages();
-    showLoseScreen();
-  }
-  console.log(clickValue3);
-});
-// show black lose-screen
-document.querySelector("#blackQueen").addEventListener("click", () => {
-  clickValueW4++;
-  if (clickValueW4 == 4) {
-    hidePages();
-    showLoseScreen();
-  }
-  console.log(clickValueW4);
-});
+// // show white lose-screen
+// document.querySelector("#whiteQueen").addEventListener("click", () => {
+//   clickValue3++;
+//   if (clickValue3 == 4) {
+//     hidePages();
+//     showLoseScreen();
+//   }
+//   console.log(clickValue3);
+// });
+// // show black lose-screen
+// document.querySelector("#blackQueen").addEventListener("click", () => {
+//   clickValueW4++;
+//   if (clickValueW4 == 4) {
+//     hidePages();
+//     showLoseScreen();
+//   }
+//   console.log(clickValueW4);
+// });
 // TODO Code for cool transition for betwheen pages zoom in fade cool stuff
 // ! menu screen click on button for my game playmusic

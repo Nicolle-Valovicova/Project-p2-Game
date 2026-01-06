@@ -121,37 +121,3 @@ In Murder’s Gambit, the clever, the bold, and the ruthless rise above the cano
 Only one king will survive.
 Only one murder will claim the forest.
 
-copy and paste to html?
-👑 Raven King (K)
-• 1 tile in any direction
-• If the Raven King is captured → instant defeat
-
-♛ Rook-Bird Queen (Q)
-• Any distance: horizontal / vertical / diagonal
-• Cannot jump over pieces
-
-🪺 Magpie Rook (R)
-• Any distance: horizontal / vertical
-• Cannot jump over pieces
-
-🪶 Crow Bishop (B)
-• Any distance: diagonal
-• Cannot jump over pieces
-• Stays on its color
-
-🐦 Jay Knight (N)
-• L-move (2 + 1)
-• Only piece that can jump
-
-🐣 Jackdaw Pawn (P)
-• Moves forward 1 tile
-• From its starting rank: may move 2 tiles
-• Captures diagonally (forward-left / forward-right)
-
-⚔ Capturing & Turns
-• Capture by moving onto an enemy piece
-• You can’t capture your own flock
-• Players alternate turns (White / Black)
-
-🏆 Victory
-• Win by capturing the enemy Raven King
