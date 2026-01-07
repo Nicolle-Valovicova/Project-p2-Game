@@ -155,15 +155,24 @@ function dragDrop(e) {
   const coinVideo = document.querySelector("#coinAnimation");
   
   function playCoinAnimation() {
-    coinVideo.pause();           // stop if somehow playing
-    coinVideo.currentTime = 0;   // rewind
+    if (settings.cutscenes === "on") {
+          coinVideo.pause(); // stop if somehow playing
+    coinVideo.currentTime = 0; // rewind
     coinVideo.style.opacity = 1;
-  
+
     coinVideo.play();
-  
+
     coinVideo.onended = () => {
       coinVideo.style.opacity = 0; // hide after playing once
     };
+    } else{
+      
+      coinVideo.pause();
+      coinVideo.currentTime = 0;
+      coinVideo.style.opacity = 0;
+    }
+
+
   }
   const taken = dropSquare.querySelector(".piece");
   const opponentGo = startingPlayer === "white" ? "black" : "white";
