@@ -133,7 +133,8 @@ function dragStart(e) {
   draggedElement = piece;
   startPosId = piece.parentElement.getAttribute("square-id");
 
-showLegalMoves()}
+  showLegalMoves();
+}
 //  the default action that belongs to the event will not happen
 function dragOver(e) {
   e.preventDefault();
@@ -151,28 +152,25 @@ function dragDrop(e) {
   const pieceColor = draggedElement.dataset.color; // black or white
   const correctGo = pieceColor === startingPlayer;
   if (!correctGo) return;
-  
+
   const coinVideo = document.querySelector("#coinAnimation");
-  
+
   function playCoinAnimation() {
     if (settings.cutscenes === "on") {
-          coinVideo.pause(); // stop if somehow playing
-    coinVideo.currentTime = 0; // rewind
-    coinVideo.style.opacity = 1;
+      coinVideo.pause(); // stop if somehow playing
+      coinVideo.currentTime = 0; // rewind
+      coinVideo.style.opacity = 1;
 
-    coinVideo.play();
+      coinVideo.play();
 
-    coinVideo.onended = () => {
-      coinVideo.style.opacity = 0; // hide after playing once
-    };
-    } else{
-      
+      coinVideo.onended = () => {
+        coinVideo.style.opacity = 0; // hide after playing once
+      };
+    } else {
       coinVideo.pause();
       coinVideo.currentTime = 0;
       coinVideo.style.opacity = 0;
     }
-
-
   }
   const taken = dropSquare.querySelector(".piece");
   const opponentGo = startingPlayer === "white" ? "black" : "white";
@@ -190,7 +188,7 @@ function dragDrop(e) {
       killValueBlack += pieceValue;
       blackKillPoints.innerHTML = `Black gold: ${killValueBlack} <img class="valueCoins" src="${coin.src}" alt="coin">`;
     }
-    playCoinAnimation()
+    playCoinAnimation();
     dropSquare.appendChild(draggedElement);
     changePlayer();
     checkForWin();
@@ -207,7 +205,6 @@ function dragDrop(e) {
     checkForWin();
     return;
   }
-  
 }
 // add the highlights to the game
 function clearHighlights() {

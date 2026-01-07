@@ -53,6 +53,8 @@ body {
   opacity: 0.5;
   -webkit-filter: invert(100%);
   filter: invert(100%);
+  pointer-events: none;
+  cursor: not-allowed;
 }
 .blurrGame {
   filter: blur(7px);

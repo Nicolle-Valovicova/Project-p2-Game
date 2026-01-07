@@ -18,10 +18,15 @@ function hidePages() {
 hidePages();
 menuScreen.classList.remove("notVisible");
 
+let flockAppliedOnce = false;
 menuPlayBtn.addEventListener("click", () => {
   hidePages();
+  if (!flockAppliedOnce) {
+    applyFlockSetting();
+    flockAppliedOnce = true;
+    document.querySelectorAll(".flockRestricted").forEach((set) =>{ set.classList.add("notClickable")}) 
+  }
   gameIndex.classList.remove("notVisible");
-  applyFlockSetting()
   showParticles();
 });
 exitBtn.addEventListener("click", () => {
@@ -173,7 +178,6 @@ settingSliders.forEach((slider) => {
 });
 // function for choosign flock
 function applyFlockSetting() {
-    revertIds();
   if (settings.flock === "blackmurders") {
     startingPlayer = "black"; 
     playerTurn.textContent = "black";
@@ -183,6 +187,8 @@ function applyFlockSetting() {
     reverseIds();
   }
 }
+  applyFlockSetting();
+
 // function for playing music
 function playBgMusic() {
   const bgAudio = document.querySelector("#bgMusic");
