@@ -353,11 +353,7 @@ hubBtn.forEach((btn) => {
     menuScreen.classList.remove("notVisible");
   });
 });
-homeBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // ! REDIRECT TO THE CHOOSE MENU FOR THE 4 GAMES
-  });
-});
+
 // add glass effect to items
 startBtn.classList.add("glass");
 attunement.classList.add("glass");
@@ -466,5 +462,5 @@ document.querySelector("#whiteKing").addEventListener("click", () => {
 
 // TODO Code for cool transition for betwheen pages zoom in fade cool stuff
 // TODO clean up files that arent used
-// TODO: when time left: easter egg whisper,
-// ! menu screen click on button for my game playmusic
+// TODO: when time left: easter egg whisper, add more sfx to gameplay coin cool ping
+// ! dont forget to change the game from starting at menuscreen to starting at startscreen

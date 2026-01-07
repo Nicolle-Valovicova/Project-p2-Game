@@ -82,39 +82,41 @@
       />
       <img id="birdInfoImg" src="imgs/gameItems/birdInfo.PNG" alt="" />
       <div class="rules">
-  <p>👑 Raven King (K) <br>
-• 1 tile in any direction<br>
-• If the Raven King is captured → instant defeat<br><br>
-♛ Rook-Bird Queen (Q)<br>
-• Any distance: horizontal / vertical / diagonal<br>
-• Cannot jump over pieces<br>
-<br>
-🪺 Magpie Rook (R)<br>
-• Any distance: horizontal / vertical<br>
-• Cannot jump over pieces<br><br>
+        <p>
+          👑 Raven King (K) <br />
+          • 1 tile in any direction<br />
+          • If the Raven King is captured → instant defeat<br /><br />
+          ♛ Rook-Bird Queen (Q)<br />
+          • Any distance: horizontal / vertical / diagonal<br />
+          • Cannot jump over pieces<br />
+          <br />
+          🪺 Magpie Rook (R)<br />
+          • Any distance: horizontal / vertical<br />
+          • Cannot jump over pieces<br /><br />
 
-🪶 Crow Bishop (B)<br>
-• Any distance: diagonal<br>
-• Cannot jump over pieces<br>
-• Stays on its color<br><br>
+          🪶 Crow Bishop (B)<br />
+          • Any distance: diagonal<br />
+          • Cannot jump over pieces<br />
+          • Stays on its color<br /><br />
+        </p>
+        <p id="info2">
+          🐦 Jay Knight (N)<br />
+          • L-move (2 + 1)<br />
+          • Only piece that can jump<br /><br />
 
-</p>
-<p id="info2">🐦 Jay Knight (N)<br>
-• L-move (2 + 1)<br>
-• Only piece that can jump<br><br>
+          🐣 Jackdaw Pawn (P)<br />
+          • Moves forward 1 tile<br />
+          • From its starting rank: may move 2 tiles<br />
+          • Captures diagonally (forward-left / forward-right)<br /><br />
 
-🐣 Jackdaw Pawn (P)<br>
-• Moves forward 1 tile<br>
-• From its starting rank: may move 2 tiles<br>
-• Captures diagonally (forward-left / forward-right)<br><br>
+          ⚔ Capturing & Turns<br />
+          • Capture by moving onto an enemy piece<br />
+          • You can’t capture your own flock<br />
+          • Players alternate turns (White / Black)<br /><br />
 
-⚔ Capturing & Turns<br>
-• Capture by moving onto an enemy piece<br>
-• You can’t capture your own flock<br>
-• Players alternate turns (White / Black)<br><br>
-
-🏆 Victory<br>
-• Win by capturing the enemy Raven King</p>
+          🏆 Victory<br />
+          • Win by capturing the enemy Raven King
+        </p>
       </div>
     </div>
 
@@ -177,7 +179,7 @@
               </div>
             </div>
             <div class="setting">
-              <p class="settingTitle" >Select your flock:</p>
+              <p class="settingTitle">Select your flock:</p>
               <div class="settingSlider flockRestricted" data-setting="flock">
                 <img
                   class="back flockRestricted"
@@ -321,8 +323,9 @@
           </p>
         </div>
         <p class="legacyQuote">
-          <a href="legacy.html" target="_blank">          “May your feathers leave a mark on the forest.”
-</a>
+          <a href="legacy.html" target="_blank">
+            “May your feathers leave a mark on the forest.”
+          </a>
         </p>
         <audio
           src="audio/JackdawSfx.mp3"
@@ -353,10 +356,15 @@
     <!-- html for game screen / index -->
     <div id="game-index" class="game-index">
       <div id="particles-js"></div>
-      <video id="coinAnimation" src="imgs/gameItems/coinong_1.webm"  muted></video>
+      <video
+        id="coinAnimation"
+        src="imgs/gameItems/coinong_1.webm"
+        muted
+      ></video>
       <div class="inGameBG">
         <img src="imgs/animation/forestbg.jpeg" alt="" />
-      </div>      <!-- sidebar for game -->
+      </div>
+      <!-- sidebar for game -->
       <div class="gameSidebar">
         <div class="sidebarNav">
           <button id="quit" class="quit" data-btn-sound="uiBtn">Depart</button>
@@ -454,7 +462,9 @@
         <div class="escButtons">
           <button class="retry">Reengage</button>
           <button class="Menu">Hub</button>
-          <button class="Home">Home</button>
+          <button class="Home">
+            <a href="home.html" class="Home">Home</a>
+          </button>
         </div>
       </div>
     </div>
@@ -466,7 +476,9 @@
         <div class="escButtons">
           <button class="retry">Reengage</button>
           <button class="Menu">Hub</button>
-          <button class="Home">Home</button>
+          <button class="Home">
+            <a href="home.html" class="Home">Home</a>
+          </button>
         </div>
       </div>
     </div>

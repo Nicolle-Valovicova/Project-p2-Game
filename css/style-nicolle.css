@@ -499,5 +499,9 @@ position: absolute;
   padding: 3px 15px 10px;
   border-radius: var(--standard-radius);
 }
+.Home{
+  color: var(--font-color);
+  text-decoration: none;
+}
 /* Media query for responive design */
 /* TODO make the game responsive so make it rotate 90 deg on phone screen */
