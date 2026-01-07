@@ -222,6 +222,7 @@ body {
   background-color: rgba(218, 44, 0, 0.584);
   padding: 5px;
   cursor: pointer;
+position: absolute;
   border-radius: 30px;
   margin: 0;
 }
@@ -233,7 +234,7 @@ body {
 #birdInfoImg {
   width: 400px;
   margin-top: 60px;
-  margin-left: 50px;
+  margin-left: 90px;
   
 }
 #info2{
@@ -263,6 +264,10 @@ body {
 .legacyQuote {
   margin-left: 30px;
   margin-top: 10px;
+}
+.legacyQuote  a{
+  text-decoration: none;
+  color: var(--font-color);
 }
 #hendrik {
   position: absolute;
@@ -417,6 +422,19 @@ body {
   width: 20px;
   transform: translateY(3px);
 }
+#coinAnimation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 800px;       
+  height: auto;
+
+  pointer-events: none; 
+  z-index: 50;      
+}
+
 /* css for the win/ lose screens */
 /* background-image: url(../imgs/feedackArt/bird-breed_2cd7d88f-2438-4acf-9bd8-64c561ae55ae.webp);
   background-size: cover;

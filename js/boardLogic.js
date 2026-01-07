@@ -151,7 +151,20 @@ function dragDrop(e) {
   const pieceColor = draggedElement.dataset.color; // black or white
   const correctGo = pieceColor === startingPlayer;
   if (!correctGo) return;
-
+  
+  const coinVideo = document.querySelector("#coinAnimation");
+  
+  function playCoinAnimation() {
+    coinVideo.pause();           // stop if somehow playing
+    coinVideo.currentTime = 0;   // rewind
+    coinVideo.style.opacity = 1;
+  
+    coinVideo.play();
+  
+    coinVideo.onended = () => {
+      coinVideo.style.opacity = 0; // hide after playing once
+    };
+  }
   const taken = dropSquare.querySelector(".piece");
   const opponentGo = startingPlayer === "white" ? "black" : "white";
   const takenByOpponent = taken && taken.dataset.color === opponentGo;
@@ -168,6 +181,7 @@ function dragDrop(e) {
       killValueBlack += pieceValue;
       blackKillPoints.innerHTML = `Black gold: ${killValueBlack} <img class="valueCoins" src="${coin.src}" alt="coin">`;
     }
+    playCoinAnimation()
     dropSquare.appendChild(draggedElement);
     changePlayer();
     checkForWin();
@@ -184,6 +198,7 @@ function dragDrop(e) {
     checkForWin();
     return;
   }
+  
 }
 // add the highlights to the game
 function clearHighlights() {

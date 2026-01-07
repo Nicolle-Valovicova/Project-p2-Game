@@ -21,7 +21,7 @@ menuScreen.classList.remove("notVisible");
 menuPlayBtn.addEventListener("click", () => {
   hidePages();
   gameIndex.classList.remove("notVisible");
-  applyFlockSetting();
+  applyFlockSetting()
   showParticles();
 });
 exitBtn.addEventListener("click", () => {
@@ -112,7 +112,6 @@ let settings = {
   dangerTiles: "on",
 };
 // todo cutscenes(make coin animations and also the birds attacking sometimes)
-// todo highlightes tiles
 // TODO make the weither white or black win screen art appear
 // TODO finish the easter eggs
 // TODO look at the comments where you have an ! (so all the red comments)
@@ -174,8 +173,9 @@ settingSliders.forEach((slider) => {
 });
 // function for choosign flock
 function applyFlockSetting() {
+    revertIds();
   if (settings.flock === "blackmurders") {
-    startingPlayer = "black";
+    startingPlayer = "black"; 
     playerTurn.textContent = "black";
   } else {
     startingPlayer = "white";
@@ -183,7 +183,7 @@ function applyFlockSetting() {
     reverseIds();
   }
 }
-// function fo rplaying music
+// function for playing music
 function playBgMusic() {
   const bgAudio = document.querySelector("#bgMusic");
   bgAudio.volume = 0.5;
@@ -457,5 +457,8 @@ document.querySelector("#whiteKing").addEventListener("click", () => {
 //   }
 //   console.log(clickValueW4);
 // });
+
+// easter egg secret lore page 
+
 // TODO Code for cool transition for betwheen pages zoom in fade cool stuff
 // ! menu screen click on button for my game playmusic
