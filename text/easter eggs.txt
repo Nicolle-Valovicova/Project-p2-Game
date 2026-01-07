@@ -13,7 +13,7 @@ This feature was originally made for testing and demonstrating the features in t
 The Black King crow works the same way, one click launches the Black team’s victory ending.
 
 4. Secret Defeat Trigger
-If you click the Rook Queen piece 7x in a row, the game will reveal the defeat screen for that piece’s team.
+If you click the Rook Queen piece 4x in a row, the game will reveal the defeat screen for that piece’s team.
 This was added as a debugging tool and demonstrating the features in the game for the school project.
 
 5.The Whisper

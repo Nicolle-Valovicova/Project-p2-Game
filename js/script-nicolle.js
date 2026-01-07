@@ -116,9 +116,7 @@ let settings = {
   legalMoves: "on",
   dangerTiles: "on",
 };
-// todo cutscenes(make coin animations and also the birds attacking sometimes)
 // TODO make the weither white or black win screen art appear
-// TODO finish the easter eggs
 // TODO look at the comments where you have an ! (so all the red comments)
 let showRules = document.querySelector("#showRules");
 const rulesContainer = document.querySelector(".rules-container");
@@ -467,4 +465,6 @@ document.querySelector("#whiteKing").addEventListener("click", () => {
 // easter egg secret lore page 
 
 // TODO Code for cool transition for betwheen pages zoom in fade cool stuff
+// TODO clean up files that arent used
+// TODO: when time left: easter egg whisper,
 // ! menu screen click on button for my game playmusic
