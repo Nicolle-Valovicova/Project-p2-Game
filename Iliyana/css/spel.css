@@ -23,18 +23,6 @@ background: #f3c99a;
   justify-content: space-between;
 }
 
-/* .game {
-  background: #f3c99a; 
-  width: 400px;
-  height: 600px;
-  border-radius: 40px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 10px 10px 50px 30px;
-}
-*/
 
 .top {
   display: flex;
@@ -122,4 +110,22 @@ background: #f3c99a;
   font-size: larger;
 }
 
+#checkVolgorde {
+  background-color: #E6D7C3 ;
+  height: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100px;
+  display: flex;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
 
+#checkVolgorde:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}

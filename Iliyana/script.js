@@ -74,6 +74,7 @@ let gerechten = [
 console.log(gerechten);
 
 let currentLevel = 1;
+let currentGerechtIndex = 0;
 let currentGerecht;
 let currentStapIndex = 0;
 let lives = 3;
@@ -87,14 +88,18 @@ function Play() {
     waitForPlayerToChooseVolgorde();  
 }
 
+
 function selectGerecht() {
+    let gerechtenVanDitLevel = [];
     for (let index = 0; index < gerechten.length; index++) {
-        if (gerechten[index].level === currentLevel) {
-             currentGerecht = gerechten[index];
-             return;
-        }
+    if (gerechten[index].level === currentLevel) {
+        gerechtenVanDitLevel.push(gerechten[index])
     }
 }
+
+    currentGerecht = gerechtenVanDitLevel[currentGerechtIndex];
+}
+
 
 function showGerechtInHtml() {
 const naamElement = document.querySelector("#meal-name");
@@ -154,13 +159,36 @@ function checkGekozenVolgorde() {
         lives--;
     }
 
-    UpdateScoreOrLives();
+    UpdateScoreOrLivesAndLevel();
     CheckLevelComplete();
+
+    currentGerechtIndex++;
+
+    let aantalGerechtenInLevel = 0;
+
+    for (let index = 0; index < gerechten.length; index++) {
+    if (gerechten[index].level === currentLevel) {
+        aantalGerechtenInLevel++;
+    }
+    }
+
+     if (currentGerechtIndex >= aantalGerechtenInLevel) {
+         currentLevel++;
+         currentGerechtIndex = 0;
 }
 
-function UpdateScoreOrLives() {
-    document.querySelector("#score").innerText = score;
-    document.querySelector("#lives").innerText = lives;
+Play();
 }
+
+function UpdateScoreOrLivesAndLevel() {
+    const scoreElement = document.querySelector("#score");
+    scoreElement.textContent = score;
+    const livesElement = document.querySelector("#lives");
+    livesElement.textContent = lives;
+}
+
+function CheckLevelComplete() {
+}
+
 
 Play();
