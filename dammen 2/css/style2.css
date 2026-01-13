@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* background: #520707; */
+    background-image: url(../img/shared\ image.jpg);
+    background-size: cover;
+    margin: 30px;
+}
+/* .button{grid-area: "btn";}
+.i{ grid-area: "i";}
+.tellers{grid-area: "tel";}
+/* .board{ grid-area: "board";} */
+/* .a{ grid-area: "a";}
+.img{grid-area: "img";} */ 
+/* .container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 300px 300px;
+    grid-area: 
+        "btn" "img" "i",
+        "tel" "img";
+} */
+
+.button {
+    background-color: rgba(80, 3, 3, 0.92);
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    font-size: 30px;
+    margin: 20px;
+
+    /* margin: 20px; */
+}
+
+.i {
+    margin: 10px;
+    font-size: 15px;
+    width: 20px;
+    height: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    justify-self: end;
+}
+
+.bI {
+    background-color: brown;
+    margin-right: 50px;
+    height: 30px;
+    font-size: 15px;
+    width: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.board {
+margin-top: 27px;
+    width: 540px;
+    height: 530px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    margin-left: 35.5%;
+}
+.img{
+    height: 620px;
+    width: 630px;
+    margin-left: 33%;
+}
+.img, .board{
+    position:absolute;
+}
+.square {
+    width: 60px;
+    height: 60px;
+    /* background: transparent; */
+    position: relative;
+}
+.piece.white{
+    background-image: url(../img/light-piece.jpg);
+}
+.piece.black{
+    background-image: url(../img/dark-piece.jpg);
+}
+
+.piece {
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    /* object-fit: contain; */
+    /* display: block; */
+    margin: auto;
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.piece.king{
+    margin-top: 0;
+    width: 70px;
+    height: 90px;
+}
+.selected{
+    outline: 2px solid rgb(91, 11, 11);
+}
+.game-status{
+    margin-top: 20px;
+    font-size: 1.5em;
+    background-color: rgba(107, 107, 107, 0.852);
+    color: rgba(255, 255, 255, 0.733);
+    width: 100px;
+}
+.restart-btn{
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    color: rgb(255, 0, 0);
+    background-color: rgb(24, 5, 43);
+}
+.tellers {
+    background-color: rgba(61, 14, 14, 0.692);
+    color: rgba(255, 58, 58, 0.733);
+    font-size: 20px;
+    width: 200px;
+}
+footer{
+    margin: 500px;
+}
