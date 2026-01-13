@@ -1,5 +1,5 @@
 let gerechten = [
-    {
+     {
         naam: "Fruitbowl",
         level: 1,
         image: "img/fruitbowl.png",
@@ -122,12 +122,14 @@ function showStappen () {
         stapElement.addEventListener("click", () => {
         console.log("Geklikt:", stap);
         gekozenVolgorde.push(stap);
+        stapElement.disabled = true;
     })
       stappenContainer.append(stapElement);
     });
 }
 
 const klaarBtn = document.querySelector("#checkVolgorde");
+const restartBtn = document.querySelector(".restart")
 
 klaarBtn.addEventListener("click", () => {
     if (gekozenVolgorde.length === currentGerecht.stappen.length) {
@@ -159,6 +161,17 @@ function checkGekozenVolgorde() {
         lives--;
     }
 
+if (lives === 0) {
+    const popup = document.querySelector("#gameOverPopup");
+    popup.classList.remove("hidden");
+
+    setTimeout(() => {
+        window.location.href = "youfailed.html";
+    }, 2000);
+
+    return;
+}
+
     UpdateScoreOrLivesAndLevel();
     CheckLevelComplete();
 
@@ -177,6 +190,7 @@ function checkGekozenVolgorde() {
          currentGerechtIndex = 0;
 }
 
+UpdateScoreOrLivesAndLevel();
 Play();
 }
 
@@ -185,6 +199,8 @@ function UpdateScoreOrLivesAndLevel() {
     scoreElement.textContent = score;
     const livesElement = document.querySelector("#lives");
     livesElement.textContent = lives;
+    const levelElement = document.querySelector("#level");
+    levelElement.textContent = currentLevel;
 }
 
 function CheckLevelComplete() {
