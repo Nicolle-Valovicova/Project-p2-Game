@@ -3,8 +3,13 @@ const gameStatus = document.querySelector(".game-status");
 const restartButton = document.querySelector(".restart-btn");
 const whiteScoreElement = document.querySelector(".scoreW");
 const blackScoreElement = document.querySelector(".scoreB");
+const eenTerugButton = document.querySelector(".eenTerug");
+const redoButton = document.querySelector(".redo-btn");
 const rows = 8;
 const cols = 8;
+let undoStack = [];
+let redoStack = [];
+let lastGameStatus = null;
 let whitescore = 0;
 let blackscore = 0;
 let selectedPiece = null;
@@ -124,6 +129,7 @@ function isDiagonalPathClear(fromRow, fromCol, toRow, toCol) {
     return true;
 }
 function movePiece(piece, row, col) {
+    saveGameStatus();
     const targetSquare = document.querySelector(`[data-row='${row}'][data-col='${col}']`);
     const captures = getAvailableCapturesForPiece(piece);
     const chosen = captures.find(c => c.row === row && c.col === col);
@@ -183,35 +189,44 @@ function getAvailableCapturesForPiece(piece) {
     const player = piece.classList.contains('white') ? 'white' : 'black';
     const isKing = piece.classList.contains('king');
 
-    // const directions = isKing
-    // ? [
-    //     { r: 1, c: 1},
-    //     {r: 1, c: -1},
-    //     {r: -1, c: 1},
-    //     {r: -1, c: -1}
-    // ]
-    // : player === 'white'
-    // ? [
-    //     { r: -1, c: 1 },
-    //     { r: -1, c: -1 }
-    // ]
-    // : [
-    //     { r: 1, c: 1 },
-    //     { r: 1, c: -1 }
-    // ];
     const directions = [
-        { r: 1, c: 1},
-        {r: 1, c: -1},
-        {r: -1, c: 1},
-        {r: -1, c: -1}
+        { r: 1, c: 1 },
+        { r: 1, c: -1 },
+        { r: -1, c: 1 },
+        { r: -1, c: -1 }
     ];
     let captures = [];
+    if (!isKing) {
+        const validDirs = player === 'white'
+            ? [{ r: -1, c: 1 }, { r: -1, c: -1 }]
+            : [{ r: 1, c: 1 }, { r: 1, c: -1 }];
+        validDirs.forEach(dir => {
+            const enemyRow = row + dir.r;
+            const enemyCol = col + dir.c;
+            const landRow = row + dir.r * 2;
+            const landCol = col + dir.c * 2;
+            if (landRow >= 0 && landRow < 8 && landCol >= 0 && landCol < 8) {
+                const enemySquare = document.querySelector(`[data-row='${enemyRow}'][data-col='${enemyCol}']`);
+                const landSquare = document.querySelector(`[data-row='${landRow}'][data-col='${landCol}']`);
+
+                if (enemySquare.firstChild && !enemySquare.firstChild.classList.contains(player) && !landSquare.firstChild) {
+                    captures.push({
+                        piece,
+                        captureRow: enemyRow,
+                        captureCol: enemyCol,
+                        row: landRow,
+                        col: landCol
+                    });
+                }
+            }
+        });
+        return captures;
+    }
 
     directions.forEach(dir => {
         let r = row + dir.r;
         let c = col + dir.c;
         let enemy = null;
-
         while (r >= 0 && r < 8 && c >= 0 && c < 8) {
             const square = document.querySelector(`[data-row='${r}'][data-col='${c}']`);
 
@@ -220,7 +235,6 @@ function getAvailableCapturesForPiece(piece) {
                 c += dir.c;
                 continue;
             }
-
             if (square.firstChild?.classList.contains(player)) break;
 
             if (square.firstChild && !square.firstChild.classList.contains(player)) {
@@ -230,6 +244,7 @@ function getAvailableCapturesForPiece(piece) {
                 c += dir.c;
                 continue;
             }
+
             if (!square.firstChild && enemy) {
                 captures.push({
                     piece,
@@ -245,6 +260,77 @@ function getAvailableCapturesForPiece(piece) {
     });
     return captures;
 }
+
+function saveGameStatus() {
+    undoStack.push({
+        boardHTML: board.innerHTML,
+        currentPlayer,
+        whitePieces,
+        blackPieces,
+        whitescore,
+        blackscore
+    });
+    redoStack = [];
+    updateUndoRedoButtons();
+}
+
+function restoreGameStatus(state) {
+    if (!state) return;
+
+    board.innerHTML = state.boardHTML;
+    currentPlayer = state.currentPlayer;
+    whitePieces = state.whitePieces;
+    blackPieces = state.blackPieces;
+    whitescore = state.whitescore;
+    blackscore = state.blackscore;
+
+    whiteScoreElement.innerText = `White: ${whitescore}`;
+    blackScoreElement.innerText = `Black: ${blackscore}`;
+    selectedPiece = null;
+    updateGameStatus();
+
+    document.querySelectorAll('.square').forEach(square => {
+        square.addEventListener('click', handleSquareClick);
+    });
+    updateUndoRedoButtons();
+}
+
+function undoMove(){
+    if(undoStack.length === 0) return;
+
+    const lastState = undoStack.pop();
+    redoStack.push({
+        boardHTML: board.innerHTML,
+        currentPlayer,
+        whitePieces,
+        blackPieces,
+        whitescore,
+        blackscore
+    });
+    restoreGameStatus(lastState);
+}
+
+function redoMove(){
+    if( redoStack.length === 0) return;
+
+    const nextState = redoStack.pop();
+    undoStack.push({
+        boardHTML:board.innerHTML,
+        currentPlayer,
+        whitePieces,
+        blackPieces,
+        whitescore,
+        blackscore
+    });
+    restoreGameStatus(nextState);
+}
+
+function updateUndoRedoButtons() {
+    eenTerugButton.disabled = undoStack.length === 0;
+    redoButton.disabled = redoStack.length === 0;
+}
+eenTerugButton.addEventListener('click', undoMove);
+redoButton.addEventListener('click', redoMove);
 function checkWinCondition() {
     if (whitePieces === 0) {
         gameStatus.innerText = "Black wins!";
@@ -279,18 +365,22 @@ function endGame() {
 }
 
 function restartGame() {
+    updateUndoRedoButtons();
+    undoStack = [];
+    redoStack = [];
     whitePieces = 12;
     blackPieces = 12;
     selectedPiece = null;
     currentPlayer = 'white';
     gameStatus.innerText = '';
     restartButton.style.display = 'none';
-    createBoard();
-    updateGameStatus();
+    board.style.pointerEvents = 'auto';
     whitescore = 0;
     blackscore = 0;
     whiteScoreElement.innerText = `White: ${whitescore}`;
     blackScoreElement.innerText = `Black: ${blackscore}`;
+    createBoard();
+    updateGameStatus();
 }
 
 restartButton.addEventListener('click', restartGame);

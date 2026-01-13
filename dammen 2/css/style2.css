@@ -1,24 +1,9 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    /* background: #520707; */
     background-image: url(../img/shared\ image.jpg);
     background-size: cover;
     margin: 30px;
 }
-/* .button{grid-area: "btn";}
-.i{ grid-area: "i";}
-.tellers{grid-area: "tel";}
-/* .board{ grid-area: "board";} */
-/* .a{ grid-area: "a";}
-.img{grid-area: "img";} */ 
-/* .container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 300px 300px;
-    grid-area: 
-        "btn" "img" "i",
-        "tel" "img";
-} */
 
 .button {
     background-color: rgba(80, 3, 3, 0.92);
@@ -27,7 +12,6 @@ body {
     font-size: 30px;
     margin: 20px;
 
-    /* margin: 20px; */
 }
 
 .i {
@@ -47,20 +31,31 @@ body {
     width: 30px;
     font-family: 'Times New Roman', Times, serif;
 }
-
+.eenTerug{
+    background-color: brown;
+    border-radius: 5px;
+    width: 60px;
+    height: 35px;
+}
+.redo-btn{
+    background-color: brown;
+    border-radius: 5px;
+    width: 60px;
+    height: 35px;
+}
 .board {
-margin-top: 27px;
-    width: 540px;
+margin-top: 37px;
+    width: 541px;
     height: 530px;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    margin-left: 35.5%;
+    margin-left: 35.7%;
 }
 .img{
     height: 620px;
-    width: 630px;
-    margin-left: 33%;
+    width: 610px;
+    margin-left: 33.5%;
 }
 .img, .board{
     position:absolute;
@@ -98,17 +93,18 @@ margin-top: 27px;
 .piece.king{
     margin-top: 0;
     width: 70px;
-    height: 90px;
+    height: 80px;
 }
 .selected{
-    outline: 2px solid rgb(91, 11, 11);
+    outline: 2px solid rgb(255, 63, 63);
+    border-radius: 7px;
 }
 .game-status{
     margin-top: 20px;
     font-size: 1.5em;
     background-color: rgba(107, 107, 107, 0.852);
     color: rgba(255, 255, 255, 0.733);
-    width: 100px;
+    width: 150px;
 }
 .restart-btn{
     margin-top: 10px;
