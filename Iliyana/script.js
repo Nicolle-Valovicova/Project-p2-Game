@@ -30,9 +30,9 @@ let gerechten = [
     {
         naam: "Spaghetti bolognese",
         level: 2,
-        image: "img/spaghetti.png",
-        stappen: ["Spaghetti op bord", "Tomatensaus toevoegen", "Saus over spaghetti", "Kaas toevoegen", "Serveren"],
-        goedeVolgorde: ["Spaghetti op bord", "Tomatensaus toevoegen", "Saus over spaghetti", "Kaas toevoegen", "Serveren"]
+        image: "img/pasta.png",
+        stappen: ["Spaghetti op bord", "Tomatensaus toevoegen", "Gehaktballen op de spaghetti", "Kaas toevoegen", "Serveren"],
+        goedeVolgorde: ["Spaghetti op bord", "Tomatensaus toevoegen", "Gehaktballen op de spaghetti", "Kaas toevoegen", "Serveren"]
     },
     {
         naam: "Burrito",
@@ -188,6 +188,8 @@ if (lives === 0) {
      if (currentGerechtIndex >= aantalGerechtenInLevel) {
          currentLevel++;
          currentGerechtIndex = 0;
+         lives = 3;
+         UpdateScoreOrLivesAndLevel();
 }
 
 UpdateScoreOrLivesAndLevel();
