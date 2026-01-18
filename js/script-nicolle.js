@@ -1,6 +1,6 @@
-const startScreen = document.querySelector("#start-screen");
-const menuScreen = document.querySelector("#menu-screen");
-const gameIndex = document.querySelector("#game-index");
+const startScreen = document.querySelector(".start-wrapper");
+const menuScreen = document.querySelector(".menu-wrapper");
+const gameIndex = document.querySelector(".game-wrapper");
 const winScreen = document.querySelector(".win-screen");
 const loseScreen = document.querySelector(".lose-screen");
 let menuPlayBtn = document.querySelector("#menuPlayBtn");
@@ -8,15 +8,16 @@ let exitBtn = document.querySelector(".exit");
 let loadingbar = new ldBar("#bar");
 let startBtn = document.querySelector("#startBtn");
 function hidePages() {
-  startScreen.classList.add("notVisible");
-  menuScreen.classList.add("notVisible");
-  gameIndex.classList.add("notVisible");
-  winScreen.classList.add("notVisible");
-  loseScreen.classList.add("notVisible");
+  startScreen.classList.remove("positiveOpacitied");
+  menuScreen.classList.remove("positiveOpacitied");
+  gameIndex.classList.remove("positiveOpacitied");
+  winScreen.classList.remove("positiveOpacitied");
+  loseScreen.classList.remove("positiveOpacitied");
+
 }
 
 hidePages();
-menuScreen.classList.remove("notVisible");
+startScreen.classList.add("positiveOpacitied");
 
 let flockAppliedOnce = false;
 menuPlayBtn.addEventListener("click", () => {
@@ -24,9 +25,11 @@ menuPlayBtn.addEventListener("click", () => {
   if (!flockAppliedOnce) {
     applyFlockSetting();
     flockAppliedOnce = true;
-    document.querySelectorAll(".flockRestricted").forEach((set) =>{ set.classList.add("notClickable")}) 
+    document.querySelectorAll(".flockRestricted").forEach((set) => {
+      set.classList.add("notClickable");
+    });
   }
-  gameIndex.classList.remove("notVisible");
+  gameIndex.classList.add("positiveOpacitied");
   showParticles();
 });
 exitBtn.addEventListener("click", () => {
@@ -35,7 +38,11 @@ exitBtn.addEventListener("click", () => {
 });
 startBtn.addEventListener("click", () => {
   hidePages();
-  menuScreen.classList.remove("notVisible");
+  menuScreen.classList.remove("notOpacitied");
+  setTimeout(() => {
+    menuScreen.classList.add("positiveOpacitied");
+    
+  }, 1000)
 });
 // script for start page
 let crowfactOutput = document.querySelector("#crowfactOutput");
@@ -68,7 +75,8 @@ window.onload = (event) => {
       clearInterval(interval);
       startBtn.classList.remove("notVisible");
     }
-  }, 40);
+  }, 10);
+  // ! CHANGE ABCK TO 40
 }; // script for menu page
 let attunementMenu = document.querySelector("#options");
 let attunement = document.querySelector(".attunement");
@@ -177,7 +185,7 @@ settingSliders.forEach((slider) => {
 // function for choosign flock
 function applyFlockSetting() {
   if (settings.flock === "blackmurders") {
-    startingPlayer = "black"; 
+    startingPlayer = "black";
     playerTurn.textContent = "black";
   } else {
     startingPlayer = "white";
@@ -185,7 +193,7 @@ function applyFlockSetting() {
     reverseIds();
   }
 }
-  applyFlockSetting();
+applyFlockSetting();
 
 // function for playing music
 function playBgMusic() {
@@ -199,11 +207,11 @@ function playBgMusic() {
   }
 }
 playBgMusic();
-// function for highlighting legal moves 
-function showLegalMoves(){
-  if (settings.legalMoves === "on"){
+// function for highlighting legal moves
+function showLegalMoves() {
+  if (settings.legalMoves === "on") {
     highlightValidMoves();
-  } else{
+  } else {
     clearHighlights();
   }
 }
@@ -234,14 +242,16 @@ function openNav() {
   gameSidebar.style.width = "300px";
   arrowBack.style.display = "block";
   arrowForward.style.display = "none";
-  document.querySelector(".sideInformation").style.display = "block";
+  setTimeout(() => {
+    document.querySelector(".sideInformation").style.opacity = "1";
+  }, 150);
 }
 
 function closeNav() {
   gameSidebar.style.width = "150px";
   arrowForward.style.display = "block";
   arrowBack.style.display = "none";
-  document.querySelector(".sideInformation").style.display = "none";
+  document.querySelector(".sideInformation").style.opacity = "0";
 }
 
 // win/lose screen script
@@ -458,9 +468,9 @@ document.querySelector("#whiteKing").addEventListener("click", () => {
 //   console.log(clickValueW4);
 // });
 
-// easter egg secret lore page 
+// easter egg secret lore page
 
 // TODO Code for cool transition for betwheen pages zoom in fade cool stuff
-// TODO clean up files that arent used
+// TODO make everything smooth use opacity 0 / 1
 // TODO: when time left: easter egg whisper, add more sfx to gameplay coin cool ping
 // ! dont forget to change the game from starting at menuscreen to starting at startscreen
