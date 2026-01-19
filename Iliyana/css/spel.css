@@ -7,8 +7,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-
+  overflow-y: hidden;
 }
+
 
 .game {
 background: #f3c99a;
@@ -97,11 +98,15 @@ background: #f3c99a;
 .buttons button:hover {
     transform: scale(1.05);
   transition: all 0.3s ease;
-}
-
-.buttons button:hover {
   opacity: 0.8;
 }
+
+
+.buttons button:active {
+  scale: 0.95;
+}
+
+
 
 .mealTitel {
   background: white;
@@ -148,8 +153,23 @@ background: #f3c99a;
 }
 
 
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}
 
 .hidden {
     display: none;
 }
+

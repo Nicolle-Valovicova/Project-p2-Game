@@ -1,16 +1,22 @@
-* {
+body {
   margin: 0px;
   padding: 0px;
+  background-size: cover;
+  background-position: center;
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20230407/pngtree-kitchen-cartoon-illustration-background-image_2159895.jpg);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .rules {
-  background: rgb(219, 147, 97);
-  width: 85%;
+  background-color: rgba(255, 200, 150);
+  width: 500px;
   max-width: 600px;
   padding: 30px 40px;
   border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -20,16 +26,7 @@
   text-align: center;
 }
 
-body {
- background-size: cover;
-  background-position: center;
-  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20230407/pngtree-kitchen-cartoon-illustration-background-image_2159895.jpg);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
+
 
 button {
   cursor: pointer;

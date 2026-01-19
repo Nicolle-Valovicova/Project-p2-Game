@@ -1,73 +1,73 @@
 let gerechten = [
-     {
+    {
         naam: "Fruitbowl",
         level: 1,
         image: "img/fruitbowl.png",
-        stappen: ["Kom met yoghurt", "Fruit snijden", "Fruit in de kom doen", "Toppings toevoegen", "Serveren"],
-        goedeVolgorde: ["Kom met yoghurt", "Fruit snijden", "Fruit in de kom doen", "Toppings toevoegen", "Serveren"]
+        stappen: ["Bowl with yogurt", "Cut fruit", "Put fruit in bowl", "Add toppings", "Serve"],
+        goedeVolgorde: ["Bowl with yogurt", "Cut fruit", "Put fruit in bowl", "Add toppings", "Serve"]
     },
     {
         naam: "Pizza Margherita",
         level: 1,
         image: "img/pizza.png",
-        stappen: ["Deeg uitrollen", "Tomatensaus toevoegen", "Mozzarella erop", "Basilicum toevoegen", "Pizza bakken", "Serveren"],
-        goedeVolgorde: ["Deeg uitrollen", "Tomatensaus toevoegen", "Mozzarella erop", "Basilicum toevoegen", "Pizza bakken", "Serveren"]
+        stappen: ["Roll out dough", "Add tomato sauce", "Add mozzarella", "Add basil", "Bake pizza", "Serve"],
+        goedeVolgorde: ["Roll out dough", "Add tomato sauce", "Add mozzarella", "Add basil", "Bake pizza", "Serve"]
     },
     {
         naam: "Cheeseburger",
         level: 1,
         image: "img/cheeseburger.png",
-        stappen: ["Onderkant van het broodje pakken", "Burger erop", "Kaas op de burger", "Sla + tomaat toevoegen", "Bovenkant van het broodje erop", "Serveren"],
-        goedeVolgorde: ["Onderkant van het broodje pakken", "Burger erop", "Kaas op de burger", "Sla + tomaat toevoegen", "Bovenkant van het broodje erop", "Serveren"]
+        stappen: ["Take bottom bun", "Add burger", "Add cheese on burger", "Add lettuce & tomato", "Add top bun", "Serve"],
+        goedeVolgorde: ["Take bottom bun", "Add burger", "Add cheese on burger", "Add lettuce & tomato", "Add top bun", "Serve"]
     },
     {
         naam: "Poke Bowl",
         level: 2,
         image: "img/pokebowl.png",
-        stappen: ["Kom met rijst", "Protein toevoegen", "Groentes toevoegen", "Avocado toevoegen", "Saus toevoegen", "Serveren"],
-        goedeVolgorde: ["Kom met rijst", "Protein toevoegen", "Groentes toevoegen", "Avocado toevoegen", "Saus toevoegen", "Serveren"]
+        stappen: ["Bowl with rice", "Add protein", "Add vegetables", "Add avocado", "Add sauce", "Serve"],
+        goedeVolgorde: ["Bowl with rice", "Add protein", "Add vegetables", "Add avocado", "Add sauce", "Serve"]
     },
     {
         naam: "Spaghetti bolognese",
         level: 2,
         image: "img/pasta.png",
-        stappen: ["Spaghetti op bord", "Tomatensaus toevoegen", "Gehaktballen op de spaghetti", "Kaas toevoegen", "Serveren"],
-        goedeVolgorde: ["Spaghetti op bord", "Tomatensaus toevoegen", "Gehaktballen op de spaghetti", "Kaas toevoegen", "Serveren"]
+        stappen: ["Spaghetti on plate", "Add tomato sauce", "Add meatballs on spaghetti", "Add cheese", "Serve"],
+        goedeVolgorde: ["Spaghetti on plate", "Add tomato sauce", "Add meatballs on spaghetti", "Add cheese", "Serve"]
     },
     {
         naam: "Burrito",
         level: 2,
         image: "img/burrito.png",
-        stappen: ["Tortilla neerleggen", "Rijst toevoegen", "Vlees/bonen toevoegen", "Groentes toevoegen", "Kaas + saus toevoegen", "Burrito oprollen"],
-        goedeVolgorde: ["Tortilla neerleggen", "Rijst toevoegen", "Vlees/bonen toevoegen", "Groentes toevoegen", "Kaas + saus toevoegen", "Burrito oprollen"]
+        stappen: ["Lay down tortilla", "Add rice", "Add meat/beans", "Add vegetables", "Add cheese & sauce", "Roll burrito"],
+        goedeVolgorde: ["Lay down tortilla", "Add rice", "Add meat/beans", "Add vegetables", "Add cheese & sauce", "Roll burrito"]
     },
     {
         naam: "Sushi roll",
         level: 3,
         image: "img/sushi.png",
-        stappen: ["Nori neerleggen", "Rijst op nori", "Vulling toevoegen", "Sushi oprollen", "Rol snijden", "Stukjes neerleggen", "Serveren"],
-        goedeVolgorde: ["Nori neerleggen", "Rijst op nori", "Vulling toevoegen", "Sushi oprollen", "Rol snijden", "Stukjes neerleggen", "Serveren"]
+        stappen: ["Lay nori", "Add rice on nori", "Add filling", "Roll sushi", "Cut roll", "Place pieces", "Serve"],
+        goedeVolgorde: ["Lay nori", "Add rice on nori", "Add filling", "Roll sushi", "Cut roll", "Place pieces", "Serve"]
     },
-        {
+    {
         naam: "Ramen",
         level: 3,
         image: "img/ramen.png",
-        stappen: ["Bouillon in kom", "Noedels toevoegen", "Groentes toevoegen", "Protein toevoegen", "Ei toevoegen", "Toppings toevoegen","Serveren"],
-        goedeVolgorde: ["Bouillon in kom", "Noedels toevoegen", "Groentes toevoegen", "Protein toevoegen", "Ei toevoegen", "Toppings toevoegen","Serveren"]
+        stappen: ["Pour broth in bowl", "Add noodles", "Add vegetables", "Add protein", "Add egg", "Add toppings", "Serve"],
+        goedeVolgorde: ["Pour broth in bowl", "Add noodles", "Add vegetables", "Add protein", "Add egg", "Add toppings", "Serve"]
     },
     {
         naam: "Lasagne",
         level: 3,
         image: "img/lasagne.png",
-        stappen: ["Eerste laag saus + bladen", "Tweede laag saus + bladen", "Derde laag saus + bladen", "Bechamelsaus toevoegen", "Kaas toevoegen","In de oven", "Stuk snijden", "Serveren"],
-        goedeVolgorde: ["Eerste laag saus + bladen", "Tweede laag saus + bladen", "Derde laag saus + bladen", "Bechamelsaus toevoegen", "Kaas toevoegen","In de oven", "Stuk snijden", "Serveren"]
+        stappen: ["First layer sauce & sheets", "Second layer sauce & sheets", "Third layer sauce & sheets", "Add béchamel sauce", "Add cheese", "Bake in oven", "Cut piece", "Serve"],
+        goedeVolgorde: ["First layer sauce & sheets", "Second layer sauce & sheets", "Third layer sauce & sheets", "Add béchamel sauce", "Add cheese", "Bake in oven", "Cut piece", "Serve"]
     },
     {
         naam: "Paella",
         level: 3,
         image: "img/paella.png",
-        stappen: ["Rijst in pan", "Bouillon toevoegen", "Kip/seafood toevoegen", "Groentes toevoegen", "Kruiden toevoegen", "Garnalen bovenop", "Citroen toevoegen", "Serveren"],
-        goedeVolgorde: ["Rijst in pan", "Bouillon toevoegen", "Kip/seafood toevoegen", "Groentes toevoegen", "Kruiden toevoegen", "Garnalen bovenop", "Citroen toevoegen", "Serveren"]
+        stappen: ["Rice in pan", "Add broth", "Add chicken/seafood", "Add vegetables", "Add spices", "Place shrimp on top", "Add lemon", "Serve"],
+        goedeVolgorde: ["Rice in pan", "Add broth", "Add chicken/seafood", "Add vegetables", "Add spices", "Place shrimp on top", "Add lemon", "Serve"]
     },
 ]
 
@@ -79,6 +79,7 @@ let currentGerecht;
 let currentStapIndex = 0;
 let lives = 3;
 let score = 0;
+let lostLife = false;
 
 
 function Play() {
@@ -118,11 +119,13 @@ function showStappen () {
     stappen.forEach(stap => {
         const stapElement = document.createElement("button");
         stapElement.innerHTML = stap;
-        stapElement.classList.add("stap");
+       // stapElement.classList.add("stap");
         stapElement.addEventListener("click", () => {
         console.log("Geklikt:", stap);
         gekozenVolgorde.push(stap);
         stapElement.disabled = true;
+        stapElement.style.background="#f2b372";
+        stapElement.style.border="2px solid #fba64d"
     })
       stappenContainer.append(stapElement);
     });
@@ -143,6 +146,7 @@ function waitForPlayerToChooseVolgorde() {
     gekozenVolgorde = [];
 }
 
+
 function checkGekozenVolgorde() {
     let isCorrect = true;
 
@@ -154,20 +158,23 @@ function checkGekozenVolgorde() {
     }
 
     if (isCorrect) {
-        alert("Nice! Je hebt de volgorde goed!");
+        alert("Nice! You got it right!");
         score++;
     } else {
-        alert("Jammer! Je hebt de volgorde fout.");
+        alert("You got it wrong.");
         lives--;
+        if (lives <= 0) {
+            lostLife = true;
+    }
     }
 
 if (lives === 0) {
-    const popup = document.querySelector("#gameOverPopup");
+    const popup = document.querySelector("#popup");
     popup.classList.remove("hidden");
 
     setTimeout(() => {
         window.location.href = "youfailed.html";
-    }, 2000);
+    }, 750);
 
     return;
 }
@@ -191,6 +198,16 @@ if (lives === 0) {
          lives = 3;
          UpdateScoreOrLivesAndLevel();
 }
+     if (currentLevel > 3 && !lostLife) {
+    // const popup = document.querySelector("#popup");
+    // popup.classList.remove("hidden");
+
+    setTimeout(() => {
+        window.location.href = "youwon.html";
+    }, 750);
+
+    return;
+     }
 
 UpdateScoreOrLivesAndLevel();
 Play();
