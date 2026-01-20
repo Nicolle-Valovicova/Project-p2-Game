@@ -121,8 +121,9 @@
         </p>
       </div>
     </div>
-    <div class="menu-wrapper notOpacitied trans">
+    <div class="menu-wrapper notOpacitied trans positiveOpacitied">
       <div id="menu-screen" class="menu-screen">
+        <div class="menu-stuff-wrapped">
         <h1>The Gambit Hall</h1>
         <hr id="firstHr" />
         <div class="menu-items">
@@ -145,6 +146,7 @@
             </h3>
             <hr />
           </div>
+        </div>
         </div>
         <!-- attunament container (settings menu) -->
         <div class="attunement">
@@ -335,7 +337,7 @@
             src="audio/JackdawSfx.mp3"
             id="click-jackdaw"
             preload="auto"
-          ></audio>
+          ></audio> 
           <div id="hendrik"></div>
         </div>
         <!-- menuscreen parallax -->
@@ -360,7 +362,7 @@
     </div>
     <!-- html for game screen / index -->
     <div class="game-wrapper notOpacitied trans">
-      <div id="game-index" class="game-index notVisible">
+      <div id="game-index" class="game-index ">
         <div id="particles-js"></div>
         <video
           id="coinAnimation"
@@ -371,6 +373,7 @@
           <img src="imgs/animation/forestbg.jpeg" alt="" />
         </div>
         <!-- sidebar for game -->
+         <div class="game-stuff-wrapped">
         <div class="gameSidebar">
           <div class="sidebarNav">
             <button id="quit" class="quit" data-btn-sound="uiBtn">
@@ -475,10 +478,11 @@
         <div class="board-align">
           <div class="board"></div>
         </div>
+        </div>
       </div>
     </div>
     <!-- html for win/ lose screem -->
-    <div class="win-screen">
+    <div class="win-screen notOpacitied trans">
       <div class="winBg"></div>
       <div class="win-container">
         <h2 class="winText"></h2>
@@ -492,7 +496,7 @@
         </div>
       </div>
     </div>
-    <div class="lose-screen">
+    <div class="lose-screen" style="display: none;">
       <div class="loseBg"></div>
       <div class="lose-container">
         <h2 class="loseText"></h2>

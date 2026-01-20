@@ -16,7 +16,6 @@
 }
 
 :root {
-  --temporary-color: #212121;
   --bg-interfaces: #0000005c;
   --font-color: aliceblue;
   --standard-radius: 15px;
@@ -45,6 +44,7 @@
 }
 .positiveOpacitied {
   opacity: 1;
+  display: block;
   visibility: visible;
   pointer-events: auto;
 }
@@ -55,7 +55,6 @@
 body {
   overflow: hidden;
   background-color: black;
-  background-color: var(--temporary-color);
 }
 .glass {
   background: rgba(17, 17, 17, 0.1);
@@ -76,9 +75,6 @@ body {
   filter: invert(100%);
   pointer-events: none;
   cursor: not-allowed;
-}
-.blurrGame {
-  filter: blur(7px);
 }
 
 /* css fot the start screen */
@@ -113,12 +109,17 @@ body {
   height: 100vh;
   top: 0;
   z-index: -9999;
+    inset: 0;
+  pointer-events: none;
   overflow: hidden;
   list-style: none;
   padding: 0;
 }
 #menuScene {
-  margin-left: -30px;
+   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
 }
 .layer img {
   margin-left: -100px;
@@ -144,6 +145,12 @@ body {
 .menu-screen {
   color: var(--font-color);
   padding: 30px;
+    width: 100vw;
+  height: 100vh;
+}
+.menu-stuff-wrapped{
+  position: absolute;
+  top: 0;
 }
 .menu-screen h1 {
   font-size: 5rem;
@@ -243,6 +250,9 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  transition: 0.3s ease;
+    filter: drop-shadow(0 18px 50px rgb(0, 0, 0));
+
   transform: translate(250px, 100px);
   display: none;
 }
@@ -308,6 +318,11 @@ body {
   filter: drop-shadow(3px 3px 4px #4f7d81);
 }
 /* css for the game itself */
+.game-stuff-wrapped{
+position: absolute;
+top: 0;
+
+}
 .inGameBG {
   position: absolute;
   top: 0;
@@ -334,11 +349,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform: translateX(500px);
 }
 
 .board {
   display: grid;
-  width: 800px;
+    width: 800px;
   box-shadow:
     5px 5px 30px rgba(2, 232, 248, 0.135),
     -5px -5px 30px rgba(195, 2, 243, 0.258);
@@ -477,9 +493,13 @@ body {
   height: 100%; */
 .win-screen,
 .lose-screen {
+  background-image: url(../imgs/feedackArt/bird-breed_2cd7d88f-2438-4acf-9bd8-64c561ae55ae.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   color: var(--font-color);
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100vh;
   justify-content: center;

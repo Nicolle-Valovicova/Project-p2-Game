@@ -1,5 +1,5 @@
 const startScreen = document.querySelector(".start-wrapper");
-const menuScreen = document.querySelector(".menu-wrapper");
+const menuWrapper = document.querySelector(".menu-wrapper");
 const gameIndex = document.querySelector(".game-wrapper");
 const winScreen = document.querySelector(".win-screen");
 const loseScreen = document.querySelector(".lose-screen");
@@ -8,13 +8,12 @@ let exitBtn = document.querySelector(".exit");
 let loadingbar = new ldBar("#bar");
 let startBtn = document.querySelector("#startBtn");
 function hidePages() {
-  startScreen.classList.remove("positiveOpacitied");
-  menuScreen.classList.remove("positiveOpacitied");
-  gameIndex.classList.remove("positiveOpacitied");
-  winScreen.classList.remove("positiveOpacitied");
-  loseScreen.classList.remove("positiveOpacitied");
-
+  [startScreen, menuWrapper, gameIndex, winScreen, loseScreen].forEach(p => {
+    p.classList.remove("positiveOpacitied");
+    p.classList.add("notOpacitied");
+  });
 }
+
 
 hidePages();
 startScreen.classList.add("positiveOpacitied");
@@ -34,13 +33,13 @@ menuPlayBtn.addEventListener("click", () => {
 });
 exitBtn.addEventListener("click", () => {
   hidePages();
-  startScreen.classList.remove("notVisible");
+  startScreen.classList.add("positiveOpacitied");
 });
 startBtn.addEventListener("click", () => {
   hidePages();
-  menuScreen.classList.remove("notOpacitied");
   setTimeout(() => {
-    menuScreen.classList.add("positiveOpacitied");
+    menuWrapper.classList.remove("notOpacitied");
+    menuWrapper.classList.add("positiveOpacitied");
     
   }, 1000)
 });
@@ -75,7 +74,7 @@ window.onload = (event) => {
       clearInterval(interval);
       startBtn.classList.remove("notVisible");
     }
-  }, 10);
+  }, 5);
   // ! CHANGE ABCK TO 40
 }; // script for menu page
 let attunementMenu = document.querySelector("#options");
@@ -129,6 +128,7 @@ let settings = {
 let showRules = document.querySelector("#showRules");
 const rulesContainer = document.querySelector(".rules-container");
 const closeRules = document.querySelector("#closeRules");
+let menuScreen = document.querySelector("#menu-screen");
 showRules.addEventListener("click", () => {
   menuScreen.classList.add("blurrGame");
   rulesContainer.style.display = "block";
@@ -236,8 +236,11 @@ arrowBack.addEventListener("click", closeNav);
 arrowForward.addEventListener("click", openNav);
 quitbtn.addEventListener("click", () => {
   hidePages();
-  menuScreen.classList.remove("notVisible");
+  menuWrapper.classList.remove("notOpacitied");
+  menuWrapper.classList.add("positiveOpacitied");
 });
+
+
 function openNav() {
   gameSidebar.style.width = "300px";
   arrowBack.style.display = "block";
@@ -297,7 +300,7 @@ let feedbackIndex = 0;
 // * replaced with let a = 0;
 // function for showing win screen
 function showWinScreen() {
-  winScreen.classList.remove("notVisible");
+  winScreen.classList.add("positiveOpacitied");
   winText.textContent = winTitles[feedbackIndex];
   winQuite.textContent = winQuotes[feedbackIndex];
 
@@ -322,7 +325,7 @@ retryBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     // reset UI/pages
     hidePages();
-    gameIndex.classList.remove("notVisible");
+    gameIndex.classList.add("positiveOpacitied");
 
     // reset turn
     startingPlayer = "black";
@@ -360,7 +363,7 @@ retryBtn.forEach((btn) => {
 
 hubBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
-    menuScreen.classList.remove("notVisible");
+    menuWrapper.classList.add("positiveOpacitied");
   });
 });
 
@@ -473,4 +476,4 @@ document.querySelector("#whiteKing").addEventListener("click", () => {
 // TODO Code for cool transition for betwheen pages zoom in fade cool stuff
 // TODO make everything smooth use opacity 0 / 1
 // TODO: when time left: easter egg whisper, add more sfx to gameplay coin cool ping
-// ! dont forget to change the game from starting at menuscreen to starting at startscreen
+// ! dont forget to change the game from starting at menuWrapper to starting at startscreen
