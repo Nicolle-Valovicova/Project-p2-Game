@@ -2,23 +2,77 @@ body{
     background-image: url(../img/shared\ image.jpg);
     background-size:cover;
 }
+h1{
+    background-color: rgb(80, 3, 3);
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1.5px solid black;
+    text-align: center;
+    margin-left: 50px;
+    font-weight:bolder;
+}
+h1:hover{
+    background-color: rgba(174, 14, 14, 0.598);
+}
 .hoofdpagina{
     border: 1px solid black;
     border-radius: 15px;
     width:350px;
     height: 400px;
-    text-align:center;
+    /* text-align:center; */
     background-color: rgba(80, 3, 3, 0.92);
     color: rgb(0, 0, 0);
-    justify-self: center;
-    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+    margin-right: 140px;
 }
 .button{
-    background-color: rgba(80, 3, 3, 0.92);
+    background-color: rgba(61, 6, 6, 0.717);
     color: rgb(0, 0, 0);
     border-radius: 5px;
     font-size: 30px;
     margin: 20px;
+    margin-left: 120px;
+    border: 1.5px solid black;
+}
+#spelBtn{
+    width: 120px;
+}
+#rules-btn{
+    width: 120px;
+}
+.menu{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 150px;
+    position: relative;
+
+}
+.kies{
+    background-color: #520808c8;
+    width: 200px;
+    height: 200px;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    border-radius: 10px;
+    margin-left: -400px;
+    border: 1.5px solid black;
+}
+.kies-content{
+    height: 170px;
+}
+.wit, .zwaart{
+    width: 100px;
+    height: 40px;
+    background-color: #5c0d0dc8;
+    border-radius: 7px;
+    border: 1.5px solid black;
+    font-weight: 600;
+    margin-left: 50px;
 }
 .modal{
     display: none;
@@ -51,6 +105,38 @@ body{
     right: 15px;
     font-size: 28px;
     cursor: pointer;
+}
+.button:hover{
+    color: rgba(174, 14, 14, 0.598);
+}
+.wit{
+    background-color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+    margin-top: 40px;
+    color: white;
+}
+.wit:hover{
+    color: red;
+}
+.zwaart{
+    background-color:rgb(255, 255, 255);
+    margin-top: 10px;
+}
+.zwaart:hover{
+    color: red;
+}
+.close-kies{
+    position: absolute;
+    font-size: 28px;
+    cursor: pointer;
+    margin-bottom: 160px;
+    margin-left: 170px;
+}
+.close-kies:hover{
+    color: white;
+}
+.close:hover{
+    color: white;
 }
 body{
     background-color: rgba(127, 12, 12, 0.945);

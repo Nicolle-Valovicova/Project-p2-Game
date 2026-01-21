@@ -1,0 +1,49 @@
+.body1 {
+    background-image: url(../img/dammen-1.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* display: none; */
+
+}
+.geen-afbeelding{
+    background-image: none;
+    background-color: rgb(44, 3, 3);
+justify-self: center;
+}
+
+.start {
+    /* display: none; */
+    border-radius: 15px;
+    background-color: rgba(185, 78, 11, 0.82);
+    
+}
+
+#speelBtn {
+    background-color: rgba(185, 78, 11, 0.82);
+    border-radius: 8px;
+    font-size: 25px;
+    height: 30px;
+    margin-left: 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 200px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+p {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+img {
+    border-radius: 30px;
+    width: 500px;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}

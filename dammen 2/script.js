@@ -11,6 +11,9 @@ const rulesBtn = document.getElementById("rules-btn");
 const infoBtn = document.querySelector(".bI");
 const infoModal = document.getElementById("info-modal");
 const closeInfo = document.getElementById("close-info");
+const kies = document.querySelector(".kies");
+const spelBtn = document.getElementById("spelBtn");
+const closeKies = document.getElementById("close-kies");
 const rows = 8;
 const cols = 8;
 let undoStack = [];
@@ -37,17 +40,33 @@ if (rulesBtn && rulesModal && closeRules) {
         }
     });
 }
-if(infoBtn && infoModal && closeInfo){
+if (infoBtn && infoModal && closeInfo) {
     infoBtn.addEventListener('click', () => {
         infoModal.style.display = 'flex';
     });
-    closeInfo.addEventListener('click', () =>{
+    closeInfo.addEventListener('click', () => {
         infoModal.style.display = 'none';
     });
     window.addEventListener('click', (e) => {
-        if(e.target === infoModal){
+        if (e.target === infoModal) {
             infoModal.style.display = 'none';
         }
+    });
+}
+if (spelBtn && closeKies && kies) {
+    spelBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        kies.style.display = 'flex';
+    });
+    closeKies.addEventListener('click', (e) => {
+        e.stopPropagation();
+        kies.style.display = 'none';
+    });
+    kies.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    document.addEventListener('click',(e) =>{
+        kies.style.display = 'none';
     });
 }
 function createBoard() {
@@ -175,13 +194,15 @@ function movePiece(piece, row, col) {
         if (currentPlayer === 'white') {
             whitescore++;
             if (whiteScoreElement) {
-                whiteScoreElement.innerText = `White: ${whitescore}`;};
+                whiteScoreElement.innerText = `White: ${whitescore}`;
+            };
             blackPieces--;
 
         } else {
             blackscore++;
-            if(blackScoreElement){
-                blackScoreElement.innerText = `Black: ${blackscore}`;};
+            if (blackScoreElement) {
+                blackScoreElement.innerText = `Black: ${blackscore}`;
+            };
             whitePieces--;
         }
         performMove(piece, targetSquare, row, col);
@@ -319,9 +340,9 @@ function restoreGameStatus(state) {
     blackPieces = state.blackPieces;
     whitescore = state.whitescore;
     blackscore = state.blackscore;
-    if(whiteScoreElement && blackScoreElement){
-    whiteScoreElement.innerText = `White: ${whitescore}`;
-    blackScoreElement.innerText = `Black: ${blackscore}`;
+    if (whiteScoreElement && blackScoreElement) {
+        whiteScoreElement.innerText = `White: ${whitescore}`;
+        blackScoreElement.innerText = `Black: ${blackscore}`;
     };
     selectedPiece = null;
     updateGameStatus();
@@ -366,7 +387,7 @@ function updateUndoRedoButtons() {
     eenTerugButton.disabled = undoStack.length === 0;
     redoButton.disabled = redoStack.length === 0;
 }
-if(eenTerugButton && redoButton){
+if (eenTerugButton && redoButton) {
     eenTerugButton.addEventListener('click', undoMove);
     redoButton.addEventListener('click', redoMove);
 }
@@ -421,12 +442,12 @@ function restartGame() {
     if (board) {
         createBoard();
         updateGameStatus();
-        if(whiteScoreElement && blackScoreElement){
-        whiteScoreElement.innerText = `White: ${whitescore}`;
-        blackScoreElement.innerText = `Black: ${blackscore}`;
+        if (whiteScoreElement && blackScoreElement) {
+            whiteScoreElement.innerText = `White: ${whitescore}`;
+            blackScoreElement.innerText = `Black: ${blackscore}`;
         };
     };
 };
-if(restartButton){
-restartButton.addEventListener('click', restartGame);
+if (restartButton) {
+    restartButton.addEventListener('click', restartGame);
 }
