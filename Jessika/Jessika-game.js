@@ -303,14 +303,26 @@ class GameEngine {
                     },
                     {
                         text: 'Document the patterns',
-                        requiredState: (state) => state.player.class === 'lore-master',
+                        _requiredState: (state) => state.player.class === 'lore-master',
+                          get requiredState() {
+                            return this._requiredState;
+                        },
+                        set requiredState(value) {
+                            this._requiredState = value;
+                        },
                         setState: { documentedPatterns: true },
                         metaGain: 18,
                         nextText: 38
                     },
                     {
                         text: 'Absorb the code energy',
-                        requiredState: (state) => state.player.class === 'reality-bender',
+                        _requiredState: (state) => state.player.class === 'reality-bender',
+                        get requiredState() {
+                            return this._requiredState;
+                        },
+                        set requiredState(value) {
+                            this._requiredState = value;
+                        },
                         setState: { absorbedCode: true },
                         nextText: 39
                     }
@@ -729,6 +741,24 @@ class GameEngine {
                     },
                 ]
             },
+            {
+                id: 38,
+                text: 'You document the code patterns thoroughly. Your notes help you understand the underlying structure of the game world. You gain clarity.',
+                options: [
+                    {
+                        text: 'Use notes to navigate',
+                        nextText: 101
+                    },
+                    {
+                        text: 'Share notes with NPCs for information',
+                        nextText: 102
+                    },
+                    {
+                        text: 'Put the notes aside for later',
+                    }
+                ]
+            },
+        
 
 
         ];
