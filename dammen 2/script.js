@@ -5,6 +5,12 @@ const whiteScoreElement = document.querySelector(".scoreW");
 const blackScoreElement = document.querySelector(".scoreB");
 const eenTerugButton = document.querySelector(".eenTerug");
 const redoButton = document.querySelector(".redo-btn");
+const rulesModal = document.getElementById("rules-modal");
+const closeRules = document.getElementById("close-rules");
+const rulesBtn = document.getElementById("rules-btn");
+const infoBtn = document.querySelector(".bI");
+const infoModal = document.getElementById("info-modal");
+const closeInfo = document.getElementById("close-info");
 const rows = 8;
 const cols = 8;
 let undoStack = [];
@@ -16,8 +22,36 @@ let selectedPiece = null;
 let currentPlayer = 'white';
 let whitePieces = 12;
 let blackPieces = 12;
-restartButton.style.display = 'none';
+// restartButton.style.display = 'none';
+if (rulesBtn && rulesModal && closeRules) {
+    rulesBtn.addEventListener('click', () => {
+        console.log('Rules button clicked');
+        rulesModal.style.display = 'flex';
+    });
+    closeRules.addEventListener('click', () => {
+        rulesModal.style.display = 'none';
+    });
+    window.addEventListener('click', (e) => {
+        if (e.target === rulesModal) {
+            rulesModal.style.display = 'none';
+        }
+    });
+}
+if(infoBtn && infoModal && closeInfo){
+    infoBtn.addEventListener('click', () => {
+        infoModal.style.display = 'flex';
+    });
+    closeInfo.addEventListener('click', () =>{
+        infoModal.style.display = 'none';
+    });
+    window.addEventListener('click', (e) => {
+        if(e.target === infoModal){
+            infoModal.style.display = 'none';
+        }
+    });
+}
 function createBoard() {
+    if (!board) return;
     board.innerHTML = "";
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
@@ -45,10 +79,10 @@ function createBoard() {
 }
 createBoard();
 updateGameStatus();
-whiteScoreElement.innerText = `White: ${whitescore}`;
-blackScoreElement.innerText = `Black: ${blackscore}`;
-
-
+if (whiteScoreElement && blackScoreElement) {
+    whiteScoreElement.innerText = `White: ${whitescore}`;
+    blackScoreElement.innerText = `Black: ${blackscore}`;
+};
 
 function handleSquareClick(e) {
     const square = e.target.classList.contains('square') ? e.target : e.target.parentElement;
@@ -140,12 +174,14 @@ function movePiece(piece, row, col) {
 
         if (currentPlayer === 'white') {
             whitescore++;
-            whiteScoreElement.innerText = `White: ${whitescore}`;
+            if (whiteScoreElement) {
+                whiteScoreElement.innerText = `White: ${whitescore}`;};
             blackPieces--;
 
         } else {
             blackscore++;
-            blackScoreElement.innerText = `Black: ${blackscore}`;
+            if(blackScoreElement){
+                blackScoreElement.innerText = `Black: ${blackscore}`;};
             whitePieces--;
         }
         performMove(piece, targetSquare, row, col);
@@ -283,9 +319,10 @@ function restoreGameStatus(state) {
     blackPieces = state.blackPieces;
     whitescore = state.whitescore;
     blackscore = state.blackscore;
-
+    if(whiteScoreElement && blackScoreElement){
     whiteScoreElement.innerText = `White: ${whitescore}`;
     blackScoreElement.innerText = `Black: ${blackscore}`;
+    };
     selectedPiece = null;
     updateGameStatus();
 
@@ -295,8 +332,8 @@ function restoreGameStatus(state) {
     updateUndoRedoButtons();
 }
 
-function undoMove(){
-    if(undoStack.length === 0) return;
+function undoMove() {
+    if (undoStack.length === 0) return;
 
     const lastState = undoStack.pop();
     redoStack.push({
@@ -310,12 +347,12 @@ function undoMove(){
     restoreGameStatus(lastState);
 }
 
-function redoMove(){
-    if( redoStack.length === 0) return;
+function redoMove() {
+    if (redoStack.length === 0) return;
 
     const nextState = redoStack.pop();
     undoStack.push({
-        boardHTML:board.innerHTML,
+        boardHTML: board.innerHTML,
         currentPlayer,
         whitePieces,
         blackPieces,
@@ -329,8 +366,10 @@ function updateUndoRedoButtons() {
     eenTerugButton.disabled = undoStack.length === 0;
     redoButton.disabled = redoStack.length === 0;
 }
-eenTerugButton.addEventListener('click', undoMove);
-redoButton.addEventListener('click', redoMove);
+if(eenTerugButton && redoButton){
+    eenTerugButton.addEventListener('click', undoMove);
+    redoButton.addEventListener('click', redoMove);
+}
 function checkWinCondition() {
     if (whitePieces === 0) {
         gameStatus.innerText = "Black wins!";
@@ -351,6 +390,7 @@ function endTurn() {
 }
 
 function updateGameStatus() {
+    if (!gameStatus) return;
     gameStatus.innerText = `${currentPlayer.charAt(0).toUpperCase() + currentPlayer.slice(1)}'s turn`;
     if (currentPlayer === 'white') {
         gameStatus.style.color = 'white';
@@ -373,17 +413,20 @@ function restartGame() {
     selectedPiece = null;
     currentPlayer = 'white';
     gameStatus.innerText = '';
-    restartButton.style.display = 'none';
+    restartButton.style.display = 'block';
+    restartButton.style.marginBottom = '-4px';
     board.style.pointerEvents = 'auto';
     whitescore = 0;
     blackscore = 0;
-    whiteScoreElement.innerText = `White: ${whitescore}`;
-    blackScoreElement.innerText = `Black: ${blackscore}`;
-    createBoard();
-    updateGameStatus();
-}
-
+    if (board) {
+        createBoard();
+        updateGameStatus();
+        if(whiteScoreElement && blackScoreElement){
+        whiteScoreElement.innerText = `White: ${whitescore}`;
+        blackScoreElement.innerText = `Black: ${blackscore}`;
+        };
+    };
+};
+if(restartButton){
 restartButton.addEventListener('click', restartGame);
-
-// createBoard();
-// updateGameStatus();
+}

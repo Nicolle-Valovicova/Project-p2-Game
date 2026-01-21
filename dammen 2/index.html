@@ -1,22 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dammen</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="i">
+    <!-- <div class="i">
         <button class="bI">i</button>
-    </div>
+    </div> -->
     <div class="hoofdpagina">
-        <h1>Hallo</h1>
+        <h1>Dammen</h1>
         <a href="index2.html"><button class="button">Spelen!</button></a><br>
         <a href="index2.html"><button class="button">Spelen!</button></a><br>
-        <a href="index2.html"><button class="button">Spelen!</button></a><br>
+        <button class="button" id="rules-btn">Regels</button><br>
     </div>
-    
+    <div id="rules-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-rules" class="close">&times;</span>
+            <h2>Regels van het spel</h2>
+            <p>
+                1.Je speelt alleen op de donkere vakjes. <br>
+                2.Wit begint het spel.  <br>
+                3.Schijven bewegen één vak schuin naar voren. <br>
+                4.Slaan is verplicht als het kan. <br>
+                5.Bij meerdere slagen moet je een meerslag doen. <br>
+                6.Een schijf die de overkant bereikt, wordt een dam. <br>
+                7.Een dam mag naar voren en naar achteren bewegen en slaan. <br>
+                8.Je wint als de tegenstander geen zetten meer kan doen. <br>
+            </p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
