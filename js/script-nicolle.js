@@ -74,8 +74,7 @@ window.onload = (event) => {
       clearInterval(interval);
       startBtn.classList.remove("notVisible");
     }
-  }, 5);
-  // ! CHANGE ABCK TO 40
+  }, 45);
 }; // script for menu page
 let attunementMenu = document.querySelector("#options");
 let attunement = document.querySelector(".attunement");
@@ -316,7 +315,6 @@ function showWinScreen() {
 //   feedbackIndex = (feedbackIndex + 1) % loseTitles.length;
 // }
 
-// TODO if opposide tam has won show negative feedbacl else show positive feedback
 // redirect to pages on feedbackscreen
 const retryBtn = document.querySelectorAll(".retry");
 const hubBtn = document.querySelectorAll(".Menu");
@@ -473,7 +471,3 @@ document.querySelector("#whiteKing").addEventListener("click", () => {
 
 // easter egg secret lore page
 
-// TODO Code for cool transition for betwheen pages zoom in fade cool stuff
-// TODO make everything smooth use opacity 0 / 1
-// TODO: when time left: easter egg whisper, add more sfx to gameplay coin cool ping
-// ! dont forget to change the game from starting at menuWrapper to starting at startscreen

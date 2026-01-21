@@ -12,11 +12,7 @@ This feature was originally made for testing and demonstrating the features in t
 3. Developer Trigger # Black Victory Screen
 The Black King crow works the same way, one click launches the Black team’s victory ending.
 
-4.The Whisper
-If you hesitate too long before making a move, the game will eventually whisper something to you.
-A quiet reminder that the forest is never truly silent… and something is always watching.
-
-5.Secret Lore 
+4.Secret Lore 
 Inside the Legacy section, one sentence hides a secret.
 Hover over the final line and the website will reveal a deeper story
 a hidden tale that expands the world behind Murder’s Gambit.
