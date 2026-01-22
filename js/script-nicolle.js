@@ -16,7 +16,7 @@ function hidePages() {
 
 
 hidePages();
-gameIndex.classList.add("positiveOpacitied");
+startScreen.classList.add("positiveOpacitied");
 
 let flockAppliedOnce = false;
 menuPlayBtn.addEventListener("click", () => {
@@ -361,6 +361,7 @@ retryBtn.forEach((btn) => {
 
 hubBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
+    hidePages();
     menuWrapper.classList.add("positiveOpacitied");
   });
 });
@@ -433,23 +434,28 @@ hendrikContainer.appendChild(hendrik);
 // 2. pieces eventlisteners for developers
 
 // show black win-screen
-document.querySelector("#blackking").addEventListener("click", () => {
-  clickValue++;
-  if (clickValue == 7) {
-    hidePages();
-    showWinScreen();
+document.addEventListener("click", (e) => {
+  if (e.target.id === "blackking") {
+    clickValue++;
+    if (clickValue === 7) {
+      hidePages();
+          winScreen.style.backgroundImage = "url('../imgs/feedackArt/winBlack.JPG')";
+
+      showWinScreen("black");
+    }
   }
-  console.log(clickValue);
-});
-// show white win-screen
-document.querySelector("#whiteKing").addEventListener("click", () => {
-  clickValueW++;
-  if (clickValueW == 7) {
-    hidePages();
-    showWinScreen();
+
+  if (e.target.id === "whiteKing") {
+    clickValueW++;
+    if (clickValueW === 7) {
+      hidePages();
+      winScreen.style.backgroundImage = "url('../imgs/feedackArt/winWhite.JPG')";
+      showWinScreen("white");
+
+    }
   }
-  console.log(clickValueW);
 });
+
 // // show white lose-screen
 // document.querySelector("#whiteQueen").addEventListener("click", () => {
 //   clickValue3++;
