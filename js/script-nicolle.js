@@ -16,7 +16,7 @@ function hidePages() {
 
 
 hidePages();
-startScreen.classList.add("positiveOpacitied");
+gameIndex.classList.add("positiveOpacitied");
 
 let flockAppliedOnce = false;
 menuPlayBtn.addEventListener("click", () => {
@@ -329,7 +329,7 @@ retryBtn.forEach((btn) => {
     startingPlayer = "black";
     playerTurn.textContent = "black";
 
-    // reset click counters (your vars)
+    // reset click counters 
     clickValue = 0;
     clickValueW = 0;
 
