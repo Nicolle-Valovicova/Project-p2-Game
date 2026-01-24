@@ -73,20 +73,20 @@ let gerechten = [
 
 console.log(gerechten);
 
+let gekozenVolgorde = []; 
 let currentLevel = 1;
 let currentGerechtIndex = 0;
 let currentGerecht;
-let currentStapIndex = 0;
 let lives = 3;
 let score = 0;
 let lostLife = false;
 
 
 function Play() {
+    gekozenVolgorde = [];
     selectGerecht();         
     showGerechtInHtml();     
     showStappen();             
-    waitForPlayerToChooseVolgorde();  
 }
 
 
@@ -119,7 +119,6 @@ function showStappen () {
     stappen.forEach(stap => {
         const stapElement = document.createElement("button");
         stapElement.innerHTML = stap;
-       // stapElement.classList.add("stap");
         stapElement.addEventListener("click", () => {
         console.log("Geklikt:", stap);
         gekozenVolgorde.push(stap);
@@ -138,13 +137,10 @@ klaarBtn.addEventListener("click", () => {
     if (gekozenVolgorde.length === currentGerecht.stappen.length) {
         checkGekozenVolgorde();
     } else {
-        alert("Maak eerst de volgorde af!");
+        alert("You need to finish the order first!");
     }
 });
 
-function waitForPlayerToChooseVolgorde() {
-    gekozenVolgorde = [];
-}
 
 
 function checkGekozenVolgorde() {
@@ -168,7 +164,7 @@ function checkGekozenVolgorde() {
     }
     }
 
-if (lives === 0) {
+    if (lives === 0) {
     const popup = document.querySelector("#popup");
     popup.classList.remove("hidden");
 
@@ -180,7 +176,6 @@ if (lives === 0) {
 }
 
     UpdateScoreOrLivesAndLevel();
-    CheckLevelComplete();
 
     currentGerechtIndex++;
 
@@ -197,17 +192,15 @@ if (lives === 0) {
          currentGerechtIndex = 0;
          lives = 3;
          UpdateScoreOrLivesAndLevel();
-}
-     if (currentLevel > 3 && !lostLife) {
-    // const popup = document.querySelector("#popup");
-    // popup.classList.remove("hidden");
+       }
 
+
+     if (currentLevel > 3 && !lostLife) {
     setTimeout(() => {
         window.location.href = "youwon.html";
     }, 750);
-
     return;
-     }
+    }
 
 UpdateScoreOrLivesAndLevel();
 Play();
@@ -222,8 +215,6 @@ function UpdateScoreOrLivesAndLevel() {
     levelElement.textContent = currentLevel;
 }
 
-function CheckLevelComplete() {
-}
-
 
 Play();
+
