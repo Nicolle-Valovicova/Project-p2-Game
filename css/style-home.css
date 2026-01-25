@@ -1,17 +1,17 @@
 :root {
   --items-background-color: #765f3f;
   --text-bg-color: #1b1511;
-  --title-color: #C9A227;
-  --text-color:#E6E6E6;
-  --background-color:#2a221b;
-  --shadow-color:rgba(18, 18, 19, 0.9);
+  --title-color: #c9a227;
+  --text-color: #e6e6e6;
+  --background-color: #2a221b;
+  --shadow-color: rgba(18, 18, 19, 0.9);
 }
 * {
   padding: 0;
   margin: 0;
 }
-.clicked{
-   transform: scale(1.1);
+.clicked {
+  transform: scale(1.1);
   box-shadow: 0 4px 8px 0 var(--shadow-color);
 }
 body {
@@ -51,7 +51,7 @@ body {
 .card {
   width: 200px;
   overflow: hidden;
-    color: var(--text-color);
+  color: var(--text-color);
 
   border: 3px solid var(--items-background-color);
   text-align: center;
@@ -69,7 +69,8 @@ body {
   transform: scale(1.1);
   box-shadow: 0 4px 8px 0 var(--shadow-color);
 }
-.row-one, .row-two{
+.row-one,
+.row-two {
   display: flex;
 }
 .card img {
@@ -101,21 +102,21 @@ button:hover {
   background-color: #fffefc;
 }
 @media only screen and (max-width: 767px) {
-  .title > h1{
+  .title > h1 {
     transform: scale(0.7);
   }
- .row-one, .row-two{
-  display: flex;
-  flex-direction: column;
-  
- }
- .play-btn{
-  margin-top: 10px;
- }
- .card {
-  width: 150px;
-  height: 150px;
-  margin: 15px;
-  padding-bottom: 5px;
- }
+  .row-one,
+  .row-two {
+    display: flex;
+    flex-direction: column;
+  }
+  .play-btn {
+    margin-top: 10px;
+  }
+  .card {
+    width: 150px;
+    height: 150px;
+    margin: 15px;
+    padding-bottom: 5px;
+  }
 }

@@ -8,12 +8,11 @@ let exitBtn = document.querySelector(".exit");
 let loadingbar = new ldBar("#bar");
 let startBtn = document.querySelector("#startBtn");
 function hidePages() {
-  [startScreen, menuWrapper, gameIndex, winScreen, loseScreen].forEach(p => {
+  [startScreen, menuWrapper, gameIndex, winScreen, loseScreen].forEach((p) => {
     p.classList.remove("positiveOpacitied");
     p.classList.add("notOpacitied");
   });
 }
-
 
 hidePages();
 startScreen.classList.add("positiveOpacitied");
@@ -40,8 +39,7 @@ startBtn.addEventListener("click", () => {
   setTimeout(() => {
     menuWrapper.classList.remove("notOpacitied");
     menuWrapper.classList.add("positiveOpacitied");
-    
-  }, 1000)
+  }, 1000);
 });
 // script for start page
 let crowfactOutput = document.querySelector("#crowfactOutput");
@@ -122,8 +120,6 @@ let settings = {
   legalMoves: "on",
   dangerTiles: "on",
 };
-// TODO make the weither white or black win screen art appear
-// TODO look at the comments where you have an ! (so all the red comments)
 let showRules = document.querySelector("#showRules");
 const rulesContainer = document.querySelector(".rules-container");
 const closeRules = document.querySelector("#closeRules");
@@ -239,7 +235,6 @@ quitbtn.addEventListener("click", () => {
   menuWrapper.classList.add("positiveOpacitied");
 });
 
-
 function openNav() {
   gameSidebar.style.width = "300px";
   arrowBack.style.display = "block";
@@ -329,7 +324,7 @@ retryBtn.forEach((btn) => {
     startingPlayer = "black";
     playerTurn.textContent = "black";
 
-    // reset click counters 
+    // reset click counters
     clickValue = 0;
     clickValueW = 0;
 
@@ -439,7 +434,8 @@ document.addEventListener("click", (e) => {
     clickValue++;
     if (clickValue === 7) {
       hidePages();
-          winScreen.style.backgroundImage = "url('../imgs/feedackArt/winBlack.JPG')";
+      winScreen.style.backgroundImage =
+        "url('../imgs/feedackArt/winBlack.JPG')";
 
       showWinScreen("black");
     }
@@ -449,9 +445,9 @@ document.addEventListener("click", (e) => {
     clickValueW++;
     if (clickValueW === 7) {
       hidePages();
-      winScreen.style.backgroundImage = "url('../imgs/feedackArt/winWhite.JPG')";
+      winScreen.style.backgroundImage =
+        "url('../imgs/feedackArt/winWhite.JPG')";
       showWinScreen("white");
-
     }
   }
 });
@@ -476,4 +472,3 @@ document.addEventListener("click", (e) => {
 // });
 
 // easter egg secret lore page
-
