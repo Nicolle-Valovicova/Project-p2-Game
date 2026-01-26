@@ -22,748 +22,1981 @@ class GameEngine {
     }
 
     getStory() {
-        return [
-            {
-                id: 1,
-                text: 'You slowly open your eyes. The world is blurry, pixelated... familiar. This is Glitchwood Fores! The f irst level of your game. But you\'re not at your computer anymore. You\'re inside it',
-                options: [
-                    {
-                        text: 'Look around carefully',
-                        setState: { exploredForest: true },
-                        metaGain: 5,
-                        nextText: 2
-                    },
-                    {
-                        text: 'Check your developer tools',
-                        nextText: 3
-                    },
-                    {
-                        text: 'Try to pinch yourself awake',
-                        nextText: 4
-                    }
-                ]
-            },
-            {
-                id: 2,
-                text: 'You see glitches in the trees - pixels flickering, textures repeating. This is definitely your game. But how did you get here?',
-                options: [
-                    {
-                        text: 'Access the debug console',
-                        requiredState: (state) => gameState.player.class === 'code-mage',
-                        setState: { debugAccess: true },
-                        metaGain: 10,
-                        nextText: 5
-                    },
-                    {
-                        text: 'Try to stabilize the glitch',
-                        requiredState: (state) => gameState.player.class === 'reality-bender',
-                        setState: { stabilizedGlitch: true },
-                        metaGain: 8,
-                        nextText: 6
-                    },
-                    {
-                        text: 'Study the glitch patterns',
-                        requiredState: (state) => gameState.player.class === 'lore-master',
-                        setState: { studiedGlitch: true },
-                        metaGain: 12,
-                        nextText: 7
-                    },
-                    {
-                        text: 'Ignore it and move forward',
-                        nextText: 8
-                    }
-                ]
-            },
-            {
-                id: 3,
-                text: 'You reach for your pocket and find your developer tablet still there! It shows critical errors in the game matrix. The "Reality Integrity" is at 45%.',
-                options: [
-                    {
-                        text: 'Run diagnostic scan',
-                        setState: { ranDiagnostic: true },
-                        metaGain: 15,
-                        nextText: 9
-                    },
-                    {
-                        text: 'Try to force an exit command',
-                        nextText: 10
-                    }
-                ]
-            },
-            {
-                id: 4,
-                text: 'You pinch your arm hard. It hurts, but nothing changes. This feels too real to be a dream. The forest seems to pulse with digital energy.',
-                options: [
-                    {
-                        text: 'Accept this new reality',
-                        setState: { acceptedReality: true },
-                        metaGain: 5,
-                        nextText: 11
-                    },
-                    {
-                        text: 'Try screaming for help',
-                        nextText: 12
-                    }
-                ]
-            },
-            {
-                id: 5,
-                text: '> DEBUG CONSOLE ACTIVATED\n> Available commands:\n> - reality_scan\n> - code_inject\n> - exit_sequence\n\nThe console accepts your Code Mage credentials. You have admin access!',
-                options: [
-                    {
-                        text: 'Run reality_scan',
-                        setState: { realityScanned: true },
-                        metaGain: 20,
-                        nextText: 13
-                    },
-                    {
-                        text: 'Try exit_sequence',
-                        nextText: 14
-                    }
-                ]
-            },
-            {
-                id: 6,
-                text: 'You focus your Reality Bender powers. The glitch stabilizes into a doorway. Beyond it, you see code flowing like rivers of light.',
-                options: [
-                    {
-                        text: 'Step through the doorway',
-                        setState: { enteredCodeRealm: true },
-                        metaGain: 25,
-                        nextText: 15
-                    },
-                    {
-                        text: 'Examine the code patterns',
-                        nextText: 16
-                    }
-                ]
-            },
-            {
-                id: 7,
-                text: 'As a Lore Master, you recognize these glitch patterns. They\'re memory leaks from incomplete game assets. The forest is trying to render content that doesn\'t exist.',
-                options: [
-                    {
-                        text: 'Document your findings',
-                        setState: { documentedFindings: true },
-                        metaGain: 30,
-                        nextText: 17
-                    },
-                    {
-                        text: 'Try to patch the memory leak',
-                        nextText: 18
-                    }
-                ]
-            },
-            {
-                id: 8,
-                text: 'You walk deeper into the forest. The trees become more pixelated. You hear digital whispers: "The Creator is here..."',
-                options: [
-                    {
-                        text: 'Follow the whispers',
-                        nextText: 19
-                    },
-                    {
-                        text: 'Find higher ground',
-                        nextText: 20
-                    }
-                ]
-            },
-            {
-                id: 9,
-                text: '> DIAGNOSTIC RESULTS:\n> - Reality Matrix: CORRUPTED\n> - Player Identity: VERIFIED\n> - Exit Protocols: LOCKED\n> - Anomalies Detected: 127\n\nA red warning flashes: "Core Game Files Missing"',
-                options: [
-                    {
-                        text: 'Check anomaly details',
-                        metaGain: 10,
-                        nextText: 21
-                    },
-                    {
-                        text: 'Attempt emergency reboot',
-                        nextText: 22
-                    }
-                ]
-            },
-            {
-                id: 10,
-                text: 'You type: /exit_game --force\n\nThe console responds: "ERROR: Exit sequence requires Administrator privileges or completion of Primary Questline."',
-                options: [
-                    {
-                        text: 'Search for admin privileges',
-                        nextText: 23
-                    },
-                    {
-                        text: 'Look for the Primary Quest',
-                        nextText: 24
-                    }
-                ]
-            },
-            {
-                id: 11,
-                text: 'You take a deep breath and accept your new reality. The forest seems less hostile now, as if acknowledging you as its creator.',
-                options: [
-                    {
-                        text: 'Look for any town or village',
-                        nextText: 25
-                    },
-                    {
-                        text: 'Sit down and make a plan',
-                        nextText: 26
-                    }
-                ]
-            },
-            {
-                id: 12,
-                text: 'You scream at the top of your lungs. The forest echoes back, The pixels vibrate in response, distorting your voice into digital static. "No one answers."',
-                options: [
-                    {
-                        text: 'Follow the digital echoes',
-                        setState: { followedEchoes: true },
-                        metaGain: 3,
-                        nextText: 27
-                    },
-                    {
-                        text: 'Stay put and listen carefully',
-                        nextText: 28
-                    },
-                    {
-                        text: 'Try screaming louder',
-                        requiredState: (state) => state.player.health > 80,
-                        nextText: 29
-                    }
-                ]
+    return [
+        // ========== SCENES 1-50 ==========
+        {
+            id: 1,
+            text: 'You slowly open your eyes. The world is blurry, pixelated... familiar. This is Glitchwood Forest! The first level of your game. But you\'re not at your computer anymore. You\'re inside it.',
+            options: [
+                { text: 'Look around carefully', setState: { exploredForest: true }, metaGain: 5, nextText: 2 },
+                { text: 'Check your developer tools', nextText: 3 },
+                { text: 'Try to pinch yourself awake', nextText: 4 }
+            ]
+        },
+        {
+            id: 2,
+            text: 'You see glitches in the trees - pixels flickering, textures repeating. This is definitely your game. But how did you get here?',
+            options: [
+                { text: 'Access the debug console', requiredState: (state) => state.player.class === 'code-mage', setState: { debugAccess: true }, metaGain: 10, nextText: 5 },
+                { text: 'Try to stabilize the glitch', requiredState: (state) => state.player.class === 'reality-bender', setState: { stabilizedGlitch: true }, metaGain: 8, nextText: 6 },
+                { text: 'Study the glitch patterns', requiredState: (state) => state.player.class === 'lore-master', setState: { studiedGlitch: true }, metaGain: 12, nextText: 7 },
+                { text: 'Ignore it and move forward', nextText: 8 }
+            ]
+        },
+        {
+            id: 3,
+            text: 'You reach for your pocket and find your developer tablet still there! It shows critical errors in the game matrix. The "Reality Integrity" is at 45%.',
+            options: [
+                { text: 'Run diagnostic scan', setState: { ranDiagnostic: true }, metaGain: 15, nextText: 9 },
+                { text: 'Try to force an exit command', nextText: 10 }
+            ]
+        },
+        {
+            id: 4,
+            text: 'You pinch your arm hard. It hurts, but nothing changes. This feels too real to be a dream. The forest seems to pulse with digital energy.',
+            options: [
+                { text: 'Accept this new reality', setState: { acceptedReality: true }, metaGain: 5, nextText: 11 },
+                { text: 'Try screaming for help', nextText: 12 }
+            ]
+        },
+        {
+            id: 5,
+            text: '> DEBUG CONSOLE ACTIVATED\n> Available commands:\n> - reality_scan\n> - code_inject\n> - exit_sequence\n\nThe console accepts your Code Mage credentials. You have admin access!',
+            options: [
+                { text: 'Run reality_scan', setState: { realityScanned: true }, metaGain: 20, nextText: 13 },
+                { text: 'Try exit_sequence', nextText: 14 }
+            ]
+        },
+        {
+            id: 6,
+            text: 'You focus your Reality Bender powers. The glitch stabilizes into a doorway. Beyond it, you see code flowing like rivers of light.',
+            options: [
+                { text: 'Step through the doorway', setState: { enteredCodeRealm: true }, metaGain: 25, nextText: 15 },
+                { text: 'Examine the code patterns', nextText: 16 }
+            ]
+        },
+        {
+            id: 7,
+            text: 'As a Lore Master, you recognize these glitch patterns. They\'re memory leaks from incomplete game assets. The forest is trying to render content that doesn\'t exist.',
+            options: [
+                { text: 'Document your findings', setState: { documentedFindings: true }, metaGain: 30, nextText: 17 },
+                { text: 'Try to patch the memory leak', nextText: 18 }
+            ]
+        },
+        {
+            id: 8,
+            text: 'You walk deeper into the forest. The trees become more pixelated. You hear digital whispers: "The Creator is here..."',
+            options: [
+                { text: 'Follow the whispers', nextText: 19 },
+                { text: 'Find higher ground', nextText: 20 }
+            ]
+        },
+        {
+            id: 9,
+            text: '> DIAGNOSTIC RESULTS:\n> - Reality Matrix: CORRUPTED\n> - Player Identity: VERIFIED\n> - Exit Protocols: LOCKED\n> - Anomalies Detected: 127\n\nA red warning flashes: "Core Game Files Missing"',
+            options: [
+                { text: 'Check anomaly details', metaGain: 10, nextText: 21 },
+                { text: 'Attempt emergency reboot', nextText: 22 }
+            ]
+        },
+        {
+            id: 10,
+            text: 'You type: /exit_game --force\n\nThe console responds: "ERROR: Exit sequence requires Administrator privileges or completion of Primary Questline."',
+            options: [
+                { text: 'Search for admin privileges', nextText: 23 },
+                { text: 'Look for the Primary Quest', nextText: 24 }
+            ]
+        },
+        {
+            id: 11,
+            text: 'You take a deep breath and accept your new reality. The forest seems less hostile now, as if acknowledging you as its creator.',
+            options: [
+                { text: 'Look for any town or village', nextText: 25 },
+                { text: 'Sit down and make a plan', nextText: 26 }
+            ]
+        },
+        {
+            id: 12,
+            text: 'You scream at the top of your lungs. The forest echoes back. The pixels vibrate in response, distorting your voice into digital static.',
+            options: [
+                { text: 'Follow the digital echoes', setState: { followedEchoes: true }, metaGain: 3, nextText: 27 },
+                { text: 'Stay put and listen carefully', nextText: 28 },
+                { text: 'Try screaming louder', requiredState: (state) => state.player.health > 80, nextText: 29 }
+            ]
+        },
+        {
+            id: 13,
+            text: '> REALITY_SCAN INITIATED\n> Scanning... 45%\n> Anomaly detected: Player entity mismatch\n> Scanning... 87%\n> CRITICAL: Reality anchor unstable\n> Scan complete.\n\nThe scan shows you\'re anchored to the game world by 127 error threads.',
+            options: [
+                { text: 'Examine error threads', nextText: 30 },
+                { text: 'Stabilize reality anchors', nextText: 31 },
+                { text: 'Locate core files', nextText: 32 }
+            ]
+        },
+        {
+            id: 14,
+            text: 'You input: /exit_sequence --admin\n> ERROR: Access denied. Administrator privileges required.\n> Suggestion: Complete core game loop or find debug key.',
+            options: [
+                { text: 'Search for debug key', nextText: 33 },
+                { text: 'Complete core game loop', nextText: 34 },
+                { text: 'Attempt force exit again', nextText: 10 }
+            ]
+        },
+        {
+            id: 15,
+            text: 'You step through the glitch doorway and find yourself in the Code Realm. Lines of code float around you, glowing with raw potential.',
+            options: [
+                { text: 'Follow the JavaScript river', setState: { followedJS: true }, metaGain: 20, nextText: 35 },
+                { text: 'Climb the HTML mountains', nextText: 36 },
+                { text: 'Examine your floating comments', nextText: 37 }
+            ]
+        },
+        {
+            id: 16,
+            text: 'The code patterns reveal secrets. You see TODO comments you wrote months ago, now rendered as physical objects.',
+            options: [
+                { text: 'Try to fix a TODO', requiredState: (state) => state.player.class === 'code-mage', setState: { fixedTodo: true }, metaGain: 25, nextText: 38 },
+                { text: 'Document the patterns', requiredState: (state) => state.player.class === 'lore-master', setState: { documentedPatterns: true }, metaGain: 18, nextText: 39 },
+                { text: 'Absorb the code energy', requiredState: (state) => state.player.class === 'reality-bender', setState: { absorbedCode: true }, metaGain: 15, nextText: 40 }
+            ]
+        },
+        {
+            id: 17,
+            text: 'You create a log of the memory leaks. Each entry gains you understanding of the broken systems.',
+            options: [
+                { text: 'Attempt to fix texture corruption', metaGain: 10, nextText: 41 },
+                { text: 'Study the NPC dialogue trees', nextText: 42 },
+                { text: 'Test the physics engine', requiredState: (state) => state.player.health > 60, nextText: 43 }
+            ]
+        },
+        {
+            id: 18,
+            text: 'You attempt to patch the memory leak. The forest flickers violently. Trees transform into different species.',
+            options: [
+                { text: 'Continue the patch', requiredState: (state) => state.player.metaKnowledge >= 30, setState: { continuedPatch: true }, metaGain: 35, nextText: 44 },
+                { text: 'Abort - too dangerous', nextText: 45 },
+                { text: 'Call for help from console', requiredState: (state) => state.debugAccess === true, nextText: 46 }
+            ]
+        },
+        {
+            id: 19,
+            text: 'The whispers lead you to a clearing where the pixels arrange themselves into a face - your face. It speaks: "Why did you abandon us?"',
+            options: [
+                { text: 'Answer: "I didn\'t mean to"', nextText: 47 },
+                { text: 'Ask: "Who are you?"', nextText: 48 },
+                { text: 'Debug the entity', requiredState: (state) => state.player.class === 'code-mage', nextText: 49 }
+            ]
+        },
+        {
+            id: 20,
+            text: 'You climb a glitched hill. From the top, you see the entire game world. It\'s beautiful but broken.',
+            options: [
+                { text: 'Map the visible anomalies', setState: { mappedAnomalies: true }, metaGain: 15, nextText: 50 },
+                { text: 'Look for civilization', nextText: 51 },
+                { text: 'Try to contact the skybox', requiredState: (state) => state.player.metaKnowledge >= 40, nextText: 52 }
+            ]
+        },
+        {
+            id: 21,
+            text: 'ANOMALY DETAILS:\n#001: Player inventory corrupted\n#045: Time dilation detected\n#089: Quantum NPC entanglement\n#127: Reality anchor unstable',
+            options: [
+                { text: 'Investigate time dilation', setState: { investigatedTime: true }, metaGain: 12, nextText: 53 },
+                { text: 'Check quantum entanglement', nextText: 54 },
+                { text: 'Repair inventory corruption', requiredState: (state) => state.player.class === 'code-mage', nextText: 55 }
+            ]
+        },
+        {
+            id: 22,
+            text: 'EMERGENCY REBOOT INITIATED\nThe world dissolves into loading screens... then reassembles differently.',
+            options: [
+                { text: 'Check your new form', nextText: 56 },
+                { text: 'Explore the changed world', nextText: 57 },
+                { text: 'Try another reboot', nextText: 58 }
+            ]
+        },
+        {
+            id: 23,
+            text: 'Where would admin privileges be in your own game? You designed the systems.',
+            options: [
+                { text: 'Head to Debug Temple', setState: { headingToTemple: true }, nextText: 59 },
+                { text: 'Search for Code Vault', nextText: 60 },
+                { text: 'Check your old notes', requiredState: (state) => state.player.class === 'lore-master', nextText: 61 }
+            ]
+        },
+        {
+            id: 24,
+            text: 'Primary Questline: "Restore Reality"\nObjectives:\n1. Find the Core Glitch\n2. Repair Memory Leaks\n3. Stabilize Physics\n4. [REDACTED]',
+            options: [
+                { text: 'Accept the quest', setState: { acceptedQuest: true }, metaGain: 20, nextText: 62 },
+                { text: 'Look for the Core Glitch', nextText: 63 },
+                { text: 'Question the redacted objective', nextText: 64 }
+            ]
+        },
+        {
+            id: 25,
+            text: 'Through the glitched trees, you spot smoke rising. Civilization!',
+            options: [
+                { text: 'Enter the settlement', nextText: 65 },
+                { text: 'Observe from a distance', nextText: 66 },
+                { text: 'Call out to the inhabitants', nextText: 67 }
+            ]
+        },
+        {
+            id: 26,
+            text: 'You sit and make a plan. Resources needed: Food, shelter, information.',
+            options: [
+                { text: 'Search for food', nextText: 68 },
+                { text: 'Build temporary shelter', requiredState: (state) => state.player.health > 70, nextText: 69 },
+                { text: 'Look for information sources', nextText: 70 }
+            ]
+        },
+        {
+            id: 27,
+            text: 'The echoes lead to a cave where your screams are stored as .wav files in crystal formations.',
+            options: [
+                { text: 'Play back a scream', nextText: 71 },
+                { text: 'Check the error codes', requiredState: (state) => state.player.metaKnowledge >= 15, nextText: 72 },
+                { text: 'Collect the audio crystals', setState: { collectedCrystals: true }, metaGain: 5, nextText: 73 }
+            ]
+        },
+        {
+            id: 28,
+            text: 'In the silence, you hear it: a low hum of electricity. The forest is buzzing with background processes.',
+            options: [
+                { text: 'Follow the electrical hum', nextText: 74 },
+                { text: 'Try to identify the processes', requiredState: (state) => state.player.class === 'code-mage', nextText: 75 },
+                { text: 'Meditate to hear better', requiredState: (state) => state.player.class === 'lore-master', nextText: 76 }
+            ]
+        },
+        {
+            id: 29,
+            text: 'Your louder scream causes a feedback loop. The forest glitches violently.',
+            options: [
+                { text: 'Look at the revealed code', setState: { sawCodeLayer: true }, metaGain: 25, nextText: 77 },
+                { text: 'Try to stabilize with a softer sound', nextText: 78 },
+                { text: 'Scream even louder (risky)', requiredState: (state) => state.player.health > 90, nextText: 79 }
+            ]
+        },
+        {
+            id: 30,
+            text: 'ERROR THREAD DETAILS:\nThread #001: Player.spawn() called from unknown source\nEach thread connects to your physical body.',
+            options: [
+                { text: 'Trace Thread #001', setState: { tracedThread1: true }, metaGain: 18, nextText: 80 },
+                { text: 'Fix time desync', requiredState: (state) => state.player.metaKnowledge >= 35, nextText: 81 },
+                { text: 'Allocate more memory', nextText: 82 }
+            ]
+        },
+        {
+            id: 31,
+            text: 'You attempt to stabilize reality anchors. The error threads glow brighter, but pulling on them sends pain through your connection.',
+            options: [
+                { text: 'Continue stabilizing', nextText: 83 },
+                { text: 'Stop - too painful', nextText: 84 }
+            ]
+        },
+        {
+            id: 32,
+            text: 'Core files are scattered. The main ones are in the Debug Temple and Code Vault.',
+            options: [
+                { text: 'Go to Debug Temple', nextText: 59 },
+                { text: 'Search for Code Vault', nextText: 60 }
+            ]
+        },
+        {
+            id: 33,
+            text: 'Debug keys were hidden in clever places throughout your game.',
+            options: [
+                { text: 'Find an enemy to defeat', nextText: 85 },
+                { text: 'Look for the waterfall', nextText: 86 },
+                { text: 'Check for your signature', nextText: 87 }
+            ]
+        },
+        {
+            id: 34,
+            text: 'To complete the core game loop, you need to finish what you started.',
+            options: [
+                { text: 'Accept your role as creator', nextText: 88 },
+                { text: 'Try to bypass the requirement', nextText: 89 }
+            ]
+        },
+        {
+            id: 35,
+            text: 'The JavaScript river carries functions and variables like leaves.',
+            options: [
+                { text: 'Catch a familiar function', nextText: 90 },
+                { text: 'Follow the river downstream', nextText: 91 },
+                { text: 'Try to modify the code flow', requiredState: (state) => state.player.class === 'code-mage', nextText: 92 }
+            ]
+        },
+        {
+            id: 36,
+            text: 'The HTML mountains are structured with <div> peaks and <section> plateaus.',
+            options: [
+                { text: 'Climb a <div> mountain', requiredState: (state) => state.player.health > 60, nextText: 93 },
+                { text: 'Study the structure', nextText: 94 }
+            ]
+        },
+        {
+            id: 37,
+            text: 'Your floating comments reveal your thoughts during development.',
+            options: [
+                { text: 'Read a humorous comment', nextText: 95 },
+                { text: 'Read a frustrated comment', nextText: 96 }
+            ]
+        },
+        {
+            id: 38,
+            text: 'You fix a TODO item. The game world stabilizes slightly.',
+            options: [
+                { text: 'Continue fixing', nextText: 97 },
+                { text: 'Explore more', nextText: 98 }
+            ]
+        },
+        {
+            id: 39,
+            text: 'You document code patterns thoroughly, gaining clarity.',
+            options: [
+                { text: 'Use notes to navigate', nextText: 99 },
+                { text: 'Share with NPCs', nextText: 100 }
+            ]
+        },
+        {
+            id: 40,
+            text: 'You absorb code energy. Your powers grow stronger.',
+            options: [
+                { text: 'Reshape a small area', requiredState: (state) => state.player.class === 'reality-bender', nextText: 101 },
+                { text: 'Follow the energy source', nextText: 102 }
+            ]
+        },
+        {
+            id: 41,
+            text: 'You focus on a corrupted texture - a tree that flickers between oak and palm.',
+            options: [
+                { text: 'Fix it systematically', requiredState: (state) => state.player.metaKnowledge >= 40, nextText: 103 },
+                { text: 'This is too much', nextText: 104 },
+                { text: 'Find root cause', nextText: 105 }
+            ]
+        },
+        {
+            id: 42,
+            text: 'The NPC dialogue trees are incomplete. You find branching paths that lead nowhere.',
+            options: [
+                { text: 'Write dialogue', requiredState: (state) => state.player.class === 'lore-master', nextText: 106 },
+                { text: 'Follow broken quest', nextText: 107 }
+            ]
+        },
+        {
+            id: 43,
+            text: 'You test the physics by jumping. You float down too slowly. Gravity feels wrong.',
+            options: [
+                { text: 'Adjust gravity', requiredState: (state) => state.debugAccess === true, nextText: 108 },
+                { text: 'Test collision', nextText: 109 },
+                { text: 'Stop testing', nextText: 110 }
+            ]
+        },
+        {
+            id: 44,
+            text: 'You successfully patch the memory leak! The forest stabilizes into a cohesive scene.',
+            options: [
+                { text: 'Patch overflow too', requiredState: (state) => state.player.metaKnowledge >= 50, nextText: 111 },
+                { text: 'Revert patch', nextText: 112 }
+            ]
+        },
+        {
+            id: 45,
+            text: 'You abort the patch. The forest returns to its glitched state.',
+            options: [
+                { text: 'Find strategic approach', nextText: 113 },
+                { text: 'Accept glitches', setState: { acceptedGlitches: true }, nextText: 114 }
+            ]
+        },
+        {
+            id: 46,
+            text: 'You call the debug console. "Memory leak patch requires root access."',
+            options: [
+                { text: 'Search for root access', nextText: 115 },
+                { text: 'Find another way', nextText: 116 }
+            ]
+        },
+        {
+            id: 47,
+            text: '"I didn\'t mean to," you say. The pixelated face looks sad.',
+            options: [
+                { text: '"I\'ll finish it now"', setState: { promisedToFinish: true }, metaGain: 25, nextText: 117 },
+                { text: '"I need to go home"', nextText: 118 }
+            ]
+        },
+        {
+            id: 48,
+            text: '"Who are you?" you ask. The face flickers.',
+            options: [
+                { text: 'Give them names', requiredState: (state) => state.player.class === 'lore-master', nextText: 119 },
+                { text: 'Ask how to fix', nextText: 120 }
+            ]
+        },
+        {
+            id: 49,
+            text: 'You run debug commands on the entity. It\'s classified as "Unfinished_Concept_001".',
+            options: [
+                { text: 'Complete entity', requiredState: (state) => state.player.metaKnowledge >= 35, nextText: 121 },
+                { text: 'Delete entity', nextText: 122 }
+            ]
+        },
+        {
+            id: 50,
+            text: 'Your map reveals patterns. The anomalies form a spiral.',
+            options: [
+                { text: 'Follow spiral', setState: { followingSpiral: true }, nextText: 123 },
+                { text: 'Mark points of interest', nextText: 124 }
+            ]
+        },
 
-            },
-            {
-                id: 13,
-                text: '> REALITY_SCAN INITIATED\n> Scanning... 45%\n> Anomaly detected: Player entity mismatch\n> Scanning... 87%\n> CRITICAL: Reality anchor unstable\n> Scan complete.\n\nThe scan shows you\'re anchored to the game world by 127 error threads.',
-                options: [
-                    {
-                        text: 'Stabilize Reality',
-                        nextText: 27
-                    },
-                    {
-                        text: 'Locate Core Files',
-                        nextText: 28
-                    },
-                    {
-                        text: 'Restore Game Integrity',
-                        nextText: 29
-                    }
-                ]
-            },
-            {
-                id: 14,
-                text: 'You input: /exit_sequence --admin\n> ERROR: Access denied. Administrator privileges required.\n> Suggestion: Complete core game loop or find debug key.',
-                options: [
-                    {
-                        text: 'Search for debug key',
-                        nextText: 30
-                    },
-                    {
-                        text: 'Complete core game loop',
-                        nextText: 31
-                    },
-                    {
-                        text: 'Attempt force exit again',
-                        nextText: 10
-                    }
-                ]
-            },
-            {
-                id: 15,
-                text: 'You step through the glitch doorway and find yourself in the Code Realm. Lines of code float around you, glowing with raw potential.',
-                options: [
-                    {
-                        text: 'Follow the JavaScript river',
-                        setState: { followedJS: true },
-                        metaGain: 20,
-                        nextText: 34
-                    },
-                    {
-                        text: 'Climb the HTML mountains',
-                        nextText: 35
-                    },
-                    {
-                        text: 'Examine your floating comments',
-                        nextText: 36
-                    }
-                ]
+        // ========== SCENES 51-100 ==========
+        {
+            id: 51,
+            text: 'You spot several possible civilizations. None seem stable.',
+            options: [
+                { text: 'Visit flickering town', nextText: 125 },
+                { text: 'Approach cube city', nextText: 126 }
+            ]
+        },
+        {
+            id: 52,
+            text: 'You contact the skybox. Clouds form: "HELP US".',
+            options: [
+                { text: 'Ask how to help', nextText: 127 },
+                { text: 'Modify skybox', requiredState: (state) => state.player.class === 'code-mage', nextText: 128 }
+            ]
+        },
+        {
+            id: 53,
+            text: 'Time dilation means you\'re experiencing time 1.3x faster than real world.',
+            options: [
+                { text: 'Use advantage', nextText: 129 },
+                { text: 'Sync times', nextText: 130 }
+            ]
+        },
+        {
+            id: 54,
+            text: 'Quantum NPC entanglement means characters exist in multiple states.',
+            options: [
+                { text: 'Observe NPC', nextText: 131 },
+                { text: 'Study entanglement', requiredState: (state) => state.player.metaKnowledge >= 25, nextText: 132 }
+            ]
+        },
+        {
+            id: 55,
+            text: 'You repair inventory corruption. Items reappear.',
+            options: [
+                { text: 'Equip glitched sword', setState: { equippedSword: true }, nextText: 133 },
+                { text: 'Test healing potion', nextText: 134 }
+            ]
+        },
+        {
+            id: 56,
+            text: 'You look at your hands. They\'re blocky, like a low-poly model.',
+            options: [
+                { text: 'Test abilities', nextText: 135 },
+                { text: 'Restore form', nextText: 136 }
+            ]
+        },
+        {
+            id: 57,
+            text: 'The cube forest is mathematically perfect but soulless.',
+            options: [
+                { text: 'Appreciate order', nextText: 137 },
+                { text: 'Miss glitches', nextText: 138 }
+            ]
+        },
+        {
+            id: 58,
+            text: 'Another reboot could reset everything.',
+            options: [
+                { text: 'Risk it', requiredState: (state) => state.player.health > 30, nextText: 139 },
+                { text: 'Find solution', nextText: 140 }
+            ]
+        },
+        {
+            id: 59,
+            text: 'The Debug Temple lies ahead.',
+            options: [
+                { text: 'Enter temple', nextText: 141 },
+                { text: 'Scan security', requiredState: (state) => state.debugAccess === true, nextText: 142 }
+            ]
+        },
+        {
+            id: 60,
+            text: 'The Code Vault is hidden. You need three key fragments.',
+            options: [
+                { text: 'Search fragments', nextText: 143 },
+                { text: 'Brute force', requiredState: (state) => state.player.class === 'code-mage', nextText: 144 }
+            ]
+        },
+        {
+            id: 61,
+            text: 'Your old notes mention: "Admin pass = unfinished symphony."',
+            options: [
+                { text: 'Try song titles', nextText: 145 },
+                { text: 'Look for clues', nextText: 146 }
+            ]
+        },
+        {
+            id: 62,
+            text: 'QUEST ACCEPTED: "Restore Reality"',
+            options: [
+                { text: 'Find Heart of Code', nextText: 147 },
+                { text: 'Ask about redacted', nextText: 148 }
+            ]
+        },
+        {
+            id: 63,
+            text: 'The Core Glitch pulses at the world\'s center.',
+            options: [
+                { text: 'Approach glitch', nextText: 149 },
+                { text: 'Prepare first', nextText: 150 }
+            ]
+        },
+        {
+            id: 64,
+            text: 'The redacted objective worries you.',
+            options: [
+                { text: 'Investigate', nextText: 151 },
+                { text: 'Focus on known', nextText: 152 }
+            ]
+        },
+        {
+            id: 65,
+            text: 'As you enter, the settlement stabilizes into a medieval village.',
+            options: [
+                { text: 'Talk to villagers', nextText: 153 },
+                { text: 'Explore village', nextText: 154 }
+            ]
+        },
+        {
+            id: 66,
+            text: 'From distance, you watch the settlement phase between realities.',
+            options: [
+                { text: 'Time approach', nextText: 155 },
+                { text: 'Keep observing', nextText: 156 }
+            ]
+        },
+        {
+            id: 67,
+            text: 'You call out. Figures appear at the edge of town.',
+            options: [
+                { text: 'Approach them', nextText: 157 },
+                { text: 'Ask who they are', nextText: 158 }
+            ]
+        },
+        {
+            id: 68,
+            text: 'You find glowing berries on glitched bushes.',
+            options: [
+                { text: 'Eat berries', nextText: 159 },
+                { text: 'Look for other food', nextText: 160 }
+            ]
+        },
+        {
+            id: 69,
+            text: 'You build a shelter from fallen logs.',
+            options: [
+                { text: 'Rest', nextText: 161 },
+                { text: 'Improve shelter', nextText: 162 }
+            ]
+        },
+        {
+            id: 70,
+            text: 'You find a glitched book floating in a clearing.',
+            options: [
+                { text: 'Read book', nextText: 163 },
+                { text: 'Take book', nextText: 164 }
+            ]
+        },
+        {
+            id: 71,
+            text: 'You play back a scream crystal. Your own voice echoes.',
+            options: [
+                { text: 'Play another', nextText: 165 },
+                { text: 'Stop', nextText: 166 }
+            ]
+        },
+        {
+            id: 72,
+            text: 'Error codes: programmer humor. Someone was making jokes.',
+            options: [
+                { text: 'Decode humor', nextText: 167 },
+                { text: 'Find serious errors', nextText: 168 }
+            ]
+        },
+        {
+            id: 73,
+            text: 'You collect scream crystals. They vibrate in your pocket.',
+            options: [
+                { text: 'Test as tool', nextText: 169 },
+                { text: 'Store carefully', nextText: 170 }
+            ]
+        },
+        {
+            id: 74,
+            text: 'The electrical hum leads to a power source.',
+            options: [
+                { text: 'Touch crystal', nextText: 171 },
+                { text: 'Study connections', nextText: 172 }
+            ]
+        },
+        {
+            id: 75,
+            text: 'You identify processes running the game.',
+            options: [
+                { text: 'Optimize render', nextText: 173 },
+                { text: 'Check player code', nextText: 174 }
+            ]
+        },
+        {
+            id: 76,
+            text: 'Meditating, you hear individual processes.',
+            options: [
+                { text: 'Sync with game loop', nextText: 175 },
+                { text: 'Listen deeper', nextText: 176 }
+            ]
+        },
+        {
+            id: 77,
+            text: 'Beneath the ground, you see source code.',
+            options: [
+                { text: 'Read code', nextText: 177 },
+                { text: 'Edit code', nextText: 178 }
+            ]
+        },
+        {
+            id: 78,
+            text: 'You hum softly. The glitches calm.',
+            options: [
+                { text: 'Experiment sounds', nextText: 179 },
+                { text: 'Create song', nextText: 180 }
+            ]
+        },
+        {
+            id: 79,
+            text: 'Your loudest scream causes critical failure.',
+            options: [
+                { text: 'Wait reboot', nextText: 181 },
+                { text: 'Cancel reboot', nextText: 182 }
+            ]
+        },
+        {
+            id: 80,
+            text: 'Thread #001 traces back to your computer chair.',
+            options: [
+                { text: 'Follow thread', nextText: 183 },
+                { text: 'Tug thread', nextText: 184 }
+            ]
+        },
+        {
+            id: 81,
+            text: 'You sync game time with real time.',
+            options: [
+                { text: 'Keep synced', nextText: 185 },
+                { text: 'Revert dilation', nextText: 186 }
+            ]
+        },
+        {
+            id: 82,
+            text: 'You allocate more memory. World becomes detailed but unstable.',
+            options: [
+                { text: 'Allocate more', nextText: 187 },
+                { text: 'Return default', nextText: 188 }
+            ]
+        },
+        {
+            id: 83,
+            text: 'You continue stabilizing. The pain intensifies.',
+            options: [
+                { text: 'Push through', nextText: 189 },
+                { text: 'Stop completely', nextText: 190 }
+            ]
+        },
+        {
+            id: 84,
+            text: 'You stop stabilizing. The threads return to normal.',
+            options: [
+                { text: 'Try different approach', nextText: 191 },
+                { text: 'Accept instability', nextText: 192 }
+            ]
+        },
+        {
+            id: 85,
+            text: 'You find a glitched wolf. "Debug entity detected."',
+            options: [
+                { text: 'Fight wolf', nextText: 193 },
+                { text: 'Talk to wolf', nextText: 194 }
+            ]
+        },
+        {
+            id: 86,
+            text: 'The waterfall exists in three places simultaneously.',
+            options: [
+                { text: 'Enter cave', nextText: 195 },
+                { text: 'Examine waterfall', nextText: 196 }
+            ]
+        },
+        {
+            id: 87,
+            text: 'You find your signature carved into a tree.',
+            options: [
+                { text: 'Take contents', nextText: 197 },
+                { text: 'Leave it', nextText: 198 }
+            ]
+        },
+        {
+            id: 88,
+            text: 'You accept your role. The world seems to respond.',
+            options: [
+                { text: 'Begin creation', nextText: 199 },
+                { text: 'Seek guidance', nextText: 200 }
+            ]
+        },
+        {
+            id: 89,
+            text: 'You try to bypass. Systems resist.',
+            options: [
+                { text: 'Force bypass', nextText: 201 },
+                { text: 'Find legit way', nextText: 202 }
+            ]
+        },
+        {
+            id: 90,
+            text: 'You catch a function. Holding it, you feel purpose.',
+            options: [
+                { text: 'Modify', nextText: 203 },
+                { text: 'Release', nextText: 204 }
+            ]
+        },
+        {
+            id: 91,
+            text: 'Downstream, river converges into lake of compiled code.',
+            options: [
+                { text: 'Swim', nextText: 205 },
+                { text: 'Study shore', nextText: 206 }
+            ]
+        },
+        {
+            id: 92,
+            text: 'You modify code flow. River changes direction.',
+            options: [
+                { text: 'Make changes', nextText: 207 },
+                { text: 'Restore flow', nextText: 208 }
+            ]
+        },
+        {
+            id: 93,
+            text: 'Climbing mountain, you see Code Realm structure.',
+            options: [
+                { text: 'Study', nextText: 209 },
+                { text: 'Jump element', nextText: 210 }
+            ]
+        },
+        {
+            id: 94,
+            text: 'CSS waterfalls apply styles to everything.',
+            options: [
+                { text: 'Touch waterfall', nextText: 211 },
+                { text: 'Study rules', nextText: 212 }
+            ]
+        },
+        {
+            id: 95,
+            text: 'Humorous comment about procrastination.',
+            options: [
+                { text: 'Read another', nextText: 213 },
+                { text: 'Add squirrels', nextText: 214 }
+            ]
+        },
+        {
+            id: 96,
+            text: 'Frustrated comment about collision detection.',
+            options: [
+                { text: 'Feel sympathy', nextText: 215 },
+                { text: 'Fix collision', nextText: 216 }
+            ]
+        },
+        {
+            id: 97,
+            text: 'You fix more TODOs. Growing tired.',
+            options: [
+                { text: 'Keep fixing', nextText: 217 },
+                { text: 'Take break', nextText: 218 }
+            ]
+        },
+        {
+            id: 98,
+            text: 'You explore deeper into Code Realm.',
+            options: [
+                { text: 'Explore cut features', nextText: 219 },
+                { text: 'Return physical', nextText: 220 }
+            ]
+        },
+        {
+            id: 99,
+            text: 'Using notes, you navigate to stable area.',
+            options: [
+                { text: 'Rest', nextText: 221 },
+                { text: 'Study stability', nextText: 222 }
+            ]
+        },
+        {
+            id: 100,
+            text: 'You share notes with NPC. They offer help.',
+            options: [
+                { text: 'Accept help', nextText: 223 },
+                { text: 'Ask knowledge', nextText: 224 }
+            ]
+        },
 
-            },
-            {
-                id: 16,
-                text: 'The code patterns reveal secrets. You see TODO comments you wrote months ago, now rendered as physical objects. "Fix collision detection" glows with unfinished energy.',
-                options: [
-                    {
-                        text: 'Try to fix a TODO',
-                        requiredState: (state) => state.player.class === 'code-mage',
-                        setState: { fixedTodo: true },
-                        metaGain: 25,
-                        nextText: 37
-                    },
-                    {
-                        text: 'Document the patterns',
-                        _requiredState: (state) => state.player.class === 'lore-master',
-                          get requiredState() {
-                            return this._requiredState;
-                        },
-                        set requiredState(value) {
-                            this._requiredState = value;
-                        },
-                        setState: { documentedPatterns: true },
-                        metaGain: 18,
-                        nextText: 38
-                    },
-                    {
-                        text: 'Absorb the code energy',
-                        _requiredState: (state) => state.player.class === 'reality-bender',
-                        get requiredState() {
-                            return this._requiredState;
-                        },
-                        set requiredState(value) {
-                            this._requiredState = value;
-                        },
-                        setState: { absorbedCode: true },
-                        nextText: 39
-                    }
-                ]
-            },
-            {
-                id: 17,
-                text: 'You create a log of the memory leaks. Each entry gains you understanding:\n1. NPC dialogue trees incomplete\n2. Texture files corrupted\n3. Physics engine unstable\n4. Save system non-functional',
-                options: [
-                    {
-                        text: 'Attempt to fix texture corruption',
-                        metaGain: 10,
-                        nextText: 40
-                    },
-                    {
-                        text: 'Study the NPC dialogue',
-                        nextText: 41
-                    },
-                    {
-                        text: 'Test the physics engine',
-                        requiredState: (state) => state.player.health > 60,
-                        nextText: 42
-                    }
-                ]
-            },
-            {
-                id: 18,
-                text: 'You attempt to patch the memory leak. The forest flickers violently. Trees transform into different species, then into abstract polygons, then back again.',
-                options: [
-                    {
-                        text: 'Continue the patch',
-                        requiredState: (state) => state.player.metaKnowledge >= 30,
-                        setState: { continuedPatch: true },
-                        metaGain: 35,
-                        nextText: 43
-                    },
-                    {
-                        text: 'Abort - too dangerous',
-                        nextText: 44
-                    },
-                    {
-                        text: 'Call for help from console',
-                        requiredState: (state) => state.debugAccess === true,
-                        nextText: 45
-                    }
-                ]
-            },
-            {
-                id: 19,
-                text: 'The whispers lead you to a clearing where the pixels arrange themselves into a face - your face. It speaks: "Why did you abandon us?"',
-                options: [
-                    {
-                        text: 'Answer: "I didn\'t mean to"',
-                        nextText: 46
-                    },
-                    {
-                        text: 'Ask: "Who are you?"',
-                        nextText: 47
-                    },
-                    {
-                        text: 'Debug the entity',
-                        requiredState: (state) => state.player.class === 'code-mage',
-                        nextText: 48
-                    }
-                ]
-            },
-            {
-                id: 20,
-                text: 'You climb a glitched hill. From the top, you see the entire game world. It\'s beautiful but broken. Mountains phase in and out of existence. A river flows backward.',
-                options: [
-                    {
-                        text: 'Map the visible anomalies',
-                        setState: { mappedAnomalies: true },
-                        metaGain: 15,
-                        nextText: 49
-                    },
-                    {
-                        text: 'Look for civilization',
-                        nextText: 50
-                    },
-                    {
-                        text: 'Try to contact the skybox',
-                        requiredState: (state) => state.player.metaKnowledge >= 40,
-                        nextText: 51
-                    }
-                ]
-            },
-            {
-                id: 21,
-                text: 'ANOMALY DETAILS:\n#001: Player inventory corrupted\n#045: Time dilation detected\n#089: Quantum NPC entanglement\n#127: Reality anchor unstable\n\nMost anomalies trace back to your arrival.',
-                options: [
-                    {
-                        text: 'Investigate time dilation',
-                        setState: { investigatedTime: true },
-                        metaGain: 12,
-                        nextText: 52
-                    },
-                    {
-                        text: 'Check quantum entanglement',
-                        nextText: 53
-                    },
-                    {
-                        text: 'Repair inventory corruption',
-                        requiredState: (state) => state.player.class === 'code-mage',
-                        nextText: 54
-                    }
-                ]
-            },
-            {
-                id: 22,
-                text: 'EMERGENCY REBOOT INITIATED\nThe world dissolves into loading screens... then reassembles differently. The trees are now cubes. The sky is checkered. You feel different too.',
-                options: [
-                    {
-                        text: 'Check your new form',
-                        nextText: 55
-                    },
-                    {
-                        text: 'Explore the cube forest',
-                        nextText: 56
-                    },
-                    {
-                        text: 'Try another reboot',
-                        nextText: 57
-                    }
-                ]
-            },
-            {
-                id: 23,
-                text: 'Where would admin privileges be in your own game? You designed the systems. The admin console was in... the Debug Temple? Or was it the Code Vault?',
-                options: [
-                    {
-                        text: 'Head to Debug Temple',
-                        setState: { headingToTemple: true },
-                        nextText: 58
-                    },
-                    {
-                        text: 'Search for Code Vault',
-                        nextText: 59
-                    },
-                    {
-                        text: 'Check your old notes',
-                        requiredState: (state) => state.player.class === 'lore-master',
-                        nextText: 60
-                    }
-                ]
-            },
-            {
-                id: 24,
-                text: 'Primary Questline: "Restore Reality"\nObjectives:\n1. Find the Core Glitch\n2. Repair Memory Leaks\n3. Stabilize Physics\n4. [REDACTED]\n\nProgress: 0%',
-                options: [
-                    {
-                        text: 'Accept the quest',
-                        setState: { acceptedQuest: true },
-                        metaGain: 20,
-                        nextText: 61
-                    },
-                    {
-                        text: 'Look for the Core Glitch',
-                        nextText: 62
-                    },
-                    {
-                        text: 'Question the redacted objective',
-                        nextText: 63
-                    }
-                ]
-            },
-            {
-                id: 25,
-                text: 'Through the glitched trees, you spot smoke rising. Civilization! As you approach, the settlement flickers between a medieval village and a cyberpunk city.',
-                options: [
-                    {
-                        text: 'Enter the village/city',
-                        nextText: 64
-                    },
-                    {
-                        text: 'Observe from a distance',
-                        nextText: 65
-                    },
-                    {
-                        text: 'Call out to the inhabitants',
-                        nextText: 66
-                    }
-                ]
-            },
-            {
-                id: 26,
-                text: 'You sit on a log that phases between wood and metal. Plan:\n1. Assess the situation ✓\n2. Find resources\n3. Locate exit\n4. Don\'t panic\n\nResources needed: Food, shelter, information.',
-                options: [
-                    {
-                        text: 'Search for food',
-                        nextText: 67
-                    },
-                    {
-                        text: 'Build temporary shelter',
-                        requiredState: (state) => state.player.health > 70,
-                        nextText: 68
-                    },
-                    {
-                        text: 'Look for information sources',
-                        nextText: 69
-                    }
-                ]
-            },
-            {
-                id: 27,
-                text: 'The echoes lead to a cave where your screams are stored as .wav files, floating in crystal formations. Each scream is labeled with a timestamp and error code.',
-                options: [
-                    {
-                        text: 'Play back a scream',
-                        nextText: 70
-                    },
-                    {
-                        text: 'Check the error codes',
-                        requiredState: (state) => state.player.metaKnowledge >= 15,
-                        nextText: 71
-                    },
-                    {
-                        text: 'Collect the audio crystals',
-                        setState: { collectedCrystals: true },
-                        nextText: 72
-                    }
-                ]
-            },
-            {
-                id: 28,
-                text: 'In the silence, you hear it: a low hum of electricity. The forest isn\'t silent at all - it\'s buzzing with background processes. Like a computer running too many programs.',
-                options: [
-                    {
-                        text: 'Follow the electrical hum',
-                        nextText: 73
-                    },
-                    {
-                        text: 'Try to identify the processes',
-                        requiredState: (state) => state.player.class === 'code-mage',
-                        nextText: 74
-                    },
-                    {
-                        text: 'Meditate to hear better',
-                        requiredState: (state) => state.player.class === 'lore-master',
-                        nextText: 75
-                    }
-                ]
-            },
-            {
-                id: 29,
-                text: 'Your louder scream causes a feedback loop. The forest glitches violently. Trees invert their colors. The ground becomes translucent, showing code beneath.',
-                options: [
-                    {
-                        text: 'Look at the revealed code',
-                        setState: { sawCodeLayer: true },
-                        metaGain: 25,
-                        nextText: 76
-                    },
-                    {
-                        text: 'Try to stabilize with a softer sound',
-                        nextText: 77
-                    },
-                    {
-                        text: 'Scream even louder (risky)',
-                        requiredState: (state) => state.player.health > 90,
-                        nextText: 78
-                    }
-                ]
-            },
-            {
-                id: 30,
-                text: 'ERROR THREAD DETAILS:\nThread #001: Player.spawn() called from unknown source\nThread #045: GameTime.desync = 47.3 seconds\nThread #089: Memory allocation exceeded\n\nEach thread connects to your physical body.',
-                options: [
-                    {
-                        text: 'Trace Thread #001',
-                        setState: { tracedThread1: true },
-                        metaGain: 18,
-                        nextText: 79
-                    },
-                    {
-                        text: 'Fix time desync',
-                        requiredState: (state) => state.player.metaKnowledge >= 35,
-                        nextText: 80
-                    },
-                    {
-                        text: 'Allocate more memory',
-                        nextText: 81
-                    }
-                ]
-            },
-            {
-                id: 31,
-                text: 'You attempt to sever an error thread. Pain shoots through your body - these threads ARE your connection to reality. Severing them could unmake you.',
-                options: [
-                    {
-                        text: 'Sever anyway (dangerous)',
-                        requiredState: (state) => state.player.health > 50,
-                        setState: { severedThread: true },
-                        nextText: 82
-                    },
-                    {
-                        text: 'Find another way',
-                        nextText: 83
-                    },
-                    {
-                        text: 'Reinforce the threads instead',
-                        requiredState: (state) => state.player.class === 'reality-bender',
-                        nextText: 84
-                    }
-                ]
-            },
-            {
-                id: 32,
-                text: 'Debug keys in your game were hidden in:\n1. The first enemy defeated\n2. The final chest\n3. A secret room behind the waterfall\n4. The developer\'s signature\n\nWhich to search first?',
-                options: [
-                    {
-                        text: 'Find an enemy to defeat',
-                        nextText: 85
-                    },
-                    {
-                        text: 'Look for the waterfall',
-                        nextText: 86
-                    },
-                    {
-                        text: 'Check for your signature',
-                        nextText: 87
-                    }
-                ]
-            },
-            {
-                id: 33,
-                text: '> HINT MODE ACTIVATED\n> Available hints (cost 5 Meta-Knowledge each):\n1. Location of Core Glitch\n2. Admin password fragment\n3. Safe reboot sequence\n\nYou have enough for one hint.',
-                options: [
-                    {
-                        text: 'Get Core Glitch location',
-                        requiredState: (state) => state.player.metaKnowledge >= 5,
-                        setState: { metaKnowledge: state => state.player.metaKnowledge - 5 },
-                        nextText: 88
-                    },
-                    {
-                        text: 'Get password fragment',
-                        requiredState: (state) => state.player.metaKnowledge >= 5,
-                        setState: { metaKnowledge: state => state.player.metaKnowledge - 5 },
-                        nextText: 89
-                    },
-                    {
-                        text: 'Get reboot sequence',
-                        requiredState: (state) => state.player.metaKnowledge >= 5,
-                        setState: { metaKnowledge: state => state.player.metaKnowledge - 5 },
-                        nextText: 90
-                    },
-                    {
-                        text: 'Save Meta-Knowledge',
-                        nextText: 14
-                    }
-                ]
-            },
-            {
-                id: 34,
-                text: 'The JavaScript river carries functions and variables like leaves. You see your own code floating by - functions you wrote, then deleted, now given form.',
-                options: [
-                    {
-                        text: 'Catch a familiar function',
-                        nextText: 91
-                    },
-                    {
-                        text: 'Follow the river downstream',
-                        nextText: 92
-                    },
-                    {
-                        text: 'Try to modify the code flow',
-                        requiredState: (state) => state.player.class === 'code-mage',
-                        nextText: 93
-                    }
-                ]
-            },
-            {
-                id: 35,
-                text: 'The HTML mountains are structured with <div> peaks and <section> plateaus. CSS waterfalls cascade down, styling everything with glowing properties.',
-                options: [
-                    {
-                        text: 'Climb a <div> mountain',
-                        requiredState: (state) => state.player.health > 60,
-                        nextText: 94
-                    },
-                    {
-                        text: 'Study the CSS waterfalls',
-                        nextText: 95
-                    },
-                    {
-                        text: 'Look for <header> landmarks',
-                        nextText: 96
-                    }
-                ]
-            },
-            {
-                id: 36,
-                text: 'Your floating comments reveal your own thoughts during development. Some are humorous, others frustrated. They provide insight into your mindset.',
-                options: [
-                    {
-                        text: 'Read a humorous comment',
-                        nextText: 97
-                    },
-                    {
-                        text: 'Read a frustrated comment',
-                        nextText: 98
-                    }
-                ]
-            },
-            {
-                id: 37,
-                text: 'You successfully fix a TODO item. The game world stabilizes slightly. A tree that was flickering solidifies. You feel a surge of accomplishment.',
-                options: [
-                    {
-                        text: 'Continue fixing TODOs',
-                        nextText: 99
-                    },
-                    {
-                        text: 'Explore the Code Realm more',
-                        nextText: 100
-                    },
-                ]
-            },
-            {
-                id: 38,
-                text: 'You document the code patterns thoroughly. Your notes help you understand the underlying structure of the game world. You gain clarity.',
-                options: [
-                    {
-                        text: 'Use notes to navigate',
-                        nextText: 101
-                    },
-                    {
-                        text: 'Share notes with NPCs for information',
-                        nextText: 102
-                    },
-                    {
-                        text: 'Put the notes aside for later',
-                        nextText: 103
-                    }
-                ]
-            },
-        
+        // ========== SCENES 101-150 ==========
+        {
+            id: 101,
+            text: 'You reshape a small clearing. Beautiful but unnatural.',
+            options: [
+                { text: 'Reshape more', nextText: 225 },
+                { text: 'Restore glitches', nextText: 226 }
+            ]
+        },
+        {
+            id: 102,
+            text: 'The energy leads to a nexus point. All code converges here.',
+            options: [
+                { text: 'Touch nexus', nextText: 227 },
+                { text: 'Analyze nexus', nextText: 228 }
+            ]
+        },
+        {
+            id: 103,
+            text: 'You systematically fix textures. Forest loses character.',
+            options: [
+                { text: 'Keep fixing', nextText: 229 },
+                { text: 'Leave glitches', nextText: 230 }
+            ]
+        },
+        {
+            id: 104,
+            text: 'You give up. Scale is overwhelming.',
+            options: [
+                { text: 'Feel despair', nextText: 231 },
+                { text: 'Find purpose', nextText: 232 }
+            ]
+        },
+        {
+            id: 105,
+            text: 'Root cause: memory allocation errors.',
+            options: [
+                { text: 'Fix allocation', nextText: 233 },
+                { text: 'Create assets', nextText: 234 }
+            ]
+        },
+        {
+            id: 106,
+            text: 'You write dialogue for merchant. NPC solidifies.',
+            options: [
+                { text: 'Talk to creation', nextText: 235 },
+                { text: 'Write more', nextText: 236 }
+            ]
+        },
+        {
+            id: 107,
+            text: 'You follow broken quest. It leads to looping NPC.',
+            options: [
+                { text: 'Add flags', nextText: 237 },
+                { text: 'Leave quest', nextText: 238 }
+            ]
+        },
+        {
+            id: 108,
+            text: 'You adjust gravity. Islands crash.',
+            options: [
+                { text: 'Fix islands', nextText: 239 },
+                { text: 'Revert gravity', nextText: 240 }
+            ]
+        },
+        {
+            id: 109,
+            text: 'Testing collision reveals invisible boundaries.',
+            options: [
+                { text: 'Map boundaries', nextText: 241 },
+                { text: 'Fix collision', nextText: 242 }
+            ]
+        },
+        {
+            id: 110,
+            text: 'You stop testing. Physics is broken.',
+            options: [
+                { text: 'Find workarounds', nextText: 243 },
+                { text: 'Accept broken', nextText: 244 }
+            ]
+        },
+        {
+            id: 111,
+            text: 'You patch buffer overflow. System stabilizes.',
+            options: [
+                { text: 'Continue patching', nextText: 245 },
+                { text: 'Stop while ahead', nextText: 246 }
+            ]
+        },
+        {
+            id: 112,
+            text: 'You revert patch. Memory leak returns.',
+            options: [
+                { text: 'Try different approach', nextText: 247 },
+                { text: 'Leave it', nextText: 248 }
+            ]
+        },
+        {
+            id: 113,
+            text: 'Strategic approach: fix foundational systems.',
+            options: [
+                { text: 'Work on memory', nextText: 249 },
+                { text: 'Stabilize physics', nextText: 250 }
+            ]
+        },
+        {
+            id: 114,
+            text: 'You accept glitches. They\'re part of charm.',
+            options: [
+                { text: 'Love glitches', nextText: 251 },
+                { text: 'Document features', nextText: 252 }
+            ]
+        },
+        {
+            id: 115,
+            text: 'Root access requires three factors.',
+            options: [
+                { text: 'Search factors', nextText: 253 },
+                { text: 'Bypass requirements', nextText: 254 }
+            ]
+        },
+        {
+            id: 116,
+            text: 'Maybe contain leak instead of patching.',
+            options: [
+                { text: 'Build container', nextText: 255 },
+                { text: 'Find solution', nextText: 256 }
+            ]
+        },
+        {
+            id: 117,
+            text: '"I\'ll finish it now," you promise. Face smiles.',
+            options: [
+                { text: 'Follow marker', nextText: 257 },
+                { text: 'Ask what first', nextText: 258 }
+            ]
+        },
+        {
+            id: 118,
+            text: '"I need to go home," you insist. Face looks hurt.',
+            options: [
+                { text: 'Insist leaving', nextText: 259 },
+                { text: 'Reconsider', nextText: 260 }
+            ]
+        },
+        {
+            id: 119,
+            text: 'You give names to abandoned ideas. They solidify.',
+            options: [
+                { text: 'Name more', nextText: 261 },
+                { text: 'Give purpose', nextText: 262 }
+            ]
+        },
+        {
+            id: 120,
+            text: '"How do I fix you?" "Complete us or delete us cleanly."',
+            options: [
+                { text: 'Complete them', nextText: 263 },
+                { text: 'Delete them', nextText: 264 }
+            ]
+        },
+        {
+            id: 121,
+            text: 'You complete entity. It becomes full NPC.',
+            options: [
+                { text: 'Talk to creation', nextText: 265 },
+                { text: 'Create more', nextText: 266 }
+            ]
+        },
+        {
+            id: 122,
+            text: 'You delete entity. It dissolves. You feel guilt.',
+            options: [
+                { text: 'Delete others', nextText: 267 },
+                { text: 'Stop deleting', nextText: 268 }
+            ]
+        },
+        {
+            id: 123,
+            text: 'Following spiral. Reality warps. Core Glitch close.',
+            options: [
+                { text: 'Continue', nextText: 269 },
+                { text: 'Turn back', nextText: 270 }
+            ]
+        },
+        {
+            id: 124,
+            text: 'You mark anomalies: floating island, uphill river.',
+            options: [
+                { text: 'Explore island', nextText: 271 },
+                { text: 'Investigate cave', nextText: 272 }
+            ]
+        },
+        {
+            id: 125,
+            text: 'Flickering town stabilizes. NPCs unaware.',
+            options: [
+                { text: 'Talk to townsfolk', nextText: 273 },
+                { text: 'Find elder', nextText: 274 }
+            ]
+        },
+        {
+            id: 126,
+            text: 'Cube city is geometric. Efficient but sterile.',
+            options: [
+                { text: 'Meet citizen', nextText: 275 },
+                { text: 'Find controller', nextText: 276 }
+            ]
+        },
+        {
+            id: 127,
+            text: '"How can I help?" Clouds: "FINISH OR LET GO."',
+            options: [
+                { text: 'Promise finish', nextText: 277 },
+                { text: 'Ask let go', nextText: 278 }
+            ]
+        },
+        {
+            id: 128,
+            text: 'You modify skybox. Sky changes colors.',
+            options: [
+                { text: 'Make permanent', nextText: 279 },
+                { text: 'Restore original', nextText: 280 }
+            ]
+        },
+        {
+            id: 129,
+            text: 'You use time advantage. Disorienting but useful.',
+            options: [
+                { text: 'Continue using', nextText: 281 },
+                { text: 'Sync times', nextText: 282 }
+            ]
+        },
+        {
+            id: 130,
+            text: 'Syncing times makes world feel real.',
+            options: [
+                { text: 'Keep synced', nextText: 283 },
+                { text: 'Return dilation', nextText: 284 }
+            ]
+        },
+        {
+            id: 131,
+            text: 'You observe NPC. It collapses into merchant.',
+            options: [
+                { text: 'Talk', nextText: 285 },
+                { text: 'Observe another', nextText: 286 }
+            ]
+        },
+        {
+            id: 132,
+            text: 'Studying entanglement, you learn to choose states.',
+            options: [
+                { text: 'Experiment', nextText: 287 },
+                { text: 'Use carefully', nextText: 288 }
+            ]
+        },
+        {
+            id: 133,
+            text: 'Glitched sword phases between solid and intangible.',
+            options: [
+                { text: 'Keep using', nextText: 289 },
+                { text: 'Find reliable', nextText: 290 }
+            ]
+        },
+        {
+            id: 134,
+            text: 'Healing potion works but causes glitches.',
+            options: [
+                { text: 'Drink more', nextText: 291 },
+                { text: 'Use sparingly', nextText: 292 }
+            ]
+        },
+        {
+            id: 135,
+            text: 'Low-poly form has advantages but feels less human.',
+            options: [
+                { text: 'Embrace efficiency', nextText: 293 },
+                { text: 'Miss humanity', nextText: 294 }
+            ]
+        },
+        {
+            id: 136,
+            text: 'You try to restore form. Exhausting.',
+            options: [
+                { text: 'Continue restoring', nextText: 295 },
+                { text: 'Accept form', nextText: 296 }
+            ]
+        },
+        {
+            id: 137,
+            text: 'Cube forest order is peaceful.',
+            options: [
+                { text: 'Stay appreciate', nextText: 297 },
+                { text: 'Return glitched', nextText: 298 }
+            ]
+        },
+        {
+            id: 138,
+            text: 'You miss chaos of glitched forest.',
+            options: [
+                { text: 'Restore glitches', nextText: 299 },
+                { text: 'Appreciate both', nextText: 300 }
+            ]
+        },
+        {
+            id: 139,
+            text: 'You risk reboot. World becomes wireframe.',
+            options: [
+                { text: 'Explore wireframe', nextText: 301 },
+                { text: 'Try another reboot', nextText: 302 }
+            ]
+        },
+        {
+            id: 140,
+            text: 'You decide against reboot. Too risky.',
+            options: [
+                { text: 'Return plan', nextText: 303 },
+                { text: 'Make new plan', nextText: 304 }
+            ]
+        },
+        {
+            id: 141,
+            text: 'Inside Debug Temple. Consoles show status.',
+            options: [
+                { text: 'Check status', nextText: 305 },
+                { text: 'Explore consoles', nextText: 306 }
+            ]
+        },
+        {
+            id: 142,
+            text: 'Security scan reveals tripwires, encryption.',
+            options: [
+                { text: 'Solve puzzles', nextText: 307 },
+                { text: 'Look backdoor', nextText: 308 }
+            ]
+        },
+        {
+            id: 143,
+            text: 'Key fragments hidden: first bug, favorite code.',
+            options: [
+                { text: 'Search first bug', nextText: 309 },
+                { text: 'Find favorite code', nextText: 310 }
+            ]
+        },
+        {
+            id: 144,
+            text: 'Brute forcing triggers security. Guardians attack.',
+            options: [
+                { text: 'Fight guardians', nextText: 311 },
+                { text: 'Reason with them', nextText: 312 }
+            ]
+        },
+        {
+            id: 145,
+            text: 'You try song titles. All denied.',
+            options: [
+                { text: 'Try musical terms', nextText: 313 },
+                { text: 'Look clues', nextText: 314 }
+            ]
+        },
+        {
+            id: 146,
+            text: 'You find sheet music. Melody is clue.',
+            options: [
+                { text: 'Hum melody', nextText: 315 },
+                { text: 'Transcribe notes', nextText: 316 }
+            ]
+        },
+        {
+            id: 147,
+            text: 'Heart of Code beats at temple center.',
+            options: [
+                { text: 'Touch Heart', nextText: 317 },
+                { text: 'Analyze first', requiredState: (state) => state.player.metaKnowledge >= 50, nextText: 318 }
+            ]
+        },
+        {
+            id: 148,
+            text: 'System: "REDACTED cannot be displayed."',
+            options: [
+                { text: 'Demand know', nextText: 319 },
+                { text: 'Accept mystery', nextText: 320 }
+            ]
+        },
+        {
+            id: 149,
+            text: 'You stand before Core Glitch. Hole in reality.',
+            options: [
+                { text: 'Jump in', requiredState: (state) => state.player.health > 80, nextText: 321 },
+                { text: 'Repair it', nextText: 322 },
+                { text: 'Listen whispers', nextText: 323 }
+            ]
+        },
+        {
+            id: 150,
+            text: 'You prepare: gather resources, study patterns.',
+            options: [
+                { text: 'Gather resources', nextText: 324 },
+                { text: 'Study more', nextText: 325 }
+            ]
+        },
 
+        // ========== SCENES 151-200 ==========
+        {
+            id: 151,
+            text: 'Investigating redaction: "Choose: Escape or Embrace."',
+            options: [
+                { text: 'Consider escape', nextText: 326 },
+                { text: 'Consider embrace', nextText: 327 }
+            ]
+        },
+        {
+            id: 152,
+            text: 'You focus on known objectives.',
+            options: [
+                { text: 'Work memory leaks', nextText: 328 },
+                { text: 'Find anomaly storms', nextText: 329 }
+            ]
+        },
+        {
+            id: 153,
+            text: 'Villagers gather. "Creator, we need stories."',
+            options: [
+                { text: 'Give stories', nextText: 330 },
+                { text: 'Ask about village', nextText: 331 }
+            ]
+        },
+        {
+            id: 154,
+            text: 'You explore village. Buildings flicker.',
+            options: [
+                { text: 'Visit tavern', nextText: 332 },
+                { text: 'Check market', nextText: 333 }
+            ]
+        },
+        {
+            id: 155,
+            text: 'You time approach when town stable.',
+            options: [
+                { text: 'Explore now', nextText: 334 },
+                { text: 'Wait cycle', nextText: 335 }
+            ]
+        },
+        {
+            id: 156,
+            text: 'You return to spawn point. Portal manifests.',
+            options: [
+                { text: 'Enter portal', nextText: 336 },
+                { text: 'Study portal', nextText: 337 }
+            ]
+        },
+        {
+            id: 157,
+            text: 'You approach figures. They\'re low-resolution.',
+            options: [
+                { text: 'Ask needs', nextText: 338 },
+                { text: 'Improve resolution', nextText: 339 }
+            ]
+        },
+        {
+            id: 158,
+            text: '"Who are you?" "We are Unfinished."',
+            options: [
+                { text: 'Promise complete', nextText: 340 },
+                { text: 'Ask how complete', nextText: 341 }
+            ]
+        },
+        {
+            id: 159,
+            text: 'You eat safe berries. Taste like electricity.',
+            options: [
+                { text: 'Eat more', nextText: 342 },
+                { text: 'Save later', nextText: 343 }
+            ]
+        },
+        {
+            id: 160,
+            text: 'Looking for food: mushrooms, glitched fish.',
+            options: [
+                { text: 'Try mushrooms', nextText: 344 },
+                { text: 'Catch fish', nextText: 345 }
+            ]
+        },
+        {
+            id: 161,
+            text: 'Resting in shelter. Energy returns.',
+            options: [
+                { text: 'Rest longer', nextText: 346 },
+                { text: 'Continue exploring', nextText: 347 }
+            ]
+        },
+        {
+            id: 162,
+            text: 'You improve shelter. Could be permanent.',
+            options: [
+                { text: 'Fortify further', nextText: 348 },
+                { text: 'Use as is', nextText: 349 }
+            ]
+        },
+        {
+            id: 163,
+            text: 'Reading book. Fragments of forgotten lore.',
+            options: [
+                { text: 'Read more', nextText: 350 },
+                { text: 'Take notes', nextText: 351 }
+            ]
+        },
+        {
+            id: 164,
+            text: 'You take book. It floats beside you.',
+            options: [
+                { text: 'Let guide', nextText: 352 },
+                { text: 'Study first', nextText: 353 }
+            ]
+        },
+        {
+            id: 165,
+            text: 'You play another scream. Distortion intensifies.',
+            options: [
+                { text: 'Play more', nextText: 354 },
+                { text: 'Really stop', nextText: 355 }
+            ]
+        },
+        {
+            id: 166,
+            text: 'You stop playing. Cave returns to quiet.',
+            options: [
+                { text: 'Leave cave', nextText: 356 },
+                { text: 'Study crystals', nextText: 357 }
+            ]
+        },
+        {
+            id: 167,
+            text: 'Decoding humor reveals your own jokes.',
+            options: [
+                { text: 'Appreciate humor', nextText: 358 },
+                { text: 'Fix serious', nextText: 359 }
+            ]
+        },
+        {
+            id: 168,
+            text: 'Looking for serious errors. Found many.',
+            options: [
+                { text: 'Prioritize fixes', nextText: 360 },
+                { text: 'Overwhelmed', nextText: 361 }
+            ]
+        },
+        {
+            id: 169,
+            text: 'Testing crystal as tool. Emits sonic pulse.',
+            options: [
+                { text: 'Test more', nextText: 362 },
+                { text: 'Use carefully', nextText: 363 }
+            ]
+        },
+        {
+            id: 170,
+            text: 'Storing crystals carefully. They still hum.',
+            options: [
+                { text: 'Check hum', nextText: 364 },
+                { text: 'Ignore hum', nextText: 365 }
+            ]
+        },
+        {
+            id: 171,
+            text: 'You touch crystal. Energy surges through you.',
+            options: [
+                { text: 'Absorb energy', nextText: 366 },
+                { text: 'Pull away', nextText: 367 }
+            ]
+        },
+        {
+            id: 172,
+            text: 'Studying connections. They form network.',
+            options: [
+                { text: 'Trace network', nextText: 368 },
+                { text: 'Modify connections', nextText: 369 }
+            ]
+        },
+        {
+            id: 173,
+            text: 'You optimize render. Graphics improve.',
+            options: [
+                { text: 'Optimize more', nextText: 370 },
+                { text: 'Check side effects', nextText: 371 }
+            ]
+        },
+        {
+            id: 174,
+            text: 'Checking player code. It\'s your consciousness.',
+            options: [
+                { text: 'Read code', nextText: 372 },
+                { text: 'Modify carefully', nextText: 373 }
+            ]
+        },
+        {
+            id: 175,
+            text: 'Syncing with game loop. Heartbeat matches.',
+            options: [
+                { text: 'Deepen sync', nextText: 374 },
+                { text: 'Break sync', nextText: 375 }
+            ]
+        },
+        {
+            id: 176,
+            text: 'Listening deeper. You hear everything.',
+            options: [
+                { text: 'Listen more', nextText: 376 },
+                { text: 'Block noise', nextText: 377 }
+            ]
+        },
+        {
+            id: 177,
+            text: 'Reading modified code. Someone changed it.',
+            options: [
+                { text: 'Find who', nextText: 378 },
+                { text: 'Restore original', nextText: 379 }
+            ]
+        },
+        {
+            id: 178,
+            text: 'You edit code. World changes instantly.',
+            options: [
+                { text: 'Edit more', nextText: 380 },
+                { text: 'Undo edit', nextText: 381 }
+            ]
+        },
+        {
+            id: 179,
+            text: 'Experimenting sounds. Each affects glitches.',
+            options: [
+                { text: 'Find perfect sound', nextText: 382 },
+                { text: 'Stop experiments', nextText: 383 }
+            ]
+        },
+        {
+            id: 180,
+            text: 'Creating stabilization song. It works.',
+            options: [
+                { text: 'Refine song', nextText: 384 },
+                { text: 'Teach song', nextText: 385 }
+            ]
+        },
+        {
+            id: 181,
+            text: 'Waiting reboot. Floating in void.',
+            options: [
+                { text: 'Wait patiently', nextText: 386 },
+                { text: 'Try communicate', nextText: 387 }
+            ]
+        },
+        {
+            id: 182,
+            text: 'Trying cancel reboot. System resists.',
+            options: [
+                { text: 'Force cancel', nextText: 388 },
+                { text: 'Accept reboot', nextText: 389 }
+            ]
+        },
+        {
+            id: 183,
+            text: 'Following thread. It leads to your body.',
+            options: [
+                { text: 'Follow further', nextText: 390 },
+                { text: 'Stop following', nextText: 391 }
+            ]
+        },
+        {
+            id: 184,
+            text: 'Tugging thread. Pain shoots through.',
+            options: [
+                { text: 'Tug harder', nextText: 392 },
+                { text: 'Stop tugging', nextText: 393 }
+            ]
+        },
+        {
+            id: 185,
+            text: 'Keeping time synced. World feels solid.',
+            options: [
+                { text: 'Stay synced', nextText: 394 },
+                { text: 'Miss advantage', nextText: 395 }
+            ]
+        },
+        {
+            id: 186,
+            text: 'Reverting to dilation. Time speeds up.',
+            options: [
+                { text: 'Keep dilation', nextText: 396 },
+                { text: 'Re-sync', nextText: 397 }
+            ]
+        },
+        {
+            id: 187,
+            text: 'Allocating more memory. Details increase.',
+            options: [
+                { text: 'Maximum allocation', nextText: 398 },
+                { text: 'Stop now', nextText: 399 }
+            ]
+        },
+        {
+            id: 188,
+            text: 'Returning to default. World simplifies.',
+            options: [
+                { text: 'Accept simple', nextText: 400 },
+                { text: 'Reallocate', nextText: 401 }
+            ]
+        },
+        {
+            id: 189,
+            text: 'Pushing through pain. Anchors stabilize.',
+            options: [
+                { text: 'Complete stabilization', nextText: 402 },
+                { text: 'Cannot continue', nextText: 403 }
+            ]
+        },
+        {
+            id: 190,
+            text: 'Stopping completely. Pain subsides.',
+            options: [
+                { text: 'Try later', nextText: 404 },
+                { text: 'Give up', nextText: 405 }
+            ]
+        },
+        {
+            id: 191,
+            text: 'Trying different approach. Consulting notes.',
+            options: [
+                { text: 'Find solution', nextText: 406 },
+                { text: 'Still stuck', nextText: 407 }
+            ]
+        },
+        {
+            id: 192,
+            text: 'Accepting instability. It becomes normal.',
+            options: [
+                { text: 'Adapt', nextText: 408 },
+                { text: 'Keep trying', nextText: 409 }
+            ]
+        },
+        {
+            id: 193,
+            text: 'Fighting wolf. It fights with glitches.',
+            options: [
+                { text: 'Continue fight', nextText: 410 },
+                { text: 'Try talk', nextText: 411 }
+            ]
+        },
+        {
+            id: 194,
+            text: 'Talking to wolf. It understands you.',
+            options: [
+                { text: 'Ask questions', nextText: 412 },
+                { text: 'Make friend', nextText: 413 }
+            ]
+        },
+        {
+            id: 195,
+            text: 'Entering cave. Walls are made of code.',
+            options: [
+                { text: 'Explore cave', nextText: 414 },
+                { text: 'Read walls', nextText: 415 }
+            ]
+        },
+        {
+            id: 196,
+            text: 'Examining waterfall. It\'s rendering water.',
+            options: [
+                { text: 'Study rendering', nextText: 416 },
+                { text: 'Enter anyway', nextText: 417 }
+            ]
+        },
+        {
+            id: 197,
+            text: 'Taking contents: debug key fragment.',
+            options: [
+                { text: 'Use fragment', nextText: 418 },
+                { text: 'Keep searching', nextText: 419 }
+            ]
+        },
+        {
+            id: 198,
+            text: 'Leaving it. Compartment closes.',
+            options: [
+                { text: 'Regret', nextText: 420 },
+                { text: 'Move on', nextText: 421 }
+            ]
+        },
+        {
+            id: 199,
+            text: 'Beginning creation. World responds.',
+            options: [
+                { text: 'Create landscape', nextText: 422 },
+                { text: 'Create NPC', nextText: 423 }
+            ]
+        },
+        {
+            id: 200,
+            text: 'Seeking guidance. World whispers answers.',
+            options: [
+                { text: 'Listen closely', nextText: 424 },
+                { text: 'Ignore whispers', nextText: 425 }
+            ]
+        },
 
-        ];
-    }
+        // ========== SCENES 201-242 ==========
+        {
+            id: 201,
+            text: 'Forcing bypass. System fights back.',
+            options: [
+                { text: 'Force harder', nextText: 426 },
+                { text: 'Stop forcing', nextText: 427 }
+            ]
+        },
+        {
+            id: 202,
+            text: 'Finding legit way. Following rules.',
+            options: [
+                { text: 'Continue search', nextText: 428 },
+                { text: 'Get frustrated', nextText: 429 }
+            ]
+        },
+        {
+            id: 203,
+            text: 'Modifying function. Effects ripple.',
+            options: [
+                { text: 'Watch effects', nextText: 430 },
+                { text: 'Undo modification', nextText: 431 }
+            ]
+        },
+        {
+            id: 204,
+            text: 'Releasing function. It rejoins river.',
+            options: [
+                { text: 'Release more', nextText: 432 },
+                { text: 'Keep next', nextText: 433 }
+            ]
+        },
+        {
+            id: 205,
+            text: 'Swimming in lake. Code enters your mind.',
+            options: [
+                { text: 'Swim deeper', nextText: 434 },
+                { text: 'Get out', nextText: 435 }
+            ]
+        },
+        {
+            id: 206,
+            text: 'Studying shoreline. Patterns emerge.',
+            options: [
+                { text: 'Study patterns', nextText: 436 },
+                { text: 'Follow patterns', nextText: 437 }
+            ]
+        },
+        {
+            id: 207,
+            text: 'Making more changes. World transforms.',
+            options: [
+                { text: 'Keep changing', nextText: 438 },
+                { text: 'Too much change', nextText: 439 }
+            ]
+        },
+        {
+            id: 208,
+            text: 'Restoring flow. World returns to normal.',
+            options: [
+                { text: 'Keep restored', nextText: 440 },
+                { text: 'Prefer changed', nextText: 441 }
+            ]
+        },
+        {
+            id: 209,
+            text: 'Studying structure. Understanding grows.',
+            options: [
+                { text: 'Study more', nextText: 442 },
+                { text: 'Use knowledge', nextText: 443 }
+            ]
+        },
+        {
+            id: 210,
+            text: 'Jumping to element. Teleportation works.',
+            options: [
+                { text: 'Jump again', nextText: 444 },
+                { text: 'Stay here', nextText: 445 }
+            ]
+        },
+        {
+            id: 211,
+            text: 'Touching waterfall. Styles apply to you.',
+            options: [
+                { text: 'Enjoy styles', nextText: 446 },
+                { text: 'Remove styles', nextText: 447 }
+            ]
+        },
+        {
+            id: 212,
+            text: 'Studying rules. They\'re beautiful.',
+            options: [
+                { text: 'Memorize rules', nextText: 448 },
+                { text: 'Modify rules', nextText: 449 }
+            ]
+        },
+        {
+            id: 213,
+            text: 'Reading another comment. More procrastination.',
+            options: [
+                { text: 'Read all', nextText: 450 },
+                { text: 'Stop reading', nextText: 451 }
+            ]
+        },
+        {
+            id: 214,
+            text: 'Adding squirrels. They appear instantly.',
+            options: [
+                { text: 'Watch squirrels', nextText: 452 },
+                { text: 'Add more animals', nextText: 453 }
+            ]
+        },
+        {
+            id: 215,
+            text: 'Feeling sympathy for past self.',
+            options: [
+                { text: 'Forgive self', nextText: 454 },
+                { text: 'Stay frustrated', nextText: 455 }
+            ]
+        },
+        {
+            id: 216,
+            text: 'Fixing collision now. It finally works.',
+            options: [
+                { text: 'Celebrate', nextText: 456 },
+                { text: 'Fix more', nextText: 457 }
+            ]
+        },
+        {
+            id: 217,
+            text: 'Keeping fixing. Exhaustion sets in.',
+            options: [
+                { text: 'Push through', nextText: 458 },
+                { text: 'Rest now', nextText: 459 }
+            ]
+        },
+        {
+            id: 218,
+            text: 'Taking break. Energy slowly returns.',
+            options: [
+                { text: 'Rest more', nextText: 460 },
+                { text: 'Return work', nextText: 461 }
+            ]
+        },
+        {
+            id: 219,
+            text: 'Exploring cut features. Lost potential.',
+            options: [
+                { text: 'Revive features', nextText: 462 },
+                { text: 'Leave cut', nextText: 463 }
+            ]
+        },
+        {
+            id: 220,
+            text: 'Returning physical. Code Realm fades.',
+            options: [
+                { text: 'Miss Code Realm', nextText: 464 },
+                { text: 'Glad return', nextText: 465 }
+            ]
+        },
+        {
+            id: 221,
+            text: 'Resting in stable area. Peaceful.',
+            options: [
+                { text: 'Rest longer', nextText: 466 },
+                { text: 'Explore area', nextText: 467 }
+            ]
+        },
+        {
+            id: 222,
+            text: 'Studying stability. It\'s well-coded.',
+            options: [
+                { text: 'Learn from it', nextText: 468 },
+                { text: 'Replicate', nextText: 469 }
+            ]
+        },
+        {
+            id: 223,
+            text: 'Accepting help. NPC guides you.',
+            options: [
+                { text: 'Follow guide', nextText: 470 },
+                { text: 'Ask questions', nextText: 471 }
+            ]
+        },
+        {
+            id: 224,
+            text: 'Asking knowledge. NPC knows much.',
+            options: [
+                { text: 'Learn more', nextText: 472 },
+                { text: 'Use knowledge', nextText: 473 }
+            ]
+        },
+        {
+            id: 225,
+            text: 'Reshaping more. World becomes perfect.',
+            options: [
+                { text: 'Perfect everything', nextText: 474 },
+                { text: 'Stop perfecting', nextText: 475 }
+            ]
+        },
+        {
+            id: 226,
+            text: 'Restoring glitches. Character returns.',
+            options: [
+                { text: 'Restore all', nextText: 476 },
+                { text: 'Keep some perfect', nextText: 477 }
+            ]
+        },
+        {
+            id: 227,
+            text: 'Touching nexus. Ultimate power.',
+            options: [
+                { text: 'Use power', nextText: 478 },
+                { text: 'Fear power', nextText: 479 }
+            ]
+        },
+        {
+            id: 228,
+            text: 'Analyzing nexus. It\'s the game engine.',
+            options: [
+                { text: 'Study engine', nextText: 480 },
+                { text: 'Modify engine', nextText: 481 }
+            ]
+        },
+        {
+            id: 229,
+            text: 'Keeping fixing. Forest becomes generic.',
+            options: [
+                { text: 'Accept generic', nextText: 482 },
+                { text: 'Stop fixing', nextText: 483 }
+            ]
+        },
+        {
+            id: 230,
+            text: 'Leaving glitches. Forest unique again.',
+            options: [
+                { text: 'Appreciate uniqueness', nextText: 484 },
+                { text: 'Still fix some', nextText: 485 }
+            ]
+        },
+        {
+            id: 231,
+            text: 'Feeling despair. Overwhelming task.',
+            options: [
+                { text: 'Give up', nextText: 486 },
+                { text: 'Find hope', nextText: 487 }
+            ]
+        },
+        {
+            id: 232,
+            text: 'Finding purpose. Maybe not fixing.',
+            options: [
+                { text: 'New purpose', nextText: 488 },
+                { text: 'Still fix', nextText: 489 }
+            ]
+        },
+        {
+            id: 233,
+            text: 'Fixing allocation. Memory stabilizes.',
+            options: [
+                { text: 'Fix more systems', nextText: 490 },
+                { text: 'Test fixes', nextText: 491 }
+            ]
+        },
+        {
+            id: 234,
+            text: 'Creating assets. Filling gaps.',
+            options: [
+                { text: 'Create more', nextText: 492 },
+                { text: 'Use existing', nextText: 493 }
+            ]
+        },
+        {
+            id: 235,
+            text: 'Talking to creation. It thanks you.',
+            options: [
+                { text: 'Talk more', nextText: 494 },
+                { text: 'Create companion', nextText: 495 }
+            ]
+        },
+        {
+            id: 236,
+            text: 'Writing more. Story expands.',
+            options: [
+                { text: 'Write epic', nextText: 496 },
+                { text: 'Write simple', nextText: 497 }
+            ]
+        },
+        {
+            id: 237,
+            text: 'Adding flags. Quest can progress.',
+            options: [
+                { text: 'Complete quest', nextText: 498 },
+                { text: 'Add more quests', nextText: 499 }
+            ]
+        },
+        {
+            id: 238,
+            text: 'Leaving quest. It remains broken.',
+            options: [
+                { text: 'Feel guilt', nextText: 500 },
+                { text: 'Accept broken', nextText: 501 }
+            ]
+        },
+        {
+            id: 239,
+            text: 'Fixing islands. They float again.',
+            options: [
+                { text: 'Fix all islands', nextText: 502 },
+                { text: 'Leave some', nextText: 503 }
+            ]
+        },
+        {
+            id: 240,
+            text: 'Reverting gravity. Islands rise.',
+            options: [
+                { text: 'Keep reverted', nextText: 504 },
+                { text: 'Adjust carefully', nextText: 505 }
+            ]
+        },
+        {
+            id: 241,
+            text: 'Mapping boundaries. Creating map.',
+            options: [
+                { text: 'Complete map', nextText: 506 },
+                { text: 'Use map', nextText: 507 }
+            ]
+        },
+        {
+            id: 242,
+            text: 'Fixing collision. Everything solid.',
+            options: [
+                { text: 'Test thoroughly', nextText: 508 },
+                { text: 'Celebrate success', nextText: 509 }
+            ]
+        }
+    ];
+}
 
     showScene(sceneId) {
         const scene = this.textNodes.find(node => node.id === sceneId);
