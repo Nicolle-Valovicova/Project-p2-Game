@@ -755,6 +755,7 @@ class GameEngine {
                     },
                     {
                         text: 'Put the notes aside for later',
+                        nextText: 103
                     }
                 ]
             },
