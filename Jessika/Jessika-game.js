@@ -21,9 +21,9 @@ class GameEngine {
         this.textNodes = this.getStory();
     }
 
-    getStory() {
+   getStory() {
     return [
-        // ========== SCENES 1-50 ==========
+        // ========== SCENES 1-50: STARTING AREA ==========
         {
             id: 1,
             text: 'You slowly open your eyes. The world is blurry, pixelated... familiar. This is Glitchwood Forest! The first level of your game. But you\'re not at your computer anymore. You\'re inside it.',
@@ -451,7 +451,7 @@ class GameEngine {
             ]
         },
 
-        // ========== SCENES 51-100 ==========
+        // ========== SCENES 51-100: MID-GAME EXPLORATION ==========
         {
             id: 51,
             text: 'You spot several possible civilizations. None seem stable.',
@@ -518,18 +518,18 @@ class GameEngine {
         },
         {
             id: 59,
-            text: 'The Debug Temple lies ahead.',
+            text: 'The Debug Temple lies ahead. It\'s a cathedral made of console windows.',
             options: [
-                { text: 'Enter temple', nextText: 141 },
-                { text: 'Scan security', requiredState: (state) => state.debugAccess === true, nextText: 142 }
+                { text: 'Enter the Debug Temple', nextText: 141 },
+                { text: 'Scan for security', requiredState: (state) => state.debugAccess === true, nextText: 142 }
             ]
         },
         {
             id: 60,
-            text: 'The Code Vault is hidden. You need three key fragments.',
+            text: 'The Code Vault is hidden behind encryption mountains.',
             options: [
-                { text: 'Search fragments', nextText: 143 },
-                { text: 'Brute force', requiredState: (state) => state.player.class === 'code-mage', nextText: 144 }
+                { text: 'Search for key fragments', nextText: 143 },
+                { text: 'Try to brute force entry', requiredState: (state) => state.player.class === 'code-mage', nextText: 144 }
             ]
         },
         {
@@ -537,22 +537,22 @@ class GameEngine {
             text: 'Your old notes mention: "Admin pass = unfinished symphony."',
             options: [
                 { text: 'Try song titles', nextText: 145 },
-                { text: 'Look for clues', nextText: 146 }
+                { text: 'Look for musical clues', nextText: 146 }
             ]
         },
         {
             id: 62,
             text: 'QUEST ACCEPTED: "Restore Reality"',
             options: [
-                { text: 'Find Heart of Code', nextText: 147 },
-                { text: 'Ask about redacted', nextText: 148 }
+                { text: 'Find the Heart of the Code', nextText: 147 },
+                { text: 'Ask about the redacted objective', nextText: 148 }
             ]
         },
         {
             id: 63,
-            text: 'The Core Glitch pulses at the world\'s center.',
+            text: 'The Core Glitch pulses at the world\'s center. You can feel its wrongness.',
             options: [
-                { text: 'Approach glitch', nextText: 149 },
+                { text: 'Approach the Core Glitch', nextText: 149 },
                 { text: 'Prepare first', nextText: 150 }
             ]
         },
@@ -560,24 +560,24 @@ class GameEngine {
             id: 64,
             text: 'The redacted objective worries you.',
             options: [
-                { text: 'Investigate', nextText: 151 },
-                { text: 'Focus on known', nextText: 152 }
+                { text: 'Investigate the redaction', nextText: 151 },
+                { text: 'Focus on known objectives', nextText: 152 }
             ]
         },
         {
             id: 65,
             text: 'As you enter, the settlement stabilizes into a medieval village.',
             options: [
-                { text: 'Talk to villagers', nextText: 153 },
-                { text: 'Explore village', nextText: 154 }
+                { text: 'Talk to the villagers', nextText: 153 },
+                { text: 'Explore the village', nextText: 154 }
             ]
         },
         {
             id: 66,
-            text: 'From distance, you watch the settlement phase between realities.',
+            text: 'From a distance, you watch the settlement phase between realities.',
             options: [
-                { text: 'Time approach', nextText: 155 },
-                { text: 'Keep observing', nextText: 156 }
+                { text: 'Time your approach', nextText: 155 },
+                { text: 'Continue observing', nextText: 156 }
             ]
         },
         {
@@ -592,24 +592,24 @@ class GameEngine {
             id: 68,
             text: 'You find glowing berries on glitched bushes.',
             options: [
-                { text: 'Eat berries', nextText: 159 },
+                { text: 'Eat the safe-looking berries', nextText: 159 },
                 { text: 'Look for other food', nextText: 160 }
             ]
         },
         {
             id: 69,
-            text: 'You build a shelter from fallen logs.',
+            text: 'You build a shelter from fallen logs and glitched leaves.',
             options: [
-                { text: 'Rest', nextText: 161 },
-                { text: 'Improve shelter', nextText: 162 }
+                { text: 'Rest in the shelter', nextText: 161 },
+                { text: 'Improve the shelter', nextText: 162 }
             ]
         },
         {
             id: 70,
             text: 'You find a glitched book floating in a clearing.',
             options: [
-                { text: 'Read book', nextText: 163 },
-                { text: 'Take book', nextText: 164 }
+                { text: 'Read the book', nextText: 163 },
+                { text: 'Take the book with you', nextText: 164 }
             ]
         },
         {
@@ -617,95 +617,95 @@ class GameEngine {
             text: 'You play back a scream crystal. Your own voice echoes.',
             options: [
                 { text: 'Play another', nextText: 165 },
-                { text: 'Stop', nextText: 166 }
+                { text: 'Stop playing them', nextText: 166 }
             ]
         },
         {
             id: 72,
             text: 'Error codes: programmer humor. Someone was making jokes.',
             options: [
-                { text: 'Decode humor', nextText: 167 },
-                { text: 'Find serious errors', nextText: 168 }
+                { text: 'Decode the humor', nextText: 167 },
+                { text: 'Look for serious errors', nextText: 168 }
             ]
         },
         {
             id: 73,
             text: 'You collect scream crystals. They vibrate in your pocket.',
             options: [
-                { text: 'Test as tool', nextText: 169 },
-                { text: 'Store carefully', nextText: 170 }
+                { text: 'Test a crystal as a tool', nextText: 169 },
+                { text: 'Store them carefully', nextText: 170 }
             ]
         },
         {
             id: 74,
-            text: 'The electrical hum leads to a power source.',
+            text: 'The electrical hum leads to a power source: a giant crystal.',
             options: [
-                { text: 'Touch crystal', nextText: 171 },
-                { text: 'Study connections', nextText: 172 }
+                { text: 'Touch the crystal', nextText: 171 },
+                { text: 'Study the connections', nextText: 172 }
             ]
         },
         {
             id: 75,
-            text: 'You identify processes running the game.',
+            text: 'You identify processes: Reality_Render.exe, Physics_Engine.dll.',
             options: [
-                { text: 'Optimize render', nextText: 173 },
-                { text: 'Check player code', nextText: 174 }
+                { text: 'Try to optimize Reality_Render', nextText: 173 },
+                { text: 'Check Player_Controller code', nextText: 174 }
             ]
         },
         {
             id: 76,
             text: 'Meditating, you hear individual processes.',
             options: [
-                { text: 'Sync with game loop', nextText: 175 },
+                { text: 'Sync with the game loop', nextText: 175 },
                 { text: 'Listen deeper', nextText: 176 }
             ]
         },
         {
             id: 77,
-            text: 'Beneath the ground, you see source code.',
+            text: 'Beneath the ground, you see the source code of the world.',
             options: [
-                { text: 'Read code', nextText: 177 },
-                { text: 'Edit code', nextText: 178 }
+                { text: 'Read your modified code', nextText: 177 },
+                { text: 'Try to edit it', nextText: 178 }
             ]
         },
         {
             id: 78,
-            text: 'You hum softly. The glitches calm.',
+            text: 'You hum softly. The glitches calm. Sound stabilizes reality.',
             options: [
-                { text: 'Experiment sounds', nextText: 179 },
-                { text: 'Create song', nextText: 180 }
+                { text: 'Experiment with different sounds', nextText: 179 },
+                { text: 'Create a stabilization song', nextText: 180 }
             ]
         },
         {
             id: 79,
-            text: 'Your loudest scream causes critical failure.',
+            text: 'Your loudest scream causes critical failure. Reboot begins.',
             options: [
-                { text: 'Wait reboot', nextText: 181 },
-                { text: 'Cancel reboot', nextText: 182 }
+                { text: 'Wait for reboot', nextText: 181 },
+                { text: 'Try to cancel reboot', nextText: 182 }
             ]
         },
         {
             id: 80,
             text: 'Thread #001 traces back to your computer chair.',
             options: [
-                { text: 'Follow thread', nextText: 183 },
-                { text: 'Tug thread', nextText: 184 }
+                { text: 'Follow the thread', nextText: 183 },
+                { text: 'Tug on the thread', nextText: 184 }
             ]
         },
         {
             id: 81,
             text: 'You sync game time with real time.',
             options: [
-                { text: 'Keep synced', nextText: 185 },
-                { text: 'Revert dilation', nextText: 186 }
+                { text: 'Keep time synced', nextText: 185 },
+                { text: 'Revert to time dilation', nextText: 186 }
             ]
         },
         {
             id: 82,
             text: 'You allocate more memory. World becomes detailed but unstable.',
             options: [
-                { text: 'Allocate more', nextText: 187 },
-                { text: 'Return default', nextText: 188 }
+                { text: 'Allocate even more', nextText: 187 },
+                { text: 'Return to default', nextText: 188 }
             ]
         },
         {
@@ -713,12 +713,12 @@ class GameEngine {
             text: 'You continue stabilizing. The pain intensifies.',
             options: [
                 { text: 'Push through', nextText: 189 },
-                { text: 'Stop completely', nextText: 190 }
+                { text: 'Cannot continue', nextText: 190 }
             ]
         },
         {
             id: 84,
-            text: 'You stop stabilizing. The threads return to normal.',
+            text: 'You stop stabilizing. Pain subsides.',
             options: [
                 { text: 'Try different approach', nextText: 191 },
                 { text: 'Accept instability', nextText: 192 }
@@ -728,29 +728,29 @@ class GameEngine {
             id: 85,
             text: 'You find a glitched wolf. "Debug entity detected."',
             options: [
-                { text: 'Fight wolf', nextText: 193 },
-                { text: 'Talk to wolf', nextText: 194 }
+                { text: 'Fight the wolf', nextText: 193 },
+                { text: 'Talk to the wolf', nextText: 194 }
             ]
         },
         {
             id: 86,
             text: 'The waterfall exists in three places simultaneously.',
             options: [
-                { text: 'Enter cave', nextText: 195 },
-                { text: 'Examine waterfall', nextText: 196 }
+                { text: 'Enter the cave', nextText: 195 },
+                { text: 'Examine the waterfall', nextText: 196 }
             ]
         },
         {
             id: 87,
-            text: 'You find your signature carved into a tree.',
+            text: 'You find your signature carved into a glitched tree.',
             options: [
-                { text: 'Take contents', nextText: 197 },
+                { text: 'Take what\'s inside', nextText: 197 },
                 { text: 'Leave it', nextText: 198 }
             ]
         },
         {
             id: 88,
-            text: 'You accept your role. The world seems to respond.',
+            text: 'You accept your role as creator. The world responds.',
             options: [
                 { text: 'Begin creation', nextText: 199 },
                 { text: 'Seek guidance', nextText: 200 }
@@ -766,42 +766,42 @@ class GameEngine {
         },
         {
             id: 90,
-            text: 'You catch a function. Holding it, you feel purpose.',
+            text: 'You catch a function. Holding it, you feel its purpose.',
             options: [
-                { text: 'Modify', nextText: 203 },
-                { text: 'Release', nextText: 204 }
+                { text: 'Modify the function', nextText: 203 },
+                { text: 'Release it', nextText: 204 }
             ]
         },
         {
             id: 91,
-            text: 'Downstream, river converges into lake of compiled code.',
+            text: 'Downstream, the river converges into a lake of compiled code.',
             options: [
-                { text: 'Swim', nextText: 205 },
-                { text: 'Study shore', nextText: 206 }
+                { text: 'Swim in the lake', nextText: 205 },
+                { text: 'Study the shoreline', nextText: 206 }
             ]
         },
         {
             id: 92,
-            text: 'You modify code flow. River changes direction.',
+            text: 'You modify the code flow. River changes direction.',
             options: [
-                { text: 'Make changes', nextText: 207 },
-                { text: 'Restore flow', nextText: 208 }
+                { text: 'Make more changes', nextText: 207 },
+                { text: 'Restore original flow', nextText: 208 }
             ]
         },
         {
             id: 93,
-            text: 'Climbing mountain, you see Code Realm structure.',
+            text: 'Climbing the mountain, you see the Code Realm structure.',
             options: [
-                { text: 'Study', nextText: 209 },
-                { text: 'Jump element', nextText: 210 }
+                { text: 'Study the structure', nextText: 209 },
+                { text: 'Jump to another element', nextText: 210 }
             ]
         },
         {
             id: 94,
             text: 'CSS waterfalls apply styles to everything.',
             options: [
-                { text: 'Touch waterfall', nextText: 211 },
-                { text: 'Study rules', nextText: 212 }
+                { text: 'Touch a waterfall', nextText: 211 },
+                { text: 'Study the style rules', nextText: 212 }
             ]
         },
         {
@@ -809,7 +809,7 @@ class GameEngine {
             text: 'Humorous comment about procrastination.',
             options: [
                 { text: 'Read another', nextText: 213 },
-                { text: 'Add squirrels', nextText: 214 }
+                { text: 'Actually add squirrels', nextText: 214 }
             ]
         },
         {
@@ -817,7 +817,7 @@ class GameEngine {
             text: 'Frustrated comment about collision detection.',
             options: [
                 { text: 'Feel sympathy', nextText: 215 },
-                { text: 'Fix collision', nextText: 216 }
+                { text: 'Try to fix collision now', nextText: 216 }
             ]
         },
         {
@@ -825,7 +825,7 @@ class GameEngine {
             text: 'You fix more TODOs. Growing tired.',
             options: [
                 { text: 'Keep fixing', nextText: 217 },
-                { text: 'Take break', nextText: 218 }
+                { text: 'Take a break', nextText: 218 }
             ]
         },
         {
@@ -833,41 +833,41 @@ class GameEngine {
             text: 'You explore deeper into Code Realm.',
             options: [
                 { text: 'Explore cut features', nextText: 219 },
-                { text: 'Return physical', nextText: 220 }
+                { text: 'Return to physical world', nextText: 220 }
             ]
         },
         {
             id: 99,
             text: 'Using notes, you navigate to stable area.',
             options: [
-                { text: 'Rest', nextText: 221 },
-                { text: 'Study stability', nextText: 222 }
+                { text: 'Rest here', nextText: 221 },
+                { text: 'Study why area is stable', nextText: 222 }
             ]
         },
         {
             id: 100,
             text: 'You share notes with NPC. They offer help.',
             options: [
-                { text: 'Accept help', nextText: 223 },
-                { text: 'Ask knowledge', nextText: 224 }
+                { text: 'Accept their help', nextText: 223 },
+                { text: 'Ask what they know', nextText: 224 }
             ]
         },
 
-        // ========== SCENES 101-150 ==========
+        // ========== SCENES 101-150: DEEPER PATHS ==========
         {
             id: 101,
             text: 'You reshape a small clearing. Beautiful but unnatural.',
             options: [
                 { text: 'Reshape more', nextText: 225 },
-                { text: 'Restore glitches', nextText: 226 }
+                { text: 'Restore natural glitches', nextText: 226 }
             ]
         },
         {
             id: 102,
-            text: 'The energy leads to a nexus point. All code converges here.',
+            text: 'The energy leads to a nexus point. All code converges.',
             options: [
-                { text: 'Touch nexus', nextText: 227 },
-                { text: 'Analyze nexus', nextText: 228 }
+                { text: 'Touch the nexus', nextText: 227 },
+                { text: 'Analyze the nexus', nextText: 228 }
             ]
         },
         {
@@ -875,7 +875,7 @@ class GameEngine {
             text: 'You systematically fix textures. Forest loses character.',
             options: [
                 { text: 'Keep fixing', nextText: 229 },
-                { text: 'Leave glitches', nextText: 230 }
+                { text: 'Leave some glitches', nextText: 230 }
             ]
         },
         {
@@ -883,15 +883,15 @@ class GameEngine {
             text: 'You give up. Scale is overwhelming.',
             options: [
                 { text: 'Feel despair', nextText: 231 },
-                { text: 'Find purpose', nextText: 232 }
+                { text: 'Find different purpose', nextText: 232 }
             ]
         },
         {
             id: 105,
             text: 'Root cause: memory allocation errors.',
             options: [
-                { text: 'Fix allocation', nextText: 233 },
-                { text: 'Create assets', nextText: 234 }
+                { text: 'Fix memory allocation', nextText: 233 },
+                { text: 'Create missing assets', nextText: 234 }
             ]
         },
         {
@@ -899,23 +899,23 @@ class GameEngine {
             text: 'You write dialogue for merchant. NPC solidifies.',
             options: [
                 { text: 'Talk to creation', nextText: 235 },
-                { text: 'Write more', nextText: 236 }
+                { text: 'Write more dialogue', nextText: 236 }
             ]
         },
         {
             id: 107,
-            text: 'You follow broken quest. It leads to looping NPC.',
+            text: 'You follow broken quest. Leads to looping NPC.',
             options: [
-                { text: 'Add flags', nextText: 237 },
-                { text: 'Leave quest', nextText: 238 }
+                { text: 'Add completion flags', nextText: 237 },
+                { text: 'Leave broken quest', nextText: 238 }
             ]
         },
         {
             id: 108,
             text: 'You adjust gravity. Islands crash.',
             options: [
-                { text: 'Fix islands', nextText: 239 },
-                { text: 'Revert gravity', nextText: 240 }
+                { text: 'Fix islands too', nextText: 239 },
+                { text: 'Revert gravity change', nextText: 240 }
             ]
         },
         {
@@ -923,7 +923,7 @@ class GameEngine {
             text: 'Testing collision reveals invisible boundaries.',
             options: [
                 { text: 'Map boundaries', nextText: 241 },
-                { text: 'Fix collision', nextText: 242 }
+                { text: 'Try to fix collision', nextText: 242 }
             ]
         },
         {
@@ -931,7 +931,7 @@ class GameEngine {
             text: 'You stop testing. Physics is broken.',
             options: [
                 { text: 'Find workarounds', nextText: 243 },
-                { text: 'Accept broken', nextText: 244 }
+                { text: 'Accept broken physics', nextText: 244 }
             ]
         },
         {
@@ -947,14 +947,14 @@ class GameEngine {
             text: 'You revert patch. Memory leak returns.',
             options: [
                 { text: 'Try different approach', nextText: 247 },
-                { text: 'Leave it', nextText: 248 }
+                { text: 'Leave it be', nextText: 248 }
             ]
         },
         {
             id: 113,
             text: 'Strategic approach: fix foundational systems.',
             options: [
-                { text: 'Work on memory', nextText: 249 },
+                { text: 'Work on memory management', nextText: 249 },
                 { text: 'Stabilize physics', nextText: 250 }
             ]
         },
@@ -962,24 +962,24 @@ class GameEngine {
             id: 114,
             text: 'You accept glitches. They\'re part of charm.',
             options: [
-                { text: 'Love glitches', nextText: 251 },
-                { text: 'Document features', nextText: 252 }
+                { text: 'Learn to love glitches', nextText: 251 },
+                { text: 'Document as features', nextText: 252 }
             ]
         },
         {
             id: 115,
             text: 'Root access requires three factors.',
             options: [
-                { text: 'Search factors', nextText: 253 },
-                { text: 'Bypass requirements', nextText: 254 }
+                { text: 'Search for factors', nextText: 253 },
+                { text: 'Try to bypass requirements', nextText: 254 }
             ]
         },
         {
             id: 116,
             text: 'Maybe contain leak instead of patching.',
             options: [
-                { text: 'Build container', nextText: 255 },
-                { text: 'Find solution', nextText: 256 }
+                { text: 'Build memory container', nextText: 255 },
+                { text: 'Find another solution', nextText: 256 }
             ]
         },
         {
@@ -1002,13 +1002,13 @@ class GameEngine {
             id: 119,
             text: 'You give names to abandoned ideas. They solidify.',
             options: [
-                { text: 'Name more', nextText: 261 },
-                { text: 'Give purpose', nextText: 262 }
+                { text: 'Name more ideas', nextText: 261 },
+                { text: 'Give them purpose', nextText: 262 }
             ]
         },
         {
             id: 120,
-            text: '"How do I fix you?" "Complete us or delete us cleanly."',
+            text: '"How do I fix you?" "Complete us or delete cleanly."',
             options: [
                 { text: 'Complete them', nextText: 263 },
                 { text: 'Delete them', nextText: 264 }
@@ -1019,7 +1019,7 @@ class GameEngine {
             text: 'You complete entity. It becomes full NPC.',
             options: [
                 { text: 'Talk to creation', nextText: 265 },
-                { text: 'Create more', nextText: 266 }
+                { text: 'Create more NPCs', nextText: 266 }
             ]
         },
         {
@@ -1042,8 +1042,8 @@ class GameEngine {
             id: 124,
             text: 'You mark anomalies: floating island, uphill river.',
             options: [
-                { text: 'Explore island', nextText: 271 },
-                { text: 'Investigate cave', nextText: 272 }
+                { text: 'Explore floating island', nextText: 271 },
+                { text: 'Investigate breathing cave', nextText: 272 }
             ]
         },
         {
@@ -1051,7 +1051,7 @@ class GameEngine {
             text: 'Flickering town stabilizes. NPCs unaware.',
             options: [
                 { text: 'Talk to townsfolk', nextText: 273 },
-                { text: 'Find elder', nextText: 274 }
+                { text: 'Find town elder', nextText: 274 }
             ]
         },
         {
@@ -1059,7 +1059,7 @@ class GameEngine {
             text: 'Cube city is geometric. Efficient but sterile.',
             options: [
                 { text: 'Meet citizen', nextText: 275 },
-                { text: 'Find controller', nextText: 276 }
+                { text: 'Find city controller', nextText: 276 }
             ]
         },
         {
@@ -1067,46 +1067,46 @@ class GameEngine {
             text: '"How can I help?" Clouds: "FINISH OR LET GO."',
             options: [
                 { text: 'Promise finish', nextText: 277 },
-                { text: 'Ask let go', nextText: 278 }
+                { text: 'Ask how let go', nextText: 278 }
             ]
         },
         {
             id: 128,
             text: 'You modify skybox. Sky changes colors.',
             options: [
-                { text: 'Make permanent', nextText: 279 },
-                { text: 'Restore original', nextText: 280 }
+                { text: 'Make permanent changes', nextText: 279 },
+                { text: 'Restore original sky', nextText: 280 }
             ]
         },
         {
             id: 129,
             text: 'You use time advantage. Disorienting but useful.',
             options: [
-                { text: 'Continue using', nextText: 281 },
-                { text: 'Sync times', nextText: 282 }
+                { text: 'Continue using advantage', nextText: 281 },
+                { text: 'Try to sync times', nextText: 282 }
             ]
         },
         {
             id: 130,
             text: 'Syncing times makes world feel real.',
             options: [
-                { text: 'Keep synced', nextText: 283 },
-                { text: 'Return dilation', nextText: 284 }
+                { text: 'Keep times synced', nextText: 283 },
+                { text: 'Return to dilation', nextText: 284 }
             ]
         },
         {
             id: 131,
             text: 'You observe NPC. It collapses into merchant.',
             options: [
-                { text: 'Talk', nextText: 285 },
-                { text: 'Observe another', nextText: 286 }
+                { text: 'Talk to merchant', nextText: 285 },
+                { text: 'Observe another NPC', nextText: 286 }
             ]
         },
         {
             id: 132,
             text: 'Studying entanglement, you learn to choose states.',
             options: [
-                { text: 'Experiment', nextText: 287 },
+                { text: 'Experiment with power', nextText: 287 },
                 { text: 'Use carefully', nextText: 288 }
             ]
         },
@@ -1114,8 +1114,8 @@ class GameEngine {
             id: 133,
             text: 'Glitched sword phases between solid and intangible.',
             options: [
-                { text: 'Keep using', nextText: 289 },
-                { text: 'Find reliable', nextText: 290 }
+                { text: 'Keep using it', nextText: 289 },
+                { text: 'Find reliable weapon', nextText: 290 }
             ]
         },
         {
@@ -1139,7 +1139,7 @@ class GameEngine {
             text: 'You try to restore form. Exhausting.',
             options: [
                 { text: 'Continue restoring', nextText: 295 },
-                { text: 'Accept form', nextText: 296 }
+                { text: 'Accept low-poly form', nextText: 296 }
             ]
         },
         {
@@ -1147,22 +1147,22 @@ class GameEngine {
             text: 'Cube forest order is peaceful.',
             options: [
                 { text: 'Stay appreciate', nextText: 297 },
-                { text: 'Return glitched', nextText: 298 }
+                { text: 'Return glitched forest', nextText: 298 }
             ]
         },
         {
             id: 138,
             text: 'You miss chaos of glitched forest.',
             options: [
-                { text: 'Restore glitches', nextText: 299 },
-                { text: 'Appreciate both', nextText: 300 }
+                { text: 'Try restore glitches', nextText: 299 },
+                { text: 'Learn appreciate both', nextText: 300 }
             ]
         },
         {
             id: 139,
             text: 'You risk reboot. World becomes wireframe.',
             options: [
-                { text: 'Explore wireframe', nextText: 301 },
+                { text: 'Explore wireframe world', nextText: 301 },
                 { text: 'Try another reboot', nextText: 302 }
             ]
         },
@@ -1170,16 +1170,16 @@ class GameEngine {
             id: 140,
             text: 'You decide against reboot. Too risky.',
             options: [
-                { text: 'Return plan', nextText: 303 },
+                { text: 'Return previous plan', nextText: 303 },
                 { text: 'Make new plan', nextText: 304 }
             ]
         },
         {
             id: 141,
-            text: 'Inside Debug Temple. Consoles show status.',
+            text: 'Inside Debug Temple. Consoles show game status.',
             options: [
-                { text: 'Check status', nextText: 305 },
-                { text: 'Explore consoles', nextText: 306 }
+                { text: 'Check your status', nextText: 305 },
+                { text: 'Explore other consoles', nextText: 306 }
             ]
         },
         {
@@ -1187,7 +1187,7 @@ class GameEngine {
             text: 'Security scan reveals tripwires, encryption.',
             options: [
                 { text: 'Solve puzzles', nextText: 307 },
-                { text: 'Look backdoor', nextText: 308 }
+                { text: 'Look for backdoor', nextText: 308 }
             ]
         },
         {
@@ -1203,7 +1203,7 @@ class GameEngine {
             text: 'Brute forcing triggers security. Guardians attack.',
             options: [
                 { text: 'Fight guardians', nextText: 311 },
-                { text: 'Reason with them', nextText: 312 }
+                { text: 'Try reason with them', nextText: 312 }
             ]
         },
         {
@@ -1211,7 +1211,7 @@ class GameEngine {
             text: 'You try song titles. All denied.',
             options: [
                 { text: 'Try musical terms', nextText: 313 },
-                { text: 'Look clues', nextText: 314 }
+                { text: 'Look clues in music', nextText: 314 }
             ]
         },
         {
@@ -1242,8 +1242,8 @@ class GameEngine {
             id: 149,
             text: 'You stand before Core Glitch. Hole in reality.',
             options: [
-                { text: 'Jump in', requiredState: (state) => state.player.health > 80, nextText: 321 },
-                { text: 'Repair it', nextText: 322 },
+                { text: 'Jump into glitch', requiredState: (state) => state.player.health > 80, nextText: 321 },
+                { text: 'Try repair it', nextText: 322 },
                 { text: 'Listen whispers', nextText: 323 }
             ]
         },
@@ -1251,12 +1251,12 @@ class GameEngine {
             id: 150,
             text: 'You prepare: gather resources, study patterns.',
             options: [
-                { text: 'Gather resources', nextText: 324 },
+                { text: 'Gather more resources', nextText: 324 },
                 { text: 'Study more', nextText: 325 }
             ]
         },
 
-        // ========== SCENES 151-200 ==========
+        // ========== SCENES 151-200: FINAL PATHS ==========
         {
             id: 151,
             text: 'Investigating redaction: "Choose: Escape or Embrace."',
@@ -1269,7 +1269,7 @@ class GameEngine {
             id: 152,
             text: 'You focus on known objectives.',
             options: [
-                { text: 'Work memory leaks', nextText: 328 },
+                { text: 'Work on memory leaks', nextText: 328 },
                 { text: 'Find anomaly storms', nextText: 329 }
             ]
         },
@@ -1294,23 +1294,23 @@ class GameEngine {
             text: 'You time approach when town stable.',
             options: [
                 { text: 'Explore now', nextText: 334 },
-                { text: 'Wait cycle', nextText: 335 }
+                { text: 'Wait next cycle', nextText: 335 }
             ]
         },
         {
             id: 156,
-            text: 'You return to spawn point. Portal manifests.',
+            text: 'You continue observing. Pattern emerges.',
             options: [
-                { text: 'Enter portal', nextText: 336 },
-                { text: 'Study portal', nextText: 337 }
+                { text: 'Time entry', nextText: 336 },
+                { text: 'Keep observing', nextText: 337 }
             ]
         },
         {
             id: 157,
             text: 'You approach figures. They\'re low-resolution.',
             options: [
-                { text: 'Ask needs', nextText: 338 },
-                { text: 'Improve resolution', nextText: 339 }
+                { text: 'Ask what need', nextText: 338 },
+                { text: 'Try improve resolution', nextText: 339 }
             ]
         },
         {
@@ -1331,7 +1331,7 @@ class GameEngine {
         },
         {
             id: 160,
-            text: 'Looking for food: mushrooms, glitched fish.',
+            text: 'Looking for other food: mushrooms, fish.',
             options: [
                 { text: 'Try mushrooms', nextText: 344 },
                 { text: 'Catch fish', nextText: 345 }
@@ -1379,7 +1379,7 @@ class GameEngine {
         },
         {
             id: 166,
-            text: 'You stop playing. Cave returns to quiet.',
+            text: 'You stop playing. Cave returns quiet.',
             options: [
                 { text: 'Leave cave', nextText: 356 },
                 { text: 'Study crystals', nextText: 357 }
@@ -1390,7 +1390,7 @@ class GameEngine {
             text: 'Decoding humor reveals your own jokes.',
             options: [
                 { text: 'Appreciate humor', nextText: 358 },
-                { text: 'Fix serious', nextText: 359 }
+                { text: 'Fix serious errors', nextText: 359 }
             ]
         },
         {
@@ -1419,7 +1419,7 @@ class GameEngine {
         },
         {
             id: 171,
-            text: 'You touch crystal. Energy surges through you.',
+            text: 'You touch crystal. Energy surges.',
             options: [
                 { text: 'Absorb energy', nextText: 366 },
                 { text: 'Pull away', nextText: 367 }
@@ -1598,7 +1598,7 @@ class GameEngine {
             text: 'Fighting wolf. It fights with glitches.',
             options: [
                 { text: 'Continue fight', nextText: 410 },
-                { text: 'Try talk', nextText: 411 }
+                { text: 'Try talk again', nextText: 411 }
             ]
         },
         {
@@ -1637,7 +1637,7 @@ class GameEngine {
             id: 198,
             text: 'Leaving it. Compartment closes.',
             options: [
-                { text: 'Regret', nextText: 420 },
+                { text: 'Regret decision', nextText: 420 },
                 { text: 'Move on', nextText: 421 }
             ]
         },
@@ -1658,7 +1658,7 @@ class GameEngine {
             ]
         },
 
-        // ========== SCENES 201-242 ==========
+        // ========== SCENES 201-240: FINAL PATHS TO ENDINGS ==========
         {
             id: 201,
             text: 'Forcing bypass. System fights back.',
@@ -1693,7 +1693,7 @@ class GameEngine {
         },
         {
             id: 205,
-            text: 'Swimming in lake. Code enters your mind.',
+            text: 'Swimming in lake. Code enters mind.',
             options: [
                 { text: 'Swim deeper', nextText: 434 },
                 { text: 'Get out', nextText: 435 }
@@ -1717,7 +1717,7 @@ class GameEngine {
         },
         {
             id: 208,
-            text: 'Restoring flow. World returns to normal.',
+            text: 'Restoring flow. World returns normal.',
             options: [
                 { text: 'Keep restored', nextText: 440 },
                 { text: 'Prefer changed', nextText: 441 }
@@ -1784,14 +1784,14 @@ class GameEngine {
             text: 'Fixing collision now. It finally works.',
             options: [
                 { text: 'Celebrate', nextText: 456 },
-                { text: 'Fix more', nextText: 457 }
+                { text: 'Fix more systems', nextText: 457 }
             ]
         },
         {
             id: 217,
             text: 'Keeping fixing. Exhaustion sets in.',
             options: [
-                { text: 'Push through', nextText: 458 },
+                { text: 'Push through exhaustion', nextText: 458 },
                 { text: 'Rest now', nextText: 459 }
             ]
         },
@@ -1832,7 +1832,7 @@ class GameEngine {
             text: 'Studying stability. It\'s well-coded.',
             options: [
                 { text: 'Learn from it', nextText: 468 },
-                { text: 'Replicate', nextText: 469 }
+                { text: 'Replicate stability', nextText: 469 }
             ]
         },
         {
@@ -1848,7 +1848,7 @@ class GameEngine {
             text: 'Asking knowledge. NPC knows much.',
             options: [
                 { text: 'Learn more', nextText: 472 },
-                { text: 'Use knowledge', nextText: 473 }
+                { text: 'Use knowledge now', nextText: 473 }
             ]
         },
         {
@@ -1863,7 +1863,7 @@ class GameEngine {
             id: 226,
             text: 'Restoring glitches. Character returns.',
             options: [
-                { text: 'Restore all', nextText: 476 },
+                { text: 'Restore all glitches', nextText: 476 },
                 { text: 'Keep some perfect', nextText: 477 }
             ]
         },
@@ -1871,128 +1871,208 @@ class GameEngine {
             id: 227,
             text: 'Touching nexus. Ultimate power.',
             options: [
-                { text: 'Use power', nextText: 478 },
-                { text: 'Fear power', nextText: 479 }
+                { text: 'Use power to escape', requiredState: (state) => state.player.metaKnowledge >= 100, nextText: 478 },
+                { text: 'Use power to stay', requiredState: (state) => state.promisedToFinish === true, nextText: 479 },
+                { text: 'Fear the power', nextText: 480 }
             ]
         },
         {
             id: 228,
             text: 'Analyzing nexus. It\'s the game engine.',
             options: [
-                { text: 'Study engine', nextText: 480 },
-                { text: 'Modify engine', nextText: 481 }
+                { text: 'Study engine', nextText: 481 },
+                { text: 'Modify engine', nextText: 482 }
             ]
         },
         {
             id: 229,
             text: 'Keeping fixing. Forest becomes generic.',
             options: [
-                { text: 'Accept generic', nextText: 482 },
-                { text: 'Stop fixing', nextText: 483 }
+                { text: 'Accept generic', nextText: 483 },
+                { text: 'Stop fixing', nextText: 484 }
             ]
         },
         {
             id: 230,
             text: 'Leaving glitches. Forest unique again.',
             options: [
-                { text: 'Appreciate uniqueness', nextText: 484 },
-                { text: 'Still fix some', nextText: 485 }
+                { text: 'Appreciate uniqueness', nextText: 485 },
+                { text: 'Still fix some', nextText: 486 }
             ]
         },
         {
             id: 231,
             text: 'Feeling despair. Overwhelming task.',
             options: [
-                { text: 'Give up', nextText: 486 },
-                { text: 'Find hope', nextText: 487 }
+                { text: 'Give up completely', nextText: 487 },
+                { text: 'Find hope', nextText: 488 }
             ]
         },
         {
             id: 232,
             text: 'Finding purpose. Maybe not fixing.',
             options: [
-                { text: 'New purpose', nextText: 488 },
-                { text: 'Still fix', nextText: 489 }
+                { text: 'Find new purpose', nextText: 489 },
+                { text: 'Still try fix', nextText: 490 }
             ]
         },
         {
             id: 233,
             text: 'Fixing allocation. Memory stabilizes.',
             options: [
-                { text: 'Fix more systems', nextText: 490 },
-                { text: 'Test fixes', nextText: 491 }
+                { text: 'Fix more systems', nextText: 491 },
+                { text: 'Test fixes first', nextText: 492 }
             ]
         },
         {
             id: 234,
             text: 'Creating assets. Filling gaps.',
             options: [
-                { text: 'Create more', nextText: 492 },
-                { text: 'Use existing', nextText: 493 }
+                { text: 'Create more assets', nextText: 493 },
+                { text: 'Use existing assets', nextText: 494 }
             ]
         },
         {
             id: 235,
             text: 'Talking to creation. It thanks you.',
             options: [
-                { text: 'Talk more', nextText: 494 },
-                { text: 'Create companion', nextText: 495 }
+                { text: 'Talk more', nextText: 495 },
+                { text: 'Create companion', nextText: 496 }
             ]
         },
         {
             id: 236,
             text: 'Writing more. Story expands.',
             options: [
-                { text: 'Write epic', nextText: 496 },
-                { text: 'Write simple', nextText: 497 }
+                { text: 'Write epic story', nextText: 497 },
+                { text: 'Write simple story', nextText: 498 }
             ]
         },
         {
             id: 237,
             text: 'Adding flags. Quest can progress.',
             options: [
-                { text: 'Complete quest', nextText: 498 },
-                { text: 'Add more quests', nextText: 499 }
+                { text: 'Complete quest', nextText: 499 },
+                { text: 'Add more quests', nextText: 500 }
             ]
         },
         {
             id: 238,
             text: 'Leaving quest. It remains broken.',
             options: [
-                { text: 'Feel guilt', nextText: 500 },
-                { text: 'Accept broken', nextText: 501 }
+                { text: 'Feel guilt', nextText: 501 },
+                { text: 'Accept broken', nextText: 502 }
             ]
         },
         {
             id: 239,
             text: 'Fixing islands. They float again.',
             options: [
-                { text: 'Fix all islands', nextText: 502 },
-                { text: 'Leave some', nextText: 503 }
+                { text: 'Fix all islands', nextText: 503 },
+                { text: 'Leave some crashed', nextText: 504 }
             ]
         },
         {
             id: 240,
             text: 'Reverting gravity. Islands rise.',
             options: [
-                { text: 'Keep reverted', nextText: 504 },
-                { text: 'Adjust carefully', nextText: 505 }
+                { text: 'Keep reverted', nextText: 505 },
+                { text: 'Adjust carefully', nextText: 506 }
             ]
         },
         {
             id: 241,
             text: 'Mapping boundaries. Creating map.',
             options: [
-                { text: 'Complete map', nextText: 506 },
-                { text: 'Use map', nextText: 507 }
+                { text: 'Complete map', nextText: 507 },
+                { text: 'Use map now', nextText: 508 }
             ]
         },
         {
             id: 242,
             text: 'Fixing collision. Everything solid.',
             options: [
-                { text: 'Test thoroughly', nextText: 508 },
-                { text: 'Celebrate success', nextText: 509 }
+                { text: 'Test thoroughly', nextText: 509 },
+                { text: 'Celebrate success', nextText: 510 }
+            ]
+        },
+
+        // ========== FINAL DECISION SCENES 243-250 ==========
+        {
+            id: 243,
+            text: 'You reach a critical decision point. All paths converge here.',
+            options: [
+                { text: 'Choose to escape', requiredState: (state) => state.player.metaKnowledge >= 100, nextText: 511 },
+                { text: 'Choose to stay', requiredState: (state) => state.promisedToFinish === true, nextText: 512 },
+                { text: 'Need more preparation', nextText: 244 }
+            ]
+        },
+        {
+            id: 244,
+            text: 'You need more preparation before making the final choice.',
+            options: [
+                { text: 'Gather more knowledge', nextText: 513 },
+                { text: 'Strengthen connection', nextText: 514 },
+                { text: 'Return to start', nextText: 1 }
+            ]
+        },
+
+        // ========== ESCAPE ENDING PATH ==========
+        {
+            id: 511,
+            text: 'You gather all your knowledge and prepare to escape. The game world recognizes your intent.',
+            options: [
+                { text: 'Execute escape sequence', nextText: 515 },
+                { text: 'Last chance to stay', nextText: 516 }
+            ]
+        },
+        {
+            id: 515,
+            text: 'ESCAPE ENDING\n\nWith ultimate understanding, you rewrite the fundamental rules of your own existence. The error threads connecting you to this world shimmer and dissolve one by one. The game world stabilizes as you extract your consciousness.\n\nYou wake at your computer, the game running normally on screen. The cursor blinks. Your coffee is still warm.\n\nBut part of you remains in Glitchwood. You can still feel the digital wind, hear the pixelated birds, sense the unfinished quests calling. You\'re free, but changed forever.\n\nYou save the game and finally, after all this time, complete the development.',
+            options: [
+                { text: 'Start Over', nextText: 1 }
+            ]
+        },
+
+        // ========== TRAPPED ENDING PATH ==========
+        {
+            id: 512,
+            text: 'You look at your creation and realize it needs you. This world, broken as it is, is yours. The characters, the stories, the very code - it all calls for completion.',
+            options: [
+                { text: 'Commit to staying forever', nextText: 517 },
+                { text: 'Last chance to escape', nextText: 518 }
+            ]
+        },
+        {
+            id: 517,
+            text: 'TRAPPED ENDING\n\nYou choose to complete what you started. You pour your consciousness into the game, fixing every bug, finishing every quest, giving life to every character. The world becomes whole and beautiful under your care.\n\nYears pass in the real world. Your game becomes legendary, downloaded millions of times. Players marvel at how alive it feels, how every NPC seems to have a soul. No one knows why.\n\nYou\'ve become part of your creation, a digital god in a world you perfected. The line between creator and creation blurs until there is no distinction.\n\nYou are home.',
+            options: [
+                { text: 'Start Over', nextText: 1 }
+            ]
+        },
+
+        // ========== ALTERNATIVE ENDINGS ==========
+        {
+            id: 516,
+            text: 'You hesitate at the last moment. The escape sequence aborts.\n\nThe game world sighs in relief. "We knew you wouldn\'t leave us," whispers the forest.\n\nYou are trapped forever, but at peace with your choice.',
+            options: [
+                { text: 'Accept this fate', nextText: 517 },
+                { text: 'Try again later', nextText: 243 }
+            ]
+        },
+        {
+            id: 518,
+            text: 'At the last moment, you try to escape. But your connection to the world is too strong now.\n\nThe attempt fails. You are irrevocably part of the game.\n\nThe world welcomes you home.',
+            options: [
+                { text: 'Accept your fate', nextText: 517 },
+                { text: 'Resist futilely', nextText: 519 }
+            ]
+        },
+        {
+            id: 519,
+            text: 'You resist your fate, fighting against the inevitable. The struggle causes glitches and pain, but changes nothing.\n\nEventually, exhausted, you accept what cannot be changed.',
+            options: [
+                { text: 'Finally accept', nextText: 517 }
             ]
         }
     ];
