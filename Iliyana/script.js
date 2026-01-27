@@ -142,7 +142,6 @@ klaarBtn.addEventListener("click", () => {
 });
 
 
-
 function checkGekozenVolgorde() {
     let isCorrect = true;
 
