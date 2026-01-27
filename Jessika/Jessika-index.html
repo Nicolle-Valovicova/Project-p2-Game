@@ -8,12 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Jessika-styles.css">
 </head>
 
 <body>
-    <div id="game-container">
+ <div id="game-container">
 
+        <!-- START SCREEN -->
         <div id="start-screen" class="screen active">
             <div class="pixel-border title-container">
                 <h1 class="pixel-text glitch-text">THE GAME MAKER'S REALM</h1>
@@ -25,7 +26,6 @@
                 <div class="input-group">
                     <input type="text" id="player-name-input" maxlength="20" placeholder="TYPE YOUR NAME..."
                         class="pixel-input">
-                    <div class="input-cursor">_</div>
                 </div>
                 <button id="start-game-btn" class="pixel-btn" disabled>
                     INITIALIZE GAME
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-
+        <!-- CHARACTER CREATION SCREEN -->
         <div id="character-screen" class="screen">
             <div class="pixel-border title-container">
                 <h1 class="pixel-text">CHARACTER CREATION</h1>
@@ -102,9 +102,8 @@
             </div>
         </div>
 
-
+        <!-- MAIN GAME SCREEN -->
         <div id="game-screen" class="screen">
-
             <div class="pixel-border game-header">
                 <h1>THE GAME MAKER'S REALM</h1>
                 <div class="player-info">
@@ -113,18 +112,15 @@
                 </div>
             </div>
 
-
             <div id="story-section" class="pixel-border story-container">
                 <div id="story-text" class="story-text">
-                    Initializing game world...
+                    Loading game world...
                 </div>
-                <div class="text-progress">▓▓▓▓░░░░░░ 40%</div>
             </div>
-
 
             <div class="stats-container">
                 <div class="pixel-border player-stats">
-                    <h3>PLAYER STATS</h3>
+                    <h3>PLAYER INFO</h3>
                     <div class="stat-row">
                         <span>HEALTH:</span>
                         <div class="pixel-bar">
@@ -145,25 +141,21 @@
                     </div>
                 </div>
 
-
                 <div class="pixel-border debug-panel">
                     <h3>DEBUG COMMANDS</h3>
                     <div class="debug-commands">
                         <button class="debug-btn" data-command="save">SAVE_GAME</button>
                         <button class="debug-btn" data-command="load">LOAD_GAME</button>
-                        <button class="debug-btn" data-command="stats">SHOW_STATS</button>
+                        <button class="debug-btn" data-command="stats">SHOW_FULLPLAYERINFO</button>
                     </div>
                 </div>
             </div>
 
-
             <div id="choices-section" class="pixel-border choices-container">
                 <h3>AVAILABLE ACTIONS</h3>
                 <div id="choices-buttons" class="choices-grid">
-
                 </div>
             </div>
-
 
             <div id="combat-log" class="pixel-border combat-container hidden">
                 <h3>COMBAT LOG</h3>
@@ -172,7 +164,8 @@
         </div>
     </div>
 
-    <script src="game.js"></script>
+<script src="Jessika-game.js"></script> 
+    
 </body>
 
 </html>
