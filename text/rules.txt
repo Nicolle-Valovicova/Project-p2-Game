@@ -121,3 +121,5 @@ In Murder’s Gambit, the clever, the bold, and the ruthless rise above the cano
 Only one king will survive.
 Only one murder will claim the forest.
 
+change the importnant ones ot opacity 0
+change the original to opacity 0

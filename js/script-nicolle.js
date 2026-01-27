@@ -1,6 +1,6 @@
-const startScreen = document.querySelector("#start-screen");
-const menuScreen = document.querySelector("#menu-screen");
-const gameIndex = document.querySelector("#game-index");
+const startScreen = document.querySelector(".start-wrapper");
+const menuWrapper = document.querySelector(".menu-wrapper");
+const gameIndex = document.querySelector(".game-wrapper");
 const winScreen = document.querySelector(".win-screen");
 const loseScreen = document.querySelector(".lose-screen");
 let menuPlayBtn = document.querySelector("#menuPlayBtn");
@@ -8,15 +8,14 @@ let exitBtn = document.querySelector(".exit");
 let loadingbar = new ldBar("#bar");
 let startBtn = document.querySelector("#startBtn");
 function hidePages() {
-  startScreen.classList.add("notVisible");
-  menuScreen.classList.add("notVisible");
-  gameIndex.classList.add("notVisible");
-  winScreen.classList.add("notVisible");
-  loseScreen.classList.add("notVisible");
+  [startScreen, menuWrapper, gameIndex, winScreen, loseScreen].forEach((p) => {
+    p.classList.remove("positiveOpacitied");
+    p.classList.add("notOpacitied");
+  });
 }
 
 hidePages();
-menuScreen.classList.remove("notVisible");
+startScreen.classList.add("positiveOpacitied");
 
 let flockAppliedOnce = false;
 menuPlayBtn.addEventListener("click", () => {
@@ -24,18 +23,23 @@ menuPlayBtn.addEventListener("click", () => {
   if (!flockAppliedOnce) {
     applyFlockSetting();
     flockAppliedOnce = true;
-    document.querySelectorAll(".flockRestricted").forEach((set) =>{ set.classList.add("notClickable")}) 
+    document.querySelectorAll(".flockRestricted").forEach((set) => {
+      set.classList.add("notClickable");
+    });
   }
-  gameIndex.classList.remove("notVisible");
+  gameIndex.classList.add("positiveOpacitied");
   showParticles();
 });
 exitBtn.addEventListener("click", () => {
   hidePages();
-  startScreen.classList.remove("notVisible");
+  startScreen.classList.add("positiveOpacitied");
 });
 startBtn.addEventListener("click", () => {
   hidePages();
-  menuScreen.classList.remove("notVisible");
+  setTimeout(() => {
+    menuWrapper.classList.remove("notOpacitied");
+    menuWrapper.classList.add("positiveOpacitied");
+  }, 1000);
 });
 // script for start page
 let crowfactOutput = document.querySelector("#crowfactOutput");
@@ -68,7 +72,7 @@ window.onload = (event) => {
       clearInterval(interval);
       startBtn.classList.remove("notVisible");
     }
-  }, 40);
+  }, 45);
 }; // script for menu page
 let attunementMenu = document.querySelector("#options");
 let attunement = document.querySelector(".attunement");
@@ -116,11 +120,10 @@ let settings = {
   legalMoves: "on",
   dangerTiles: "on",
 };
-// TODO make the weither white or black win screen art appear
-// TODO look at the comments where you have an ! (so all the red comments)
 let showRules = document.querySelector("#showRules");
 const rulesContainer = document.querySelector(".rules-container");
 const closeRules = document.querySelector("#closeRules");
+let menuScreen = document.querySelector("#menu-screen");
 showRules.addEventListener("click", () => {
   menuScreen.classList.add("blurrGame");
   rulesContainer.style.display = "block";
@@ -177,7 +180,7 @@ settingSliders.forEach((slider) => {
 // function for choosign flock
 function applyFlockSetting() {
   if (settings.flock === "blackmurders") {
-    startingPlayer = "black"; 
+    startingPlayer = "black";
     playerTurn.textContent = "black";
   } else {
     startingPlayer = "white";
@@ -185,7 +188,7 @@ function applyFlockSetting() {
     reverseIds();
   }
 }
-  applyFlockSetting();
+applyFlockSetting();
 
 // function for playing music
 function playBgMusic() {
@@ -199,11 +202,11 @@ function playBgMusic() {
   }
 }
 playBgMusic();
-// function for highlighting legal moves 
-function showLegalMoves(){
-  if (settings.legalMoves === "on"){
+// function for highlighting legal moves
+function showLegalMoves() {
+  if (settings.legalMoves === "on") {
     highlightValidMoves();
-  } else{
+  } else {
     clearHighlights();
   }
 }
@@ -228,20 +231,24 @@ arrowBack.addEventListener("click", closeNav);
 arrowForward.addEventListener("click", openNav);
 quitbtn.addEventListener("click", () => {
   hidePages();
-  menuScreen.classList.remove("notVisible");
+  menuWrapper.classList.remove("notOpacitied");
+  menuWrapper.classList.add("positiveOpacitied");
 });
+
 function openNav() {
   gameSidebar.style.width = "300px";
   arrowBack.style.display = "block";
   arrowForward.style.display = "none";
-  document.querySelector(".sideInformation").style.display = "block";
+  setTimeout(() => {
+    document.querySelector(".sideInformation").style.opacity = "1";
+  }, 150);
 }
 
 function closeNav() {
   gameSidebar.style.width = "150px";
   arrowForward.style.display = "block";
   arrowBack.style.display = "none";
-  document.querySelector(".sideInformation").style.display = "none";
+  document.querySelector(".sideInformation").style.opacity = "0";
 }
 
 // win/lose screen script
@@ -287,7 +294,7 @@ let feedbackIndex = 0;
 // * replaced with let a = 0;
 // function for showing win screen
 function showWinScreen() {
-  winScreen.classList.remove("notVisible");
+  winScreen.classList.add("positiveOpacitied");
   winText.textContent = winTitles[feedbackIndex];
   winQuite.textContent = winQuotes[feedbackIndex];
 
@@ -303,7 +310,6 @@ function showWinScreen() {
 //   feedbackIndex = (feedbackIndex + 1) % loseTitles.length;
 // }
 
-// TODO if opposide tam has won show negative feedbacl else show positive feedback
 // redirect to pages on feedbackscreen
 const retryBtn = document.querySelectorAll(".retry");
 const hubBtn = document.querySelectorAll(".Menu");
@@ -312,13 +318,13 @@ retryBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     // reset UI/pages
     hidePages();
-    gameIndex.classList.remove("notVisible");
+    gameIndex.classList.add("positiveOpacitied");
 
     // reset turn
     startingPlayer = "black";
     playerTurn.textContent = "black";
 
-    // reset click counters (your vars)
+    // reset click counters
     clickValue = 0;
     clickValueW = 0;
 
@@ -350,14 +356,11 @@ retryBtn.forEach((btn) => {
 
 hubBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
-    menuScreen.classList.remove("notVisible");
+    hidePages();
+    menuWrapper.classList.add("positiveOpacitied");
   });
 });
-homeBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // ! REDIRECT TO THE CHOOSE MENU FOR THE 4 GAMES
-  });
-});
+
 // add glass effect to items
 startBtn.classList.add("glass");
 attunement.classList.add("glass");
@@ -426,23 +429,29 @@ hendrikContainer.appendChild(hendrik);
 // 2. pieces eventlisteners for developers
 
 // show black win-screen
-document.querySelector("#blackking").addEventListener("click", () => {
-  clickValue++;
-  if (clickValue == 7) {
-    hidePages();
-    showWinScreen();
+document.addEventListener("click", (e) => {
+  if (e.target.id === "blackking") {
+    clickValue++;
+    if (clickValue === 7) {
+      hidePages();
+      winScreen.style.backgroundImage =
+        "url('../imgs/feedackArt/winBlack.JPG')";
+
+      showWinScreen("black");
+    }
   }
-  console.log(clickValue);
-});
-// show white win-screen
-document.querySelector("#whiteKing").addEventListener("click", () => {
-  clickValueW++;
-  if (clickValueW == 7) {
-    hidePages();
-    showWinScreen();
+
+  if (e.target.id === "whiteKing") {
+    clickValueW++;
+    if (clickValueW === 7) {
+      hidePages();
+      winScreen.style.backgroundImage =
+        "url('../imgs/feedackArt/winWhite.JPG')";
+      showWinScreen("white");
+    }
   }
-  console.log(clickValueW);
 });
+
 // // show white lose-screen
 // document.querySelector("#whiteQueen").addEventListener("click", () => {
 //   clickValue3++;
@@ -462,9 +471,4 @@ document.querySelector("#whiteKing").addEventListener("click", () => {
 //   console.log(clickValueW4);
 // });
 
-// easter egg secret lore page 
-
-// TODO Code for cool transition for betwheen pages zoom in fade cool stuff
-// TODO clean up files that arent used
-// TODO: when time left: easter egg whisper,
-// ! menu screen click on button for my game playmusic
+// easter egg secret lore page

@@ -5,70 +5,14 @@ playerTurn.textContent = "black";
 
 // array of the board
 const startPieces = [
-  blackRook,
-  blackKnight,
-  blackBishop,
-  blackQueen,
-  blackKing,
-  blackBishop,
-  blackKnight,
-  blackRook,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  blackPawn,
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whitePawn,
-  whiteRook,
-  whiteKnight,
-  whiteBishop,
-  whiteQueen,
-  whiteKing,
-  whiteBishop,
-  whiteKnight,
-  whiteRook,
+  blackRook,  blackKnight,  blackBishop,  blackQueen,  blackKing,  blackBishop,  blackKnight,  blackRook,
+  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,  blackPawn,
+  "",  "",  "",  "",  "",  "",  "",  "", 
+  "", "",  "",  "",  "",  "",  "",  "", 
+  "",  "",  "",  "",  "",  "",  "",  "",
+  "",  "",  "",  "",  "",  "",  "",  "",
+  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,  whitePawn,
+  whiteRook,  whiteKnight,  whiteBishop,  whiteQueen,  whiteKing,  whiteBishop,  whiteKnight,  whiteRook,
 ];
 
 // draw the board using js
@@ -233,12 +177,13 @@ function checkForWin() {
     playerTurn.textContent = "Black flock wins!";
     const allSquares = document.querySelectorAll(".square");
     allSquares.forEach((square) =>
-      square.firstChild?.setAttribute("draggable", false)
+      square.firstChild?.setAttribute("draggable", false),
     );
     console.log(kings);
     // show the win/ lose screen
     hidePages();
 
+    winScreen.style.backgroundImage = "url('../imgs/feedackArt/winBlack.JPG')";
     showWinScreen();
     console.log("playerTurn is:", playerTurn);
   }
@@ -246,9 +191,14 @@ function checkForWin() {
     playerTurn.textContent = "White flock wins!";
     const allSquares = document.querySelectorAll(".square");
     allSquares.forEach((square) =>
-      square.firstChild?.setAttribute("draggable", false)
+      square.firstChild?.setAttribute("draggable", false),
     );
     console.log(kings);
+    hidePages();
+
+    winScreen.style.backgroundImage = "url('../imgs/feedackArt/winWhite.JPG')";
+    showWinScreen();
+
     console.log("playerTurn is:", playerTurn);
   }
 }

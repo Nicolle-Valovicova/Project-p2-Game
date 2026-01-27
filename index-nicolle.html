@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -35,42 +35,44 @@
     <audio src="audio/hoverBtnSfx.mp3" id="hover-ui-btn" preload="auto"></audio>
     <audio src="audio/btnClickSfx.mp3" id="click-ui-btn" preload="auto"></audio>
     <audio src="audio/menuOpenSfx.mp3" id="open-ui-menu" preload="auto"></audio>
-    <div id="start-screen" class="start-screen">
-      <div class="startinfo">
-        <img
-          id="mgLogo"
-          src="imgs/gameItems/Mglogo.png"
-          alt="Murders Gambit logo"
-        />
-        <div class="barDisplay">
-          <div
-            id="bar"
-            data-preset="rainbow"
-            class="ldBar label-center"
-            data-value="0"
-          ></div>
-          <button id="startBtn" data-btn-sound="uiBtn">Start</button>
+    <div class="start-wrapper notOpacitied trans positiveOpacitied">
+      <div id="start-screen" class="start-screen">
+        <div class="startinfo">
+          <img
+            id="mgLogo"
+            src="imgs/gameItems/Mglogo.png"
+            alt="Murders Gambit logo"
+          />
+          <div class="barDisplay">
+            <div
+              id="bar"
+              data-preset="rainbow"
+              class="ldBar label-center"
+              data-value="0"
+            ></div>
+            <button id="startBtn" data-btn-sound="uiBtn">Start</button>
+          </div>
+          <!-- loading bar ^-->
+          <div class="crowfacts">
+            <p id="crowfactOutput"></p>
+          </div>
         </div>
-        <!-- loading bar ^-->
-        <div class="crowfacts">
-          <p id="crowfactOutput"></p>
-        </div>
+        <!-- startscreen parallax -->
+        <ul id="scene">
+          <li class="layer" data-depth="0.2">
+            <img src="imgs/startParallax/start1.PNG" />
+          </li>
+          <li class="layer" data-depth="0.3">
+            <img src="imgs/startParallax/start2.PNG" />
+          </li>
+          <li class="layer" data-depth="0.2">
+            <img src="imgs/startParallax/start3.PNG" />
+          </li>
+          <li class="layer" data-depth="0.45">
+            <img src="imgs/startParallax/start4.PNG" />
+          </li>
+        </ul>
       </div>
-      <!-- startscreen parallax -->
-      <ul id="scene">
-        <li class="layer" data-depth="0.2">
-          <img src="imgs/startParallax/start1.PNG" />
-        </li>
-        <li class="layer" data-depth="0.3">
-          <img src="imgs/startParallax/start2.PNG" />
-        </li>
-        <li class="layer" data-depth="0.2">
-          <img src="imgs/startParallax/start3.PNG" />
-        </li>
-        <li class="layer" data-depth="0.45">
-          <img src="imgs/startParallax/start4.PNG" />
-        </li>
-      </ul>
     </div>
     <!-- code for menuscreen -->
     <div class="rules-container">
@@ -82,371 +84,405 @@
       />
       <img id="birdInfoImg" src="imgs/gameItems/birdInfo.PNG" alt="" />
       <div class="rules">
-  <p>👑 Raven King (K) <br>
-• 1 tile in any direction<br>
-• If the Raven King is captured → instant defeat<br><br>
-♛ Rook-Bird Queen (Q)<br>
-• Any distance: horizontal / vertical / diagonal<br>
-• Cannot jump over pieces<br>
-<br>
-🪺 Magpie Rook (R)<br>
-• Any distance: horizontal / vertical<br>
-• Cannot jump over pieces<br><br>
+        <p>
+          👑 Raven King (K) <br />
+          • 1 tile in any direction<br />
+          • If the Raven King is captured → instant defeat<br /><br />
+          ♛ Rook-Bird Queen (Q)<br />
+          • Any distance: horizontal / vertical / diagonal<br />
+          • Cannot jump over pieces<br />
+          <br />
+          🪺 Magpie Rook (R)<br />
+          • Any distance: horizontal / vertical<br />
+          • Cannot jump over pieces<br /><br />
 
-🪶 Crow Bishop (B)<br>
-• Any distance: diagonal<br>
-• Cannot jump over pieces<br>
-• Stays on its color<br><br>
+          🪶 Crow Bishop (B)<br />
+          • Any distance: diagonal<br />
+          • Cannot jump over pieces<br />
+          • Stays on its color<br /><br />
+        </p>
+        <p id="info2">
+          🐦 Jay Knight (N)<br />
+          • L-move (2 + 1)<br />
+          • Only piece that can jump<br /><br />
 
-</p>
-<p id="info2">🐦 Jay Knight (N)<br>
-• L-move (2 + 1)<br>
-• Only piece that can jump<br><br>
+          🐣 Jackdaw Pawn (P)<br />
+          • Moves forward 1 tile<br />
+          • From its starting rank: may move 2 tiles<br />
+          • Captures diagonally (forward-left / forward-right)<br /><br />
 
-🐣 Jackdaw Pawn (P)<br>
-• Moves forward 1 tile<br>
-• From its starting rank: may move 2 tiles<br>
-• Captures diagonally (forward-left / forward-right)<br><br>
+          ⚔ Capturing & Turns<br />
+          • Capture by moving onto an enemy piece<br />
+          • You can’t capture your own flock<br />
+          • Players alternate turns (White / Black)<br /><br />
 
-⚔ Capturing & Turns<br>
-• Capture by moving onto an enemy piece<br>
-• You can’t capture your own flock<br>
-• Players alternate turns (White / Black)<br><br>
-
-🏆 Victory<br>
-• Win by capturing the enemy Raven King</p>
+          🏆 Victory<br />
+          • Win by capturing the enemy Raven King
+        </p>
       </div>
     </div>
-
-    <div id="menu-screen" class="menu-screen">
-      <h1>The Gambit Hall</h1>
-      <hr id="firstHr" />
-      <div class="menu-items">
-        <div class="menu-it1">
-          <h3 id="menuPlayBtn" data-btn-sound="uiBtn">Soar</h3>
-          <hr />
-        </div>
-        <div class="menu-it1">
-          <h3 id="options" data-btn-sound="uiBtn">Attunement</h3>
-          <hr />
-        </div>
-
-        <div class="menu-it1">
-          <h3 id="credits" data-btn-sound="uiBtn">Legacy</h3>
-          <hr />
-        </div>
-        <div class="menu-it1">
-          <h3 class="exit" data-btn-sound="uiBtn">Vanish</h3>
-          <hr />
-        </div>
-      </div>
-      <!-- attunament container (settings menu) -->
-      <div class="attunement">
-        <h2>Attunement</h2>
-        <div class="attunement-contain">
-          <div class="contain-nav">
-            <ul>
-              <li class="atuItem" id="atuGm" data-btn-sound="uiBtn">
-                Game mode
-              </li>
-              <li class="atuItem" id="atuAu" data-btn-sound="uiBtn">Audio</li>
-              <li class="atuItem" id="atuGx" data-btn-sound="uiBtn">
-                Graphics
-              </li>
-              <li class="atuItem" id="atuGp" data-btn-sound="uiBtn">
-                Gameplay
-              </li>
-            </ul>
-          </div>
-          <div class="attunement-settings">
-            <div class="setting">
-              <p class="settingTitle">Choose your battle:</p>
-              <div class="settingSlider" data-setting="battle">
-                <img
-                  class="back"
-                  src="imgs/icons/arrow_back_ios.svg"
-                  alt="arrow back"
-                />
-                <p class="settingOpt1">Comming soon!</p>
-                <p class="settingOpt2">Comming soon!</p>
-                <img
-                  class="forward"
-                  src="imgs/icons/arrow_forward_ios.svg"
-                  alt="arrow forward"
-                />
-              </div>
+    <div class="menu-wrapper notOpacitied trans positiveOpacitied">
+      <div id="menu-screen" class="menu-screen">
+        <div class="menu-stuff-wrapped">
+          <h1>The Gambit Hall</h1>
+          <hr id="firstHr" />
+          <div class="menu-items">
+            <div class="menu-it1">
+              <h3 id="menuPlayBtn" data-btn-sound="uiBtn">Soar</h3>
+              <hr />
             </div>
-            <div class="setting">
-              <p class="settingTitle" >Select your flock:</p>
-              <div class="settingSlider flockRestricted" data-setting="flock">
-                <img
-                  class="back flockRestricted"
-                  src="imgs/icons/arrow_back_ios.svg"
-                  alt="arrow back"
-                />
-                <p class="settingOpt1">Black murders</p>
-                <p class="settingOpt2">White murders</p>
-                <img
-                  class="forward flockRestricted"
-                  src="imgs/icons/arrow_forward_ios.svg"
-                  alt="arrow forward"
-                />
-              </div>
+            <div class="menu-it1">
+              <h3 id="options" data-btn-sound="uiBtn">Attunement</h3>
+              <hr />
+            </div>
+
+            <div class="menu-it1">
+              <h3 id="credits" data-btn-sound="uiBtn">Legacy</h3>
+              <hr />
+            </div>
+            <div class="menu-it1">
+              <h3 class="exit" data-btn-sound="uiBtn">
+                <a href="home.html">Vanish</a>
+              </h3>
+              <hr />
             </div>
           </div>
-          <div class="attunement-settings">
-            <div class="setting">
-              <p class="settingTitle">Music:</p>
-              <div class="settingSlider" data-setting="music">
-                <img
-                  class="back"
-                  src="imgs/icons/arrow_back_ios.svg"
-                  alt="arrow back"
-                />
-                <p class="settingOpt1">On</p>
-                <p class="settingOpt2">Off</p>
-                <img
-                  class="forward"
-                  src="imgs/icons/arrow_forward_ios.svg"
-                  alt="arrow forward"
-                />
+        </div>
+        <!-- attunament container (settings menu) -->
+        <div class="attunement">
+          <h2>Attunement</h2>
+          <div class="attunement-contain">
+            <div class="contain-nav">
+              <ul>
+                <li class="atuItem" id="atuGm" data-btn-sound="uiBtn">
+                  Game mode
+                </li>
+                <li class="atuItem" id="atuAu" data-btn-sound="uiBtn">Audio</li>
+                <li class="atuItem" id="atuGx" data-btn-sound="uiBtn">
+                  Graphics
+                </li>
+                <li class="atuItem" id="atuGp" data-btn-sound="uiBtn">
+                  Gameplay
+                </li>
+              </ul>
+            </div>
+            <div class="attunement-settings">
+              <div class="setting">
+                <p class="settingTitle">Choose your battle:</p>
+                <div class="settingSlider" data-setting="battle">
+                  <img
+                    class="back"
+                    src="imgs/icons/arrow_back_ios.svg"
+                    alt="arrow back"
+                  />
+                  <p class="settingOpt1">Comming soon!</p>
+                  <p class="settingOpt2">Comming soon!</p>
+                  <img
+                    class="forward"
+                    src="imgs/icons/arrow_forward_ios.svg"
+                    alt="arrow forward"
+                  />
+                </div>
+              </div>
+              <div class="setting">
+                <p class="settingTitle">Select your flock:</p>
+                <div class="settingSlider flockRestricted" data-setting="flock">
+                  <img
+                    class="back flockRestricted"
+                    src="imgs/icons/arrow_back_ios.svg"
+                    alt="arrow back"
+                  />
+                  <p class="settingOpt1">Black murders</p>
+                  <p class="settingOpt2">White murders</p>
+                  <img
+                    class="forward flockRestricted"
+                    src="imgs/icons/arrow_forward_ios.svg"
+                    alt="arrow forward"
+                  />
+                </div>
               </div>
             </div>
-            <div class="setting">
-              <p class="settingTitle">SFX:</p>
-              <div class="settingSlider" data-setting="sfx">
-                <img
-                  class="back"
-                  src="imgs/icons/arrow_back_ios.svg"
-                  alt="arrow back"
-                />
-                <div class="setting-options">
+            <div class="attunement-settings">
+              <div class="setting">
+                <p class="settingTitle">Music:</p>
+                <div class="settingSlider" data-setting="music">
+                  <img
+                    class="back"
+                    src="imgs/icons/arrow_back_ios.svg"
+                    alt="arrow back"
+                  />
                   <p class="settingOpt1">On</p>
                   <p class="settingOpt2">Off</p>
+                  <img
+                    class="forward"
+                    src="imgs/icons/arrow_forward_ios.svg"
+                    alt="arrow forward"
+                  />
                 </div>
-                <img
-                  class="forward"
-                  src="imgs/icons/arrow_forward_ios.svg"
-                  alt="arrow forward"
-                />
+              </div>
+              <div class="setting">
+                <p class="settingTitle">SFX:</p>
+                <div class="settingSlider" data-setting="sfx">
+                  <img
+                    class="back"
+                    src="imgs/icons/arrow_back_ios.svg"
+                    alt="arrow back"
+                  />
+                  <div class="setting-options">
+                    <p class="settingOpt1">On</p>
+                    <p class="settingOpt2">Off</p>
+                  </div>
+                  <img
+                    class="forward"
+                    src="imgs/icons/arrow_forward_ios.svg"
+                    alt="arrow forward"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="attunement-settings">
+              <div class="setting">
+                <p class="settingTitle">Graphics:</p>
+                <div class="settingSlider" data-setting="graphics">
+                  <img
+                    class="back"
+                    src="imgs/icons/arrow_back_ios.svg"
+                    alt="arrow back"
+                  />
+                  <p class="settingOpt1">On</p>
+                  <p class="settingOpt2">Off</p>
+                  <img
+                    class="forward"
+                    src="imgs/icons/arrow_forward_ios.svg"
+                    alt="arrow forward"
+                  />
+                </div>
+              </div>
+              <div class="setting">
+                <p class="settingTitle">Cutscenes:</p>
+                <div class="settingSlider" data-setting="cutscenes">
+                  <img
+                    class="back"
+                    src="imgs/icons/arrow_back_ios.svg"
+                    alt="arrow back"
+                  />
+                  <p class="settingOpt1">On</p>
+                  <p class="settingOpt2">Off</p>
+                  <img
+                    class="forward"
+                    src="imgs/icons/arrow_forward_ios.svg"
+                    alt="arrow forward"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="attunement-settings">
+              <div class="setting">
+                <p class="settingTitle">Highlight legal moves:</p>
+                <div class="settingSlider" data-setting="legalMoves">
+                  <img
+                    class="back"
+                    src="imgs/icons/arrow_back_ios.svg"
+                    alt="arrow back"
+                  />
+                  <p class="settingOpt1">On</p>
+                  <p class="settingOpt2">Off</p>
+                  <img
+                    class="forward"
+                    src="imgs/icons/arrow_forward_ios.svg"
+                    alt="arrow forward"
+                  />
+                </div>
+              </div>
+              <div class="setting">
+                <p class="settingTitle">Game:</p>
+                <button
+                  id="showRules"
+                  data-btn-sound="uiBtn"
+                  style="color: aliceblue; cursor: pointer"
+                >
+                  Show rules
+                </button>
               </div>
             </div>
           </div>
-          <div class="attunement-settings">
-            <div class="setting">
-              <p class="settingTitle">Graphics:</p>
-              <div class="settingSlider" data-setting="graphics">
-                <img
-                  class="back"
-                  src="imgs/icons/arrow_back_ios.svg"
-                  alt="arrow back"
-                />
-                <p class="settingOpt1">On</p>
-                <p class="settingOpt2">Off</p>
-                <img
-                  class="forward"
-                  src="imgs/icons/arrow_forward_ios.svg"
-                  alt="arrow forward"
-                />
-              </div>
-            </div>
-            <div class="setting">
-              <p class="settingTitle">Cutscenes:</p>
-              <div class="settingSlider" data-setting="cutscenes">
-                <img
-                  class="back"
-                  src="imgs/icons/arrow_back_ios.svg"
-                  alt="arrow back"
-                />
-                <p class="settingOpt1">On</p>
-                <p class="settingOpt2">Off</p>
-                <img
-                  class="forward"
-                  src="imgs/icons/arrow_forward_ios.svg"
-                  alt="arrow forward"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="attunement-settings">
-            <div class="setting">
-              <p class="settingTitle">Highlight legal moves:</p>
-              <div class="settingSlider" data-setting="legalMoves">
-                <img
-                  class="back"
-                  src="imgs/icons/arrow_back_ios.svg"
-                  alt="arrow back"
-                />
-                <p class="settingOpt1">On</p>
-                <p class="settingOpt2">Off</p>
-                <img
-                  class="forward"
-                  src="imgs/icons/arrow_forward_ios.svg"
-                  alt="arrow forward"
-                />
-              </div>
-            </div>
-            <div class="setting">
-              <p class="settingTitle">Game:</p>
-              <button
-                id="showRules"
-                data-btn-sound="uiBtn"
-                style="color: aliceblue; cursor: pointer"
-              >
-                Show rules
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
-      <!-- menuscreen legacy (credits menu) -->
-      <div class="legacy-contain">
-        <h2>The Ancestor Scrolls</h2>
-        <p class="legacyTitle">
-          “Written in the ashes of fallen kings, these names endure…”
-        </p>
-        <div class="legacy-info">
-          <h3>Creator & artist</h3>
-          <p>Nicolle Valovicova</p>
-        </div>
-        <div class="legacy-info">
-          <h3>Tools</h3>
-          <p>HTML & CSS, JavaScript</p>
-        </div>
-        <div class="legacy-info">
-          <h3>Inspiration</h3>
-          <p>
-            Hendrik the Jackdaw, Legends of the guardians, mythical forest
-            stylings
+        <!-- menuscreen legacy (credits menu) -->
+        <div class="legacy-contain">
+          <h2>The Ancestor Scrolls</h2>
+          <p class="legacyTitle">
+            “Written in the ashes of fallen kings, these names endure…”
           </p>
+          <div class="legacy-info">
+            <h3>Creator & artist</h3>
+            <p>Nicolle Valovicova</p>
+          </div>
+          <div class="legacy-info">
+            <h3>Tools</h3>
+            <p>HTML & CSS, JavaScript</p>
+          </div>
+          <div class="legacy-info">
+            <h3>Inspiration</h3>
+            <p>
+              Hendrik the Jackdaw, Legends of the guardians, mythical forest
+              stylings
+            </p>
+          </div>
+          <p class="legacyQuote">
+            <a href="legacy.html" target="_blank">
+              “May your feathers leave a mark on the forest.”
+            </a>
+          </p>
+          <audio
+            src="audio/JackdawSfx.mp3"
+            id="click-jackdaw"
+            preload="auto"
+          ></audio>
+          <div id="hendrik"></div>
         </div>
-        <p class="legacyQuote">
-          <a href="legacy.html" target="_blank">          “May your feathers leave a mark on the forest.”
-</a>
-        </p>
-        <audio
-          src="audio/JackdawSfx.mp3"
-          id="click-jackdaw"
-          preload="auto"
-        ></audio>
-        <div id="hendrik"></div>
+        <!-- menuscreen parallax -->
+        <ul id="menuScene">
+          <li class="layer" data-depth="0.1">
+            <img src="imgs/menuParallax/1.PNG" />
+          </li>
+          <li class="layer" data-depth="-0.2">
+            <img src="imgs/menuParallax/2.PNG" />
+          </li>
+          <li class="layer" data-depth="0.25">
+            <img src="imgs/menuParallax/3.3.PNG" />
+          </li>
+          <li class="layer" data-depth="-0.4">
+            <img src="imgs/menuParallax/3.4.PNG" />
+          </li>
+          <li class="layer" data-depth="0.2">
+            <img src="imgs/menuParallax/4.PNG" />
+          </li>
+        </ul>
       </div>
-      <!-- menuscreen parallax -->
-      <ul id="menuScene">
-        <li class="layer" data-depth="0.1">
-          <img src="imgs/menuParallax/1.PNG" />
-        </li>
-        <li class="layer" data-depth="-0.2">
-          <img src="imgs/menuParallax/2.PNG" />
-        </li>
-        <li class="layer" data-depth="0.25">
-          <img src="imgs/menuParallax/3.3.PNG" />
-        </li>
-        <li class="layer" data-depth="-0.4">
-          <img src="imgs/menuParallax/3.4.PNG" />
-        </li>
-        <li class="layer" data-depth="0.2">
-          <img src="imgs/menuParallax/4.PNG" />
-        </li>
-      </ul>
     </div>
     <!-- html for game screen / index -->
-    <div id="game-index" class="game-index">
-      <div id="particles-js"></div>
-      <video id="coinAnimation" src="imgs/gameItems/coinong_1.webm"  muted></video>
-      <div class="inGameBG">
-        <img src="imgs/animation/forestbg.jpeg" alt="" />
-      </div>      <!-- sidebar for game -->
-      <div class="gameSidebar">
-        <div class="sidebarNav">
-          <button id="quit" class="quit" data-btn-sound="uiBtn">Depart</button>
-          <img id="arrowBack" src="imgs/icons/arrow_back_ios.svg" alt="" />
-          <img
-            id="arrowForward"
-            src="imgs/icons/arrow_forward_ios.svg#"
-            alt=""
-          />
+    <div class="game-wrapper notOpacitied trans">
+      <div id="game-index" class="game-index">
+        <div id="particles-js"></div>
+        <video
+          id="coinAnimation"
+          src="imgs/gameItems/coinong_1.webm"
+          muted
+        ></video>
+        <div class="inGameBG">
+          <img src="imgs/animation/forestbg.jpeg" alt="" />
         </div>
-        <div class="sideInformation">
-          <p id="currentPlayerTurn">
-            Current player: <img src="" alt="bird" />
-          </p>
-          <h3>Gold counters</h3>
-          <p id="whiteGold">
-            White gold:
-            <img class="valueCoins" src="imgs/gameItems/coin.png" alt="" />
-          </p>
-          <p id="blackGold">
-            Black gold:
-            <img class="valueCoins" src="imgs/gameItems/coin.png" alt="" />
-          </p>
-          <div class="killValues">
-            <h3>Piece kill values</h3>
-            <div class="killValuesIndex">
-              <div class="killValue">
-                <p>Jackdaw pawns:</p>
-              </div>
-              <div class="killValueTxt">
-                <span
-                  >1
-                  <img class="valueCoins" src="imgs/gameItems/coin.png" alt=""
-                /></span>
-              </div>
+        <!-- sidebar for game -->
+        <div class="game-stuff-wrapped">
+          <div class="gameSidebar">
+            <div class="sidebarNav">
+              <button id="quit" class="quit" data-btn-sound="uiBtn">
+                Depart
+              </button>
+              <img id="arrowBack" src="imgs/icons/arrow_back_ios.svg" alt="" />
+              <img
+                id="arrowForward"
+                src="imgs/icons/arrow_forward_ios.svg#"
+                alt=""
+              />
             </div>
-            <div class="killValuesIndex">
-              <div class="killValue">
-                <p>Jay knights:</p>
-              </div>
-              <div class="killValueTxt">
-                <span
-                  >3
-                  <img class="valueCoins" src="imgs/gameItems/coin.png" alt=""
-                /></span>
-              </div>
-            </div>
-            <div class="killValuesIndex">
-              <div class="killValue">
-                <p>Crow bishops:</p>
-              </div>
-              <div class="killValueTxt">
-                <span
-                  >3
-                  <img class="valueCoins" src="imgs/gameItems/coin.png" alt=""
-                /></span>
-              </div>
-            </div>
-            <div class="killValuesIndex">
-              <div class="killValue">
-                <p>Magpie rooks:</p>
-              </div>
-              <div class="killValueTxt">
-                <span
-                  >5
-                  <img class="valueCoins" src="imgs/gameItems/coin.png" alt=""
-                /></span>
-              </div>
-            </div>
-            <div class="killValuesIndex">
-              <div class="killValue">
-                <p>Rook queen:</p>
-              </div>
-              <div class="killValueTxt">
-                <span
-                  >9
-                  <img class="valueCoins" src="imgs/gameItems/coin.png" alt=""
-                /></span>
+            <div class="sideInformation">
+              <p id="currentPlayerTurn">
+                Current player: <img src="" alt="bird" />
+              </p>
+              <h3>Gold counters</h3>
+              <p id="whiteGold">
+                White gold:
+                <img class="valueCoins" src="imgs/gameItems/coin.png" alt="" />
+              </p>
+              <p id="blackGold">
+                Black gold:
+                <img class="valueCoins" src="imgs/gameItems/coin.png" alt="" />
+              </p>
+              <div class="killValues">
+                <h3>Piece kill values</h3>
+                <div class="killValuesIndex">
+                  <div class="killValue">
+                    <p>Jackdaw pawns:</p>
+                  </div>
+                  <div class="killValueTxt">
+                    <span
+                      >1
+                      <img
+                        class="valueCoins"
+                        src="imgs/gameItems/coin.png"
+                        alt=""
+                    /></span>
+                  </div>
+                </div>
+                <div class="killValuesIndex">
+                  <div class="killValue">
+                    <p>Jay knights:</p>
+                  </div>
+                  <div class="killValueTxt">
+                    <span
+                      >3
+                      <img
+                        class="valueCoins"
+                        src="imgs/gameItems/coin.png"
+                        alt=""
+                    /></span>
+                  </div>
+                </div>
+                <div class="killValuesIndex">
+                  <div class="killValue">
+                    <p>Crow bishops:</p>
+                  </div>
+                  <div class="killValueTxt">
+                    <span
+                      >3
+                      <img
+                        class="valueCoins"
+                        src="imgs/gameItems/coin.png"
+                        alt=""
+                    /></span>
+                  </div>
+                </div>
+                <div class="killValuesIndex">
+                  <div class="killValue">
+                    <p>Magpie rooks:</p>
+                  </div>
+                  <div class="killValueTxt">
+                    <span
+                      >5
+                      <img
+                        class="valueCoins"
+                        src="imgs/gameItems/coin.png"
+                        alt=""
+                    /></span>
+                  </div>
+                </div>
+                <div class="killValuesIndex">
+                  <div class="killValue">
+                    <p>Rook queen:</p>
+                  </div>
+                  <div class="killValueTxt">
+                    <span
+                      >9
+                      <img
+                        class="valueCoins"
+                        src="imgs/gameItems/coin.png"
+                        alt=""
+                    /></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <!-- html for the board -->
+          <div class="board-align">
+            <div class="board"></div>
+          </div>
         </div>
-      </div>
-      <!-- html for the board -->
-      <div class="board-align">
-        <div class="board"></div>
       </div>
     </div>
     <!-- html for win/ lose screem -->
-    <div class="win-screen">
+    <div class="win-screen notOpacitied trans">
       <div class="winBg"></div>
       <div class="win-container">
         <h2 class="winText"></h2>
@@ -454,11 +490,13 @@
         <div class="escButtons">
           <button class="retry">Reengage</button>
           <button class="Menu">Hub</button>
-          <button class="Home">Home</button>
+          <button class="Home">
+            <a href="home.html" class="Home">Home</a>
+          </button>
         </div>
       </div>
     </div>
-    <div class="lose-screen">
+    <div class="lose-screen" style="display: none">
       <div class="loseBg"></div>
       <div class="lose-container">
         <h2 class="loseText"></h2>
@@ -466,7 +504,9 @@
         <div class="escButtons">
           <button class="retry">Reengage</button>
           <button class="Menu">Hub</button>
-          <button class="Home">Home</button>
+          <button class="Home">
+            <a href="home.html" class="Home">Home</a>
+          </button>
         </div>
       </div>
     </div>
