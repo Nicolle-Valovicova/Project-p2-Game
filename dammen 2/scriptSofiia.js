@@ -211,11 +211,7 @@ function isValidMove(piece, row, col) {
         );
     }
     if (!isCapture) {
-        let forward = currentPlayer === 'white' ? -1 : 1;
-
-        if (perspective === 'black') {
-            forward *= -1;
-        }
+        let forward = piece.classList.contains('white') ? -1 : 1;
         if (moveRow !== forward) return false;
         return Math.abs(moveCol) === 1;
     }
@@ -317,13 +313,10 @@ function getAvailableCapturesForPiece(piece) {
     let captures = [];
     if (!isKing) {
         let dir = player === 'white' ? -1 : 1;
-        if (perspective === 'black') {
-            dir *= -1;
-        }
         const validDirs = [
-            { r: dir, c: 1 },
-            { r: dir, c: 1 }
-        ]
+            { r: dir, c: 1},
+            { r: dir, c: -1}
+        ];
         validDirs.forEach(dir => {
             const enemyRow = row + dir.r;
             const enemyCol = col + dir.c;
