@@ -69,6 +69,7 @@ allSquares.forEach((square) => {
 
 let startPosId;
 let draggedElement;
+// save the which piece is being draggen and from where
 function dragStart(e) {
   const piece = e.currentTarget;
 
